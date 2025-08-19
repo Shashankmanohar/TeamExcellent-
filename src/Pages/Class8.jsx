@@ -1,6 +1,7 @@
 import React from 'react'
 import Navbar from '../Components/Navbar'
-function About() {
+
+function Class8() {
   return (
     <>
      <Navbar/>
@@ -8,4 +9,4 @@ function About() {
   )
 }
 
-export default About
+export default Class8

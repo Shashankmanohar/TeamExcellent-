@@ -1,11 +1,10 @@
 import React from 'react'
 import Navbar from '../Components/Navbar'
-function About() {
+export default function JeeAdvance() {
   return (
     <>
-     <Navbar/>
+        <Navbar />
+    
     </>
   )
 }
-
-export default About

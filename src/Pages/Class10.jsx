@@ -1,11 +1,9 @@
 import React from 'react'
 import Navbar from '../Components/Navbar'
-function About() {
+export default function Class10() {
   return (
     <>
      <Navbar/>
     </>
   )
 }
-
-export default About

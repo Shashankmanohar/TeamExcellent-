@@ -5,20 +5,11 @@ import Banner3 from '../assets/Banner_3.webp'
 
 export default function Carousel() {
   const [currentSlide, setCurrentSlide] = useState(0)
-  
+
   const slides = [
-    {
-      id: 1,
-      image: Banner1
-    },
-    {
-      id: 2,
-      image: Banner2
-    },
-    {
-      id: 3,
-      image: Banner3
-    }
+    { id: 1, image: Banner1 },
+    { id: 2, image: Banner2 },
+    { id: 3, image: Banner3 }
   ]
 
   useEffect(() => {
@@ -29,57 +20,91 @@ export default function Carousel() {
   }, [slides.length])
 
   const goToSlide = (index) => setCurrentSlide(index)
-  const goToPrevious = () => setCurrentSlide((prev) => (prev - 1 + slides.length) % slides.length)
-  const goToNext = () => setCurrentSlide((prev) => (prev + 1) % slides.length)
+  const goToPrevious = () =>
+    setCurrentSlide((prev) => (prev - 1 + slides.length) % slides.length)
+  const goToNext = () =>
+    setCurrentSlide((prev) => (prev + 1) % slides.length)
 
   return (
-    <div className="max-w-7xl mx-auto px-4 py-8">
-             <div className="relative w-full h-[120px] md:h-[250px] overflow-hidden rounded-lg shadow-lg">
-      {slides.map((slide, index) => (
-        <div
-          key={slide.id}
-          className={`absolute inset-0 transition-opacity duration-1000 ${
-            index === currentSlide ? 'opacity-100' : 'opacity-0'
-          }`}
-        >
-                     <div 
-             className="w-full h-full bg-cover bg-center"
-             style={{ backgroundImage: `url(${slide.image})` }}
-           >
-           </div>
-        </div>
-      ))}
+    <div className="max-w-7xl mx-auto px-2 py-4 sm:px-4 sm:py-6">
+      <div
+        className="relative w-full 
+        h-[130px] sm:h-[140px] md:h-[170px] lg:h-[240px] xl:h-[270px] 
+        overflow-hidden rounded-lg shadow-md"
+      >
+        {slides.map((slide, index) => (
+          <div
+            key={slide.id}
+            className={`absolute inset-0 transition-opacity duration-1000 ${
+              index === currentSlide ? 'opacity-100' : 'opacity-0'
+            }`}
+          >
+            <div
+              className="w-full h-full bg-cover bg-center"
+              style={{ backgroundImage: `url(${slide.image})` }}
+            ></div>
+          </div>
+        ))}
 
-                           <button
+        {/* Prev button */}
+        <button
           onClick={goToPrevious}
-          className="absolute left-2 md:left-4 top-1/2 transform -translate-y-1/2 bg-[#5B2D7CFF] bg-opacity-50 hover:bg-opacity-75 text-white p-1 md:p-3 rounded-full"
+          className="absolute left-1 sm:left-2 md:left-4 top-1/2 transform -translate-y-1/2 
+          bg-[#5B2D7C] bg-opacity-50 hover:bg-opacity-75 text-white 
+          p-1 sm:p-2 md:p-3 rounded-full"
         >
-          <svg className="w-3 h-3 md:w-6 md:h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
+          <svg
+            className="w-2 h-2 sm:w-4 sm:h-4 md:w-6 md:h-6"
+            fill="none"
+            stroke="currentColor"
+            viewBox="0 0 24 24"
+          >
+            <path
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              strokeWidth={2}
+              d="M15 19l-7-7 7-7"
+            />
           </svg>
         </button>
 
+        {/* Next button */}
         <button
           onClick={goToNext}
-          className="absolute right-2 md:right-4 top-1/2 transform -translate-y-1/2 bg-[#5B2D7CFF] bg-opacity-50 hover:bg-opacity-75 text-white p-1 md:p-3 rounded-full"
+          className="absolute right-1 sm:right-2 md:right-4 top-1/2 transform -translate-y-1/2 
+          bg-[#5B2D7C] bg-opacity-50 hover:bg-opacity-75 text-white 
+          p-1 sm:p-2 md:p-3 rounded-full"
         >
-          <svg className="w-3 h-3 md:w-6 md:h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+          <svg
+            className="w-2 h-2 sm:w-4 sm:h-4 md:w-6 md:h-6"
+            fill="none"
+            stroke="currentColor"
+            viewBox="0 0 24 24"
+          >
+            <path
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              strokeWidth={2}
+              d="M9 5l7 7-7 7"
+            />
           </svg>
         </button>
 
-             <div className="absolute bottom-6 left-1/2 transform -translate-x-1/2 flex space-x-3">
-         {slides.map((_, index) => (
-           <button
-             key={index}
-             onClick={() => goToSlide(index)}
-             className={`w-3 h-3 rounded-full transition-all ${
-               index === currentSlide ? 'bg-white scale-125' : 'bg-white bg-opacity-50'
-             }`}
-           />
-         ))}
-       </div>
+        {/* Dots */}
+        <div className="absolute bottom-2 sm:bottom-4 left-1/2 transform -translate-x-1/2 flex space-x-2">
+          {slides.map((_, index) => (
+            <button
+              key={index}
+              onClick={() => goToSlide(index)}
+              className={`w-2 h-2 sm:w-3 sm:h-3 rounded-full transition-all ${
+                index === currentSlide
+                  ? 'bg-white scale-110'
+                  : 'bg-white bg-opacity-50'
+              }`}
+            />
+          ))}
+        </div>
       </div>
     </div>
   )
-} 
+}

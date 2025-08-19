@@ -5,6 +5,17 @@ import Home from './Pages/Home'
 import About from './Pages/About'
 import Course from './Pages/Course'
 import Admission from './Pages/Admission'
+import Contact from './Pages/Contact'
+import Class8 from './Pages/Class8'
+import Class9 from './Pages/Class9'
+import Class10 from './Pages/Class10'
+import Class11 from './Pages/Class11'
+import Class12 from './Pages/Class12'
+import JeeFoundation from './Pages/JeeFoundation'
+import JeeMains from './Pages/JeeMains'
+import JeeAdvance from './Pages/JeeAdvance'
+import NeetFoundation from './Pages/NeetFoundation'
+import Neet from './Pages/Neet'
 
 export default function App() {
   return (
@@ -16,23 +27,24 @@ export default function App() {
         <Route path="/admission" element={<Admission />} />
 
         {/* Program Routes */}
-        <Route path="/programs/class-8" element={<ProgramPage title="Class 8 Foundation" />} />
-        <Route path="/programs/class-9" element={<ProgramPage title="Class 9 Foundation" />} />
-        <Route path="/programs/class-10" element={<ProgramPage title="Class 10 Foundation" />} />
-        <Route path="/programs/class-11" element={<ProgramPage title="Class 11 Foundation" />} />
-        <Route path="/programs/class-12" element={<ProgramPage title="Class 12 Foundation" />} />
-        <Route path="/programs/jee-foundation" element={<ProgramPage title="JEE Foundation" />} />
-        <Route path="/programs/jee-mains" element={<ProgramPage title="JEE Mains" />} />
-        <Route path="/programs/jee-advanced" element={<ProgramPage title="JEE Advanced" />} />
-        <Route path="/programs/neet-foundation" element={<ProgramPage title="NEET Foundation" />} />
-        <Route path="/programs/neet" element={<ProgramPage title="NEET" />} />
+        <Route path="/programs/class-8" element={ <Class8 />} />
+        <Route path="/programs/class-9" element={<Class9 />} />
+        <Route path="/programs/class-10" element={<Class10 />} />
+        <Route path="/programs/class-11" element={<Class11 />} />
+        <Route path="/programs/class-12" element={<Class12 />} />
+        <Route path="/programs/jee-foundation" element={<JeeFoundation/>} />
+        <Route path="/programs/jee-mains" element={<JeeMains />} />
+        <Route path="/programs/jee-advanced" element={<JeeAdvance/>} />
+        <Route path="/programs/neet-foundation" element={<NeetFoundation />} />
+        <Route path="/programs/neet" element={ <Neet/>} />
+
 
         {/* Other Routes */}
         <Route path="/success-stories" element={<ProgramPage title="Success Stories" />} />
         <Route path="/student-portal" element={<ProgramPage title="Student Portal" />} />
         <Route path="/library" element={<ProgramPage title="Library" />} />
         <Route path="/resources" element={<ProgramPage title="Resources" />} />
-        <Route path="/contact" element={<ProgramPage title="Contact Us" />} />
+        <Route path="/contact" element={<Contact />} />
       </Routes>
     </Router>
   )
