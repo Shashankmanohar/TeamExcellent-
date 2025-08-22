@@ -5,7 +5,7 @@ const faqs = [
   {
     question: "What courses does Team Excellent offer?",
     answer:
-      "We provide foundation and advanced courses for Class 8 to Class 12 students, as well as specialized coaching for JEE (Mains & Advanced) and NEET.",
+      "We provide foundation and advanced courses for Class 6 to Class 10 students, as well as specialized coaching for JEE (Mains & Advanced) and NEET.",
   },
   {
     question: "How can I take admission?",

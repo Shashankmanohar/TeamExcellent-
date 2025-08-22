@@ -12,7 +12,7 @@ export default function Navbar() {
   }, [isOpen]);
 
   return (
-    <header className="w-full flex flex-col">
+    <header className="w-full fixed top-0 left-0 z-50">
       {/* Top Contact Bar */}
       <div
         className="w-full flex flex-col sm:flex-row sm:justify-center sm:items-center 
@@ -38,7 +38,7 @@ export default function Navbar() {
           <img
             src={TeamExcellent}
             alt="Team Excellent Logo"
-            className="w-16 sm:w-24 md:w-32 lg:w-36 object-contain"
+            className="w-20 sm:w-24 md:w-32 lg:w-36 object-contain"
           />
         </Link>
 
@@ -49,20 +49,12 @@ export default function Navbar() {
           <Dropdown
             label="PROGRAMS"
             items={[
-              { to: "/programs/class-8", label: "Class 8 Foundation" },
-              { to: "/programs/class-9", label: "Class 9 Foundation" },
-              { to: "/programs/class-10", label: "Class 10 Foundation" },
-              { to: "/programs/class-11", label: "Class 11 Foundation" },
-              { to: "/programs/class-12", label: "Class 12 Foundation" },
-              { to: "/programs/jee-foundation", label: "JEE Foundation" },
-              { to: "/programs/jee-mains", label: "JEE Mains" },
-              { to: "/programs/jee-advanced", label: "JEE Advanced" },
-              { to: "/programs/neet-foundation", label: "NEET Foundation" },
+              { to: "/programs/jee", label: "JEE" },
               { to: "/programs/neet", label: "NEET" },
+              { to: "/programs/class-6-to-10", label: "Class 6 to 10" },
             ]}
           />
           <NavItem to="/success-stories" label="SUCCESS" />
-          <NavItem to="/courses" label="COURSES" />
           <Dropdown
             label="STUDENT ZONE"
             items={[
@@ -93,20 +85,12 @@ export default function Navbar() {
           <DropdownMobile
             label="PROGRAMS"
             items={[
-              { to: "/programs/class-8", label: "Class 8 Foundation" },
-              { to: "/programs/class-9", label: "Class 9 Foundation" },
-              { to: "/programs/class-10", label: "Class 10 Foundation" },
-              { to: "/programs/class-11", label: "Class 11 Foundation" },
-              { to: "/programs/class-12", label: "Class 12 Foundation" },
-              { to: "/programs/jee-foundation", label: "JEE Foundation" },
-              { to: "/programs/jee-mains", label: "JEE Mains" },
-              { to: "/programs/jee-advanced", label: "JEE Advanced" },
-              { to: "/programs/neet-foundation", label: "NEET Foundation" },
+              { to: "/programs/jee", label: "JEE" },
               { to: "/programs/neet", label: "NEET" },
+              { to: "/programs/class-6-to-10", label: "Class 6 to 10" },
             ]}
           />
           <NavItem to="/success-stories" label="SUCCESS" mobile onClick={() => setIsOpen(false)} />
-          <NavItem to="/courses" label="COURSES" mobile onClick={() => setIsOpen(false)} />
           <DropdownMobile
             label="STUDENT ZONE"
             items={[

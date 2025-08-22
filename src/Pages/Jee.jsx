@@ -1,10 +1,11 @@
 import React from 'react'
 import Navbar from '../Components/Navbar'
-export default function JeeAdvance() {
+import Footer from '../Components/Footer'
+export default function Jee() {
   return (
     <>
         <Navbar />
-    
+        <Footer />
     </>
   )
 }

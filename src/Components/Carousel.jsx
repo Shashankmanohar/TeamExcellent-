@@ -1,54 +1,57 @@
-import React, { useState, useEffect } from 'react'
-import Banner1 from '../assets/Banner_1.webp'
-import Banner2 from '../assets/Banner_2.webp'
-import Banner3 from '../assets/Banner_3.webp'
+import React, { useState, useEffect } from "react";
+import Banner1 from "../assets/Banner_1.webp";
+import Banner2 from "../assets/Banner_2.webp";
+import Banner3 from "../assets/Banner_3.webp";
 
 export default function Carousel() {
-  const [currentSlide, setCurrentSlide] = useState(0)
+  const [currentSlide, setCurrentSlide] = useState(0);
 
   const slides = [
-    { id: 1, image: Banner1 },
-    { id: 2, image: Banner2 },
-    { id: 3, image: Banner3 }
-  ]
+    { id: 1, image: Banner1, alt: "Promotional Banner 1" },
+    { id: 2, image: Banner2, alt: "Promotional Banner 2" },
+    { id: 3, image: Banner3, alt: "Promotional Banner 3" },
+  ];
 
   useEffect(() => {
     const interval = setInterval(() => {
-      setCurrentSlide((prev) => (prev + 1) % slides.length)
-    }, 5000)
-    return () => clearInterval(interval)
-  }, [slides.length])
+      setCurrentSlide((prev) => (prev + 1) % slides.length);
+    }, 5000);
+    return () => clearInterval(interval);
+  }, []);
 
-  const goToSlide = (index) => setCurrentSlide(index)
+  const goToSlide = (index) => setCurrentSlide(index);
   const goToPrevious = () =>
-    setCurrentSlide((prev) => (prev - 1 + slides.length) % slides.length)
+    setCurrentSlide((prev) => (prev - 1 + slides.length) % slides.length);
   const goToNext = () =>
-    setCurrentSlide((prev) => (prev + 1) % slides.length)
+    setCurrentSlide((prev) => (prev + 1) % slides.length);
 
   return (
     <div className="max-w-7xl mx-auto px-2 py-4 sm:px-4 sm:py-6">
       <div
         className="relative w-full 
-        h-[130px] sm:h-[140px] md:h-[170px] lg:h-[240px] xl:h-[270px] 
-        overflow-hidden rounded-lg shadow-md"
+        h-[130px] sm:h-[140px] md:h-[170px] lg:h-[340px] xl:h-[370px] 
+        overflow-hidden rounded-lg shadow-md mt-40"
       >
+        {/* Slides */}
         {slides.map((slide, index) => (
           <div
             key={slide.id}
             className={`absolute inset-0 transition-opacity duration-1000 ${
-              index === currentSlide ? 'opacity-100' : 'opacity-0'
+              index === currentSlide ? "opacity-100" : "opacity-0"
             }`}
           >
-            <div
-              className="w-full h-full bg-cover bg-center"
-              style={{ backgroundImage: `url(${slide.image})` }}
-            ></div>
+            <img
+              src={slide.image}
+              alt={slide.alt}
+              className="w-full h-full object-cover"
+            />
           </div>
         ))}
 
         {/* Prev button */}
         <button
           onClick={goToPrevious}
+          aria-label="Previous Slide"
           className="absolute left-1 sm:left-2 md:left-4 top-1/2 transform -translate-y-1/2 
           bg-[#5B2D7C] bg-opacity-50 hover:bg-opacity-75 text-white 
           p-1 sm:p-2 md:p-3 rounded-full"
@@ -71,6 +74,7 @@ export default function Carousel() {
         {/* Next button */}
         <button
           onClick={goToNext}
+          aria-label="Next Slide"
           className="absolute right-1 sm:right-2 md:right-4 top-1/2 transform -translate-y-1/2 
           bg-[#5B2D7C] bg-opacity-50 hover:bg-opacity-75 text-white 
           p-1 sm:p-2 md:p-3 rounded-full"
@@ -96,15 +100,17 @@ export default function Carousel() {
             <button
               key={index}
               onClick={() => goToSlide(index)}
+              aria-label={`Go to slide ${index + 1}`}
+              aria-current={index === currentSlide}
               className={`w-2 h-2 sm:w-3 sm:h-3 rounded-full transition-all ${
                 index === currentSlide
-                  ? 'bg-white scale-110'
-                  : 'bg-white bg-opacity-50'
+                  ? "bg-white scale-110"
+                  : "bg-white bg-opacity-50"
               }`}
             />
           ))}
         </div>
       </div>
     </div>
-  )
+  );
 }

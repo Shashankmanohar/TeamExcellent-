@@ -10,7 +10,7 @@ export default function Home() {
       <Navbar />
       <Carousel />
       <Whychooseus/>
-      <Questions/>
+      <Questions className='mb-10'/>
       <Footer />
     </>
   )
