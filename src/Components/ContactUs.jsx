@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import Contactimage from "../Assets/Contactimage.jpg";
+import Contactimage from "../assets/Contactimage.jpg";
 import { MapPin, Phone, Mail, Clock } from "lucide-react";
 
 function ContactUS() {
