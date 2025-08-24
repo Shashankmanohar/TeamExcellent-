@@ -1,8 +1,48 @@
+<<<<<<< HEAD
 import React from 'react'
 import { Helmet as Head } from 'react-helmet-async'
 import Navbar from '../Components/Navbar'
 import ContactUs from '../Components/ContactUs'
 import Footer from '../Components/Footer'
+=======
+import React, { useState } from "react";
+import Contactimage from "../assets/Contactimage.jpg";
+import { MapPin, Phone, Mail, Clock } from "lucide-react";
+
+function ContactUS() {
+  const [formData, setFormData] = useState({
+    name: "",
+    mobile: "",
+    message: "",
+  });
+
+  const handleChange = (e) => {
+    setFormData({
+      ...formData,
+      [e.target.name]: e.target.value,
+    });
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+
+    const { name, mobile, message } = formData;
+
+    // WhatsApp number (with country code, no spaces or dashes)
+    const whatsappNumber = "918540814729"; 
+
+    // Text to send
+    const text = `Hello, I am ${name}. My mobile number is ${mobile}. Message: ${message}`;
+
+    // WhatsApp API link
+    const whatsappURL = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(
+      text
+    )}`;
+
+    // Open WhatsApp
+    window.open(whatsappURL, "_blank");
+  };
+>>>>>>> 8e0210198906109f720b859f12d4a6fe9ed6fb9b
 
 export default function Contact() {
   return (
