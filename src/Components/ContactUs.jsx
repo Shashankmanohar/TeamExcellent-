@@ -1,15 +1,8 @@
-<<<<<<< HEAD
-import React from 'react'
-import { Helmet as Head } from 'react-helmet-async'
-import Navbar from '../Components/Navbar'
-import ContactUs from '../Components/ContactUs'
-import Footer from '../Components/Footer'
-=======
 import React, { useState } from "react";
 import Contactimage from "../assets/Contactimage.jpg";
 import { MapPin, Phone, Mail, Clock } from "lucide-react";
 
-function ContactUS() {
+export default function ContactUs() {
   const [formData, setFormData] = useState({
     name: "",
     mobile: "",
@@ -25,60 +18,53 @@ function ContactUS() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-
     const { name, mobile, message } = formData;
 
-    // WhatsApp number (with country code, no spaces or dashes)
-    const whatsappNumber = "918540814729"; 
-
-    // Text to send
+    const whatsappNumber = "918540814729";
     const text = `Hello, I am ${name}. My mobile number is ${mobile}. Message: ${message}`;
+    const whatsappURL = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(text)}`;
 
-    // WhatsApp API link
-    const whatsappURL = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(
-      text
-    )}`;
-
-    // Open WhatsApp
     window.open(whatsappURL, "_blank");
   };
->>>>>>> 8e0210198906109f720b859f12d4a6fe9ed6fb9b
 
-export default function Contact() {
   return (
-    <>
-      <Head>
-        {/* Title & Description */}
-        <title>Contact Us | Team Excellent Coaching Institute Patna</title>
-        <meta 
-          name="description" 
-          content="Get in touch with Team Excellent Coaching Institute, Patna. Contact us for admissions, JEE & NEET coaching details, or foundation courses (Class 6–10). Visit our center or reach us via WhatsApp, phone, or email." 
-        />
+    <section className="w-full h-auto bg-white py-12">
+      <div className="max-w-4xl mx-auto px-6">
+        <h2 className="text-2xl font-bold mb-6">Contact Us</h2>
 
-        {/* Keywords */}
-        <meta 
-          name="keywords" 
-          content="Team Excellent contact, coaching institute Patna address, Team Excellent phone number, JEE coaching contact, NEET coaching Patna, foundation course contact, best coaching in Bihar" 
-        />
-
-        {/* Open Graph for social media */}
-        <meta property="og:title" content="Contact Us | Team Excellent Coaching Institute" />
-        <meta property="og:description" content="Reach Team Excellent Coaching Institute, Patna for admissions, JEE/NEET queries, or foundation course details. Call, email, or visit us today." />
-        <meta property="og:type" content="website" />
-        <meta property="og:url" content="https://teamexcellent.com/contact" />
-        <meta property="og:image" content="/logo192.png" />
-
-        {/* Twitter Card */}
-        <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content="Contact Us | Team Excellent Coaching Institute" />
-        <meta name="twitter:description" content="Get in touch with Team Excellent Coaching Patna for admission queries, coaching details, and more." />
-        <meta name="twitter:image" content="/logo192.png" />
-      </Head>
-
-      {/* ✅ Page Content */}
-      <Navbar />
-      <ContactUs />
-      <Footer />
-    </>
-  )
+        {/* Form */}
+        <form onSubmit={handleSubmit} className="flex flex-col gap-4">
+          <input
+            type="text"
+            name="name"
+            placeholder="Your Name"
+            value={formData.name}
+            onChange={handleChange}
+            className="border p-2 rounded"
+            required
+          />
+          <input
+            type="tel"
+            name="mobile"
+            placeholder="Your Mobile"
+            value={formData.mobile}
+            onChange={handleChange}
+            className="border p-2 rounded"
+            required
+          />
+          <textarea
+            name="message"
+            placeholder="Your Message"
+            value={formData.message}
+            onChange={handleChange}
+            className="border p-2 rounded"
+            required
+          />
+          <button type="submit" className="bg-blue-600 text-white px-4 py-2 rounded">
+            Send via WhatsApp
+          </button>
+        </form>
+      </div>
+    </section>
+  );
 }
