@@ -21,12 +21,12 @@ export default function Navbar() {
         text-[10px] sm:text-xs lg:text-sm"
       >
         <p className="flex items-center gap-1">
-          <i className="fa-solid fa-envelope text-[10px]"></i>
+          <i className="fa-solid fa-envelope mt-1 text-[10px]"></i>
           teamexcellentpatna@gmail.com
         </p>
 
         <p className="flex items-center gap-1">
-          <i className="fa-solid fa-phone text-[10px]"></i>
+          <i className="fa-solid fa-phone mt-1 text-[10px]"></i>
           +91 9942000371
         </p>
       </div>
@@ -54,7 +54,6 @@ export default function Navbar() {
               { to: "/programs/class-6-to-10", label: "Class 6 to 10" },
             ]}
           />
-          <NavItem to="/success-stories" label="SUCCESS" />
           <Dropdown
             label="STUDENT ZONE"
             items={[
@@ -90,7 +89,6 @@ export default function Navbar() {
               { to: "/programs/class-6-to-10", label: "Class 6 to 10" },
             ]}
           />
-          <NavItem to="/success-stories" label="SUCCESS" mobile onClick={() => setIsOpen(false)} />
           <DropdownMobile
             label="STUDENT ZONE"
             items={[

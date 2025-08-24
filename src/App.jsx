@@ -24,7 +24,6 @@ export default function App() {
 
 
         {/* Other Routes */}
-        <Route path="/success-stories" element={<ProgramPage title="Success Stories" />} />
         <Route path="/student-portal" element={<ProgramPage title="Student Portal" />} />
         <Route path="/library" element={<ProgramPage title="Library" />} />
         <Route path="/resources" element={<ProgramPage title="Resources" />} />
