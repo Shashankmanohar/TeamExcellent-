@@ -61,27 +61,27 @@ function ContactUs() {
       </div>
 
       {/* ================= Address & Contact Section ================= */}
-      <div className="w-full flex flex-col lg:flex-row items-start mt-10">
+      <div className="w-full max-w-6xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-8 mt-12 px-6">
         {/* Address */}
-        <div className="w-full lg:w-1/2 max-w-xl mx-auto pl-10 lg:pl-30 pt-10">
+        <div className=" p-6 ">
           <h2 className="text-2xl md:text-3xl font-semibold text-[#081646] mb-4">
             Our Address
           </h2>
-          <div className="flex items-start gap-2 py-2">
+          <div className="flex items-start gap-3 py-2">
             <MapPin className="w-5 h-5 text-[#8424bd] mt-0.5" />
-            <p className="text-gray-600 text-xl leading-snug">
+            <p className="text-gray-600 text-lg leading-snug">
               New Kunj Colony, Saketpuri, Patna, Bihar 800016, India
             </p>
           </div>
-          <div className="flex items-start gap-2 py-2">
+          <div className="flex items-start gap-3 py-2">
             <Phone className="w-5 h-5 text-[#8424bd] mt-0.5" />
-            <p className="text-gray-600 text-xl leading-snug">
+            <p className="text-gray-600 text-lg leading-snug">
               +91 9942000371, +91 9942000372
             </p>
           </div>
-          <div className="flex items-start gap-2 py-2">
+          <div className="flex items-start gap-3 py-2">
             <Mail className="w-5 h-5 text-[#8424bd] mt-0.5" />
-            <p className="text-gray-600 text-xl leading-snug">
+            <p className="text-gray-600 text-lg leading-snug">
               <a
                 href="mailto:teamexcellentpatna@gmail.com"
                 className="hover:underline"
@@ -90,23 +90,20 @@ function ContactUs() {
               </a>
             </p>
           </div>
-          <div className="flex items-start gap-2 py-2">
+          <div className="flex items-start gap-3 py-2">
             <Clock className="w-5 h-5 text-[#8424bd] mt-0.5" />
-            <p className="text-gray-600 text-xl leading-snug">
+            <p className="text-gray-600 text-lg leading-snug">
               Mon – Sat: 8:00 AM – 8:00 PM <br /> Sunday: Closed
             </p>
           </div>
         </div>
 
-        {/* ================= Contact Form Section ================= */}
-        <div className="w-full lg:w-1/2 max-w-xl mx-auto px-6 py-8">
+        {/* Contact Form */}
+        <div className="bg-gray-50 p-6 rounded-2xl shadow-md">
           <h2 className="text-2xl md:text-3xl font-semibold text-center text-[#081646] mb-4">
             Get in Touch
           </h2>
-          <form
-            onSubmit={handleSubmit}
-            className="bg-gray-50 p-6 rounded-2xl shadow-md w-full space-y-3"
-          >
+          <form onSubmit={handleSubmit} className="w-full space-y-3">
             {/* Name */}
             <div>
               <label className="block text-sm font-medium text-gray-700 mb-1">
@@ -155,7 +152,7 @@ function ContactUs() {
               ></textarea>
             </div>
 
-            {/* Submit Button */}
+            {/* Submit */}
             <button
               type="submit"
               className="w-full bg-[#8424bd] text-white font-semibold py-2 rounded-lg hover:bg-[#6c1e9d] transition-all"
