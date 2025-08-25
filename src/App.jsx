@@ -9,19 +9,34 @@ import Jee from './Pages/Jee'
 import Class6to10 from './Pages/Class6to10'
 import Neet from './Pages/Neet'
 
+// ✅ ScrollToTop Component
+import { useEffect } from 'react'
+import { useLocation } from 'react-router-dom'
+
+function ScrollToTop() {
+  const { pathname } = useLocation()
+
+  useEffect(() => {
+    window.scrollTo({ top: 0, left: 0, behavior: "instant" }) 
+    // 👉 change "instant" to "smooth" if you want smooth scrolling
+  }, [pathname])
+
+  return null
+}
+
 export default function App() {
   return (
     <Router>
+      <ScrollToTop /> {/* ✅ ensures scroll resets on route change */}
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/about" element={<About />} />
         <Route path="/admission" element={<Admission />} />
 
         {/* Program Routes */}
-        <Route path="/programs/jee" element={<Jee/>} />
-        <Route path="/programs/class-6-to-10" element={ <Class6to10/>} />
-        <Route path="/programs/neet" element={<Neet/>} />
-
+        <Route path="/programs/jee" element={<Jee />} />
+        <Route path="/programs/class-6-to-10" element={<Class6to10 />} />
+        <Route path="/programs/neet" element={<Neet />} />
 
         {/* Other Routes */}
         <Route path="/student-portal" element={<ProgramPage title="Student Portal" />} />
