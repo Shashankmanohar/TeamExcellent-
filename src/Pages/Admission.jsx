@@ -25,7 +25,7 @@ export default function Admission() {
         <meta property="og:title" content="Admission Process | Team Excellent Coaching" />
         <meta property="og:description" content="Step into success with Team Excellent. Learn about our admission process for JEE, NEET, and school foundations (Class 6–10)." />
         <meta property="og:type" content="website" />
-        <meta property="og:url" content="https://teamexcellent.com/admission" />
+        <meta property="og:url" content="https://teamexcellentcareerinstitute.in/admission" />
         <meta property="og:image" content="/logo192.png" />
 
         {/* Twitter Card */}

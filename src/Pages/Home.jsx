@@ -29,7 +29,7 @@ export default function Home() {
         <meta property="og:title" content="Team Excellent | Best Coaching for JEE, NEET & Foundations" />
         <meta property="og:description" content="Achieve academic excellence with Team Excellent. Coaching for JEE, NEET, and school-level foundations." />
         <meta property="og:type" content="website" />
-        <meta property="og:url" content="https://teamexcellent.com" />
+        <meta property="og:url" content="https://teamexcellentcareerinstitute.in" />
         <meta property="og:image" content="/logo192.png" />
 
         {/* Twitter Card */}

@@ -25,7 +25,7 @@ export default function Jee() {
         <meta property="og:title" content="JEE Coaching | Team Excellent Institute" />
         <meta property="og:description" content="Crack JEE with Team Excellent’s expert faculty and structured courses for JEE Main & Advanced." />
         <meta property="og:type" content="website" />
-        <meta property="og:url" content="https://teamexcellent.com/jee" />
+        <meta property="og:url" content="https://teamexcellentcareerinstitute.in/jee" />
         <meta property="og:image" content="/logo192.png" />
 
         {/* Twitter Card */}

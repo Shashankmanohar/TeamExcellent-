@@ -25,7 +25,7 @@ export default function Class6to10() {
         <meta property="og:title" content="Foundation Courses (Class 6–10) | Team Excellent Institute" />
         <meta property="og:description" content="Strong foundations for Class 6 to 10 with expert faculty and personalized mentoring. Preparing students early for JEE, NEET, and Olympiads." />
         <meta property="og:type" content="website" />
-        <meta property="og:url" content="https://teamexcellent.com/class6to10" />
+        <meta property="og:url" content="https://teamexcellentcareerinstitute.in/class6to10" />
         <meta property="og:image" content="/logo192.png" />
 
         {/* Twitter Card */}
