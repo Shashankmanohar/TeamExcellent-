@@ -12,6 +12,8 @@ import Neet from './Pages/Neet'
 // ✅ ScrollToTop Component
 import { useEffect } from 'react'
 import { useLocation } from 'react-router-dom'
+import Student from './Pages/Student'
+import AdminLogin from './Pages/AdminLogin'
 
 function ScrollToTop() {
   const { pathname } = useLocation()
@@ -39,10 +41,9 @@ export default function App() {
         <Route path="/programs/neet" element={<Neet />} />
 
         {/* Other Routes */}
-        <Route path="/student-portal" element={<ProgramPage title="Student Portal" />} />
-        <Route path="/library" element={<ProgramPage title="Library" />} />
-        <Route path="/resources" element={<ProgramPage title="Resources" />} />
+        <Route path="/student-portal" element={<Student />} />
         <Route path="/contact" element={<Contact />} />
+        <Route path="/admin-login" element={<AdminLogin/>} />
         <Route path="*" element={<ProgramPage title="404 Not Found" />} />
       </Routes>
     </Router>

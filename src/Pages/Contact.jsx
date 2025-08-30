@@ -1,5 +1,5 @@
 import React from 'react'
-import { Helmet as Head } from 'react-helmet-async'
+import { Helmet } from 'react-helmet-async'
 import Navbar from '../Components/Navbar'
 import ContactUs from '../Components/ContactUs'
 import Footer from '../Components/Footer'
@@ -7,7 +7,7 @@ import Footer from '../Components/Footer'
 export default function Contact() {
   return (
     <>
-      <Head>
+      <Helmet>
         {/* Title & Description */}
         <title>Contact Us | Team Excellent Coaching Institute Patna</title>
         <meta 
@@ -26,14 +26,14 @@ export default function Contact() {
         <meta property="og:description" content="Reach Team Excellent Coaching Institute, Patna for admissions, JEE/NEET queries, or foundation course details. Call, email, or visit us today." />
         <meta property="og:type" content="website" />
         <meta property="og:url" content="https://teamexcellentcareerinstitute.in/contact" />
-        <meta property="og:image" content="/logo192.png" />
+        <meta property="og:image" content="https://teamexcellentcareerinstitute.in/logo192.png" />
 
         {/* Twitter Card */}
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:title" content="Contact Us | Team Excellent Coaching Institute" />
         <meta name="twitter:description" content="Get in touch with Team Excellent Coaching Patna for admission queries, coaching details, and more." />
-        <meta name="twitter:image" content="/logo192.png" />
-      </Head>
+        <meta name="twitter:image" content="https://teamexcellentcareerinstitute.in/logo192.png" />
+      </Helmet>
 
       {/* ✅ Page Content */}
       <Navbar />

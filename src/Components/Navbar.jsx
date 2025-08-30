@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
-import { Menu, X } from "lucide-react";
+import { Menu, X, ChevronDown, ChevronUp } from "lucide-react";
+import { motion, AnimatePresence } from "framer-motion";
 import TeamExcellent from "../assets/TeamExellent.webp";
 
 export default function Navbar() {
@@ -54,22 +55,25 @@ export default function Navbar() {
               { to: "/programs/class-6-to-10", label: "Class 6 to 10" },
             ]}
           />
-          <Dropdown
-            label="STUDENT ZONE"
-            items={[
-              { to: "/student-portal", label: "Student Portal" },
-              { to: "/library", label: "Library" },
-              { to: "/resources", label: "Resources" },
-            ]}
-          />
+          <NavItem to="/student-portal" label="STUDENT ZONE" />
           <NavItem to="/admission" label="ADMISSION" />
           <NavItem to="/contact" label="CONTACT" />
+
+          {/* Admin Login Button */}
+          <li>
+            <Link
+              to="/admin-login"
+              className="ml-4 px-4 py-1.5 rounded-md bg-[#5B2D7C] text-white hover:bg-[#3F1D5B] transition-colors"
+            >
+              Admin Login
+            </Link>
+          </li>
         </ul>
 
         {/* Mobile Menu Button */}
         <button
           onClick={() => setIsOpen(!isOpen)}
-          className="lg:hidden flex items-center justify-center w-8 h-8 bg-[#613087] rounded-md text-white focus:outline-none"
+          className="lg:hidden flex items-center justify-center w-9 h-9 bg-[#613087] rounded-md text-white focus:outline-none"
           aria-label="Toggle menu"
         >
           {isOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
@@ -77,30 +81,52 @@ export default function Navbar() {
       </nav>
 
       {/* Mobile Menu */}
-      {isOpen && (
-        <div className="lg:hidden bg-white shadow-md flex flex-col items-center py-4 space-y-2 text-[#0B0B45] min-h-screen overflow-y-auto">
-          <NavItem to="/" label="HOME" mobile onClick={() => setIsOpen(false)} />
-          <NavItem to="/about" label="ABOUT" mobile onClick={() => setIsOpen(false)} />
-          <DropdownMobile
-            label="PROGRAMS"
-            items={[
-              { to: "/programs/jee", label: "JEE" },
-              { to: "/programs/neet", label: "NEET" },
-              { to: "/programs/class-6-to-10", label: "Class 6 to 10" },
-            ]}
-          />
-          <DropdownMobile
-            label="STUDENT ZONE"
-            items={[
-              { to: "/student-portal", label: "Student Portal" },
-              { to: "/library", label: "Library" },
-              { to: "/resources", label: "Resources" },
-            ]}
-          />
-          <NavItem to="/admission" label="ADMISSION" mobile onClick={() => setIsOpen(false)} />
-          <NavItem to="/contact" label="CONTACT" mobile onClick={() => setIsOpen(false)} />
-        </div>
-      )}
+      <AnimatePresence>
+        {isOpen && (
+          <motion.div
+            initial={{ y: -20, opacity: 0 }}
+            animate={{ y: 0, opacity: 1 }}
+            exit={{ y: -20, opacity: 0 }}
+            transition={{ duration: 0.3 }}
+            className="lg:hidden fixed top-[104px] left-0 w-full bg-white shadow-xl 
+                       flex flex-col items-center py-6 space-y-4 
+                       text-[#0B0B45] min-h-[calc(100vh-64px)] z-40"
+          >
+            <NavItem to="/" label="HOME" mobile onClick={() => setIsOpen(false)} />
+            <NavItem to="/about" label="ABOUT" mobile onClick={() => setIsOpen(false)} />
+            <DropdownMobile
+              label="PROGRAMS"
+              items={[
+                { to: "/programs/jee", label: "JEE" },
+                { to: "/programs/neet", label: "NEET" },
+                { to: "/programs/class-6-to-10", label: "Class 6 to 10" },
+              ]}
+              onClose={() => setIsOpen(false)}
+            />
+            <NavItem
+              to="/student-portal"
+              label="STUDENT ZONE"
+              mobile
+              onClick={() => setIsOpen(false)}
+            />
+            <NavItem to="/admission" label="ADMISSION" mobile onClick={() => setIsOpen(false)} />
+            <NavItem to="/contact" label="CONTACT" mobile onClick={() => setIsOpen(false)} />
+
+            {/* Divider */}
+            <div className="w-4/5 border-t border-gray-200 my-3"></div>
+
+            {/* Mobile Admin Login Button */}
+            <Link
+              to="/admin-login"
+              onClick={() => setIsOpen(false)}
+              className="px-6 py-2 rounded-xl bg-[#5B2D7C] text-white font-medium 
+                         hover:bg-[#3F1D5B] transition-colors shadow-md"
+            >
+              Admin Login
+            </Link>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </header>
   );
 }
@@ -109,7 +135,7 @@ export default function Navbar() {
 function NavItem({ to, label, mobile, onClick }) {
   const linkClass = `${
     mobile
-      ? "block w-full text-center py-1 text-sm font-medium sm:text-base"
+      ? "block w-full text-center py-2 text-sm font-semibold sm:text-base"
       : ""
   } hover:text-[#0077b6] transition-colors`;
 
@@ -143,7 +169,7 @@ function Dropdown({ label, items }) {
       >
         {items.map((item, idx) => (
           <li key={idx}>
-            <Link to={item.to} className="block px-3 py-1 hover:bg-gray-100">
+            <Link to={item.to} className="block px-3 py-2 hover:bg-gray-100">
               {item.label}
             </Link>
           </li>
@@ -154,29 +180,42 @@ function Dropdown({ label, items }) {
 }
 
 /* Mobile Dropdown */
-function DropdownMobile({ label, items }) {
+function DropdownMobile({ label, items, onClose }) {
   const [open, setOpen] = useState(false);
+
   return (
-    <div className="w-full">
+    <div className="w-full text-center">
       <button
         onClick={() => setOpen(!open)}
-        className="w-full text-center text-sm font-semibold sm:text-base hover:text-[#0077b6]"
+        className="w-full flex justify-center items-center gap-1 
+                   text-sm font-semibold sm:text-base hover:text-[#0077b6]"
       >
-        {label} {open ? "▴" : "▾"}
+        {label} {open ? <ChevronUp size={16} /> : <ChevronDown size={16} />}
       </button>
-      {open && (
-        <div className="flex flex-col items-center space-y-0.5">
-          {items.map((item, idx) => (
-            <Link
-              key={idx}
-              to={item.to}
-              className="block px-2 py-1 text-xs sm:text-sm hover:text-[#0077b6] font-medium"
-            >
-              {item.label}
-            </Link>
-          ))}
-        </div>
-      )}
+
+      <AnimatePresence>
+        {open && (
+          <motion.div
+            initial={{ height: 0, opacity: 0 }}
+            animate={{ height: "auto", opacity: 1 }}
+            exit={{ height: 0, opacity: 0 }}
+            transition={{ duration: 0.3 }}
+            className="flex flex-col items-center space-y-1 mt-2"
+          >
+            {items.map((item, idx) => (
+              <Link
+                key={idx}
+                to={item.to}
+                onClick={onClose}
+                className="block w-4/5 px-3 py-2 rounded-md text-sm sm:text-base 
+                           hover:bg-gray-100 font-medium"
+              >
+                {item.label}
+              </Link>
+            ))}
+          </motion.div>
+        )}
+      </AnimatePresence>
     </div>
   );
 }

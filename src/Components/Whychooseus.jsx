@@ -30,7 +30,7 @@ export default function Whychooseus() {
 
   return (
     <div className="min-h-screen bg-gray-50 py-12">
-      <div className="max-w-6xl mx-auto px-4">
+      <div className="max-w-7xl mx-auto px-6">
         {/* Heading */}
         <h1 className="text-4xl md:text-6xl font-bold text-center text-[#472164] mb-8">
           Why Choose <span className="text-[#b72e2f]">Us?</span>
@@ -41,23 +41,25 @@ export default function Whychooseus() {
           should choose us:
         </p>
 
-        {/* Responsive Cards */}
-        <div className="mt-12 grid grid-cols-1 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+        {/* Bigger Responsive Cards */}
+        <div className="mt-12 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
           {features.map((feature, index) => (
             <div
               key={index}
-              className="bg-white p-6 rounded-2xl shadow-md hover:shadow-lg transition flex flex-col items-center text-center"
+              className="bg-white p-8 rounded-3xl shadow-lg hover:shadow-2xl transition flex flex-col items-center text-center min-h-[360px] w-full"
             >
               {/* Icon */}
-              <div className="text-5xl mb-3">{feature.icon}</div>
+              <div className="text-6xl mb-4">{feature.icon}</div>
 
               {/* Title */}
-              <h2 className="text-xl font-bold text-[#472164] mb-2">
+              <h2 className="text-2xl font-bold text-[#472164] mb-3">
                 {feature.title}
               </h2>
 
               {/* Description */}
-              <p className="text-gray-700">{feature.description}</p>
+              <p className="text-lg text-gray-700 leading-relaxed">
+                {feature.description}
+              </p>
             </div>
           ))}
         </div>
