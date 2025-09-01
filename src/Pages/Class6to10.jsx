@@ -18,7 +18,7 @@ export default function Class6to10() {
         {/* Keywords */}
         <meta
           name="keywords"
-          content="foundation courses Patna, Class 6 coaching, Class 7 coaching, Class 8 coaching, Class 9 coaching, Class 10 coaching, early IIT JEE preparation, early NEET preparation, school foundation program, Olympiad coaching Bihar"
+          content="foundation courses Patna, Team Excellent, Class 6 coaching, Class 7 coaching, Class 8 coaching, Class 9 coaching, Class 10 coaching, early IIT JEE preparation, early NEET preparation, school foundation program, Olympiad coaching Bihar"
         />
 
         {/* Open Graph */}

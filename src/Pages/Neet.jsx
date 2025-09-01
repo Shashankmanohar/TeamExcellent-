@@ -18,7 +18,7 @@ export default function Neet() {
         {/* Keywords */}
         <meta 
           name="keywords" 
-          content="NEET coaching Patna, medical entrance coaching Bihar, best NEET institute, NEET preparation, NEET UG coaching, biology coaching Patna, Team Excellent NEET, top medical coaching Bihar" 
+          content="NEET coaching Patna, Team Excellent, medical entrance coaching Bihar, best NEET institute, NEET preparation, NEET UG coaching, biology coaching Patna, Team Excellent NEET, top medical coaching Bihar" 
         />
 
         {/* Open Graph */}

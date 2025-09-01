@@ -18,7 +18,7 @@ export default function Admission() {
         {/* Keywords */}
         <meta 
           name="keywords" 
-          content="Team Excellent admission, JEE coaching admission, NEET coaching admission, foundation courses admission, Patna coaching enrollment, how to join Team Excellent, IIT JEE admission process, medical coaching admission Bihar" 
+          content="Team Excellent admission, Team Excellent, JEE coaching admission, NEET coaching admission, foundation courses admission, Patna coaching enrollment, how to join Team Excellent, IIT JEE admission process, medical coaching admission Bihar" 
         />
 
         {/* Open Graph */}

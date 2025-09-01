@@ -18,7 +18,7 @@ export default function Jee() {
         {/* Keywords */}
         <meta 
           name="keywords" 
-          content="JEE coaching Patna, IIT JEE preparation, best JEE institute, JEE Main coaching, JEE Advanced coaching, Team Excellent JEE, top IIT coaching, engineering entrance coaching Bihar" 
+          content="JEE coaching Patna, Team Excellent, IIT JEE preparation, best JEE institute, JEE Main coaching, JEE Advanced coaching, Team Excellent JEE, top IIT coaching, engineering entrance coaching Bihar" 
         />
 
         {/* Open Graph */}

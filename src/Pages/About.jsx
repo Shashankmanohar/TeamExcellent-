@@ -18,7 +18,7 @@ export default function About() {
         {/* Keywords */}
         <meta 
           name="keywords" 
-          content="About Team Excellent, JEE coaching Patna, NEET coaching Patna, foundation courses class 6 to 10, IIT-JEE preparation, medical coaching Bihar, best coaching institute in Patna, Albert Newwel IIT-BHU" 
+          content="About Team Excellent,Team Excellent, JEE coaching Patna, NEET coaching Patna, foundation courses class 6 to 10, IIT-JEE preparation, medical coaching Bihar, best coaching institute in Patna, Albert Newwel IIT-BHU" 
         />
 
         {/* Open Graph */}

@@ -18,7 +18,7 @@ export default function Contact() {
         {/* Keywords */}
         <meta 
           name="keywords" 
-          content="Team Excellent contact, coaching institute Patna address, Team Excellent phone number, JEE coaching contact, NEET coaching Patna, foundation course contact, best coaching in Bihar" 
+          content="Team Excellent contact, Team Excellent, coaching institute Patna address, Team Excellent phone number, JEE coaching contact, NEET coaching Patna, foundation course contact, best coaching in Bihar" 
         />
 
         {/* Open Graph */}
