@@ -52,7 +52,7 @@ export default function Footer() {
           </p>
           <div className="flex space-x-4 mt-4 text-lg">
             <a
-              href="https://www.facebook.com/teamexcellentpatna"
+              href="https://www.facebook.com/share/1JTxznYnFg/"
               target="_blank"
               rel="noopener noreferrer"
               className="hover:text-gray-300"
@@ -60,7 +60,7 @@ export default function Footer() {
               <i className="fa-brands fa-facebook-f"></i>
             </a>
             <a
-              href="https://www.instagram.com/teamexcellentpatna"
+              href="https://www.instagram.com/team.excellent.patna?igsh=MXh1Nm5ocDhoNGNtcw=="
               target="_blank"
               rel="noopener noreferrer"
               className="hover:text-gray-300"
