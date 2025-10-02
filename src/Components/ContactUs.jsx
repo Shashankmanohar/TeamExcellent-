@@ -13,7 +13,7 @@ function ContactUs() {
     e.preventDefault();
     const { name, mobile, message } = formData;
 
-    const whatsappNumber = "918540814729";
+    const whatsappNumber = "919942000371";
     const text = `Hello, I am ${name}. My mobile number is ${mobile}. Message: ${message}`;
     const whatsappURL = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(text)}`;
 
@@ -30,6 +30,7 @@ function ContactUs() {
             src={Contactimage}
             alt="Contact Us"
             className="w-[95%] lg:w-[85%] h-auto"
+            loading="lazy"
           />
         </div>
 

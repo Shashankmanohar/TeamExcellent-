@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { Menu, X, ChevronDown, ChevronUp } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
-import TeamExcellent from "../assets/TeamExellent.webp";
+import TeamExcellent from "../assets/TeamExcellent.webp";
 
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
@@ -39,7 +39,8 @@ export default function Navbar() {
           <img
             src={TeamExcellent}
             alt="Team Excellent Logo"
-            className="w-20 sm:w-24 md:w-32 lg:w-36 object-contain"
+            className="w-66 sm:w-70 md:w-70 lg:w-80 object-contain"
+            loading="lazy"
           />
         </Link>
 

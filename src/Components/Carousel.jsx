@@ -26,16 +26,18 @@ export default function Carousel() {
     setCurrentSlide((prev) => (prev + 1) % slides.length);
 
   return (
-    <div className="max-w-7xl mx-auto px-2 py-4 sm:px-4  mt-30 sm:py-6">
+    <div className="max-w-7xl mx-auto px-2 py-4 sm:px-4 mt-30 sm:py-6">
       {/* ====== Heading Section ====== */}
       <div className="text-center mt-8 mb-6">
         <h1 className="text-4xl sm:text-6xl font-bold text-[#522871]">
           Team Excellent
         </h1>
-        <div className="w-40 h-1 bg-purple-600 mx-auto mt-2 rounded"></div>
-        <p className="text-gray-700 mt-2 text-sm sm:text-base">
+        <div className="w-40 h-1 bg-[#9333ea] mx-auto mt-2 rounded"></div>
+        <p className="text-[#374151] mt-2 text-sm sm:text-base">
           Shaping Young Minds for{" "}
-          <span className=" text-[#b72e2f] font-semibold">IIT-JEE <span className="text-[#522871]">&</span> NEET</span>{" "}
+          <span className="text-[#b72e2f] font-semibold">
+            IIT-JEE <span className="text-[#522871]">&</span> NEET
+          </span>{" "}
           Success
         </p>
       </div>

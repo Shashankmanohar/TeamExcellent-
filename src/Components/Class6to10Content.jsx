@@ -16,7 +16,7 @@ function Class6to10Content() {
       title: "Class 6",
       badge: "Foundation",
       color: "bg-green-600",
-      icon: <Lightbulb className="w-8 h-8 text-white" />,
+      icon: <Lightbulb className="w-8 h-8 text-white drop-shadow" />,
       description:
         "Class 6 marks the beginning of concept-based learning. Focus is on strengthening fundamentals and building interest in Science & Mathematics.",
       highlights: [
@@ -31,7 +31,7 @@ function Class6to10Content() {
       title: "Class 7",
       badge: "Foundation Builder",
       color: "bg-blue-600",
-      icon: <BookOpen className="w-8 h-8 text-white" />,
+      icon: <BookOpen className="w-8 h-8 text-white drop-shadow" />,
       description:
         "Class 7 builds upon Class 6 knowledge with deeper concepts in Math and Science, while introducing logical reasoning.",
       highlights: [
@@ -46,7 +46,7 @@ function Class6to10Content() {
       title: "Class 8",
       badge: "Pre-Foundation",
       color: "bg-yellow-600",
-      icon: <Target className="w-8 h-8 text-white" />,
+      icon: <Target className="w-8 h-8 text-white drop-shadow" />,
       description:
         "Class 8 bridges the gap between middle school and high school. Students are prepared for advanced board concepts and Olympiads.",
       highlights: [
@@ -61,7 +61,7 @@ function Class6to10Content() {
       title: "Class 9",
       badge: "Board Foundation",
       color: "bg-indigo-600",
-      icon: <BookOpen className="w-8 h-8 text-white" />,
+      icon: <BookOpen className="w-8 h-8 text-white drop-shadow" />,
       description:
         "Class 9 is a stepping stone for board exams. Focus is on NCERT fundamentals, application-based learning, and problem-solving skills.",
       highlights: [
@@ -76,7 +76,7 @@ function Class6to10Content() {
       title: "Class 10",
       badge: "Board Excellence",
       color: "bg-purple-700",
-      icon: <Target className="w-8 h-8 text-white" />,
+      icon: <Target className="w-8 h-8 text-white drop-shadow" />,
       description:
         "Class 10 lays the foundation for future competitive exams. We prepare students for Boards + Olympiads with regular practice and assessments.",
       highlights: [
@@ -116,7 +116,10 @@ function Class6to10Content() {
   ];
 
   return (
-    <section className="w-full min-h-screen bg-gray-50 mt-30 py-12 px-6">
+    <section
+      className="w-full min-h-screen bg-gray-50 mt-30 py-12 px-6"
+      aria-label="Programs for Classes 6 to 10"
+    >
       {/* Page Heading */}
       <div className="text-center mb-12">
         <h1 className="text-4xl sm:text-5xl font-bold text-[#522871]">
@@ -130,11 +133,11 @@ function Class6to10Content() {
       </div>
 
       {/* Class-wise Cards */}
-      <div className="max-w-6xl mx-auto grid md:grid-cols-2 gap-8">
+      <div className="max-w-6xl mx-auto grid sm:grid-cols-1 md:grid-cols-2 gap-8 sm:gap-y-6">
         {groups.map((g) => (
           <div
             key={g.id}
-            className="bg-white rounded-2xl shadow-lg hover:shadow-xl transition p-8 flex flex-col"
+            className="bg-white rounded-2xl shadow-lg hover:shadow-xl transition p-8 flex flex-col h-full"
           >
             <div
               className={`w-14 h-14 flex items-center justify-center rounded-full ${g.color} mb-6`}
@@ -160,15 +163,18 @@ function Class6to10Content() {
       </div>
 
       {/* Course Overview */}
-      <div className="max-w-6xl mx-auto mt-16">
+      <div
+        className="max-w-6xl mx-auto mt-16"
+        aria-label="Course Overview Section"
+      >
         <h2 className="text-3xl font-bold text-[#522871] mb-8 flex items-center gap-2">
           <Layers className="w-8 h-8 text-purple-600" /> Course Overview
         </h2>
-        <div className="grid md:grid-cols-2 gap-8">
+        <div className="grid sm:grid-cols-1 md:grid-cols-2 gap-8">
           {overview.map((item, i) => (
             <div
               key={i}
-              className="bg-white p-6 rounded-xl shadow-md hover:shadow-lg transition"
+              className="bg-white p-6 rounded-xl shadow-md hover:shadow-lg transition h-full"
             >
               <div className="flex items-center gap-3 mb-2 text-[#522871]">
                 <span>{item.icon}</span>
@@ -183,7 +189,10 @@ function Class6to10Content() {
       </div>
 
       {/* Why Team Excellent */}
-      <div className="max-w-4xl mx-auto mt-20 text-center">
+      <div
+        className="max-w-4xl mx-auto mt-20 text-center"
+        aria-label="Why Choose Team Excellent"
+      >
         <h2 className="text-3xl font-bold text-[#522871] mb-6 flex items-center justify-center gap-2">
           <Award className="w-8 h-8 text-purple-600" /> Why Learn with Team
           Excellent?

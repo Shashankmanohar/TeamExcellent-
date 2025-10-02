@@ -15,7 +15,7 @@ function JeeContent() {
         "Conducted 2 times a year by NTA",
       ],
       color: "bg-blue-600",
-      icon: <BookOpen className="w-8 h-8 text-white" />,
+      icon: <BookOpen className="w-8 h-8 text-white" aria-label="JEE Mains Icon" />,
     },
     {
       id: 2,
@@ -29,7 +29,7 @@ function JeeContent() {
         "Conducted once a year by IITs",
       ],
       color: "bg-purple-700",
-      icon: <Target className="w-8 h-8 text-white" />,
+      icon: <Target className="w-8 h-8 text-white" aria-label="JEE Advanced Icon" />,
     },
   ];
 
@@ -78,14 +78,14 @@ function JeeContent() {
       </div>
 
       {/* Sections */}
-      <div className="max-w-5xl mx-auto grid md:grid-cols-2 gap-10">
+      <div className="max-w-5xl mx-auto grid md:grid-cols-2 gap-10 sm:gap-y-8">
         {sections.map((section) => (
           <div
             key={section.id}
-            className="bg-white rounded-2xl shadow-lg hover:shadow-xl transition p-8"
+            className="bg-white rounded-2xl shadow-lg hover:shadow-xl transition p-8 flex flex-col h-full"
           >
             <div
-              className={`w-14 h-14 flex items-center justify-center rounded-full ${section.color} mb-6`}
+              className={`w-14 h-14 flex items-center justify-center rounded-full ${section.color} mb-6 shadow-md`}
             >
               {section.icon}
             </div>
@@ -93,9 +93,12 @@ function JeeContent() {
               {section.title}
             </h2>
             <p className="text-gray-600 mb-4">{section.description}</p>
-            <ul className="list-disc list-inside text-gray-700 space-y-2">
+            <ul className="space-y-2 text-gray-700">
               {section.highlights.map((point, i) => (
-                <li key={i}>{point}</li>
+                <li key={i} className="flex items-start gap-2">
+                  <span className="text-purple-600 font-bold">✔</span>
+                  {point}
+                </li>
               ))}
             </ul>
           </div>
@@ -123,7 +126,7 @@ function JeeContent() {
       </div>
 
       {/* Our Edge */}
-      <div className="max-w-4xl mx-auto mt-20 text-center">
+      <div className="max-w-4xl mx-auto mt-20 text-center bg-purple-50 p-10 rounded-2xl shadow-inner">
         <h2 className="text-3xl font-bold text-[#522871] mb-6 flex items-center justify-center gap-2">
           <Award className="w-8 h-8 text-purple-600" /> Why Prepare with Team
           Excellent?

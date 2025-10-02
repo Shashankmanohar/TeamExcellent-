@@ -13,18 +13,18 @@ export default function AboutContent() {
         <h1 className="text-4xl sm:text-5xl font-bold text-[#522871]">
           About <span className="text-[#b72e2f]">Team Excellent</span>
         </h1>
-        <div className="w-40 h-1 bg-purple-600 mx-auto mt-2 rounded"></div>
+        <div className="w-40 h-1 bg-[#9333ea] mx-auto mt-2 rounded"></div>
       </div>
 
       {/* Introduction */}
-      <div className="max-w-5xl mx-auto text-gray-700 leading-relaxed text-lg">
+      <div className="max-w-5xl mx-auto text-[#374151] leading-relaxed text-lg">
         <p className="mb-6">
           Team Excellent is a premier coaching institute committed to nurturing
           young minds and preparing them for competitive exams like{" "}
-          <span className="font-semibold text-purple-700">JEE</span>,{" "}
-          <span className="font-semibold text-purple-700">NEET</span>, and
+          <span className="font-semibold text-[#7e22ce]">JEE</span>,{" "}
+          <span className="font-semibold text-[#7e22ce]">NEET</span>, and
           school-level foundations from{" "}
-          <span className="font-semibold text-purple-700">Class 6 to 10</span>.
+          <span className="font-semibold text-[#7e22ce]">Class 6 to 10</span>.
           With experienced faculty, modern facilities, and personalized mentoring,
           we ensure every student achieves academic excellence.
         </p>
@@ -32,17 +32,17 @@ export default function AboutContent() {
 
       {/* Mission & Vision */}
       <div className="grid md:grid-cols-2 gap-8 max-w-5xl mx-auto mt-12">
-        <div className="p-6 bg-purple-50 rounded-2xl shadow-md">
-          <h2 className="text-2xl font-bold text-purple-700 mb-4">🎯 Our Mission</h2>
-          <p className="text-gray-700">
+        <div className="p-6 bg-[#faf5ff] rounded-2xl shadow-md">
+          <h2 className="text-2xl font-bold text-[#7e22ce] mb-4">🎯 Our Mission</h2>
+          <p className="text-[#374151]">
             To provide a transformative learning experience that fosters intellectual
             curiosity and critical thinking, and enables our students to excel in
             competitive exams while becoming leaders in their chosen fields.
           </p>
         </div>
-        <div className="p-6 bg-red-50 rounded-2xl shadow-md">
-          <h2 className="text-2xl font-bold text-red-600 mb-4">🌟 Our Vision</h2>
-          <p className="text-gray-700">
+        <div className="p-6 bg-[#fef2f2] rounded-2xl shadow-md">
+          <h2 className="text-2xl font-bold text-[#dc2626] mb-4">🌟 Our Vision</h2>
+          <p className="text-[#374151]">
             We believe that every student has the potential to excel when given the
             right guidance, support, environment, and resources. Our expert faculty,
             cutting-edge teaching methods, and state-of-the-art infrastructure
@@ -52,6 +52,7 @@ export default function AboutContent() {
           </p>
         </div>
       </div>
+
       {/* Founder & Director Section */}
       <div className="max-w-6xl mx-auto mt-20 grid md:grid-cols-2 gap-10 items-center">
         {/* Photo */}
@@ -60,6 +61,7 @@ export default function AboutContent() {
             src={DirectorPhoto}
             alt="Director"
             className="rounded-2xl shadow-lg w-[350px] h-auto"
+            loading="lazy"
           />
         </div>
 
@@ -68,40 +70,41 @@ export default function AboutContent() {
           <h2 className="text-3xl font-bold text-[#522871] mb-6">
             From the Desk of Founder & Director
           </h2>
-          <p className="text-gray-700 mb-4 leading-relaxed">
+          <p className="text-[#374151] mb-4 leading-relaxed">
             Welcome to Team Excellent where excellence is not just a goal but a
             tradition. As the director, I'm honoured to lead a team of dedicated
             educators who are passionate about shaping the future of aspiring
             Medical & Engineering Professionals.
           </p>
-          <p className="text-gray-700 mb-4 leading-relaxed">
+          <p className="text-[#374151] mb-4 leading-relaxed">
             In today's competitive world, success in the IIT & Medical entrance
             requires more than just hard work – it demands strategic guidance,
             personalised attention, and unwavering commitment to excellence.
           </p>
-          <p className="text-gray-700 mb-4 leading-relaxed">
+          <p className="text-[#374151] mb-4 leading-relaxed">
             I believe in our age-old traditional concept of{" "}
-            <span className="font-semibold text-purple-700">"Guru-Shishya"</span>{" "}
+            <span className="font-semibold text-[#7e22ce]">"Guru-Shishya"</span>{" "}
             association where a guru shares his reserve of knowledge and
             experience with his pupils, and shishya strives hard to quench their
             thirst for knowledge to excel in this field of competition.
           </p>
-          <p className="text-gray-700 mb-6 leading-relaxed">
+          <p className="text-[#374151] mb-6 leading-relaxed">
             I believe that with our coherent energy and efforts, we will
             definitely excel in this competitive world.
           </p>
 
           <div className="mt-6">
-            <p className="font-bold text-lg text-red-600">Albert Newwel</p>
-            <p className="text-gray-600">M.Tech, IIT-BHU, Varanasi (UP)</p>
-            <p className="text-gray-600">12+ Years Experience</p>
+            <p className="font-bold text-lg text-[#dc2626]">Albert Newwel</p>
+            <p className="text-[#4b5563]">M.Tech, IIT-BHU, Varanasi (UP)</p>
+            <p className="text-[#4b5563]">12+ Years Experience</p>
           </div>
         </div>
       </div>
+
       {/* Achievements Section */}
       <div className="max-w-6xl mx-auto mt-16 text-center">
         <h2 className="text-3xl font-bold text-[#522871] mb-8">🏆 Achievements & Recognition</h2>
-        <p className="text-gray-600 mb-6">
+        <p className="text-[#4b5563] mb-6">
           We take pride in our contributions to education and skill development.
           Our work has been recognized and appreciated at various prestigious events.
         </p>
@@ -111,21 +114,25 @@ export default function AboutContent() {
             src={about1}
             alt="Achievement 1"
             className="rounded-xl shadow-lg hover:scale-105 transition duration-300"
+            loading="lazy"
           />
           <img
             src={about2}
             alt="Achievement 2"
             className="rounded-xl shadow-lg hover:scale-105 transition duration-300"
+            loading="lazy"
           />
           <img
             src={about3}
             alt="Achievement 3"
             className="rounded-xl shadow-lg hover:scale-105 transition duration-300"
+            loading="lazy"
           />
           <img
             src={about4}
             alt="Achievement 4"
             className="rounded-xl shadow-lg hover:scale-105 transition duration-300"
+            loading="lazy"
           />
         </div>
       </div>
