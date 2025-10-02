@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import { LogOut } from "lucide-react";
 import * as XLSX from "xlsx"; 
 import { authAPI, marksAPI } from "../lib/api";
-import TeamExcellent from "../Assets/TeamExcellent.webp";
+import TeamExcellent from "../assets/TeamExcellent.webp";
 import { useNavigate } from "react-router-dom"; 
 import toast, { Toaster } from "react-hot-toast"; 
 
