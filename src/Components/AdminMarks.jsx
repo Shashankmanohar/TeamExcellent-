@@ -9,24 +9,22 @@ import toast, { Toaster } from "react-hot-toast";
 // ----------------- UI Components -----------------
 const Button = ({ children, className = "", ...props }) => (
   <button
-    className={`px-4 py-2 bg-[#902ce8] text-white cursor-pointer rounded disabled:opacity-50 ${className}`}
+    className={`px-4 py-2 bg-[#902ce8] text-white rounded disabled:opacity-50 ${className}`}
     {...props}
   >
     {children}
   </button>
 );
 
-const Input = ({ ...props }) => (
+const Input = (props) => (
   <input
     className="w-full border border-[#d1d5db] px-3 py-2 rounded focus:outline-none focus:ring focus:ring-[#902ce8]"
     {...props}
   />
 );
 
-const Label = ({ children, ...props }) => (
-  <label className="block text-sm font-medium mb-1" {...props}>
-    {children}
-  </label>
+const Label = ({ children }) => (
+  <label className="block text-sm font-medium mb-1">{children}</label>
 );
 
 const Card = ({ children, className = "" }) => (
@@ -35,20 +33,13 @@ const Card = ({ children, className = "" }) => (
 
 // ----------------- Main Component -----------------
 const AdminMarks = () => {
-  const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const [isLoggedIn, setIsLoggedIn] = useState(!!localStorage.getItem("adminToken"));
   const [loginForm, setLoginForm] = useState({ email: "", password: "" });
   const [marks, setMarks] = useState([]);
   const [editingMark, setEditingMark] = useState(null);
   const [isLoading, setIsLoading] = useState(false);
-
-  const [search, setSearch] = useState(""); // ✅ ADDED FOR SEARCH
-
+  const [search, setSearch] = useState("");
   const navigate = useNavigate();
-
-  useEffect(() => {
-    const token = localStorage.getItem("adminToken");
-    if (token) setIsLoggedIn(true);
-  }, []);
 
   useEffect(() => {
     if (isLoggedIn) loadMarks();
@@ -58,18 +49,15 @@ const AdminMarks = () => {
     try {
       setIsLoading(true);
       const response = await marksAPI.getAll();
-
-      let data = Array.isArray(response.data) ? response.data : [];
-
-      data = data.sort((a, b) => {
-        if (a.createdAt && b.createdAt) {
-          return new Date(b.createdAt) - new Date(a.createdAt);
-        }
-        return b._id.localeCompare(a._id);
-      });
-
-      setMarks(data);
-    } catch (error) {
+      const data = Array.isArray(response.data) ? response.data : [];
+      setMarks(
+        data.sort((a, b) =>
+          a.createdAt && b.createdAt
+            ? new Date(b.createdAt) - new Date(a.createdAt)
+            : b._id.localeCompare(a._id)
+        )
+      );
+    } catch {
       toast.error("Failed to load marks");
       setMarks([]);
     } finally {
@@ -81,12 +69,17 @@ const AdminMarks = () => {
     e.preventDefault();
     try {
       setIsLoading(true);
-      const response = await authAPI.login(loginForm);
-      localStorage.setItem("adminToken", response.data.token);
-      setIsLoggedIn(true);
-      toast.success("Login successful!");
+      const { data } = await authAPI.login(loginForm);
+      if (data?.token) {
+        localStorage.setItem("adminToken", data.token);
+        setIsLoggedIn(true);
+        toast.success("Login successful!");
+      } else {
+        toast.error("Login failed");
+      }
     } catch (error) {
-      toast.error(error.response?.data?.message || "Invalid credentials");
+      const msg = error.response?.data?.message || "Invalid credentials";
+      toast.error(msg);
     } finally {
       setIsLoading(false);
     }
@@ -109,20 +102,21 @@ const AdminMarks = () => {
           prev.map((m) => (m._id === editingMark._id ? response.data : m))
         );
         setEditingMark(null);
-        toast.success("Marks updated successfully");
+        toast.success("Marks updated");
       } else {
         await marksAPI.create(formData);
         await loadMarks();
-        toast.success("Marks added successfully");
+        toast.success("Marks added");
       }
     } catch {
-      toast.error("Failed to submit marks");
+      toast.error("Failed to submit");
     } finally {
       setIsLoading(false);
     }
   };
 
   const handleDeleteMark = async (id) => {
+    if (!window.confirm("Delete this record?")) return;
     try {
       setIsLoading(true);
       await marksAPI.delete(id);
@@ -135,11 +129,8 @@ const AdminMarks = () => {
     }
   };
 
-  const recentMarks = marks.slice(0, 2); // ✅ UNCHANGED
-
   const handleExportToExcel = () => {
     if (!marks.length) return toast.error("No data to export");
-
     const worksheet = XLSX.utils.json_to_sheet(marks);
     const workbook = XLSX.utils.book_new();
     XLSX.utils.book_append_sheet(workbook, worksheet, "Marks");
@@ -147,20 +138,22 @@ const AdminMarks = () => {
     toast.success("Exported successfully");
   };
 
+  const recentMarks = marks.slice(0, 2);
+
   if (!isLoggedIn) {
     return (
       <div className="min-h-screen flex items-center justify-center bg-[#f3f4f6] px-4">
         <Card>
           <form onSubmit={handleLogin} className="space-y-4 w-70 lg:w-100">
-            <div className="flex flex-col items-center justify-center">
-              <img src={TeamExcellent} alt="Logo" className=" md:w-65 lg:w-90" />
+            <div className="flex justify-center">
+              <img src={TeamExcellent} alt="Logo" className="w-40 md:w-56" />
             </div>
             <h2 className="text-xl font-bold text-center">Admin Login</h2>
             <Input
               type="email"
               value={loginForm.email}
               onChange={(e) =>
-                setLoginForm((prev) => ({ ...prev, email: e.target.value }))
+                setLoginForm((p) => ({ ...p, email: e.target.value }))
               }
               required
               placeholder="Email"
@@ -169,7 +162,7 @@ const AdminMarks = () => {
               type="password"
               value={loginForm.password}
               onChange={(e) =>
-                setLoginForm((prev) => ({ ...prev, password: e.target.value }))
+                setLoginForm((p) => ({ ...p, password: e.target.value }))
               }
               required
               placeholder="Password"
@@ -178,7 +171,7 @@ const AdminMarks = () => {
               {isLoading ? "Logging in..." : "Login"}
             </Button>
           </form>
-          <Toaster position="top-right" reverseOrder={false} />
+          <Toaster position="top-right" />
         </Card>
       </div>
     );
@@ -209,21 +202,18 @@ const AdminMarks = () => {
         />
       </Card>
 
-      <Card className="mb-6 mt-6">
+      <Card className="mt-6">
         <h2 className="text-lg font-semibold mb-3">Recently Added Students</h2>
-
         {recentMarks.length ? (
           recentMarks.map((r) => (
             <div key={r._id} className="border-b py-3 text-sm">
               <p><strong>Name:</strong> {r.studentName}</p>
               <p><strong>Class:</strong> {r.className}</p>
               <p><strong>School:</strong> {r.schoolName}</p>
-              <p><strong>Father's Name:</strong> {r.fatherName}</p>
+              <p><strong>Father:</strong> {r.fatherName}</p>
               <p><strong>Contact:</strong> {r.contactNumber}</p>
-              <p><strong>Date of Birth:</strong> {new Date(r.dateofBirth).toLocaleDateString()}</p>
-              <p className="mt-2"><strong>Marks</strong></p>
-              <p>Physics: {r.physics}, Chemistry: {r.chemistry}, Maths: {r.maths}, Biology: {r.biology}, Aptitude: {r.aptitude}</p>
-              <p className="mt-1"><strong>Total:</strong> {r.total}</p>
+              <p><strong>DOB:</strong> {new Date(r.dateofBirth).toLocaleDateString()}</p>
+              <p><strong>Total:</strong> {r.total}</p>
               {r.scholarshipPercent && (
                 <p><strong>Scholarship:</strong> {r.scholarshipPercent}%</p>
               )}
@@ -234,8 +224,7 @@ const AdminMarks = () => {
         )}
       </Card>
 
-      {/* ✅ SEARCH UI ADDED HERE */}
-      <Card className="mb-6 mt-6">
+      <Card className="mt-6">
         <Label>Search by Contact Number</Label>
         <Input
           type="text"
@@ -255,7 +244,7 @@ const AdminMarks = () => {
         />
       </div>
 
-      <Toaster position="top-right" reverseOrder={false} />
+      <Toaster position="top-right" />
     </div>
   );
 };
@@ -285,7 +274,6 @@ const MarksForm = ({ onSubmit, editingMark, onCancel }) => {
 
   const handleChange = (e) => {
     const { name, value } = e.target;
-
     setFormData((prev) => {
       const updated = { ...prev, [name]: value };
       updated.total =
@@ -318,29 +306,59 @@ const MarksForm = ({ onSubmit, editingMark, onCancel }) => {
   };
 
   return (
-    <form onSubmit={handleSubmit} className="grid grid-cols-1 sm:grid-cols-2 mt-5 gap-4">
-      <Input name="studentName" value={formData.studentName} onChange={handleChange} required placeholder="Full Name" />
-      <Input name="className" value={formData.className} onChange={handleChange} required placeholder="Class" />
-      <Input name="schoolName" value={formData.schoolName} onChange={handleChange} required placeholder="School Name" />
-      <Input name="fatherName" value={formData.fatherName} onChange={handleChange} required placeholder="Father's Name" />
-      <Input type="date" name="dateofBirth" value={formData.dateofBirth} onChange={handleChange} required />
-      <Input name="contactNumber" value={formData.contactNumber} onChange={handleChange} required placeholder="Contact Number" />
-
-      <Input type="number" name="physics" value={formData.physics} onChange={handleChange} required placeholder="Physics" min="0" max="10" />
-      <Input type="number" name="chemistry" value={formData.chemistry} onChange={handleChange} required placeholder="Chemistry" min="0" max="10" />
-      <Input type="number" name="maths" value={formData.maths} onChange={handleChange} required placeholder="Maths" min="0" max="10" />
-      <Input type="number" name="biology" value={formData.biology} onChange={handleChange} required placeholder="Biology" min="0" max="10" />
-      <Input type="number" name="aptitude" value={formData.aptitude} onChange={handleChange} required placeholder="Aptitude" min="0" max="10" />
-
+    <form
+      onSubmit={handleSubmit}
+      className="grid grid-cols-1 sm:grid-cols-2 mt-5 gap-4"
+    >
+      {[
+        "studentName",
+        "className",
+        "schoolName",
+        "fatherName",
+        "contactNumber",
+      ].map((field) => (
+        <Input
+          key={field}
+          name={field}
+          value={formData[field]}
+          onChange={handleChange}
+          required
+          placeholder={field.replace(/([A-Z])/g, " $1")}
+        />
+      ))}
+      <Input
+        type="string"
+        name="dateofBirth"
+        value={formData.dateofBirth}
+        onChange={handleChange}
+        required
+        placeholder="Date of Birth (DD-MM-YYYY)"
+      />
+      {["physics", "chemistry", "maths", "biology", "aptitude"].map((subj) => (
+        <Input
+          key={subj}
+          type="number"
+          name={subj}
+          value={formData[subj]}
+          onChange={handleChange}
+          required
+          placeholder={subj[0].toUpperCase() + subj.slice(1)}
+          min="0"
+          max="10"
+        />
+      ))}
       <div>
         <Label>Total</Label>
         <Input type="number" name="total" value={formData.total} readOnly />
       </div>
-
       <div className="flex gap-2 col-span-full">
         <Button type="submit">{editingMark ? "Update" : "Add"} Marks</Button>
         {editingMark && (
-          <Button type="button" onClick={onCancel} className="bg-[#6b7280] hover:bg-[#4b5563]">
+          <Button
+            type="button"
+            onClick={onCancel}
+            className="bg-gray-500 hover:bg-gray-600"
+          >
             Cancel
           </Button>
         )}
@@ -355,15 +373,15 @@ const ITEMS_PER_PAGE = 10;
 const MarksList = ({ marks = [], onEdit, onDelete }) => {
   const [currentPage, setCurrentPage] = useState(1);
 
-  if (!Array.isArray(marks) || marks.length === 0) {
-    return <p className="text-[#6b7280]">No marks found</p>;
-  }
+  if (!marks.length) return <p className="text-gray-500">No marks found</p>;
 
   const totalPages = Math.ceil(marks.length / ITEMS_PER_PAGE);
-  const currentMarks = marks.slice((currentPage - 1) * ITEMS_PER_PAGE, currentPage * ITEMS_PER_PAGE);
+  const currentMarks = marks.slice(
+    (currentPage - 1) * ITEMS_PER_PAGE,
+    currentPage * ITEMS_PER_PAGE
+  );
 
   const formatDate = (dateStr) => {
-    if (!dateStr) return "";
     const d = new Date(dateStr);
     return `${d.getDate()}-${d.getMonth() + 1}-${d.getFullYear()}`;
   };
@@ -379,18 +397,19 @@ const MarksList = ({ marks = [], onEdit, onDelete }) => {
             <p>Father: {mark.fatherName}</p>
             <p>DOB: {formatDate(mark.dateofBirth)}</p>
             <p>
-              Physics: {mark.physics}, Chemistry: {mark.chemistry}, Maths: {mark.maths}, Biology: {mark.biology}, Aptitude: {mark.aptitude}
+              Physics: {mark.physics}, Chemistry: {mark.chemistry}, Maths: {mark.maths},
+              Biology: {mark.biology}, Aptitude: {mark.aptitude}
             </p>
             <p><strong>Total: {mark.total}</strong></p>
-            <p>Scholarship: {mark.scholarshipPercent}%</p>
+            {mark.scholarshipPercent && (
+              <p>Scholarship: {mark.scholarshipPercent}%</p>
+            )}
           </div>
 
           <div className="flex gap-2 mt-2">
             <Button onClick={() => onEdit(mark)}>Edit</Button>
             <Button
-              onClick={() => {
-                if (window.confirm("Are you sure you want to delete this record?")) onDelete(mark._id);
-              }}
+              onClick={() => onDelete(mark._id)}
               className="bg-red-600 hover:bg-red-700"
             >
               Delete
@@ -400,11 +419,20 @@ const MarksList = ({ marks = [], onEdit, onDelete }) => {
       ))}
 
       <div className="flex justify-between items-center mt-4">
-        <Button onClick={() => setCurrentPage((p) => Math.max(p - 1, 1))} disabled={currentPage === 1} className="bg-[#6b7280]">
+        <Button
+          onClick={() => setCurrentPage((p) => Math.max(p - 1, 1))}
+          disabled={currentPage === 1}
+          className="bg-gray-500"
+        >
           Prev
         </Button>
-        <span>Page {currentPage} of {totalPages}</span>
-        <Button onClick={() => setCurrentPage((p) => Math.min(p + 1, totalPages))} disabled={currentPage === totalPages}>
+        <span>
+          Page {currentPage} of {totalPages}
+        </span>
+        <Button
+          onClick={() => setCurrentPage((p) => Math.min(p + 1, totalPages))}
+          disabled={currentPage === totalPages}
+        >
           Next
         </Button>
       </div>
