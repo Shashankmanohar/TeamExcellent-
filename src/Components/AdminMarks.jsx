@@ -327,7 +327,7 @@ const MarksForm = ({ onSubmit, editingMark, onCancel }) => {
         />
       ))}
       <Input
-        type="string"
+        type="Date"
         name="dateofBirth"
         value={formData.dateofBirth}
         onChange={handleChange}
