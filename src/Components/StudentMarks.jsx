@@ -198,6 +198,7 @@ const StudentMarks = () => {
             <p>
               <strong>Name:</strong> {marks.studentName}
             </p>
+            <p><strong>Class:</strong> {marks.className}</p>
             <p>
               <strong>School:</strong> {marks.schoolName}
             </p>
