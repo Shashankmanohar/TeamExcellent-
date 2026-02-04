@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const API_URL = 'http://localhost:5000/api/blogs';
+const API_URL = 'https://teamexcellentcareerinstitute.in/api/blogs';
 
 // Get auth token from localStorage
 const getAuthToken = () => {

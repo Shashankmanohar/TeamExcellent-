@@ -7,7 +7,7 @@ const isDevelopment =
 
 const API_BASE_URL = isDevelopment
   ? "http://localhost:5000/api"
-  : "https://team-excellent-backend.vercel.app/api";
+  : "https://teamexcellentcareerinstitute.in/api";
 
 const api = axios.create({
   baseURL: API_BASE_URL,
