@@ -1,13 +1,8 @@
 // api.jsx
 import axios from "axios";
 
-const isDevelopment =
-  window.location.hostname === "localhost" ||
-  window.location.hostname === "127.0.0.1";
-
-const API_BASE_URL = isDevelopment
-  ? "http://localhost:5000/api"
-  : "https://teamexcellentcareerinstitute.in/api";
+// Use environment variable, fallback to localhost for development
+const API_BASE_URL = import.meta.env.VITE_API_BASE_URL || "http://localhost:5000/api";
 
 const api = axios.create({
   baseURL: API_BASE_URL,
@@ -30,7 +25,7 @@ api.interceptors.response.use(
   (error) => {
     if (error.response?.status === 401) {
       localStorage.removeItem("adminToken");
-      window.dispatchEvent(new Event("forceLogout")); 
+      window.dispatchEvent(new Event("forceLogout"));
     }
     return Promise.reject(error);
   }
