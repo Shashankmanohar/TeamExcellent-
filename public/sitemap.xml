@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+
+  <!-- Home -->
+  <url>
+    <loc>https://teamexcellentcareerinstitute.in/</loc>
+    <priority>1.0</priority>
+  </url>
+
+  <!-- About -->
+  <url>
+    <loc>https://teamexcellentcareerinstitute.in/about</loc>
+    <priority>0.8</priority>
+  </url>
+
+  <!-- Admission -->
+  <url>
+    <loc>https://teamexcellentcareerinstitute.in/admission</loc>
+    <priority>0.8</priority>
+  </url>
+
+  <!-- Programs -->
+  <url>
+    <loc>https://teamexcellentcareerinstitute.in/programs/jee</loc>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://teamexcellentcareerinstitute.in/programs/class-6-to-10</loc>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://teamexcellentcareerinstitute.in/programs/neet</loc>
+    <priority>0.8</priority>
+  </url>
+
+  <!-- Student Portal -->
+  <url>
+    <loc>https://teamexcellentcareerinstitute.in/student-portal</loc>
+    <priority>0.6</priority>
+  </url>
+
+  <!-- Contact -->
+  <url>
+    <loc>https://teamexcellentcareerinstitute.in/contact</loc>
+    <priority>0.6</priority>
+  </url>
+
+  <!-- Admin Login -->
+  <url>
+    <loc>https://teamexcellentcareerinstitute.in/admin-login</loc>
+    <priority>0.3</priority>
+  </url>
+
+</urlset>
