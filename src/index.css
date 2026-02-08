@@ -1,9 +1,12 @@
 @import "tailwindcss";
+@plugin "@tailwindcss/typography";
 @import "@fortawesome/fontawesome-free/css/all.css";
+
 @keyframes marquee {
   0% {
     transform: translateX(0%);
   }
+
   100% {
     transform: translateX(-50%);
   }
@@ -12,4 +15,8 @@
 .animate-marquee {
   display: inline-flex;
   animation: marquee 15s linear infinite;
+}
+
+body {
+  font-family: 'Outfit', sans-serif;
 }

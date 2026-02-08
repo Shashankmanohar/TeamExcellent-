@@ -1,9 +1,11 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
-import { ArrowLeft } from 'lucide-react';
+import { ArrowLeft, Code, Eye, Monitor } from 'lucide-react';
 import { createBlog, updateBlog, fetchBlogById } from '../lib/blogApi';
 import axios from 'axios';
 import toast from 'react-hot-toast';
+import ReactQuill from 'react-quill';
+import 'react-quill/dist/quill.snow.css';
 
 export default function BlogEditor() {
     const navigate = useNavigate();
@@ -24,6 +26,7 @@ export default function BlogEditor() {
     const [loadingBlog, setLoadingBlog] = useState(isEditMode);
     const [uploading, setUploading] = useState(false);
     const [uploadProgress, setUploadProgress] = useState(0);
+    const [showSource, setShowSource] = useState(false);
 
     useEffect(() => {
         // Check if admin is logged in
@@ -269,88 +272,71 @@ export default function BlogEditor() {
 
                         {/* Description (Main Content) */}
                         <div className="bg-white rounded-lg shadow-md p-6">
-                            <label className="block text-sm font-medium text-gray-700 mb-2">
-                                Description
-                            </label>
-                            <div className="mb-2 flex gap-2 flex-wrap">
+                            <div className="flex justify-between items-center mb-4">
+                                <label className="block text-sm font-medium text-gray-700">
+                                    Description
+                                </label>
                                 <button
                                     type="button"
-                                    onClick={() => {
-                                        const textarea = document.getElementById('description');
-                                        const start = textarea.selectionStart;
-                                        const end = textarea.selectionEnd;
-                                        const selectedText = formData.description.substring(start, end);
-                                        const newText = formData.description.substring(0, start) + `<strong>${selectedText}</strong>` + formData.description.substring(end);
-                                        setFormData(prev => ({ ...prev, description: newText }));
-                                    }}
-                                    className="px-3 py-1 bg-gray-100 hover:bg-gray-200 rounded text-sm font-bold"
-                                    title="Bold"
+                                    onClick={() => setShowSource(!showSource)}
+                                    className="flex items-center gap-2 px-3 py-1.5 text-sm font-medium text-[#5B2D7C] bg-purple-50 hover:bg-purple-100 rounded-lg transition-colors border border-purple-200"
                                 >
-                                    B
-                                </button>
-                                <button
-                                    type="button"
-                                    onClick={() => {
-                                        const textarea = document.getElementById('description');
-                                        const start = textarea.selectionStart;
-                                        const end = textarea.selectionEnd;
-                                        const selectedText = formData.description.substring(start, end);
-                                        const newText = formData.description.substring(0, start) + `<em>${selectedText}</em>` + formData.description.substring(end);
-                                        setFormData(prev => ({ ...prev, description: newText }));
-                                    }}
-                                    className="px-3 py-1 bg-gray-100 hover:bg-gray-200 rounded text-sm italic"
-                                    title="Italic"
-                                >
-                                    I
-                                </button>
-                                <button
-                                    type="button"
-                                    onClick={() => {
-                                        const textarea = document.getElementById('description');
-                                        const start = textarea.selectionStart;
-                                        const end = textarea.selectionEnd;
-                                        const selectedText = formData.description.substring(start, end);
-                                        const newText = formData.description.substring(0, start) + `<u>${selectedText}</u>` + formData.description.substring(end);
-                                        setFormData(prev => ({ ...prev, description: newText }));
-                                    }}
-                                    className="px-3 py-1 bg-gray-100 hover:bg-gray-200 rounded text-sm underline"
-                                    title="Underline"
-                                >
-                                    U
-                                </button>
-                                <button
-                                    type="button"
-                                    onClick={() => {
-                                        setFormData(prev => ({ ...prev, description: prev.description + '\n<h2>Heading</h2>\n' }));
-                                    }}
-                                    className="px-3 py-1 bg-gray-100 hover:bg-gray-200 rounded text-sm"
-                                    title="Heading"
-                                >
-                                    H2
-                                </button>
-                                <button
-                                    type="button"
-                                    onClick={() => {
-                                        setFormData(prev => ({ ...prev, description: prev.description + '\n<p>Paragraph text</p>\n' }));
-                                    }}
-                                    className="px-3 py-1 bg-gray-100 hover:bg-gray-200 rounded text-sm"
-                                    title="Paragraph"
-                                >
-                                    P
+                                    {showSource ? (
+                                        <>
+                                            <Monitor size={16} />
+                                            Visual Editor
+                                        </>
+                                    ) : (
+                                        <>
+                                            <Code size={16} />
+                                            Edit Source
+                                        </>
+                                    )}
                                 </button>
                             </div>
-                            <textarea
-                                id="description"
-                                name="description"
-                                value={formData.description}
-                                onChange={handleChange}
-                                rows={15}
-                                placeholder="Write your blog content here. You can use HTML tags for formatting..."
-                                className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#5B2D7C] focus:border-transparent font-mono text-sm"
-                            />
-                            <p className="text-xs text-gray-500 mt-2">
-                                You can use HTML tags like &lt;h2&gt;, &lt;p&gt;, &lt;strong&gt;, &lt;em&gt;, &lt;ul&gt;, &lt;ol&gt;, &lt;li&gt;, etc.
-                            </p>
+
+                            <div className="prose-editor">
+                                {showSource ? (
+                                    <div className="relative rounded-lg overflow-hidden border border-gray-700 shadow-inner">
+                                        <textarea
+                                            value={formData.description}
+                                            onChange={handleChange}
+                                            name="description"
+                                            rows={20}
+                                            className="w-full px-4 py-3 bg-[#1e1e1e] text-[#d4d4d4] font-mono text-sm focus:outline-none focus:ring-2 focus:ring-[#5B2D7C] resize-y"
+                                            placeholder="Paste your raw HTML here..."
+                                            spellCheck="false"
+                                        />
+                                        <div className="absolute top-0 right-0 px-3 py-1 bg-[#2d2d2d] text-xs text-gray-400 font-mono border-b border-l border-gray-700 rounded-bl-lg">
+                                            HTML Source
+                                        </div>
+                                    </div>
+                                ) : (
+                                    <ReactQuill
+                                        theme="snow"
+                                        value={formData.description}
+                                        onChange={(content) => {
+                                            setFormData(prev => ({ ...prev, description: content }));
+                                        }}
+                                        modules={{
+                                            toolbar: [
+                                                [{ 'header': [1, 2, 3, 4, 5, 6, false] }],
+                                                ['bold', 'italic', 'underline', 'strike'],
+                                                [{ 'list': 'ordered' }, { 'list': 'bullet' }],
+                                                [{ 'script': 'sub' }, { 'script': 'super' }],
+                                                [{ 'indent': '-1' }, { 'indent': '+1' }],
+                                                [{ 'direction': 'rtl' }],
+                                                [{ 'color': [] }, { 'background': [] }],
+                                                [{ 'font': [] }],
+                                                [{ 'align': [] }],
+                                                ['link', 'image', 'video'],
+                                                ['clean']
+                                            ],
+                                        }}
+                                        className="h-96 mb-12"
+                                    />
+                                )}
+                            </div>
                         </div>
 
                         {/* Excerpt */}

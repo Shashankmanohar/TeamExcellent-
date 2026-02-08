@@ -13,6 +13,6 @@ export default defineConfig({
       clientErrorOverlay: false, // Disable client-side error overlay
     }
   },
-  // Suppress WebSocket connection warnings in console
-  logLevel: 'error'
+  // Show server info but suppress WebSocket warnings
+  logLevel: 'info'
 })
