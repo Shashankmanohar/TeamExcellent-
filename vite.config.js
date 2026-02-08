@@ -5,6 +5,14 @@ import tailwindcss from '@tailwindcss/vite'
 // https://vite.dev/config/
 export default defineConfig({
   plugins: [react(),
-    tailwindcss()
+  tailwindcss()
   ],
+  server: {
+    hmr: {
+      overlay: false, // Disable error overlay
+      clientErrorOverlay: false, // Disable client-side error overlay
+    }
+  },
+  // Suppress WebSocket connection warnings in console
+  logLevel: 'error'
 })
