@@ -4,7 +4,7 @@ import * as XLSX from "xlsx";
 import { authAPI, marksAPI } from "../lib/api";
 import TeamExcellent from "../assets/TeamExcellent.webp";
 import { useNavigate } from "react-router-dom";
-import toast, { Toaster } from "react-hot-toast";
+import toast from "react-hot-toast";
 
 // ----------------- UI Components -----------------
 const Button = ({ children, className = "", ...props }) => (
@@ -146,7 +146,7 @@ const AdminMarks = () => {
         <Card>
           <form onSubmit={handleLogin} className="space-y-4 w-70 lg:w-100">
             <div className="flex justify-center">
-              <img src={TeamExcellent} alt="Logo" className="w-40 md:w-56" />
+              <img src={TeamExcellent} alt="Team Excellent Career Institute Admin Logo" className="w-40 md:w-56" />
             </div>
             <h2 className="text-xl font-bold text-center">Admin Login</h2>
             <Input
@@ -171,7 +171,7 @@ const AdminMarks = () => {
               {isLoading ? "Logging in..." : "Login"}
             </Button>
           </form>
-          <Toaster position="top-right" />
+
         </Card>
       </div>
     );
@@ -262,7 +262,7 @@ const AdminMarks = () => {
         />
       </div>
 
-      <Toaster position="top-right" />
+
     </div>
   );
 };

@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useParams, Link } from 'react-router-dom';
+import { Helmet } from 'react-helmet-async';
 import { Calendar, User, ArrowLeft, Tag, Clock, Share2, Coffee } from 'lucide-react';
 import { fetchBlogByPermalink } from '../lib/blogApi';
 import Navbar from '../Components/Navbar';
@@ -81,6 +82,17 @@ export default function BlogDetail() {
 
     return (
         <>
+            <Helmet>
+                <title>{blog.seoTitle || blog.title} | Team Excellent Career Institute</title>
+                <meta
+                    name="description"
+                    content={blog.seoDescription || blog.excerpt || blog.description.replace(/<[^>]*>/g, '').substring(0, 160)}
+                />
+                {blog.seoKeywords && <meta name="keywords" content={blog.seoKeywords} />}
+                {blog.seoExtraHead && (
+                    <div dangerouslySetInnerHTML={{ __html: blog.seoExtraHead }} />
+                )}
+            </Helmet>
             <Navbar />
             <div className="min-h-screen bg-gradient-to-b from-gray-50 via-white to-gray-50 pt-32 pb-20">
                 {/* Back Button */}
@@ -107,7 +119,7 @@ export default function BlogDetail() {
                         )}
 
                         {/* Title */}
-                        <h1 className="text-4xl md:text-5xl lg:text-6xl font-extrabold text-[#0B0B45] mb-8 leading-tight tracking-tight">
+                        <h1 className="text-3xl md:text-4xl lg:text-5xl font-extrabold text-[#0B0B45] mb-8 leading-tight tracking-tight">
                             {blog.title}
                         </h1>
 
@@ -120,7 +132,7 @@ export default function BlogDetail() {
                             {blog.author && (
                                 <div className="flex items-center gap-2">
                                     <User size={18} className="text-[#5B2D7C]" />
-                                    <span className="font-medium">By {blog.author.email?.split('@')[0]}</span>
+                                    <span className="font-medium">By Team Excellent</span>
                                 </div>
                             )}
                             <div className="flex items-center gap-2">
@@ -136,7 +148,7 @@ export default function BlogDetail() {
                             <div className="rounded-2xl overflow-hidden shadow-2xl">
                                 <img
                                     src={blog.featuredImage}
-                                    alt={blog.title}
+                                    alt={blog.seoTitle || blog.title}
                                     className="w-full h-auto max-h-[600px] object-cover"
                                     onError={(e) => {
                                         e.target.style.display = 'none';

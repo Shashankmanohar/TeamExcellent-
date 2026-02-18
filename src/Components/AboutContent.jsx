@@ -59,7 +59,7 @@ export default function AboutContent() {
         <div className="flex justify-center">
           <img
             src={DirectorPhoto}
-            alt="Director"
+            alt="Albert Newwel - Founder and Director of Team Excellent Career Institute"
             className="rounded-2xl shadow-lg w-[350px] h-auto"
             loading="lazy"
           />
@@ -112,25 +112,25 @@ export default function AboutContent() {
         <div className="grid sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-4 gap-6">
           <img
             src={about1}
-            alt="Achievement 1"
+            alt="Team Excellent Career Institute Achievement and Award Recognition 1"
             className="rounded-xl shadow-lg hover:scale-105 transition duration-300"
             loading="lazy"
           />
           <img
             src={about2}
-            alt="Achievement 2"
+            alt="Team Excellent Career Institute Achievement and Award Recognition 2"
             className="rounded-xl shadow-lg hover:scale-105 transition duration-300"
             loading="lazy"
           />
           <img
             src={about3}
-            alt="Achievement 3"
+            alt="Team Excellent Career Institute Achievement and Award Recognition 3"
             className="rounded-xl shadow-lg hover:scale-105 transition duration-300"
             loading="lazy"
           />
           <img
             src={about4}
-            alt="Achievement 4"
+            alt="Team Excellent Career Institute Achievement and Award Recognition 4"
             className="rounded-xl shadow-lg hover:scale-105 transition duration-300"
             loading="lazy"
           />

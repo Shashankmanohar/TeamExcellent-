@@ -20,7 +20,11 @@ export default function BlogEditor() {
         featuredImage: '',
         categories: '',
         published: false,
-        datePosted: new Date().toISOString().split('T')[0]
+        datePosted: new Date().toISOString().split('T')[0],
+        seoTitle: '',
+        seoDescription: '',
+        seoKeywords: '',
+        seoExtraHead: ''
     });
     const [loading, setLoading] = useState(false);
     const [loadingBlog, setLoadingBlog] = useState(isEditMode);
@@ -55,7 +59,11 @@ export default function BlogEditor() {
                 featuredImage: blog.featuredImage || '',
                 categories: blog.categories || '',
                 published: blog.published,
-                datePosted: new Date(blog.datePosted).toISOString().split('T')[0]
+                datePosted: new Date(blog.datePosted).toISOString().split('T')[0],
+                seoTitle: blog.seoTitle || '',
+                seoDescription: blog.seoDescription || '',
+                seoKeywords: blog.seoKeywords || '',
+                seoExtraHead: blog.seoExtraHead || ''
             });
         } catch (error) {
             console.error('Error loading blog:', error);
@@ -432,6 +440,71 @@ export default function BlogEditor() {
                                     </div>
                                 </div>
                             )}
+                        </div>
+
+                        {/* SEO Meta Details */}
+                        <div className="bg-white rounded-lg shadow-md p-6">
+                            <h3 className="text-lg font-semibold text-gray-900 mb-4 border-b pb-2">SEO Meta Details</h3>
+
+                            {/* SEO Title */}
+                            <div className="mb-4">
+                                <label className="block text-sm font-medium text-gray-700 mb-2">
+                                    SEO Title
+                                </label>
+                                <input
+                                    type="text"
+                                    name="seoTitle"
+                                    value={formData.seoTitle}
+                                    onChange={handleChange}
+                                    placeholder="The Role of Legal Terminology for Transcription and Court Reporting in the AI Era"
+                                    className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#5B2D7C] focus:border-transparent"
+                                />
+                            </div>
+
+                            {/* SEO Description */}
+                            <div className="mb-4">
+                                <label className="block text-sm font-medium text-gray-700 mb-2">
+                                    SEO Description
+                                </label>
+                                <textarea
+                                    name="seoDescription"
+                                    value={formData.seoDescription}
+                                    onChange={handleChange}
+                                    rows={3}
+                                    placeholder="Learn why legal terminology remains critical for transcription and court reporting, even as automation increases."
+                                    className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#5B2D7C] focus:border-transparent"
+                                />
+                            </div>
+
+                            {/* SEO Keywords */}
+                            <div className="mb-4">
+                                <label className="block text-sm font-medium text-gray-700 mb-2">
+                                    SEO Keywords
+                                </label>
+                                <input
+                                    type="text"
+                                    name="seoKeywords"
+                                    value={formData.seoKeywords}
+                                    onChange={handleChange}
+                                    placeholder="legal terminology for transcription and court reporting, legal transcription, court reporting"
+                                    className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#5B2D7C] focus:border-transparent"
+                                />
+                            </div>
+
+                            {/* Meta Extra Head */}
+                            <div>
+                                <label className="block text-sm font-medium text-gray-700 mb-2">
+                                    Meta Extra Head
+                                </label>
+                                <textarea
+                                    name="seoExtraHead"
+                                    value={formData.seoExtraHead}
+                                    onChange={handleChange}
+                                    rows={3}
+                                    placeholder="<meta name='robots' content='index, follow' />"
+                                    className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#5B2D7C] focus:border-transparent font-mono text-sm"
+                                />
+                            </div>
                         </div>
                     </div>
 

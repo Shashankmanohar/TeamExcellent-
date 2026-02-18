@@ -28,7 +28,7 @@ function ContactUs() {
         <div className="w-full lg:w-1/2 flex justify-center mb-8 lg:mb-0">
           <img
             src={Contactimage}
-            alt="Contact Us"
+            alt="Contact Team Excellent Career Institute for JEE and NEET Coaching"
             className="w-[95%] lg:w-[85%] h-auto"
             loading="lazy"
           />

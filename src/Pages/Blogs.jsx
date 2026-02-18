@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
+import { Helmet } from 'react-helmet-async';
 import { Calendar, User, ChevronRight, Clock } from 'lucide-react';
 import { fetchPublishedBlogs } from '../lib/blogApi';
 import Navbar from '../Components/Navbar';
@@ -51,6 +52,13 @@ export default function Blogs() {
 
     return (
         <>
+            <Helmet>
+                <title>Our Blog | Team Excellent Career Institute</title>
+                <meta
+                    name="description"
+                    content="Stay updated with the latest insights, tips, and news from Team Excellent Career Institute. Articles on JEE, NEET, and school foundations."
+                />
+            </Helmet>
             <Navbar />
             <div className="min-h-screen bg-gradient-to-b from-gray-50 to-white pt-32 pb-16">
                 <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
