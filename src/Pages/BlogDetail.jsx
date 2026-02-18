@@ -145,14 +145,13 @@ export default function BlogDetail() {
                 <article className="max-w-4xl mx-auto px-6 sm:px-8 lg:px-12">
                     {/* Blog Header */}
                     <header className="mb-12">
-                        {/* Category Badge */}
-                        {blog.categories && (
-                            <div className="flex items-center gap-2 mb-6">
+                        <div className="flex flex-wrap items-center gap-3 mb-6">
+                            {blog.categories && (
                                 <span className="inline-block px-5 py-2 text-sm font-bold text-white bg-gradient-to-r from-[#5B2D7C] to-[#902ce8] rounded-full shadow-md">
                                     {blog.categories}
                                 </span>
-                            </div>
-                        )}
+                            )}
+                        </div>
 
                         {/* Title */}
                         <h1 className="text-3xl md:text-4xl lg:text-5xl font-extrabold text-[#0B0B45] mb-8 leading-tight tracking-tight">
@@ -165,12 +164,10 @@ export default function BlogDetail() {
                                 <Calendar size={18} className="text-[#5B2D7C]" />
                                 <span className="font-medium">{formatDate(blog.datePosted)}</span>
                             </div>
-                            {blog.author && (
-                                <div className="flex items-center gap-2">
-                                    <User size={18} className="text-[#5B2D7C]" />
-                                    <span className="font-medium">By Team Excellent</span>
-                                </div>
-                            )}
+                            <div className="flex items-center gap-2">
+                                <User size={18} className="text-[#5B2D7C]" />
+                                <span className="font-medium">By {blog.authorName || 'Team Excellent'}</span>
+                            </div>
                             <div className="flex items-center gap-2">
                                 <Coffee size={18} className="text-[#5B2D7C]" />
                                 <span className="font-medium">{getReadingTime(blog.description)} read</span>
@@ -227,6 +224,26 @@ export default function BlogDetail() {
               prose-hr:border-gray-300 prose-hr:my-12"
                         dangerouslySetInnerHTML={{ __html: blog.description }}
                     />
+
+                    {/* Tags Section - Bottom */}
+                    {blog.tag && (
+                        <div className="mb-12">
+                            <h3 className="text-xl font-bold text-[#0B0B45] mb-4 flex items-center gap-2">
+                                <Tag size={20} className="text-[#5B2D7C]" />
+                                Tags:
+                            </h3>
+                            <div className="flex flex-wrap gap-2">
+                                {blog.tag.split(',').map((tag, index) => (
+                                    <span
+                                        key={index}
+                                        className="px-4 py-2 text-sm font-semibold text-[#5B2D7C] bg-purple-50 border border-purple-100 rounded-lg hover:bg-purple-100 transition-colors shadow-sm"
+                                    >
+                                        {tag.trim()}
+                                    </span>
+                                ))}
+                            </div>
+                        </div>
+                    )}
 
                     {/* Divider with Icon */}
                     <div className="flex items-center justify-center my-16">

@@ -30,9 +30,28 @@ function ScrollToTop() {
   return null
 }
 
+import toast from 'react-hot-toast'
+
+function AuthHandler() {
+  const navigate = useNavigate()
+
+  useEffect(() => {
+    const handleLogout = () => {
+      toast.error('Session expired. Please login again.')
+      navigate('/admin-login')
+    }
+
+    window.addEventListener('forceLogout', handleLogout)
+    return () => window.removeEventListener('forceLogout', handleLogout)
+  }, [navigate])
+
+  return null
+}
+
 export default function App() {
   return (
     <Router>
+      <AuthHandler />
       <ScrollToTop /> {/* ✅ ensures scroll resets on route change */}
       <Routes>
         <Route path="/" element={<Home />} />

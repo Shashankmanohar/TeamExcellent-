@@ -105,25 +105,25 @@ export default function Blogs() {
                                                         }}
                                                     />
                                                     {/* Category Badge on Image */}
-                                                    {blog.categories && (
-                                                        <div className="absolute top-4 left-4">
+                                                    <div className="absolute top-4 left-4 flex flex-wrap gap-2">
+                                                        {blog.categories && (
                                                             <span className="inline-block px-4 py-2 text-xs font-bold text-white bg-black bg-opacity-60 backdrop-blur-sm rounded-full">
                                                                 {blog.categories}
                                                             </span>
-                                                        </div>
-                                                    )}
+                                                        )}
+                                                    </div>
                                                 </div>
                                             ) : (
                                                 <div className="relative h-72 bg-gradient-to-br from-[#5B2D7C] to-[#902ce8] flex items-center justify-center">
                                                     <span className="text-white text-7xl">📝</span>
                                                     {/* Category Badge */}
-                                                    {blog.categories && (
-                                                        <div className="absolute top-4 left-4">
+                                                    <div className="absolute top-4 left-4 flex flex-wrap gap-2">
+                                                        {blog.categories && (
                                                             <span className="inline-block px-4 py-2 text-xs font-bold text-white bg-black bg-opacity-60 backdrop-blur-sm rounded-full">
                                                                 {blog.categories}
                                                             </span>
-                                                        </div>
-                                                    )}
+                                                        )}
+                                                    </div>
                                                 </div>
                                             )}
 
@@ -141,15 +141,23 @@ export default function Blogs() {
 
                                                 {/* Meta Info */}
                                                 <div className="flex items-center justify-between text-sm text-gray-500 pt-4 border-t border-gray-100">
-                                                    <div className="flex items-center gap-4">
-                                                        <div className="flex items-center gap-1">
-                                                            <Calendar size={16} />
-                                                            <span>{formatDate(blog.datePosted)}</span>
+                                                    <div className="flex flex-col gap-2">
+                                                        <div className="flex items-center gap-4">
+                                                            <div className="flex items-center gap-1">
+                                                                <Calendar size={16} />
+                                                                <span>{formatDate(blog.datePosted)}</span>
+                                                            </div>
+                                                            <div className="flex items-center gap-1">
+                                                                <Clock size={16} />
+                                                                <span>{getReadingTime(blog.description)}</span>
+                                                            </div>
                                                         </div>
-                                                        <div className="flex items-center gap-1">
-                                                            <Clock size={16} />
-                                                            <span>{getReadingTime(blog.description)}</span>
-                                                        </div>
+                                                        {blog.authorName && (
+                                                            <div className="flex items-center gap-1 text-[#5B2D7C] font-medium">
+                                                                <User size={16} />
+                                                                <span>By {blog.authorName}</span>
+                                                            </div>
+                                                        )}
                                                     </div>
                                                 </div>
 
