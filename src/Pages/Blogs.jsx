@@ -84,7 +84,7 @@ export default function Blogs() {
                     ) : (
                         <>
                             {/* Blog Grid */}
-                            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-12">
+                            <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-12">
                                 {blogs.map((blog) => (
                                     <Link
                                         key={blog._id}
@@ -94,11 +94,11 @@ export default function Blogs() {
                                         <article className="bg-white rounded-2xl shadow-lg overflow-hidden hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 h-full flex flex-col">
                                             {/* Featured Image */}
                                             {blog.featuredImage ? (
-                                                <div className="relative h-56 overflow-hidden bg-gradient-to-br from-[#5B2D7C] to-[#902ce8]">
+                                                <div className="relative h-72 overflow-hidden bg-gradient-to-br from-[#5B2D7C] to-[#902ce8]">
                                                     <img
                                                         src={blog.featuredImage}
                                                         alt={blog.title}
-                                                        className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300"
+                                                        className="w-full h-full object-cover transition-transform duration-300"
                                                         onError={(e) => {
                                                             e.target.style.display = 'none';
                                                             e.target.parentElement.innerHTML = '<div class="w-full h-full flex items-center justify-center text-white text-6xl">📝</div>';
@@ -114,7 +114,7 @@ export default function Blogs() {
                                                     )}
                                                 </div>
                                             ) : (
-                                                <div className="relative h-56 bg-gradient-to-br from-[#5B2D7C] to-[#902ce8] flex items-center justify-center">
+                                                <div className="relative h-72 bg-gradient-to-br from-[#5B2D7C] to-[#902ce8] flex items-center justify-center">
                                                     <span className="text-white text-7xl">📝</span>
                                                     {/* Category Badge */}
                                                     {blog.categories && (
