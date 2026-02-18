@@ -1,5 +1,5 @@
 import React from 'react'
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
+import { BrowserRouter as Router, Routes, Route, useNavigate, useLocation } from 'react-router-dom'
 
 import Home from './Pages/Home'
 import About from './Pages/About'
@@ -15,7 +15,7 @@ import BlogEditor from './Components/BlogEditor'
 
 // ✅ ScrollToTop Component
 import { useEffect } from 'react'
-import { useLocation } from 'react-router-dom'
+
 import Student from './Pages/Student'
 import AdminLogin from './Pages/AdminLogin'
 
