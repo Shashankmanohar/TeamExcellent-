@@ -119,11 +119,15 @@ export default function BlogDetail() {
     return (
         <>
             <Helmet>
-                <title>{blog.seoTitle || blog.title} | Team Excellent Career Institute</title>
+                <title>{blog.seoTitle || blog.title}</title>
                 <meta
                     name="description"
                     content={blog.seoDescription || blog.excerpt || blog.description.replace(/<[^>]*>/g, '').substring(0, 160)}
                 />
+                <meta property="og:title" content={blog.seoTitle || blog.title} />
+                <meta property="og:description" content={blog.seoDescription || blog.excerpt || blog.description.replace(/<[^>]*>/g, '').substring(0, 160)} />
+                <meta name="twitter:title" content={blog.seoTitle || blog.title} />
+                <meta name="twitter:description" content={blog.seoDescription || blog.excerpt || blog.description.replace(/<[^>]*>/g, '').substring(0, 160)} />
                 {blog.seoKeywords && <meta name="keywords" content={blog.seoKeywords} />}
                 {blog.seoExtraHead && (
                     <div dangerouslySetInnerHTML={{ __html: blog.seoExtraHead }} />
@@ -191,11 +195,11 @@ export default function BlogDetail() {
                         </div>
                     )}
 
-                    {/* Excerpt - Highlighted */}
-                    {blog.excerpt && (
+                    {/* Excerpt - Highlighted / Automatic Summary */}
+                    {(blog.excerpt || blog.description) && (
                         <div className="bg-gradient-to-br from-purple-50 via-pink-50 to-blue-50 border-l-4 border-[#5B2D7C] p-8 mb-12 rounded-r-2xl shadow-lg">
                             <p className="text-xl md:text-2xl text-gray-800 font-medium leading-relaxed italic">
-                                "{blog.excerpt}"
+                                "{blog.excerpt || blog.description.replace(/<[^>]*>/g, '').substring(0, 180).trim() + '...'}"
                             </p>
                         </div>
                     )}
