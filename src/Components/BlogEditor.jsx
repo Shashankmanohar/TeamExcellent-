@@ -469,7 +469,7 @@ export default function BlogEditor() {
                                         <div className="relative rounded-lg overflow-hidden border-2 border-gray-200">
                                             <img
                                                 src={formData.featuredImage}
-                                                alt="Featured preview"
+                                                alt="Current blog featured image preview"
                                                 className="w-full h-48 object-cover"
                                                 onError={(e) => {
                                                     e.target.parentElement.innerHTML = '<div class="w-full h-48 flex items-center justify-center bg-gray-100 text-gray-400 text-sm">Invalid image URL</div>';

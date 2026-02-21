@@ -100,7 +100,7 @@ const StudentMarks = () => {
         className="bg-white shadow-lg rounded-xl p-6 w-full max-w-3xl grid grid-cols-1 sm:grid-cols-3 gap-6 mt-8 mx-4"
       >
         <div className="col-span-full flex justify-center mb-2">
-          <img src={logo} alt="Team Excellent Career Institute Logo" className="h-16 w-auto" />
+          <img src={logo} alt="Team Excellent Career Institute scholarship check logo" className="h-16 w-auto" />
         </div>
 
         <div>
@@ -172,7 +172,7 @@ const StudentMarks = () => {
           style={{ border: "1px solid #E5E7EB" }}
         >
           <div className="flex flex-col items-center mb-6">
-            <img src={logo} alt="Team Excellent Career Institute Marksheet Logo" className="h-20 mb-2" />
+            <img src={logo} alt="Team Excellent Career Institute Marksheet Official Logo" className="h-20 mb-2" />
             <h2 className="text-xl font-bold text-center underline">
               Scholarship Examination Report
             </h2>

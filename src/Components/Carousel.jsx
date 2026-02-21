@@ -7,9 +7,9 @@ export default function Carousel() {
   const [currentSlide, setCurrentSlide] = useState(0);
 
   const slides = [
-    { id: 1, image: Banner1, alt: "Promotional Banner 1" },
-    { id: 2, image: Banner2, alt: "Promotional Banner 2" },
-    { id: 3, image: Banner3, alt: "Promotional Banner 3" },
+    { id: 1, image: Banner1, alt: "IIT-JEE and NEET Coaching Banner - Team Excellent Patna" },
+    { id: 2, image: Banner2, alt: "Medical Entrance Preparation NEET UG Coaching Banner" },
+    { id: 3, image: Banner3, alt: "School Foundation Class 6 to 10 Academic Coaching Banner" },
   ];
 
   useEffect(() => {
@@ -29,16 +29,14 @@ export default function Carousel() {
     <div className="max-w-7xl mx-auto px-2 py-4 sm:px-4 mt-30 sm:py-6">
       {/* ====== Heading Section ====== */}
       <div className="text-center mt-8 mb-6">
-        <h1 className="text-4xl sm:text-6xl font-bold text-[#522871]">
-          Team Excellent
+        <h1 className="text-3xl sm:text-5xl lg:text-6xl font-bold text-[#522871] leading-tight px-4">
+          Turning <span className="text-[#b72e2f]">Bihar’s Talent</span> into <br />
+          IITians & Doctors
         </h1>
-        <div className="w-40 h-1 bg-[#9333ea] mx-auto mt-2 rounded"></div>
-        <p className="text-[#374151] mt-2 text-sm sm:text-base">
-          Shaping Young Minds for{" "}
-          <span className="text-[#b72e2f] font-semibold">
-            IIT-JEE <span className="text-[#522871]">&</span> NEET
-          </span>{" "}
-          Success
+        <div className="w-40 h-1 bg-[#9333ea] mx-auto mt-4 rounded"></div>
+        <p className="text-[#374151] mt-4 text-sm sm:text-lg max-w-2xl mx-auto px-4">
+          Your Trusted <span className="font-semibold text-[#522871]">IIT-JEE coaching in Patna</span> |
+          Top <span className="font-semibold text-[#b72e2f]">NEET coaching in Patna</span>
         </p>
       </div>
 
@@ -52,9 +50,8 @@ export default function Carousel() {
         {slides.map((slide, index) => (
           <div
             key={slide.id}
-            className={`absolute inset-0 transition-opacity duration-1000 ${
-              index === currentSlide ? "opacity-100" : "opacity-0"
-            }`}
+            className={`absolute inset-0 transition-opacity duration-1000 ${index === currentSlide ? "opacity-100" : "opacity-0"
+              }`}
           >
             <img
               src={slide.image}
@@ -118,11 +115,10 @@ export default function Carousel() {
               onClick={() => goToSlide(index)}
               aria-label={`Go to slide ${index + 1}`}
               aria-current={index === currentSlide}
-              className={`w-2 h-2 sm:w-3 sm:h-3 rounded-full transition-all ${
-                index === currentSlide
-                  ? "bg-white scale-110"
-                  : "bg-white bg-opacity-50"
-              }`}
+              className={`w-2 h-2 sm:w-3 sm:h-3 rounded-full transition-all ${index === currentSlide
+                ? "bg-white scale-110"
+                : "bg-white bg-opacity-50"
+                }`}
             />
           ))}
         </div>

@@ -97,7 +97,7 @@ export default function Blogs() {
                                                 <div className="relative h-72 overflow-hidden bg-gradient-to-br from-[#5B2D7C] to-[#902ce8]">
                                                     <img
                                                         src={blog.featuredImage}
-                                                        alt={blog.title}
+                                                        alt={`Cover image for blog post: ${blog.title}`}
                                                         className="w-full h-full object-cover transition-transform duration-300"
                                                         onError={(e) => {
                                                             e.target.style.display = 'none';

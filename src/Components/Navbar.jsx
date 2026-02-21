@@ -38,7 +38,7 @@ export default function Navbar() {
         <Link to="/" className="flex items-center">
           <img
             src={TeamExcellent}
-            alt="Team Excellent Logo"
+            alt="Team Excellent Career Institute Logo"
             className="w-66 sm:w-70 md:w-70 lg:w-80 object-contain"
             loading="lazy"
           />

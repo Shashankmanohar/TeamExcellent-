@@ -42,24 +42,44 @@ function AdmissionProcess() {
 
   const faqs = [
     {
-      question: "Is the entrance test mandatory for admission?",
+      question: "What courses are offered at Team Excellent Career Institute?",
       answer:
-        "Yes, the entrance test is mandatory to evaluate the student’s aptitude and eligibility for scholarships.",
+        "Team Excellent Career Institute offers coaching for IIT-JEE, NEET, and Foundation courses for Class 6 to Class 10 students, focusing on strong concept building and competitive exam preparation.",
     },
     {
-      question: "Can I apply for a scholarship after admission?",
+      question: "Are doubt classes available for students?",
       answer:
-        "No, scholarships are only awarded based on performance in the entrance test conducted before admission.",
+        "Yes. Regular doubt-clearing classes are conducted where students can ask questions and get detailed explanations from faculty members. These sessions help students strengthen concepts and improve confidence.",
     },
     {
-      question: "What documents are required during admission?",
+      question: "What are smart classes and how do they help students?",
       answer:
-        "You need to submit ID proof, mark sheets, passport size photos, and other relevant certificates if applicable.",
+        "Smart classes use digital learning tools, visual explanations, and interactive teaching methods to make complex topics easier to understand. This improves student engagement and helps in better concept retention.",
     },
     {
-      question: "When does the new batch start?",
+      question: "Is personal attention given to each student?",
       answer:
-        "Batch start dates vary by course. Please contact the institute for the latest schedule.",
+        "Yes. The institute maintains focused batch sizes so that every student receives individual attention, mentoring, and academic guidance.",
+    },
+    {
+      question: "Do you conduct regular tests series?",
+      answer:
+        "Yes. Regular tests, mock exams, and performance analysis are conducted to track student progress and improve exam readiness.",
+    },
+    {
+      question: "Can beginners join JEE or NEET coaching?",
+      answer:
+        "Yes. Students without prior competitive exam experience can join. The institute provides foundation-level teaching and step-by-step guidance for beginners.",
+    },
+    {
+      question: "How can students take admission?",
+      answer:
+        "Students can visit the institute, contact the admission team, or fill out the enquiry form on the official website for admission details.",
+    },
+    {
+      question: "Can Bihar Board students prepare for JEE and NEET?",
+      answer:
+        "Yes, absolutely. Bihar Board students can successfully prepare for JEE and NEET. The syllabus of these competitive exams is largely based on NCERT, which makes it suitable for Bihar Board students as well. With proper guidance, regular practice, and concept-based learning, many Bihar Board students achieve excellent results in competitive exams.",
     },
   ];
 
@@ -73,9 +93,9 @@ function AdmissionProcess() {
     <section className="w-full bg-white py-12 mt-30 px-6">
       {/* Heading */}
       <div className="text-center mb-12">
-        <h1 className="text-4xl sm:text-5xl font-bold text-[#522871]">
+        <h2 className="text-4xl sm:text-5xl font-bold text-[#522871]">
           Admission Process
-        </h1>
+        </h2>
         <div className="w-40 h-1 bg-[#9333ea] mx-auto mt-2 rounded"></div>
         <p className="text-[#4b5563] mt-3 text-base sm:text-lg">
           Follow these simple steps to join{" "}

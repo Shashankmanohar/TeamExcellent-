@@ -11,6 +11,8 @@ import Neet from './Pages/Neet'
 import Blogs from './Pages/Blogs'
 import BlogDetail from './Pages/BlogDetail'
 import AdminBlogs from './Pages/AdminBlogs'
+import AdminEnrollments from './Pages/AdminEnrollments';
+import WhatsAppButton from './Components/WhatsAppButton';
 import BlogEditor from './Components/BlogEditor'
 
 // ✅ ScrollToTop Component
@@ -67,8 +69,9 @@ export default function App() {
         <Route path="/blogs" element={<Blogs />} />
         <Route path="/blogs/:permalink" element={<BlogDetail />} />
 
-        {/* Admin Blog Routes */}
+        {/* Admin Routes */}
         <Route path="/admin/blogs" element={<AdminBlogs />} />
+        <Route path="/admin/enrollments" element={<AdminEnrollments />} />
         <Route path="/admin/blogs/new" element={<BlogEditor />} />
         <Route path="/admin/blogs/edit/:id" element={<BlogEditor />} />
 
@@ -78,6 +81,7 @@ export default function App() {
         <Route path="/admin-login" element={<AdminLogin />} />
         <Route path="*" element={<ProgramPage title="404 Not Found" />} />
       </Routes>
+      <WhatsAppButton />
     </Router>
   )
 }

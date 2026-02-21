@@ -10,7 +10,7 @@ export default function Footer() {
         <div className="text-center md:text-left">
           <img
             src={TeamExcellent}
-            alt="Team Excellent Logo"
+            alt="Team Excellent Career Institute Logo - Patna's Premier Coaching"
             className="w-40 md:w-48 mx-auto rounded md:mx-0"
           />
           <p className="mt-3 text-sm">
@@ -34,7 +34,7 @@ export default function Footer() {
           <h3 className="text-lg font-semibold mb-3">Student Zone</h3>
           <ul className="space-y-2 text-sm">
             <li><Link to="/student-portal" className="hover:text-gray-300 transition-colors">Student Portal</Link></li>
-            <li><Link to="/library" className="hover:text-gray-300 transition-colors">Library</Link></li>
+
             <li><Link to="/resources" className="hover:text-gray-300 transition-colors">Resources</Link></li>
             <li><Link to="/admission" className="hover:text-gray-300 transition-colors">Admission</Link></li>
             <li><Link to="/contact" className="hover:text-gray-300 transition-colors">Contact</Link></li>

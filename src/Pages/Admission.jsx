@@ -10,15 +10,15 @@ export default function Admission() {
       <Helmet>
         {/* Title & Description */}
         <title>Admission Process | Team Excellent Coaching Institute</title>
-        <meta 
-          name="description" 
-          content="Explore the admission process at Team Excellent Coaching Institute for JEE, NEET, and school-level foundations (Class 6–10). Join us to excel with expert guidance and proven results." 
+        <meta
+          name="description"
+          content="Explore the admission process at Team Excellent Coaching Institute for JEE, NEET, and school-level foundations (Class 6–10). Join us to excel with expert guidance and proven results."
         />
 
         {/* Keywords */}
-        <meta 
-          name="keywords" 
-          content="Team Excellent admission, Team Excellent, JEE coaching admission, NEET coaching admission, foundation courses admission, Patna coaching enrollment, how to join Team Excellent, IIT JEE admission process, medical coaching admission Bihar" 
+        <meta
+          name="keywords"
+          content="Team Excellent admission, Team Excellent, JEE coaching admission, NEET coaching admission, foundation courses admission, Patna coaching enrollment, how to join Team Excellent, IIT JEE admission process, medical coaching admission Bihar"
         />
 
         {/* Open Graph */}

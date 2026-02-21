@@ -185,7 +185,7 @@ export default function BlogDetail() {
                             <div className="rounded-2xl overflow-hidden shadow-2xl">
                                 <img
                                     src={blog.featuredImage}
-                                    alt={blog.seoTitle || blog.title}
+                                    alt={blog.seoTitle || `Featured image for ${blog.title} - Team Excellent Career Institute`}
                                     className="w-full h-auto max-h-[600px] object-cover"
                                     onError={(e) => {
                                         e.target.style.display = 'none';

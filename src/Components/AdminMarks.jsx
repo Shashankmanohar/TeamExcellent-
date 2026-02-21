@@ -146,7 +146,7 @@ const AdminMarks = () => {
         <Card>
           <form onSubmit={handleLogin} className="space-y-4 w-70 lg:w-100">
             <div className="flex justify-center">
-              <img src={TeamExcellent} alt="Team Excellent Career Institute Admin Logo" className="w-40 md:w-56" />
+              <img src={TeamExcellent} alt="Team Excellent Career Institute Admin Portal Logo" className="w-40 md:w-56" />
             </div>
             <h2 className="text-xl font-bold text-center">Admin Login</h2>
             <Input
@@ -203,6 +203,12 @@ const AdminMarks = () => {
             className="px-4 py-2 bg-white border-2 border-[#902ce8] text-[#902ce8] rounded font-semibold hover:bg-[#902ce8] hover:text-white transition-colors"
           >
             📝 Blog Management
+          </button>
+          <button
+            onClick={() => navigate('/admin/enrollments')}
+            className="px-4 py-2 bg-white border-2 border-[#902ce8] text-[#902ce8] rounded font-semibold hover:bg-[#902ce8] hover:text-white transition-colors"
+          >
+            🎓 Student Enrollments
           </button>
         </div>
       </Card>
