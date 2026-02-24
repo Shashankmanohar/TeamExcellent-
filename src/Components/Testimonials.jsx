@@ -87,7 +87,7 @@ export default function Testimonials() {
             <div className="relative flex overflow-hidden">
                 {/* Infinite Scroll Container */}
                 <div
-                    className="flex gap-6 py-4 px-3 animate-marquee"
+                    className="flex gap-4 sm:gap-6 py-4 px-3 animate-marquee"
                     onMouseMove={handleMouseMove}
                     onMouseLeave={handleMouseLeave}
                     style={{
@@ -98,7 +98,7 @@ export default function Testimonials() {
                     {duplicatedTestimonials.map((testimonial, index) => (
                         <div
                             key={index}
-                            className="w-[350px] sm:w-[450px] flex-shrink-0 bg-gray-50 p-8 rounded-[2rem] border border-gray-100 shadow-sm hover:shadow-md transition-all duration-300 flex flex-col group"
+                            className="w-[280px] sm:w-[450px] flex-shrink-0 bg-gray-50 p-6 sm:p-8 rounded-[2rem] border border-gray-100 shadow-sm hover:shadow-md transition-all duration-300 flex flex-col group"
                         >
                             <div className="flex items-center gap-4 mb-4">
                                 <div className="w-12 h-12 bg-[#522871] text-white rounded-full flex items-center justify-center font-bold text-xl shadow-inner group-hover:scale-110 transition-transform duration-300">
@@ -114,7 +114,7 @@ export default function Testimonials() {
                                     </div>
                                 </div>
                             </div>
-                            <p className="text-gray-600 leading-relaxed italic">
+                            <p className="text-gray-600 text-sm sm:text-base leading-relaxed italic">
                                 "{testimonial.review}"
                             </p>
                         </div>
@@ -122,8 +122,8 @@ export default function Testimonials() {
                 </div>
 
                 {/* Gradient Overlays for smooth edges */}
-                <div className="absolute inset-y-0 left-0 w-32 bg-gradient-to-r from-white to-transparent pointer-events-none z-10"></div>
-                <div className="absolute inset-y-0 right-0 w-32 bg-gradient-to-l from-white to-transparent pointer-events-none z-10"></div>
+                <div className="absolute inset-y-0 left-0 w-12 sm:w-32 bg-gradient-to-r from-white to-transparent pointer-events-none z-10"></div>
+                <div className="absolute inset-y-0 right-0 w-12 sm:w-32 bg-gradient-to-l from-white to-transparent pointer-events-none z-10"></div>
             </div>
         </section>
     );
