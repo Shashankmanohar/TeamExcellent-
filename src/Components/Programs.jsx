@@ -4,6 +4,9 @@ import EnrollmentForm from "./EnrollmentForm";
 import Banner1 from "../assets/Banner_1.webp";
 import Banner2 from "../assets/Banner_2.webp";
 import Banner3 from "../assets/Banner_3.webp";
+import Jee from "../assets/Jee.webp";
+import Neet from "../assets/Neet.webp";
+import Foundation from "../assets/Foundation.webp";
 
 export default function Programs() {
     const [isModalOpen, setIsModalOpen] = useState(false);
@@ -20,7 +23,7 @@ export default function Programs() {
             title: "IIT JEE Entrance Preparation (Mains & Advance)",
             description:
                 "Master Physics, Chemistry, and Mathematics with concept-based learning, regular tests, and expert guidance for IIT JEE success.",
-            image: Banner1,
+            image: Jee,
             link: "/programs/jee",
             tag: "Offline",
             accentColor: "bg-[#522871]",
@@ -31,7 +34,7 @@ export default function Programs() {
             title: "NEET UG Medical Entrance Program",
             description:
                 "From NCERT mastery to advanced problem solving — a complete program designed to help you crack NEET with confidence.",
-            image: Banner2,
+            image: Neet,
             link: "/programs/neet",
             tag: "Offline",
             accentColor: "bg-[#b72e2f]",
@@ -42,7 +45,7 @@ export default function Programs() {
             title: "School Foundation Course (Class 6–10)",
             description:
                 "Understand concepts clearly, practice smartly, and build strong basics in Science and Mathematics for better results in school and future exams.",
-            image: Banner3,
+            image: Foundation,
             link: "/programs/class-6-to-10",
             tag: "Offline",
             accentColor: "bg-blue-600",
