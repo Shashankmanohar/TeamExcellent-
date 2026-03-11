@@ -182,11 +182,11 @@ export default function BlogDetail() {
                     {/* Featured Image */}
                     {blog.featuredImage && (
                         <div className="mb-12 -mx-6 sm:-mx-8 lg:-mx-12">
-                            <div className="rounded-2xl overflow-hidden shadow-2xl">
+                            <div className="rounded-2xl overflow-hidden shadow-2xl bg-gray-100 flex items-center justify-center">
                                 <img
                                     src={blog.featuredImage}
                                     alt={blog.seoTitle || `Featured image for ${blog.title} - Team Excellent Career Institute`}
-                                    className="w-full h-auto max-h-[600px] object-cover"
+                                    className="w-full h-auto max-h-[600px] object-contain"
                                     onError={(e) => {
                                         e.target.style.display = 'none';
                                     }}

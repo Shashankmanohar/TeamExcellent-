@@ -94,11 +94,11 @@ export default function Blogs() {
                                         <article className="bg-white rounded-2xl shadow-lg overflow-hidden hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 h-full flex flex-col">
                                             {/* Featured Image */}
                                             {blog.featuredImage ? (
-                                                <div className="relative h-72 overflow-hidden bg-gradient-to-br from-[#5B2D7C] to-[#902ce8]">
+                                                <div className="relative aspect-[16/9] overflow-hidden bg-gray-100 flex items-center justify-center">
                                                     <img
                                                         src={blog.featuredImage}
                                                         alt={`Cover image for blog post: ${blog.title}`}
-                                                        className="w-full h-full object-cover transition-transform duration-300"
+                                                        className="w-full h-full object-contain transition-transform duration-300"
                                                         onError={(e) => {
                                                             e.target.style.display = 'none';
                                                             e.target.parentElement.innerHTML = '<div class="w-full h-full flex items-center justify-center text-white text-6xl">📝</div>';
@@ -114,7 +114,7 @@ export default function Blogs() {
                                                     </div>
                                                 </div>
                                             ) : (
-                                                <div className="relative h-72 bg-gradient-to-br from-[#5B2D7C] to-[#902ce8] flex items-center justify-center">
+                                                <div className="relative aspect-[16/9] bg-gradient-to-br from-[#5B2D7C] to-[#902ce8] flex items-center justify-center">
                                                     <span className="text-white text-7xl">📝</span>
                                                     {/* Category Badge */}
                                                     <div className="absolute top-4 left-4 flex flex-wrap gap-2">
