@@ -40,36 +40,51 @@ export default function Navbar() {
             src={TeamExcellent}
             alt="Team Excellent Career Institute Logo"
             className="w-66 sm:w-70 md:w-70 lg:w-80 object-contain"
-            loading="lazy"
+            loading="eager"
+            fetchpriority="high"
+            decoding="async"
           />
         </Link>
 
         {/* Desktop Menu */}
-        <ul className="hidden lg:flex items-center space-x-6 text-sm lg:text-base text-[#0B0B45] font-semibold">
-          <NavItem to="/" label="HOME" />
-          <NavItem to="/about" label="ABOUT" />
-          <NavItem to="/blogs" label="BLOG" />
+        <ul className="hidden lg:flex items-center gap-4 xl:gap-8 text-[15px] text-[#0B0B45] font-semibold">
+          <NavItem to="/" label="Home" />
+          <NavItem to="/about" label="About" />
           <Dropdown
-            label="PROGRAMS"
+            label="Programs"
             items={[
               { to: "/programs/jee", label: "JEE" },
               { to: "/programs/neet", label: "NEET" },
               { to: "/programs/class-6-to-10", label: "Class 6 to 10" },
             ]}
           />
-          <NavItem to="/student-portal" label="STUDENT ZONE" />
-          <NavItem to="/admission" label="ADMISSION" />
-          <NavItem to="/contact" label="CONTACT" />
-
-          {/* Admin Login Button */}
-          <li>
+          <NavItem to="/student-portal" label="Student Zone" />
+          <NavItem to="/blogs" label="Blog" />
+          <NavItem to="/admission" label="Admission" />
+          <NavItem to="/result" label="Result" />
+          
+          {/* Animated Contact Us Button */}
+          <motion.li
+            whileHover={{ scale: 1.05 }}
+            whileTap={{ scale: 0.95 }}
+            animate={{ 
+              scale: [1, 1.02, 1],
+            }}
+            transition={{
+              duration: 2,
+              repeat: Infinity,
+              ease: "easeInOut"
+            }}
+            className="ml-2"
+          >
             <Link
-              to="/admin-login"
-              className="ml-4 px-4 py-1.5 rounded-md bg-[#5B2D7C] text-white hover:bg-[#3F1D5B] transition-colors"
+              to="/contact"
+              className="px-6 py-2.5 bg-gradient-to-r from-[#5B2D7C] to-[#8424bd] text-white rounded-full 
+                         shadow-md hover:shadow-lg transition-all flex items-center gap-2 whitespace-nowrap"
             >
-              Admin Login
+              Contact Us
             </Link>
-          </li>
+          </motion.li>
         </ul>
 
         {/* Mobile Menu Button */}
@@ -94,11 +109,10 @@ export default function Navbar() {
                        flex flex-col items-center py-6 space-y-4 
                        text-[#0B0B45] min-h-[calc(100vh-64px)] z-40"
           >
-            <NavItem to="/" label="HOME" mobile onClick={() => setIsOpen(false)} />
-            <NavItem to="/about" label="ABOUT" mobile onClick={() => setIsOpen(false)} />
-            <NavItem to="/blogs" label="BLOG" mobile onClick={() => setIsOpen(false)} />
+            <NavItem to="/" label="Home" mobile onClick={() => setIsOpen(false)} />
+            <NavItem to="/about" label="About" mobile onClick={() => setIsOpen(false)} />
             <DropdownMobile
-              label="PROGRAMS"
+              label="Programs"
               items={[
                 { to: "/programs/jee", label: "JEE" },
                 { to: "/programs/neet", label: "NEET" },
@@ -108,25 +122,27 @@ export default function Navbar() {
             />
             <NavItem
               to="/student-portal"
-              label="STUDENT ZONE"
+              label="Student Zone"
               mobile
               onClick={() => setIsOpen(false)}
             />
-            <NavItem to="/admission" label="ADMISSION" mobile onClick={() => setIsOpen(false)} />
-            <NavItem to="/contact" label="CONTACT" mobile onClick={() => setIsOpen(false)} />
-
-            {/* Divider */}
-            <div className="w-4/5 border-t border-gray-200 my-3"></div>
-
-            {/* Mobile Admin Login Button */}
-            <Link
-              to="/admin-login"
-              onClick={() => setIsOpen(false)}
-              className="px-6 py-2 rounded-xl bg-[#5B2D7C] text-white font-medium 
-                         hover:bg-[#3F1D5B] transition-colors shadow-md"
+            <NavItem to="/blogs" label="Blog" mobile onClick={() => setIsOpen(false)} />
+            <NavItem to="/admission" label="Admission" mobile onClick={() => setIsOpen(false)} />
+            <NavItem to="/result" label="Result" mobile onClick={() => setIsOpen(false)} />
+            
+            {/* Mobile Contact Button */}
+            <motion.div
+              whileTap={{ scale: 0.95 }}
+              className="w-4/5 pt-2"
             >
-              Admin Login
-            </Link>
+              <Link 
+                to="/contact" 
+                onClick={() => setIsOpen(false)}
+                className="block w-full py-3 bg-gradient-to-r from-[#5B2D7C] to-[#8424bd] text-white text-center font-bold rounded-2xl shadow-md"
+              >
+                Contact Us
+              </Link>
+            </motion.div>
           </motion.div>
         )}
       </AnimatePresence>

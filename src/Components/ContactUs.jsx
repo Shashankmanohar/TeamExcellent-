@@ -31,6 +31,7 @@ function ContactUs() {
             alt="Contact Team Excellent Career Institute for JEE and NEET Coaching"
             className="w-[95%] lg:w-[85%] h-auto"
             loading="lazy"
+            decoding="async"
           />
         </div>
 

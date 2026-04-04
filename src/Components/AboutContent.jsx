@@ -62,6 +62,7 @@ export default function AboutContent() {
             alt="Albert Newwel - Founder and Director of Team Excellent Career Institute"
             className="rounded-2xl shadow-lg w-[350px] h-auto"
             loading="lazy"
+            decoding="async"
           />
         </div>
 
@@ -115,24 +116,28 @@ export default function AboutContent() {
             alt="Team Excellent Career Institute classroom and facilities achievement recognition"
             className="rounded-xl shadow-lg hover:scale-105 transition duration-300"
             loading="lazy"
+            decoding="async"
           />
           <img
             src={about2}
             alt="Team Excellent student success and award ceremony recognition"
             className="rounded-xl shadow-lg hover:scale-105 transition duration-300"
             loading="lazy"
+            decoding="async"
           />
           <img
             src={about3}
             alt="Team Excellent Career Institute teaching excellence and campus life"
             className="rounded-xl shadow-lg hover:scale-105 transition duration-300"
             loading="lazy"
+            decoding="async"
           />
           <img
             src={about4}
             alt="Team Excellent award for top coaching institute in Patna"
             className="rounded-xl shadow-lg hover:scale-105 transition duration-300"
             loading="lazy"
+            decoding="async"
           />
         </div>
       </div>

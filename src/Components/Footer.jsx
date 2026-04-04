@@ -12,6 +12,8 @@ export default function Footer() {
             src={TeamExcellent}
             alt="Team Excellent Career Institute Logo - Patna's Premier Coaching"
             className="w-40 md:w-48 mx-auto rounded md:mx-0"
+            loading="lazy"
+            decoding="async"
           />
           <p className="mt-3 text-sm">
             Empowering Students for Success through quality education and guidance.

@@ -20,6 +20,8 @@ import { useEffect } from 'react'
 
 import Student from './Pages/Student'
 import AdminLogin from './Pages/AdminLogin'
+import Result from './Pages/Result'
+import PopupCard from './Components/PopupCard'
 
 function ScrollToTop() {
   const { pathname } = useLocation()
@@ -55,6 +57,7 @@ export default function App() {
     <Router>
       <AuthHandler />
       <ScrollToTop /> {/* ✅ ensures scroll resets on route change */}
+      <PopupCard />
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/about" element={<About />} />
@@ -77,6 +80,7 @@ export default function App() {
 
         {/* Other Routes */}
         <Route path="/student-portal" element={<Student />} />
+        <Route path="/result" element={<Result />} />
         <Route path="/contact" element={<Contact />} />
         <Route path="/admin-login" element={<AdminLogin />} />
         <Route path="*" element={<ProgramPage title="404 Not Found" />} />

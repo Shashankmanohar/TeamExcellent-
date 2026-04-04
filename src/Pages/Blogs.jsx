@@ -67,7 +67,7 @@ export default function Blogs() {
                         <h1 className="text-5xl md:text-6xl font-bold text-[#0B0B45] mb-6">
                             Our Blog
                         </h1>
-                        <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+                        <p classNamsddawse="text-xl text-gray-600 max-w-3xl mx-auto">
                             Insights, tips, and updates from Team Excellent Career Institute
                         </p>
                     </div>
