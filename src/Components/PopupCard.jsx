@@ -1,19 +1,20 @@
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { motion, AnimatePresence } from "framer-motion";
-import { X, Trophy, Star, Zap, GraduationCap } from "lucide-react";
+import { X, Trophy, Calendar, Sparkles, CheckCircle2 } from "lucide-react";
+import TematEnrollmentForm from "./TematEnrollmentForm";
 
 export default function PopupCard() {
   const [isVisible, setIsVisible] = useState(false);
+  const [isFormOpen, setIsFormOpen] = useState(false);
 
   useEffect(() => {
-    // Check if the popup was already shown in this session
+    // Show popup once per session with a 1.5s delay
     const isShown = sessionStorage.getItem("scholarshipPopupShown");
-
     if (!isShown) {
       const timer = setTimeout(() => {
         setIsVisible(true);
-      }, 1500); // 1.5 second delay
+      }, 1500);
       return () => clearTimeout(timer);
     }
   }, []);
@@ -23,104 +24,151 @@ export default function PopupCard() {
     sessionStorage.setItem("scholarshipPopupShown", "true");
   };
 
+  const handleRegisterClick = (e) => {
+    e.preventDefault();
+    setIsFormOpen(true);
+  };
+
   return (
     <AnimatePresence>
       {isVisible && (
-        <div className="fixed inset-0 z-[9999] flex items-center justify-center p-4">
-          {/* Backdrop */}
+        <div className="fixed inset-0 z-[9999] flex items-center justify-center p-4 sm:p-6">
+          {/* Backdrop with heavy blur */}
           <motion.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             onClick={handleClose}
-            className="absolute inset-0 bg-black/70 backdrop-blur-sm"
+            className="absolute inset-0 bg-black/80 backdrop-blur-md"
           />
 
-          {/* Modal Container */}
+          {/* Premium Modal Container */}
           <motion.div
-            initial={{ scale: 0.8, opacity: 0, y: 20 }}
+            initial={{ scale: 0.9, opacity: 0, y: 30 }}
             animate={{ scale: 1, opacity: 1, y: 0 }}
-            exit={{ scale: 0.8, opacity: 0, y: 20 }}
+            exit={{ scale: 0.9, opacity: 0, y: 30 }}
             transition={{ type: "spring", damping: 25, stiffness: 300 }}
-            className="relative w-full max-w-md bg-gradient-to-br from-[#5B2D7C] to-[#2D1640] 
-                       rounded-[2rem] shadow-2xl overflow-hidden border border-white/20"
+            className="relative w-full max-w-lg bg-[#5B2D7C] rounded-[2.5rem] shadow-[0_20px_50px_rgba(0,0,0,0.5)] 
+                       overflow-hidden border border-white/10"
           >
+            {/* Background Decorative Elements */}
+            <div className="absolute top-0 right-0 w-32 h-32 bg-yellow-400/10 rounded-full blur-3xl -mr-16 -mt-16" />
+            <div className="absolute bottom-0 left-0 w-40 h-40 bg-purple-400/10 rounded-full blur-3xl -ml-20 -mb-20" />
+
             {/* Close Button */}
             <button
               onClick={handleClose}
-              className="absolute top-4 right-4 w-9 h-9 flex items-center justify-center 
-                         bg-white/10 hover:bg-white/20 rounded-full text-white transition-colors z-10"
+              className="absolute top-6 right-6 w-10 h-10 flex items-center justify-center 
+                         bg-white/10 hover:bg-white/20 rounded-full text-white/80 hover:text-white transition-all z-20"
             >
-              <X className="w-5 h-5" />
+              <X className="w-6 h-6" />
             </button>
 
             {/* Content Area */}
-            <div className="p-6 sm:p-8 text-center">
-              {/* Header Icon */}
-              <motion.div 
-                animate={{ rotate: [0, -10, 10, -10, 0] }}
-                transition={{ duration: 4, repeat: Infinity }}
-                className="inline-flex items-center justify-center w-14 h-14 
-                           bg-yellow-400 rounded-2xl shadow-lg mb-6 transform -rotate-3"
+            <div className="relative p-8 sm:p-10 text-center z-10">
+              {/* "Test Every Sunday" Floating Badge */}
+              <motion.div
+                initial={{ x: 20, opacity: 0 }}
+                animate={{ x: 0, opacity: 1 }}
+                transition={{ delay: 0.4 }}
+                className="inline-flex items-center gap-2 px-4 py-1.5 bg-yellow-400 text-[#5B2D7C] 
+                           rounded-full text-xs font-bold uppercase tracking-wider mb-6 shadow-lg shadow-yellow-400/20"
               >
-                <Trophy className="w-8 h-8 text-[#5B2D7C]" />
+                <Calendar className="w-3.5 h-3.5" />
+                Test Every Sunday
               </motion.div>
 
-              {/* Title Section */}
-              <h2 className="text-5xl sm:text-6xl font-black text-yellow-400 mb-1 tracking-tighter drop-shadow-md">
-                TE-MAT
-              </h2>
-              <h3 className="text-xl sm:text-2xl font-bold text-white mb-4 leading-tight">
-                Team Excellent <br />
-                <span className="text-yellow-400 italic font-medium">Scholarship Test</span>
-              </h3>
-
-              {/* Subheading */}
-              <p className="text-purple-100 text-base mb-6 font-medium">
-                Your Gateway to <span className="text-white font-bold underline decoration-yellow-400 underline-offset-4 decoration-2">NEET | IIT-JEE</span> Success
-              </p>
-
-              {/* Benefits Grid */}
-              <div className="grid grid-cols-1 gap-2.5 mb-8 text-left">
-                <BenefitItem icon={<Star className="w-4 h-4 text-yellow-400" />} text="Upto 100% Scholarship" />
-                <BenefitItem icon={<Zap className="w-4 h-4 text-yellow-400" />} text="Win Scholarships" />
-                <BenefitItem icon={<GraduationCap className="w-4 h-4 text-yellow-400" />} text="Boost Your Preparation" />
+              {/* Main Branding */}
+              <div className="mb-6">
+                <motion.h2 
+                  initial={{ opacity: 0, y: 10 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: 0.2 }}
+                  className="text-6xl sm:text-7xl font-black text-white leading-none tracking-tighter"
+                >
+                  TE-MAT
+                </motion.h2>
+                <motion.p 
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  transition={{ delay: 0.3 }}
+                  className="text-yellow-400 text-lg sm:text-xl font-bold mt-1 uppercase tracking-widest"
+                >
+                  Team Excellent Scholarship Test
+                </motion.p>
               </div>
 
-              {/* Call to Action */}
-              <div className="flex flex-col gap-3">
+              {/* Hook Section */}
+              <div className="space-y-4 mb-10">
+                <div className="inline-block px-6 py-3 bg-white/5 rounded-2xl border border-white/10 backdrop-blur-sm">
+                  <p className="text-xl sm:text-2xl font-bold text-white leading-tight">
+                    Lock Your Seat at <span className="text-yellow-400 underline decoration-2 underline-offset-4">₹0</span>
+                  </p>
+                </div>
+                <p className="text-purple-100/90 text-lg">
+                  Get up to <span className="text-white font-black text-2xl">100%</span> Scholarship
+                </p>
+              </div>
+
+              {/* Benefits Pills */}
+              <div className="flex flex-wrap justify-center gap-3 mb-10">
+                <Badge text="IIT-JEE" />
+                <Badge text="NEET" />
+                <Badge text="Class 6-12" />
+              </div>
+
+              {/* Main CTA */}
+              <div className="relative">
                 <motion.div
-                  whileHover={{ scale: 1.05 }}
-                  whileTap={{ scale: 0.95 }}
+                  whileHover={{ scale: 1.02 }}
+                  whileTap={{ scale: 0.98 }}
                 >
                   <Link
                     to="/admission"
-                    onClick={handleClose}
-                    className="block w-full py-4 bg-yellow-400 hover:bg-yellow-300 
-                               text-[#5B2D7C] font-black text-lg rounded-xl 
-                               shadow-lg transition-colors tracking-tight uppercase"
+                    onClick={handleRegisterClick}
+                    className="group relative block w-full py-5 bg-gradient-to-r from-yellow-400 to-yellow-500 
+                               hover:from-yellow-300 hover:to-yellow-400 text-[#5B2D7C] font-black 
+                               text-2xl rounded-2xl shadow-[0_10px_30px_rgba(250,204,21,0.3)] 
+                               transition-all duration-300 overflow-hidden"
                   >
-                    Register Free Now
+                    {/* Reflective shine animation */}
+                    <motion.div 
+                      animate={{ x: ['-100%', '200%'] }}
+                      transition={{ duration: 2, repeat: Infinity, ease: "easeInOut", repeatDelay: 1 }}
+                      className="absolute inset-0 bg-gradient-to-r from-transparent via-white/40 to-transparent skew-x-12" 
+                    />
+                    <span className="relative flex items-center justify-center gap-2">
+                      Register Now
+                      <Sparkles className="w-6 h-6 group-hover:rotate-12 transition-transform" />
+                    </span>
                   </Link>
                 </motion.div>
-                <p className="text-purple-300 text-xs font-medium">Limited slots available!</p>
+                <div className="mt-4 flex items-center justify-center gap-2 text-purple-200/80 text-sm font-medium">
+                  <CheckCircle2 className="w-4 h-4 text-yellow-400" />
+                  Limited seats available for upcoming Sunday!
+                </div>
               </div>
             </div>
 
-            {/* Bottom Accent Decor */}
-            <div className="absolute bottom-0 left-0 right-0 h-2 bg-yellow-400/50" />
+            {/* Bottom Accent */}
+            <div className="h-2 bg-gradient-to-r from-yellow-400 via-yellow-200 to-yellow-400" />
           </motion.div>
+
+          {/* Dedicated Scholarship Form */}
+          <TematEnrollmentForm 
+            isOpen={isFormOpen} 
+            onClose={() => setIsFormOpen(false)} 
+          />
         </div>
       )}
     </AnimatePresence>
   );
 }
 
-function BenefitItem({ icon, text }) {
+function Badge({ text }) {
   return (
-    <div className="flex items-center gap-2.5 py-2 px-4 bg-white/5 rounded-xl border border-white/10 group hover:bg-white/10 transition-colors">
-      {icon}
-      <span className="text-white font-semibold text-sm sm:text-base">{text}</span>
-    </div>
+    <span className="px-4 py-1.5 rounded-full bg-white/10 border border-white/10 text-white font-bold text-sm">
+      {text}
+    </span>
   );
 }

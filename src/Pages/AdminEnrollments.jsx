@@ -177,7 +177,11 @@ export default function AdminEnrollments() {
                                             <tr key={e._id} className="hover:bg-gray-50 transition-colors">
                                                 <td className="px-6 py-6">
                                                     <div className="flex items-center gap-3">
-                                                        <div className="w-10 h-10 rounded-full bg-purple-100 text-[#5B2D7C] flex items-center justify-center font-bold">
+                                                        <div className={`w-10 h-10 rounded-full flex items-center justify-center font-bold ${
+                                                            e.course.includes('TE-MAT')
+                                                            ? 'bg-yellow-400 text-[#5B2D7C] ring-2 ring-yellow-200 shadow-sm'
+                                                            : 'bg-purple-100 text-[#5B2D7C]'
+                                                        }`}>
                                                             {e.fullName[0].toUpperCase()}
                                                         </div>
                                                         <div>
@@ -202,8 +206,13 @@ export default function AdminEnrollments() {
                                                         )}
                                                     </div>
                                                 </td>
-                                                <td className="px-6 py-6">
-                                                    <span className="inline-block px-3 py-1 bg-blue-50 text-blue-700 rounded-full text-xs font-bold mb-2">
+                                                <td className="px-6 py-6 font-medium">
+                                                    <span className={`inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-bold mb-2 ${
+                                                        e.course.includes('TE-MAT') 
+                                                        ? 'bg-yellow-100 text-yellow-800 border border-yellow-200 shadow-sm' 
+                                                        : 'bg-blue-50 text-blue-700'
+                                                    }`}>
+                                                        {e.course.includes('TE-MAT') && <Sparkles size={12} className="text-yellow-600 animate-pulse" />}
                                                         {e.course}
                                                     </span>
                                                     {e.query && (
