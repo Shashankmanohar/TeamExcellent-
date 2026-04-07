@@ -33,6 +33,30 @@ export default function Jee() {
         <meta name="twitter:title" content="JEE Coaching | Team Excellent Institute" />
         <meta name="twitter:description" content="Enroll at Team Excellent for JEE Main & Advanced coaching with IIT faculty." />
         <meta name="twitter:image" content="https://teamexcellentcareerinstitute.in/logo192.png" />
+        
+        {/* Course Schema with Ratings */}
+        <script type="application/ld+json">
+          {JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "Course",
+            "name": "IIT-JEE (Main & Advanced) Coaching",
+            "description": "Premium JEE coaching with expert IIT faculty, personalized mentoring, and high success rates in Patna.",
+            "provider": {
+              "@type": "EducationalOrganization",
+              "name": "Team Excellent Career Institute",
+              "sameAs": "https://teamexcellentcareerinstitute.in"
+            },
+            "aggregateRating": {
+              "@type": "AggregateRating",
+              "ratingValue": "4.9",
+              "reviewCount": "85"
+            },
+            "offers": {
+              "@type": "Offer",
+              "category": "Educational Program"
+            }
+          })}
+        </script>
       </Helmet>
 
       {/* ✅ Page Content */}

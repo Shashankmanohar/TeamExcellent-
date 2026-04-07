@@ -54,6 +54,30 @@ export default function Class6to10() {
           name="twitter:image"
           content="https://teamexcellentcareerinstitute.in/logo192.png"
         />
+
+        {/* Course Schema with Ratings */}
+        <script type="application/ld+json">
+          {JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "Course",
+            "name": "Foundation Courses (Class 6-10)",
+            "description": "Strong conceptual foundation in Math and Science for school exams and future competitive readiness.",
+            "provider": {
+              "@type": "EducationalOrganization",
+              "name": "Team Excellent Career Institute",
+              "sameAs": "https://teamexcellentcareerinstitute.in"
+            },
+            "aggregateRating": {
+              "@type": "AggregateRating",
+              "ratingValue": "4.9",
+              "reviewCount": "64"
+            },
+            "offers": {
+              "@type": "Offer",
+              "category": "Educational Program"
+            }
+          })}
+        </script>
       </Helmet>
 
       {/* ✅ Page Content */}

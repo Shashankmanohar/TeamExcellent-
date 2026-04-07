@@ -1,4 +1,6 @@
+import { useState, useEffect } from 'react'
 import { Helmet } from 'react-helmet-async'
+import { fetchApprovedReviews } from '../lib/reviewApi'
 import Navbar from '../Components/Navbar'
 import Carousel from '../Components/Carousel'
 import Strip from '../Components/Strip'
@@ -9,7 +11,30 @@ import TrustedSection from '../Components/TrustedSection'
 import Questions from '../Components/Questions'
 import Testimonials from '../Components/Testimonials'
 import Footer from '../Components/Footer'
+
 export default function Home() {
+  const [reviews, setReviews] = useState([])
+  const [aggregate, setAggregate] = useState({ ratingValue: "4.9", ratingCount: "120" })
+
+  useEffect(() => {
+    const getReviews = async () => {
+      try {
+        const data = await fetchApprovedReviews()
+        if (data.success && data.reviews.length > 0) {
+          setReviews(data.reviews.slice(0, 5)) // Take top 5 for schema
+          const avg = data.reviews.reduce((acc, curr) => acc + curr.rating, 0) / data.reviews.length
+          setAggregate({
+            ratingValue: avg.toFixed(1),
+            ratingCount: data.reviews.length.toString()
+          })
+        }
+      } catch (error) {
+        console.error("Schema fetch error:", error)
+      }
+    }
+    getReviews()
+  }, [])
+
   return (
     <>
       <Helmet>
@@ -49,9 +74,23 @@ export default function Home() {
             },
             "aggregateRating": {
               "@type": "AggregateRating",
-              "ratingValue": "4.9",
-              "ratingCount": "100"
-            }
+              "ratingValue": aggregate.ratingValue,
+              "ratingCount": aggregate.ratingCount
+            },
+            "review": reviews.map(r => ({
+              "@type": "Review",
+              "author": {
+                "@type": "Person",
+                "name": r.name
+              },
+              "datePublished": new Date(r.createdAt).toISOString().split('T')[0],
+              "reviewBody": r.review,
+              "reviewRating": {
+                "@type": "Rating",
+                "ratingValue": r.rating.toString(),
+                "bestRating": "5"
+              }
+            }))
           })}
         </script>
 

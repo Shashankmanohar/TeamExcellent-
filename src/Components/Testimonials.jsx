@@ -1,5 +1,6 @@
 import React, { useState, useRef, useEffect } from "react";
-import { Star } from "lucide-react";
+import { Star, Loader2 } from "lucide-react";
+import { fetchApprovedReviews } from "../lib/reviewApi";
 
 const testimonials = [
     {
@@ -36,21 +37,35 @@ const testimonials = [
 
 export default function Testimonials() {
     const [isPaused, setIsPaused] = useState(false);
+    const [reviews, setReviews] = useState(testimonials); // Fallback to hardcoded
+    const [loading, setLoading] = useState(true);
     const stopTimeoutRef = useRef(null);
 
+    useEffect(() => {
+        const loadReviews = async () => {
+            try {
+                const data = await fetchApprovedReviews();
+                if (data.success && data.reviews.length > 0) {
+                    setReviews(data.reviews);
+                }
+            } catch (error) {
+                console.error("Failed to load reviews:", error);
+            } finally {
+                setLoading(false);
+            }
+        };
+        loadReviews();
+    }, []);
+
     // Duplicate the list for seamless infinite scroll
-    const duplicatedTestimonials = [...testimonials, ...testimonials];
+    const duplicatedTestimonials = [...reviews, ...reviews];
 
     const handleMouseMove = () => {
-        // If moving, resume scrolling
         setIsPaused(false);
-
-        // Reset the timer to pause after 100ms of no movement
         if (stopTimeoutRef.current) clearTimeout(stopTimeoutRef.current);
-
         stopTimeoutRef.current = setTimeout(() => {
             setIsPaused(true);
-        }, 150); // Small delay to detect "stillness"
+        }, 150);
     };
 
     const handleMouseLeave = () => {

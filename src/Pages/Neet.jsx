@@ -33,6 +33,30 @@ export default function Neet() {
         <meta name="twitter:title" content="NEET Coaching | Team Excellent Institute" />
         <meta name="twitter:description" content="Best NEET coaching in Patna for medical aspirants. Join Team Excellent for success in NEET UG." />
         <meta name="twitter:image" content="https://teamexcellentcareerinstitute.in/logo192.png" />
+
+        {/* Course Schema with Ratings */}
+        <script type="application/ld+json">
+          {JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "Course",
+            "name": "NEET (Medical Entrance) Coaching",
+            "description": "Expert NEET coaching with specialized biology mentoring and result-oriented preparation in Patna.",
+            "provider": {
+              "@type": "EducationalOrganization",
+              "name": "Team Excellent Career Institute",
+              "sameAs": "https://teamexcellentcareerinstitute.in"
+            },
+            "aggregateRating": {
+              "@type": "AggregateRating",
+              "ratingValue": "4.8",
+              "reviewCount": "92"
+            },
+            "offers": {
+              "@type": "Offer",
+              "category": "Educational Program"
+            }
+          })}
+        </script>
       </Helmet>
 
       {/* ✅ Page Content */}

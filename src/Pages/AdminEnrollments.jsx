@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { Trash2, ExternalLink, Calendar, User, Phone, Mail, MapPin, BookOpen, Search, Download } from 'lucide-react';
+import { Trash2, ExternalLink, Calendar, User, Phone, Mail, MapPin, BookOpen, Search, Download, Sparkles } from 'lucide-react';
 import { fetchEnrollments, deleteEnrollment } from '../lib/enrollmentApi';
 import Navbar from '../Components/Navbar';
 import Footer from '../Components/Footer';

@@ -12,6 +12,7 @@ import Blogs from './Pages/Blogs'
 import BlogDetail from './Pages/BlogDetail'
 import AdminBlogs from './Pages/AdminBlogs'
 import AdminEnrollments from './Pages/AdminEnrollments';
+import AdminReviews from './Pages/AdminReviews';
 import WhatsAppButton from './Components/WhatsAppButton';
 import BlogEditor from './Components/BlogEditor'
 
@@ -75,6 +76,7 @@ export default function App() {
         {/* Admin Routes */}
         <Route path="/admin/blogs" element={<AdminBlogs />} />
         <Route path="/admin/enrollments" element={<AdminEnrollments />} />
+        <Route path="/admin/reviews" element={<AdminReviews />} />
         <Route path="/admin/blogs/new" element={<BlogEditor />} />
         <Route path="/admin/blogs/edit/:id" element={<BlogEditor />} />
 
