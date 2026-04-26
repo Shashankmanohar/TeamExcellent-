@@ -55,26 +55,22 @@ export default function Class6to10() {
           content="https://teamexcellentcareerinstitute.in/logo192.png"
         />
 
-        {/* Course Schema with Ratings */}
+        {/* Course Schema */}
         <script type="application/ld+json">
           {JSON.stringify({
             "@context": "https://schema.org",
             "@type": "Course",
-            "name": "Foundation Courses (Class 6-10)",
-            "description": "Strong conceptual foundation in Math and Science for school exams and future competitive readiness.",
+            "name": "School Foundation Program (Class 6-10)",
+            "description": "Comprehensive foundation program for students in Class 6 to 10, focusing on building strong concepts in Math, Science, and logical reasoning for school excellence and future competitive exams like JEE/NEET.",
             "provider": {
               "@type": "EducationalOrganization",
               "name": "Team Excellent Career Institute",
-              "sameAs": "https://teamexcellentcareerinstitute.in"
+              "url": "https://teamexcellentcareerinstitute.in/"
             },
             "aggregateRating": {
               "@type": "AggregateRating",
               "ratingValue": "4.9",
-              "reviewCount": "64"
-            },
-            "offers": {
-              "@type": "Offer",
-              "category": "Educational Program"
+              "reviewCount": "150"
             }
           })}
         </script>

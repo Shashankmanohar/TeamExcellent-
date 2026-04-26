@@ -59,39 +59,64 @@ export default function Home() {
 
         {/* Structured Data (Schema.org) */}
         <script type="application/ld+json">
-          {JSON.stringify({
-            "@context": "https://schema.org",
-            "@type": "EducationalOrganization",
-            "name": "Team Excellent Career Institute",
-            "url": "https://teamexcellentcareerinstitute.in",
-            "logo": "https://teamexcellentcareerinstitute.in/logo192.png",
-            "description": "Premier IIT-JEE and NEET coaching institute in Patna, Bihar, specializing in competitive exam preparation and school foundations.",
-            "address": {
-              "@type": "PostalAddress",
-              "addressLocality": "Patna",
-              "addressRegion": "Bihar",
-              "addressCountry": "IN"
-            },
-            "aggregateRating": {
-              "@type": "AggregateRating",
-              "ratingValue": aggregate.ratingValue,
-              "ratingCount": aggregate.ratingCount
-            },
-            "review": reviews.map(r => ({
-              "@type": "Review",
-              "author": {
-                "@type": "Person",
-                "name": r.name
+          {JSON.stringify([
+            {
+              "@context": "https://schema.org",
+              "@type": "EducationalOrganization",
+              "name": "Team Excellent Career Institute",
+              "url": "https://teamexcellentcareerinstitute.in",
+              "logo": "https://teamexcellentcareerinstitute.in/logo192.png",
+              "description": "Team Excellent Career Institute is a Patna-based coaching institute providing JEE, NEET, and foundation courses for students aiming for competitive exams.",
+              "address": {
+                "@type": "PostalAddress",
+                "addressLocality": "Patna",
+                "addressRegion": "Bihar",
+                "addressCountry": "IN"
               },
-              "datePublished": new Date(r.createdAt).toISOString().split('T')[0],
-              "reviewBody": r.review,
-              "reviewRating": {
-                "@type": "Rating",
-                "ratingValue": r.rating.toString(),
-                "bestRating": "5"
-              }
-            }))
-          })}
+              "sameAs": [
+                "https://www.facebook.com/share/1JTxznYnFg/",
+                "https://www.instagram.com/team.excellent.patna",
+                "https://www.linkedin.com/company/teamexcellentpatna",
+                "https://www.youtube.com/@teamexcellentpatna"
+              ],
+              "aggregateRating": {
+                "@type": "AggregateRating",
+                "ratingValue": aggregate.ratingValue,
+                "ratingCount": aggregate.ratingCount
+              },
+              "review": reviews.map(r => ({
+                "@type": "Review",
+                "author": {
+                  "@type": "Person",
+                  "name": r.name
+                },
+                "datePublished": new Date(r.createdAt).toISOString().split('T')[0],
+                "reviewBody": r.review,
+                "reviewRating": {
+                  "@type": "Rating",
+                  "ratingValue": r.rating.toString(),
+                  "bestRating": "5"
+                }
+              }))
+            },
+            {
+              "@context": "https://schema.org",
+              "@type": "School",
+              "name": "Team Excellent Career Institute",
+              "image": "https://teamexcellentcareerinstitute.in/logo192.png",
+              "url": "https://teamexcellentcareerinstitute.in/",
+              "telephone": "+91-9942000371",
+              "address": {
+                "@type": "PostalAddress",
+                "addressLocality": "Patna",
+                "addressRegion": "Bihar",
+                "addressCountry": "India"
+              },
+              "areaServed": "Patna",
+              "priceRange": "₹₹",
+              "description": "Coaching institute in Patna offering JEE, NEET, and foundation courses with experienced faculty and structured learning programs."
+            }
+          ])}
         </script>
 
         {/* FAQ Schema */}
@@ -102,10 +127,26 @@ export default function Home() {
             "mainEntity": [
               {
                 "@type": "Question",
-                "name": "What courses are offered at Team Excellent Career Institute?",
+                "name": "What is Team Excellent Career Institute?",
                 "acceptedAnswer": {
                   "@type": "Answer",
-                  "text": "Team Excellent Career Institute offers coaching for IIT-JEE, NEET, and Foundation courses for Class 6 to Class 10 students, focusing on strong concept building and competitive exam preparation."
+                  "text": "Team Excellent Career Institute is a coaching institute in Patna that provides preparation for JEE, NEET, and foundation-level competitive exams."
+                }
+              },
+              {
+                "@type": "Question",
+                "name": "Which courses are offered?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "The institute offers JEE, NEET, and foundation courses for students preparing for competitive exams."
+                }
+              },
+              {
+                "@type": "Question",
+                "name": "Where is the institute located?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "Team Excellent Career Institute is located in Patna, Bihar, India."
                 }
               },
               {
@@ -113,23 +154,7 @@ export default function Home() {
                 "name": "Are doubt classes available for students?",
                 "acceptedAnswer": {
                   "@type": "Answer",
-                  "text": "Yes. Regular doubt-clearing classes are conducted where students can ask questions and get detailed explanations from faculty members. These sessions help students strengthen concepts and improve confidence."
-                }
-              },
-              {
-                "@type": "Question",
-                "name": "What are smart classes and how do they help students?",
-                "acceptedAnswer": {
-                  "@type": "Answer",
-                  "text": "Smart classes use digital learning tools, visual explanations, and interactive teaching methods to make complex topics easier to understand. This improves student engagement and helps in better concept retention."
-                }
-              },
-              {
-                "@type": "Question",
-                "name": "Can Bihar Board students prepare for JEE and NEET?",
-                "acceptedAnswer": {
-                  "@type": "Answer",
-                  "text": "Yes, absolutely. Bihar Board students can successfully prepare for JEE and NEET. The syllabus of these competitive exams is largely based on NCERT, which makes it suitable for Bihar Board students as well."
+                  "text": "Yes. Regular doubt-clearing classes are conducted where students can ask questions and get detailed explanations from faculty members."
                 }
               }
             ]
