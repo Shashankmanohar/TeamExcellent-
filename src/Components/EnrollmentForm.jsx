@@ -51,8 +51,34 @@ export default function EnrollmentForm({ isOpen, onClose, initialCourse }) {
     const handleSubmit = async (e) => {
         e.preventDefault();
 
+        // Validation Regex
+        const nameRegex = /^[a-zA-Z\s]{3,50}$/;
+        const mobileRegex = /^[6-9]\d{9}$/;
+        const emailRegex = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
+        const cityRegex = /^[a-zA-Z\s]{2,50}$/;
+
         if (!formData.fullName || !formData.mobileNumber || !formData.course || !formData.city) {
             toast.error('Please fill in all mandatory fields');
+            return;
+        }
+
+        if (!nameRegex.test(formData.fullName)) {
+            toast.error('Name should only contain letters and be 3-50 chars long');
+            return;
+        }
+
+        if (!mobileRegex.test(formData.mobileNumber)) {
+            toast.error('Please enter a valid 10-digit mobile number');
+            return;
+        }
+
+        if (formData.email && !emailRegex.test(formData.email)) {
+            toast.error('Please enter a valid email address');
+            return;
+        }
+
+        if (!cityRegex.test(formData.city)) {
+            toast.error('Please enter a valid city name');
             return;
         }
 
