@@ -27,6 +27,8 @@ export default function BlogEditor() {
         seoDescription: '',
         seoKeywords: '',
         seoExtraHead: '',
+        ogTitle: '',
+        ogDescription: '',
         tag: '',
         authorName: ''
     });
@@ -68,6 +70,8 @@ export default function BlogEditor() {
                 seoDescription: blog.seoDescription || '',
                 seoKeywords: blog.seoKeywords || '',
                 seoExtraHead: blog.seoExtraHead || '',
+                ogTitle: blog.ogTitle || '',
+                ogDescription: blog.ogDescription || '',
                 tag: blog.tag || '',
                 authorName: blog.authorName || ''
             });
@@ -525,6 +529,36 @@ export default function BlogEditor() {
                                         value={formData.seoKeywords}
                                         onChange={handleChange}
                                         placeholder="legal terminology for transcription and court reporting, legal transcription, court reporting"
+                                        className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#5B2D7C] focus:border-transparent"
+                                    />
+                                </div>
+
+                                {/* OG Title */}
+                                <div className="mb-4">
+                                    <label className="block text-sm font-medium text-gray-700 mb-2">
+                                        OG Title (Open Graph)
+                                    </label>
+                                    <input
+                                        type="text"
+                                        name="ogTitle"
+                                        value={formData.ogTitle}
+                                        onChange={handleChange}
+                                        placeholder="Social media share title"
+                                        className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#5B2D7C] focus:border-transparent"
+                                    />
+                                </div>
+
+                                {/* OG Description */}
+                                <div className="mb-4">
+                                    <label className="block text-sm font-medium text-gray-700 mb-2">
+                                        OG Description (Open Graph)
+                                    </label>
+                                    <textarea
+                                        name="ogDescription"
+                                        value={formData.ogDescription}
+                                        onChange={handleChange}
+                                        rows={3}
+                                        placeholder="Social media share description..."
                                         className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#5B2D7C] focus:border-transparent"
                                     />
                                 </div>

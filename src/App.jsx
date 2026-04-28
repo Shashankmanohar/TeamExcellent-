@@ -1,5 +1,6 @@
 import React from 'react'
 import { BrowserRouter as Router, Routes, Route, useNavigate, useLocation } from 'react-router-dom'
+import { Helmet } from 'react-helmet-async'
 
 import Home from './Pages/Home'
 import About from './Pages/About'
@@ -59,6 +60,16 @@ export default function App() {
       <AuthHandler />
       <ScrollToTop /> {/* ✅ ensures scroll resets on route change */}
       <PopupCard />
+      <Helmet>
+        <title>Team Excellent - Best Coaching in Patna for JEE, NEET & Foundations</title>
+        <meta property="og:title" content="Team Excellent - Best Institute in Patna for JEE, NEET & Foundations" />
+        <meta property="og:type" content="website" />
+        <meta property="og:url" content="https://teamexcellentcareerinstitute.in/" />
+        <meta property="og:image" content="https://teamexcellentcareerinstitute.in/public/Favicon.webp" />
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content="Team Excellent - Best Institute in Patna for JEE, NEET & Foundations" />
+        <meta name="twitter:image" content="https://teamexcellentcareerinstitute.in/logo192.png" />
+      </Helmet>
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/about" element={<About />} />

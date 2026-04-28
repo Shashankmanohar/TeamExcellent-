@@ -124,10 +124,15 @@ export default function BlogDetail() {
                     name="description"
                     content={blog.seoDescription || blog.excerpt || blog.description.replace(/<[^>]*>/g, '').substring(0, 160)}
                 />
-                <meta property="og:title" content={blog.seoTitle || blog.title} />
-                <meta property="og:description" content={blog.seoDescription || blog.excerpt || blog.description.replace(/<[^>]*>/g, '').substring(0, 160)} />
-                <meta name="twitter:title" content={blog.seoTitle || blog.title} />
-                <meta name="twitter:description" content={blog.seoDescription || blog.excerpt || blog.description.replace(/<[^>]*>/g, '').substring(0, 160)} />
+                <meta property="og:type" content="article" />
+                <meta property="og:url" content={window.location.href} />
+                <meta property="og:title" content={blog.ogTitle || blog.seoTitle || blog.title} />
+                <meta property="og:description" content={blog.ogDescription || blog.seoDescription || blog.excerpt || blog.description.replace(/<[^>]*>/g, '').substring(0, 160)} />
+                {blog.featuredImage && <meta property="og:image" content={blog.featuredImage} />}
+                <meta name="twitter:card" content="summary_large_image" />
+                <meta name="twitter:title" content={blog.ogTitle || blog.seoTitle || blog.title} />
+                <meta name="twitter:description" content={blog.ogDescription || blog.seoDescription || blog.excerpt || blog.description.replace(/<[^>]*>/g, '').substring(0, 160)} />
+                {blog.featuredImage && <meta name="twitter:image" content={blog.featuredImage} />}
                 {blog.seoKeywords && <meta name="keywords" content={blog.seoKeywords} />}
                 {blog.seoExtraHead && (
                     <div dangerouslySetInnerHTML={{ __html: blog.seoExtraHead }} />
