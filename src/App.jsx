@@ -24,6 +24,8 @@ import Student from './Pages/Student'
 import AdminLogin from './Pages/AdminLogin'
 import Result from './Pages/Result'
 import PopupCard from './Components/PopupCard'
+import PrivacyPolicy from './Pages/PrivacyPolicy'
+import TermsOfService from './Pages/TermsOfService'
 
 function ScrollToTop() {
   const { pathname } = useLocation()
@@ -96,6 +98,8 @@ export default function App() {
         <Route path="/result" element={<Result />} />
         <Route path="/contact" element={<Contact />} />
         <Route path="/admin-login" element={<AdminLogin />} />
+        <Route path="/privacy-policy" element={<PrivacyPolicy />} />
+        <Route path="/terms-of-service" element={<TermsOfService />} />
         <Route path="*" element={<ProgramPage title="404 Not Found" />} />
       </Routes>
       <WhatsAppButton />

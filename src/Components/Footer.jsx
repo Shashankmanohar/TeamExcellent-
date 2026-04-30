@@ -98,7 +98,11 @@ export default function Footer() {
       {/* Bottom Bar */}
       <div className="mt-8 border-t border-gray-500 pt-4 text-center text-sm">
         <p>© {new Date().getFullYear()} Team Excellent. All rights reserved.</p>
-        <p className="text-xs mt-1">
+        <div className="flex justify-center gap-4 mt-2 text-xs text-gray-300">
+          <Link to="/privacy-policy" className="hover:text-white transition-colors underline">Privacy Policy</Link>
+          <Link to="/terms-of-service" className="hover:text-white transition-colors underline">Terms of Service</Link>
+        </div>
+        <p className="text-xs mt-2">
           Designed with ❤️ by{" "}
           <a
             href="https://www.webfloratechnologies.com/"
