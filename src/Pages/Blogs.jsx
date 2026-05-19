@@ -58,6 +58,55 @@ export default function Blogs() {
                     name="description"
                     content="Stay updated with the latest insights, tips, and news from Team Excellent Career Institute. Articles on JEE, NEET, and school foundations."
                 />
+                {/* BLOG FAQ SCHEMA */}
+                <script type="application/ld+json">
+                    {JSON.stringify({
+                        "@context": "https://schema.org",
+                        "@type": "FAQPage",
+                        "mainEntity": [
+                            {
+                                "@type": "Question",
+                                "name": "Which is the best coaching institute for IIT JEE and NEET in Patna?",
+                                "acceptedAnswer": {
+                                    "@type": "Answer",
+                                    "text": "Team Excellent Career Institute is one of the leading coaching institutes in Patna Bihar offering IIT JEE, NEET, and foundation preparation programs with experienced faculty and structured learning."
+                                }
+                            },
+                            {
+                                "@type": "Question",
+                                "name": "How can students prepare effectively for IIT JEE and NEET exams?",
+                                "acceptedAnswer": {
+                                    "@type": "Answer",
+                                    "text": "Students should focus on conceptual understanding, regular practice, mock tests, time management, and doubt-solving sessions to improve performance in IIT JEE and NEET examinations."
+                                }
+                            },
+                            {
+                                "@type": "Question",
+                                "name": "Why are foundation courses important for competitive exams?",
+                                "acceptedAnswer": {
+                                    "@type": "Answer",
+                                    "text": "Foundation courses help students build strong concepts in mathematics and science from an early stage, which improves preparation for future competitive exams like IIT JEE and NEET."
+                                }
+                            },
+                            {
+                                "@type": "Question",
+                                "name": "What makes Team Excellent Career Institute different from other coaching institutes?",
+                                "acceptedAnswer": {
+                                    "@type": "Answer",
+                                    "text": "Team Excellent Career Institute focuses on personalized mentorship, structured learning, regular assessments, experienced faculty, and student-focused preparation strategies."
+                                }
+                            },
+                            {
+                                "@type": "Question",
+                                "name": "Does Team Excellent Career Institute provide doubt-clearing sessions?",
+                                "acceptedAnswer": {
+                                    "@type": "Answer",
+                                    "text": "Yes. Regular doubt-clearing sessions and revision classes are conducted to help students understand difficult concepts and improve exam performance."
+                                }
+                            }
+                        ]
+                    })}
+                </script>
             </Helmet>
             <Navbar />
             <div className="min-h-screen bg-gradient-to-b from-gray-50 to-white pt-32 pb-16">

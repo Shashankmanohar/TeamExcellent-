@@ -137,6 +137,73 @@ export default function BlogDetail() {
                 {blog.seoExtraHead && (
                     <div dangerouslySetInnerHTML={{ __html: blog.seoExtraHead }} />
                 )}
+
+                {/* BLOG POST SCHEMA */}
+                <script type="application/ld+json">
+                    {JSON.stringify({
+                        "@context": "https://schema.org",
+                        "@type": "BlogPosting",
+                        "@id": `https://teamexcellentcareerinstitute.in/blogs/${blog.permalink}`,
+                        "mainEntityOfPage": {
+                            "@type": "WebPage",
+                            "@id": `https://teamexcellentcareerinstitute.in/blogs/${blog.permalink}`
+                        },
+                        "headline": blog.title,
+                        "description": blog.seoDescription || blog.excerpt || blog.description.replace(/<[^>]*>/g, '').substring(0, 160),
+                        "image": blog.featuredImage || "https://teamexcellentcareerinstitute.in/logo192.png",
+                        "author": {
+                            "@type": "Organization",
+                            "name": "Team Excellent Career Institute",
+                            "@id": "https://teamexcellentcareerinstitute.in/#organization"
+                        },
+                        "publisher": {
+                            "@type": "Organization",
+                            "name": "Team Excellent Career Institute",
+                            "logo": {
+                                "@type": "ImageObject",
+                                "url": "https://teamexcellentcareerinstitute.in/logo192.png"
+                            }
+                        },
+                        "datePublished": blog.datePosted ? new Date(blog.datePosted).toISOString().split('T')[0] : new Date().toISOString().split('T')[0],
+                        "dateModified": blog.updatedAt ? new Date(blog.updatedAt).toISOString().split('T')[0] : (blog.datePosted ? new Date(blog.datePosted).toISOString().split('T')[0] : new Date().toISOString().split('T')[0]),
+                        "inLanguage": "en-IN",
+                        "keywords": blog.tag ? blog.tag.split(',').map(t => t.trim()) : [
+                            "IIT JEE Coaching",
+                            "NEET Coaching",
+                            "Foundation Courses",
+                            "Class 6 to 10 Foundation"
+                        ],
+                        "articleSection": blog.categories || "Coaching"
+                    })}
+                </script>
+
+                {/* BREADCRUMB SCHEMA */}
+                <script type="application/ld+json">
+                    {JSON.stringify({
+                        "@context": "https://schema.org",
+                        "@type": "BreadcrumbList",
+                        "itemListElement": [
+                            {
+                                "@type": "ListItem",
+                                "position": 1,
+                                "name": "Home",
+                                "item": "https://teamexcellentcareerinstitute.in"
+                            },
+                            {
+                                "@type": "ListItem",
+                                "position": 2,
+                                "name": "Blog",
+                                "item": "https://teamexcellentcareerinstitute.in/blogs"
+                            },
+                            {
+                                "@type": "ListItem",
+                                "position": 3,
+                                "name": blog.title,
+                                "item": `https://teamexcellentcareerinstitute.in/blogs/${blog.permalink}`
+                            }
+                        ]
+                    })}
+                </script>
             </Helmet>
             <Navbar />
             <div className="min-h-screen bg-gradient-to-b from-gray-50 via-white to-gray-50 pt-32 pb-20">
