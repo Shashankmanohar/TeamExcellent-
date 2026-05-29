@@ -14,6 +14,9 @@ import BlogDetail from './Pages/BlogDetail'
 import AdminBlogs from './Pages/AdminBlogs'
 import AdminEnrollments from './Pages/AdminEnrollments';
 import AdminReviews from './Pages/AdminReviews';
+import AdminCareers from './Pages/AdminCareers';
+import Careers from './Pages/Careers';
+import CareerDetail from './Pages/CareerDetail';
 import WhatsAppButton from './Components/WhatsAppButton';
 import BlogEditor from './Components/BlogEditor'
 
@@ -82,14 +85,17 @@ export default function App() {
         <Route path="/programs/class-6-to-10" element={<Class6to10 />} />
         <Route path="/programs/neet" element={<Neet />} />
 
-        {/* Blog Routes */}
+        {/* Blog & Career Routes */}
         <Route path="/blogs" element={<Blogs />} />
         <Route path="/blogs/:permalink" element={<BlogDetail />} />
+        <Route path="/careers" element={<Careers />} />
+        <Route path="/careers/:id" element={<CareerDetail />} />
 
         {/* Admin Routes */}
         <Route path="/admin/blogs" element={<AdminBlogs />} />
         <Route path="/admin/enrollments" element={<AdminEnrollments />} />
         <Route path="/admin/reviews" element={<AdminReviews />} />
+        <Route path="/admin/careers" element={<AdminCareers />} />
         <Route path="/admin/blogs/new" element={<BlogEditor />} />
         <Route path="/admin/blogs/edit/:id" element={<BlogEditor />} />
 

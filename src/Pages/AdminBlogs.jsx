@@ -79,8 +79,8 @@ export default function AdminBlogs() {
             <div className="min-h-screen bg-gray-50 py-8 px-4 pt-32">
                 <div className="max-w-7xl mx-auto">
                     {/* Navigation Menu */}
-                    <div className="bg-white rounded-lg shadow-md p-4 mb-6">
-                        <div className="flex gap-4">
+                    <div className="bg-white rounded-lg shadow-md p-4 mb-6 overflow-x-auto">
+                        <div className="flex gap-4 min-w-max">
                             <button
                                 onClick={() => navigate('/admin-login')}
                                 className="px-4 py-2 bg-white border-2 border-[#5B2D7C] text-[#5B2D7C] rounded font-semibold hover:bg-[#5B2D7C] hover:text-white transition-colors"
@@ -98,6 +98,12 @@ export default function AdminBlogs() {
                                 className="px-4 py-2 bg-white border-2 border-[#5B2D7C] text-[#5B2D7C] rounded font-semibold hover:bg-[#5B2D7C] hover:text-white transition-colors"
                             >
                                 🎓 Student Enrollments
+                            </button>
+                            <button
+                                onClick={() => navigate('/admin/careers')}
+                                className="px-4 py-2 bg-white border-2 border-[#5B2D7C] text-[#5B2D7C] rounded font-semibold hover:bg-[#5B2D7C] hover:text-white transition-colors"
+                            >
+                                💼 Career Management
                             </button>
                         </div>
                     </div>

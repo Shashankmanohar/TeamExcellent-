@@ -60,6 +60,7 @@ export default function Navbar() {
           />
           <NavItem to="/student-portal" label="Student Zone" />
           <NavItem to="/blogs" label="Blog" />
+          <NavItem to="/careers" label="Careers" />
           <NavItem to="/admission" label="Admission" />
           <NavItem to="/result" label="Result" />
           
@@ -127,6 +128,7 @@ export default function Navbar() {
               onClick={() => setIsOpen(false)}
             />
             <NavItem to="/blogs" label="Blog" mobile onClick={() => setIsOpen(false)} />
+            <NavItem to="/careers" label="Careers" mobile onClick={() => setIsOpen(false)} />
             <NavItem to="/admission" label="Admission" mobile onClick={() => setIsOpen(false)} />
             <NavItem to="/result" label="Result" mobile onClick={() => setIsOpen(false)} />
             
