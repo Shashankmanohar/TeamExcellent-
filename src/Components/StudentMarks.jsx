@@ -79,89 +79,93 @@ const StudentMarks = () => {
   return (
     <div
       style={{ backgroundColor: "#FAFAFA" }}
-      className="min-h-screen flex mt-30 flex-col items-center"
+      className="min-h-screen flex pb-10 flex-col items-center"
     >
-      {/* Header Banner */}
-      <div
-        style={{ backgroundColor: "#6B21A8" }}
-        className="w-full text-center py-10 px-4"
-      >
-        <h1 className="text-3xl md:text-4xl font-bold text-white">
-          Scholarship Examination – Check Your Results
-        </h1>
-        <p style={{ color: "#E9D5FF" }} className="mt-2">
-          Enter your details below to view your marks and scholarship eligibility.
-        </p>
+      {/* Premium Header Banner */}
+      <div className="w-full text-center py-16 px-4 bg-gradient-to-r from-[#5B2D7C] via-[#6B21A8] to-[#3F1D5B] shadow-inner relative overflow-hidden">
+        {/* Subtle decorative circles */}
+        <div className="absolute top-0 left-10 w-32 h-32 bg-white opacity-5 rounded-full blur-2xl"></div>
+        <div className="absolute bottom-0 right-10 w-40 h-40 bg-purple-400 opacity-10 rounded-full blur-3xl"></div>
+        
+        <div className="relative z-10 max-w-4xl mx-auto">
+          <h1 className="text-3xl md:text-5xl font-extrabold text-white mb-4 tracking-tight drop-shadow-md">
+            Scholarship Examination <span className="text-purple-200 font-light hidden md:inline">|</span> <span className="block md:inline mt-2 md:mt-0 text-purple-100">Check Your Results</span>
+          </h1>
+          <p className="text-purple-100/90 text-lg md:text-xl font-medium max-w-2xl mx-auto drop-shadow-sm">
+            Enter your details below to securely view your performance marks and scholarship eligibility status.
+          </p>
+        </div>
       </div>
 
-      {/* Form */}
+      {/* Premium Form Card */}
       <form
         onSubmit={handleSubmit}
-        className="bg-white shadow-lg rounded-xl p-6 w-full max-w-3xl grid grid-cols-1 sm:grid-cols-3 gap-6 mt-8 mx-4"
+        className="bg-white/95 backdrop-blur-sm shadow-[0_20px_50px_-12px_rgba(0,0,0,0.1)] ring-1 ring-black/5 rounded-3xl p-8 md:p-10 w-full max-w-4xl grid grid-cols-1 md:grid-cols-3 gap-8 -mt-10 mx-4 relative z-20"
       >
-        <div className="col-span-full flex justify-center mb-2">
-          <img src={logo} alt="Team Excellent Career Institute scholarship check logo" className="h-16 w-auto" />
+        <div className="col-span-full flex flex-col items-center mb-4">
+          <img src={logo} alt="Team Excellent Career Institute scholarship check logo" className="h-20 w-auto mb-4 drop-shadow-sm transition-transform hover:scale-105 duration-300" />
+          <div className="h-px w-24 bg-gradient-to-r from-transparent via-purple-300 to-transparent"></div>
         </div>
 
-        <div>
-          <label className="block text-sm font-semibold mb-1">Student Name</label>
+        <div className="flex flex-col gap-2">
+          <label className="text-sm font-bold text-gray-700 tracking-wide">Student Name</label>
           <input
             type="text"
             name="studentName"
             value={formData.studentName}
             onChange={handleChange}
+            placeholder="John Doe"
             required
-            className="w-full border"
-            style={{
-              borderColor: "#D1D5DB",
-              padding: "8px 12px",
-              borderRadius: "8px",
-            }}
+            className="w-full bg-gray-50 border border-gray-200 text-gray-900 rounded-xl px-4 py-3 focus:outline-none focus:ring-2 focus:ring-[#6B21A8] focus:border-transparent transition-all shadow-sm hover:border-purple-300"
           />
         </div>
 
-        <div>
-          <label className="block text-sm font-semibold mb-1">Contact Number</label>
+        <div className="flex flex-col gap-2">
+          <label className="text-sm font-bold text-gray-700 tracking-wide">Contact Number</label>
           <input
             type="text"
             name="contactNumber"
             value={formData.contactNumber}
             onChange={handleChange}
+            placeholder="+91 XXXXX XXXXX"
             required
-            className="w-full border"
-            style={{
-              borderColor: "#D1D5DB",
-              padding: "8px 12px",
-              borderRadius: "8px",
-            }}
+            className="w-full bg-gray-50 border border-gray-200 text-gray-900 rounded-xl px-4 py-3 focus:outline-none focus:ring-2 focus:ring-[#6B21A8] focus:border-transparent transition-all shadow-sm hover:border-purple-300"
           />
         </div>
 
-        <div>
-          <label className="block text-sm font-semibold mb-1">Date of Birth</label>
+        <div className="flex flex-col gap-2">
+          <label className="text-sm font-bold text-gray-700 tracking-wide">Date of Birth</label>
           <input
             type="date"
             name="dateofBirth"
             value={formData.dateofBirth}
             onChange={handleChange}
             required
-            className="w-full border"
-            style={{
-              borderColor: "#D1D5DB",
-              padding: "8px 12px",
-              borderRadius: "8px",
-            }}
+            className="w-full bg-gray-50 border border-gray-200 text-gray-900 rounded-xl px-4 py-3 focus:outline-none focus:ring-2 focus:ring-[#6B21A8] focus:border-transparent transition-all shadow-sm hover:border-purple-300"
           />
         </div>
 
-        <button
-          type="submit"
-          disabled={loading}
-          className="col-span-full text-white py-3 rounded-lg font-semibold transition"
-          style={{ backgroundColor: "#9333EA" }}
-        >
-          {loading ? "Checking..." : "Get Marks"}
-        </button>
+        <div className="col-span-full mt-2">
+          <button
+            type="submit"
+            disabled={loading}
+            className="w-full bg-gradient-to-r from-[#5B2D7C] to-[#8424bd] hover:from-[#4A2466] hover:to-[#6E1C9F] text-white py-4 rounded-xl font-extrabold text-lg transition-all duration-300 shadow-[0_10px_20px_-10px_rgba(91,45,124,0.5)] hover:shadow-[0_15px_30px_-10px_rgba(91,45,124,0.6)] transform hover:-translate-y-0.5 disabled:opacity-70 disabled:cursor-not-allowed flex items-center justify-center gap-2"
+          >
+            {loading ? (
+              <>
+                <svg className="animate-spin -ml-1 mr-3 h-5 w-5 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                  <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
+                  <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+                </svg>
+                Processing...
+              </>
+            ) : (
+              <>
+                View Results <i className="fa-solid fa-arrow-right ml-1"></i>
+              </>
+            )}
+          </button>
+        </div>
       </form>
 
       {/* 🎯 Marksheet Display */}
