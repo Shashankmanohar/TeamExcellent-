@@ -47,7 +47,7 @@ export default function Student() {
           
           {/* CTA Button */}
           <a 
-            href="https://te-self-assessment.vercel.app/" 
+            href="https://teamexcellent-aits.online/" 
             target="_blank" 
             rel="noopener noreferrer"
             className="group relative inline-flex items-center justify-center px-8 py-4 text-base font-bold text-white transition-all duration-200 bg-[#0F172A] rounded-xl hover:bg-[#5B2D7C] focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[#5B2D7C] shadow-lg hover:shadow-xl hover:-translate-y-0.5 overflow-hidden"
