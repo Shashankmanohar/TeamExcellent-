@@ -1,16 +1,13 @@
 import React, { useState, useEffect } from "react";
-import { Link } from "react-router-dom";
 import { motion, AnimatePresence } from "framer-motion";
-import { X, Trophy, Calendar, Sparkles, CheckCircle2 } from "lucide-react";
-import TematEnrollmentForm from "./TematEnrollmentForm";
+import { X, Laptop, ArrowRight, Sparkles, CheckCircle2 } from "lucide-react";
 
 export default function PopupCard() {
   const [isVisible, setIsVisible] = useState(false);
-  const [isFormOpen, setIsFormOpen] = useState(false);
 
   useEffect(() => {
     // Show popup once per session with a 1.5s delay
-    const isShown = sessionStorage.getItem("scholarshipPopupShown");
+    const isShown = sessionStorage.getItem("aitsPopupShown");
     if (!isShown) {
       const timer = setTimeout(() => {
         setIsVisible(true);
@@ -21,12 +18,7 @@ export default function PopupCard() {
 
   const handleClose = () => {
     setIsVisible(false);
-    sessionStorage.setItem("scholarshipPopupShown", "true");
-  };
-
-  const handleRegisterClick = (e) => {
-    e.preventDefault();
-    setIsFormOpen(true);
+    sessionStorage.setItem("aitsPopupShown", "true");
   };
 
   return (
@@ -48,34 +40,34 @@ export default function PopupCard() {
             animate={{ scale: 1, opacity: 1, y: 0 }}
             exit={{ scale: 0.9, opacity: 0, y: 30 }}
             transition={{ type: "spring", damping: 25, stiffness: 300 }}
-            className="relative w-full max-w-lg bg-[#5B2D7C] rounded-[2.5rem] shadow-[0_20px_50px_rgba(0,0,0,0.5)] 
-                       overflow-hidden border border-white/10"
+            className="relative w-full max-w-lg bg-white rounded-[2.5rem] shadow-[0_20px_50px_rgba(0,0,0,0.25)] 
+                       overflow-hidden border border-gray-100"
           >
             {/* Background Decorative Elements */}
-            <div className="absolute top-0 right-0 w-32 h-32 bg-yellow-400/10 rounded-full blur-3xl -mr-16 -mt-16" />
-            <div className="absolute bottom-0 left-0 w-40 h-40 bg-purple-400/10 rounded-full blur-3xl -ml-20 -mb-20" />
+            <div className="absolute top-0 right-0 w-32 h-32 bg-purple-500/5 rounded-full blur-3xl -mr-16 -mt-16" />
+            <div className="absolute bottom-0 left-0 w-40 h-40 bg-pink-500/5 rounded-full blur-3xl -ml-20 -mb-20" />
 
             {/* Close Button */}
             <button
               onClick={handleClose}
               className="absolute top-6 right-6 w-10 h-10 flex items-center justify-center 
-                         bg-white/10 hover:bg-white/20 rounded-full text-white/80 hover:text-white transition-all z-20"
+                         bg-gray-100 hover:bg-gray-200 rounded-full text-gray-500 hover:text-gray-800 transition-all z-20"
             >
               <X className="w-6 h-6" />
             </button>
 
             {/* Content Area */}
             <div className="relative p-8 sm:p-10 text-center z-10">
-              {/* "Test Every Sunday" Floating Badge */}
+              {/* "Online Practice Platform" Floating Badge */}
               <motion.div
                 initial={{ x: 20, opacity: 0 }}
                 animate={{ x: 0, opacity: 1 }}
                 transition={{ delay: 0.4 }}
-                className="inline-flex items-center gap-2 px-4 py-1.5 bg-yellow-400 text-[#5B2D7C] 
-                           rounded-full text-xs font-bold uppercase tracking-wider mb-6 shadow-lg shadow-yellow-400/20"
+                className="inline-flex items-center gap-2 px-4 py-1.5 bg-purple-100 text-[#5B2D7C] 
+                           rounded-full text-xs font-bold uppercase tracking-wider mb-6 shadow-sm"
               >
-                <Calendar className="w-3.5 h-3.5" />
-                Test Every Sunday
+                <Laptop className="w-3.5 h-3.5" />
+                Online Practice Platform
               </motion.div>
 
               {/* Main Branding */}
@@ -84,37 +76,31 @@ export default function PopupCard() {
                   initial={{ opacity: 0, y: 10 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ delay: 0.2 }}
-                  className="text-6xl sm:text-7xl font-black text-white leading-none tracking-tighter"
+                  className="text-5xl sm:text-6xl font-black text-[#0F172A] leading-tight tracking-tight"
                 >
-                  TE-MAT
+                  AITS
                 </motion.h2>
                 <motion.p 
                   initial={{ opacity: 0 }}
                   animate={{ opacity: 1 }}
                   transition={{ delay: 0.3 }}
-                  className="text-yellow-400 text-lg sm:text-xl font-bold mt-1 uppercase tracking-widest"
+                  className="text-[#5B2D7C] text-base sm:text-lg font-bold mt-2 uppercase tracking-widest leading-snug"
                 >
-                  Team Excellent Scholarship Test
+                  Online Examination Practice Centre
                 </motion.p>
               </div>
 
               {/* Hook Section */}
-              <div className="space-y-4 mb-10">
-                <div className="inline-block px-6 py-3 bg-white/5 rounded-2xl border border-white/10 backdrop-blur-sm">
-                  <p className="text-xl sm:text-2xl font-bold text-white leading-tight">
-                    Lock Your Seat at <span className="text-yellow-400 underline decoration-2 underline-offset-4">₹0</span>
-                  </p>
-                </div>
-                <p className="text-purple-100/90 text-lg">
-                  Get up to <span className="text-white font-black text-2xl">100%</span> Scholarship
+              <div className="space-y-4 mb-8">
+                <p className="text-gray-600 text-sm sm:text-base leading-relaxed">
+                  Prepare for India's toughest exams with real CBT-simulation mock tests.
                 </p>
-              </div>
-
-              {/* Benefits Pills */}
-              <div className="flex flex-wrap justify-center gap-3 mb-10">
-                <Badge text="IIT-JEE" />
-                <Badge text="NEET" />
-                <Badge text="Class 6-12" />
+                <div className="flex flex-wrap justify-center gap-2 mt-2">
+                  <Badge text="JEE" />
+                  <Badge text="NEET" />
+                  <Badge text="Board" />
+                  <Badge text="NCERT" />
+                </div>
               </div>
 
               {/* Main CTA */}
@@ -123,42 +109,37 @@ export default function PopupCard() {
                   whileHover={{ scale: 1.02 }}
                   whileTap={{ scale: 0.98 }}
                 >
-                  <Link
-                    to="/admission"
-                    onClick={handleRegisterClick}
-                    className="group relative block w-full py-5 bg-gradient-to-r from-yellow-400 to-yellow-500 
-                               hover:from-yellow-300 hover:to-yellow-400 text-[#5B2D7C] font-black 
-                               text-2xl rounded-2xl shadow-[0_10px_30px_rgba(250,204,21,0.3)] 
-                               transition-all duration-300 overflow-hidden"
+                  <a
+                    href="https://teamexcellent-aits.online/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    onClick={handleClose}
+                    className="group relative block w-full py-4 bg-[#0F172A] hover:bg-[#5B2D7C] text-white font-black 
+                               text-xl rounded-2xl shadow-[0_10px_30px_rgba(15,23,42,0.15)] 
+                               transition-all duration-300 overflow-hidden text-center"
                   >
                     {/* Reflective shine animation */}
                     <motion.div 
                       animate={{ x: ['-100%', '200%'] }}
                       transition={{ duration: 2, repeat: Infinity, ease: "easeInOut", repeatDelay: 1 }}
-                      className="absolute inset-0 bg-gradient-to-r from-transparent via-white/40 to-transparent skew-x-12" 
+                      className="absolute inset-0 bg-gradient-to-r from-transparent via-white/10 to-transparent skew-x-12" 
                     />
                     <span className="relative flex items-center justify-center gap-2">
-                      Register Now
-                      <Sparkles className="w-6 h-6 group-hover:rotate-12 transition-transform" />
+                      Start Practicing Now
+                      <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
                     </span>
-                  </Link>
+                  </a>
                 </motion.div>
-                <div className="mt-4 flex items-center justify-center gap-2 text-purple-200/80 text-sm font-medium">
-                  <CheckCircle2 className="w-4 h-4 text-yellow-400" />
-                  Limited seats available for upcoming Sunday!
+                <div className="mt-4 flex items-center justify-center gap-2 text-gray-500 text-xs sm:text-sm font-medium">
+                  <CheckCircle2 className="w-4 h-4 text-emerald-500" />
+                  Practice anytime, anywhere!
                 </div>
               </div>
             </div>
 
             {/* Bottom Accent */}
-            <div className="h-2 bg-gradient-to-r from-yellow-400 via-yellow-200 to-yellow-400" />
+            <div className="h-2 bg-gradient-to-r from-[#5B2D7C] via-pink-500 to-[#5B2D7C]" />
           </motion.div>
-
-          {/* Dedicated Scholarship Form */}
-          <TematEnrollmentForm 
-            isOpen={isFormOpen} 
-            onClose={() => setIsFormOpen(false)} 
-          />
         </div>
       )}
     </AnimatePresence>
@@ -167,7 +148,7 @@ export default function PopupCard() {
 
 function Badge({ text }) {
   return (
-    <span className="px-4 py-1.5 rounded-full bg-white/10 border border-white/10 text-white font-bold text-sm">
+    <span className="px-3.5 py-1 rounded-full bg-gray-100 border border-gray-200 text-gray-700 font-bold text-xs">
       {text}
     </span>
   );

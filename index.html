@@ -31,6 +31,42 @@
 <body>
   <div id="root"></div>
   <script type="module" src="/src/main.jsx"></script>
+  <!-- Vegavan AI Support Chatbot -->
+  <style>
+    #ai-chatbot-root-container {
+      right: 20px !important;
+      left: auto !important;
+      bottom: 100px !important;
+    }
+  </style>
+  <script
+    src="https://vegavan-backend.vercel.app/chatbot.js"
+    data-user-id="6a247339935147ef4874aff7">
+  </script>
+  <script>
+    (function() {
+      const checkExist = setInterval(function() {
+        const host = document.getElementById('ai-chatbot-root-container');
+        if (host && host.shadowRoot) {
+          clearInterval(checkExist);
+          const style = document.createElement('style');
+          style.textContent = `
+            .chat-window {
+              right: 0 !important;
+              left: auto !important;
+              bottom: 175px !important;
+            }
+            @media (max-width: 480px) {
+              .chatbot-launcher {
+                bottom: 100px !important;
+              }
+            }
+          `;
+          host.shadowRoot.appendChild(style);
+        }
+      }, 100);
+    })();
+  </script>
 </body>
 
 </html>
