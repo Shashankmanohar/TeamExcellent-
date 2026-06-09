@@ -33,10 +33,49 @@
   <script type="module" src="/src/main.jsx"></script>
   <!-- Vegavan AI Support Chatbot -->
   <style>
+    /* Default launcher container styling (positioned on the bottom-right, stacked above WhatsApp) */
     #ai-chatbot-root-container {
+      position: fixed !important;
       right: 20px !important;
       left: auto !important;
       bottom: 100px !important;
+      width: 60px !important;
+      height: 60px !important;
+      z-index: 999999 !important;
+      transition: all 0.2s ease;
+    }
+
+    /* When open, host container needs to accommodate the desktop window size */
+    #ai-chatbot-root-container.chat-open {
+      width: 400px !important;
+      height: 700px !important;
+      bottom: 100px !important;
+      right: 20px !important;
+      left: auto !important;
+    }
+
+    /* On mobile viewports */
+    @media (max-width: 768px) {
+      #ai-chatbot-root-container {
+        right: 15px !important;
+        left: auto !important;
+        bottom: 95px !important;
+        width: 60px !important;
+        height: 60px !important;
+      }
+      
+      /* When chat is open on mobile, make the host container fill the whole viewport */
+      #ai-chatbot-root-container.chat-open {
+        position: fixed !important;
+        top: 0 !important;
+        left: 0 !important;
+        right: 0 !important;
+        bottom: 0 !important;
+        width: 100% !important;
+        height: 100% !important;
+        margin: 0 !important;
+        padding: 0 !important;
+      }
     }
   </style>
   <script
@@ -49,16 +88,73 @@
         const host = document.getElementById('ai-chatbot-root-container');
         if (host && host.shadowRoot) {
           clearInterval(checkExist);
+
+          // Find the chat window and setup observer to toggle class on host
+          const chatWindow = host.shadowRoot.querySelector('.chat-window');
+          if (chatWindow) {
+            const syncState = () => {
+              if (chatWindow.classList.contains('open')) {
+                host.classList.add('chat-open');
+              } else {
+                host.classList.remove('chat-open');
+              }
+            };
+            
+            const observer = new MutationObserver(syncState);
+            observer.observe(chatWindow, { attributes: true, attributeFilter: ['class'] });
+            syncState();
+          }
+
           const style = document.createElement('style');
           style.textContent = `
+            /* Ensure the launcher is relative to host container on all screen sizes */
+            .chatbot-launcher {
+              position: static !important;
+              bottom: auto !important;
+              right: auto !important;
+            }
+
+            /* On desktop, adjust chat window position to fit correctly */
             .chat-window {
               right: 0 !important;
               left: auto !important;
-              bottom: 175px !important;
+              bottom: 90px !important;
+              height: 600px !important;
+              width: 400px !important;
             }
-            @media (max-width: 480px) {
-              .chatbot-launcher {
-                bottom: 100px !important;
+            
+            /* On mobile, override styles inside Shadow DOM to fit the screen perfectly */
+            @media (max-width: 768px) {
+              .chat-window {
+                position: fixed !important;
+                top: 0 !important;
+                left: 0 !important;
+                right: 0 !important;
+                bottom: 0 !important;
+                width: 100% !important;
+                height: 100% !important;
+                border-radius: 0 !important;
+                border: none !important;
+                margin: 0 !important;
+                padding: 0 !important;
+                display: flex !important;
+                flex-direction: column !important;
+              }
+              .chat-messages {
+                flex: 1 !important;
+                height: auto !important;
+              }
+              .prechat-form-overlay {
+                position: absolute !important;
+                top: 0 !important;
+                left: 0 !important;
+                right: 0 !important;
+                bottom: 0 !important;
+                width: 100% !important;
+                height: 100% !important;
+                border-radius: 0 !important;
+                padding: 24px !important;
+                box-sizing: border-box !important;
               }
             }
           `;
