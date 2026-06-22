@@ -47,6 +47,9 @@ export default function Footer() {
         <div>
           <h3 className="text-lg font-semibold mb-3">Contact Us</h3>
           <address className="not-italic text-sm">
+            <p className="flex items-start gap-2 mb-2">
+              <i className="fa-solid fa-location-dot mt-1"></i> Near NMCH College, Bajar Samiti, New Kunj Colony, Saketpuri, Patna, Bihar, 800016, India
+            </p>
             <p className="flex items-center gap-2">
               <i className="fa-solid fa-envelope"></i> teamexcellentpatna@gmail.com
             </p>

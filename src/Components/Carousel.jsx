@@ -34,10 +34,10 @@ export default function Carousel() {
           IITians & Doctors
         </h1>
         <div className="w-40 h-1 bg-[#9333ea] mx-auto mt-4 rounded"></div>
-        <p className="text-[#374151] mt-4 text-sm sm:text-lg max-w-2xl mx-auto px-4">
+        <h2 className="text-[#374151] mt-4 text-sm sm:text-lg max-w-2xl mx-auto px-4">
           Your Trusted <span className="font-semibold text-[#522871]">IIT-JEE coaching in Patna</span> |
           Top <span className="font-semibold text-[#b72e2f]">NEET coaching in Patna</span>
-        </p>
+        </h2>
       </div>
 
       {/* ====== Carousel Section ====== */}

@@ -167,7 +167,7 @@ export default function PrivacyPolicy() {
                       </div>
                       <div>
                         <p className="text-xs uppercase tracking-wider text-purple-200 mb-1">Address</p>
-                        <p className="font-medium">New Kunj Colony, Saketpuri, Patna, Bihar 800016, India</p>
+                        <p className="font-medium">Near NMCH College, Bajar Samiti, New Kunj Colony, Saketpuri, Patna, Bihar, 800016, India</p>
                       </div>
                     </div>
                     

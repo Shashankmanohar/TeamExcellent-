@@ -72,7 +72,7 @@ function ContactUs() {
           <div className="flex items-start gap-3 py-2">
             <MapPin className="w-5 h-5 text-[#8424bd] mt-0.5" />
             <p className="text-gray-600 text-lg leading-snug">
-              New Kunj Colony, Saketpuri, Patna, Bihar 800016, India
+              Near NMCH College, Bajar Samiti, New Kunj Colony, Saketpuri, Patna, Bihar, 800016, India
             </p>
           </div>
           <div className="flex items-start gap-3 py-2">

@@ -273,7 +273,7 @@ const StudentMarks = () => {
               </a>
             </p>
             <p>Email: teamexcellentpatna@gmail.com</p>
-            <p>Address: New Kunj Colony, Saketpuri, Patna, Bihar 800016, India</p>
+            <p>Address: Near NMCH College, Bajar Samiti, New Kunj Colony, Saketpuri, Patna, Bihar, 800016, India</p>
           </div>
         </div>
       )}
