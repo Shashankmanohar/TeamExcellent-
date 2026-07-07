@@ -19,6 +19,8 @@ import Careers from './Pages/Careers';
 import CareerDetail from './Pages/CareerDetail';
 import WhatsAppButton from './Components/WhatsAppButton';
 import BlogEditor from './Components/BlogEditor'
+import RankPredictor from './Pages/RankPredictor';
+import CollegePredictor from './Pages/CollegePredictor';
 
 // ✅ ScrollToTop Component
 import { useEffect } from 'react'
@@ -100,6 +102,8 @@ export default function App() {
         <Route path="/admin/blogs/edit/:id" element={<BlogEditor />} />
 
         {/* Other Routes */}
+        <Route path="/rank-predictor" element={<RankPredictor />} />
+        <Route path="/college-predictor" element={<CollegePredictor />} />
         <Route path="/student-portal" element={<Student />} />
         <Route path="/result" element={<Result />} />
         <Route path="/contact" element={<Contact />} />

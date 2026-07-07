@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Trash2, ExternalLink, Calendar, User, Phone, Mail, MapPin, BookOpen, Search, Download, Sparkles } from 'lucide-react';
-import { fetchEnrollments, deleteEnrollment } from '../lib/enrollmentApi';
+import { fetchEnrollments, deleteEnrollment, updateEnrollmentStatus } from '../lib/enrollmentApi';
 import Navbar from '../Components/Navbar';
 import Footer from '../Components/Footer';
 import toast from 'react-hot-toast';
@@ -11,6 +11,8 @@ export default function AdminEnrollments() {
     const [enrollments, setEnrollments] = useState([]);
     const [loading, setLoading] = useState(true);
     const [searchTerm, setSearchTerm] = useState('');
+    const [startDate, setStartDate] = useState('');
+    const [endDate, setEndDate] = useState('');
 
     useEffect(() => {
         const token = localStorage.getItem('adminToken');
@@ -47,12 +49,44 @@ export default function AdminEnrollments() {
         }
     };
 
-    const filteredEnrollments = enrollments.filter(e =>
-        e.fullName.toLowerCase().includes(searchTerm.toLowerCase()) ||
-        e.course.toLowerCase().includes(searchTerm.toLowerCase()) ||
-        e.city.toLowerCase().includes(searchTerm.toLowerCase()) ||
-        e.mobileNumber.includes(searchTerm)
-    );
+    const updateLocalStatus = (id, newStatus) => {
+        setEnrollments(prev => prev.map(e => e._id === id ? { ...e, status: newStatus } : e));
+    };
+
+    const handleStatusSubmit = async (id, newStatus) => {
+        try {
+            await updateEnrollmentStatus(id, newStatus);
+            toast.success('Status updated');
+        } catch (error) {
+            console.error('Error updating status:', error);
+            toast.error('Failed to update status');
+        }
+    };
+
+    const filteredEnrollments = enrollments.filter(e => {
+        const matchesSearch = e.fullName.toLowerCase().includes(searchTerm.toLowerCase()) ||
+            e.course.toLowerCase().includes(searchTerm.toLowerCase()) ||
+            e.city.toLowerCase().includes(searchTerm.toLowerCase()) ||
+            e.mobileNumber.includes(searchTerm);
+
+        if (!matchesSearch) return false;
+
+        const enrollDate = new Date(e.createdAt);
+
+        if (startDate) {
+            const start = new Date(startDate);
+            start.setHours(0, 0, 0, 0);
+            if (enrollDate < start) return false;
+        }
+
+        if (endDate) {
+            const end = new Date(endDate);
+            end.setHours(23, 59, 59, 999);
+            if (enrollDate > end) return false;
+        }
+
+        return true;
+    });
 
     const formatDate = (dateString) => {
         return new Date(dateString).toLocaleDateString('en-GB', {
@@ -65,7 +99,7 @@ export default function AdminEnrollments() {
     };
 
     const downloadCSV = () => {
-        const headers = ["Date", "Name", "Mobile", "Email", "Course", "City", "Query"];
+        const headers = ["Date", "Name", "Mobile", "Email", "Course", "City", "Query", "Status"];
         const rows = filteredEnrollments.map(e => [
             new Date(e.createdAt).toLocaleDateString(),
             e.fullName,
@@ -73,7 +107,8 @@ export default function AdminEnrollments() {
             e.email || 'N/A',
             e.course,
             e.city,
-            e.query || 'N/A'
+            e.query || 'N/A',
+            e.status || 'Pending'
         ]);
 
         const csvContent = "data:text/csv;charset=utf-8,"
@@ -135,18 +170,48 @@ export default function AdminEnrollments() {
                         </div>
                     </div>
 
-                    {/* Search bar */}
-                    <div className="relative mb-6">
-                        <span className="absolute left-4 top-1/2 -translate-y-1/2 text-gray-400">
-                            <Search size={20} />
-                        </span>
-                        <input
-                            type="text"
-                            placeholder="Search by name, course, city or phone..."
-                            value={searchTerm}
-                            onChange={(e) => setSearchTerm(e.target.value)}
-                            className="w-full pl-12 pr-4 py-4 bg-white border border-gray-200 rounded-2xl shadow-sm focus:ring-2 focus:ring-[#5B2D7C] focus:border-transparent outline-none transition-all"
-                        />
+                    {/* Search and Filter Controls */}
+                    <div className="grid grid-cols-1 md:grid-cols-12 gap-4 mb-6">
+                        <div className="md:col-span-6 relative">
+                            <span className="absolute left-4 top-1/2 -translate-y-1/2 text-gray-400">
+                                <Search size={20} />
+                            </span>
+                            <input
+                                type="text"
+                                placeholder="Search by name, course, city or phone..."
+                                value={searchTerm}
+                                onChange={(e) => setSearchTerm(e.target.value)}
+                                className="w-full pl-12 pr-4 py-3 bg-white border border-gray-200 rounded-2xl shadow-sm focus:ring-2 focus:ring-[#5B2D7C] focus:border-transparent outline-none transition-all"
+                            />
+                        </div>
+                        <div className="md:col-span-3 flex items-center gap-2">
+                            <span className="text-xs font-semibold text-gray-500 uppercase shrink-0">From</span>
+                            <input
+                                type="date"
+                                value={startDate}
+                                onChange={(e) => setStartDate(e.target.value)}
+                                className="w-full px-4 py-3 bg-white border border-gray-200 rounded-2xl shadow-sm focus:ring-2 focus:ring-[#5B2D7C] focus:border-transparent outline-none transition-all text-sm text-gray-600"
+                            />
+                        </div>
+                        <div className="md:col-span-3 flex items-center gap-2">
+                            <span className="text-xs font-semibold text-gray-500 uppercase shrink-0">To</span>
+                            <input
+                                type="date"
+                                value={endDate}
+                                onChange={(e) => setEndDate(e.target.value)}
+                                className="w-full px-4 py-3 bg-white border border-gray-200 rounded-2xl shadow-sm focus:ring-2 focus:ring-[#5B2D7C] focus:border-transparent outline-none transition-all text-sm text-gray-600"
+                            />
+                        </div>
+                        {(startDate || endDate) && (
+                            <div className="md:col-span-12 text-right">
+                                <button
+                                    onClick={() => { setStartDate(''); setEndDate(''); }}
+                                    className="text-xs text-red-500 hover:text-red-700 font-semibold underline"
+                                >
+                                    Clear Date Filters
+                                </button>
+                            </div>
+                        )}
                     </div>
 
                     {/* Enrollment Table */}
@@ -161,21 +226,22 @@ export default function AdminEnrollments() {
                                 <p className="text-xl">No enrollments found matching your criteria.</p>
                             </div>
                         ) : (
-                            <div className="overflow-x-auto">
-                                <table className="w-full text-left">
+                            <div className="overflow-x-auto w-full">
+                                <table className="w-full text-left table-fixed" style={{ minWidth: '750px' }}>
                                     <thead className="bg-gray-50 border-b border-gray-100">
                                         <tr>
-                                            <th className="px-6 py-4 text-xs font-bold text-gray-400 uppercase tracking-wider">Student Details</th>
-                                            <th className="px-6 py-4 text-xs font-bold text-gray-400 uppercase tracking-wider">Contact Info</th>
-                                            <th className="px-6 py-4 text-xs font-bold text-gray-400 uppercase tracking-wider">Course & Goal</th>
-                                            <th className="px-6 py-4 text-xs font-bold text-gray-400 uppercase tracking-wider">Location</th>
-                                            <th className="px-6 py-4 text-xs font-bold text-gray-400 uppercase tracking-wider text-right">Actions</th>
+                                            <th className="px-3 py-3 text-xs font-bold text-gray-400 uppercase tracking-wider w-[24%]">Student Details</th>
+                                            <th className="px-3 py-3 text-xs font-bold text-gray-400 uppercase tracking-wider w-[18%]">Contact Info</th>
+                                            <th className="px-3 py-3 text-xs font-bold text-gray-400 uppercase tracking-wider w-[18%]">Course & Goal</th>
+                                            <th className="px-3 py-3 text-xs font-bold text-gray-400 uppercase tracking-wider w-[12%]">Location</th>
+                                            <th className="px-3 py-3 text-xs font-bold text-gray-400 uppercase tracking-wider w-[24%]">Status / Notes</th>
+                                            <th className="px-3 py-3 text-xs font-bold text-gray-400 uppercase tracking-wider text-right w-[4%]">Actions</th>
                                         </tr>
                                     </thead>
                                     <tbody className="divide-y divide-gray-50">
                                         {filteredEnrollments.map((e) => (
                                             <tr key={e._id} className="hover:bg-gray-50 transition-colors">
-                                                <td className="px-6 py-6">
+                                                <td className="px-3 py-3">
                                                     <div className="flex items-center gap-3">
                                                         <div className={`w-10 h-10 rounded-full flex items-center justify-center font-bold ${
                                                             e.course.includes('TE-MAT')
@@ -184,29 +250,29 @@ export default function AdminEnrollments() {
                                                         }`}>
                                                             {e.fullName[0].toUpperCase()}
                                                         </div>
-                                                        <div>
-                                                            <div className="font-bold text-gray-800">{e.fullName}</div>
+                                                        <div className="min-w-0">
+                                                            <div className="font-bold text-gray-800 truncate">{e.fullName}</div>
                                                             <div className="flex items-center gap-1 text-xs text-gray-400">
                                                                 <Calendar size={12} /> {formatDate(e.createdAt)}
                                                             </div>
                                                         </div>
                                                     </div>
                                                 </td>
-                                                <td className="px-6 py-6">
-                                                    <div className="space-y-1">
+                                                <td className="px-3 py-3">
+                                                    <div className="space-y-1 min-w-0">
                                                         <div className="flex items-center gap-2 text-sm text-gray-600">
                                                             <Phone size={14} className="text-[#5B2D7C]" />
-                                                            <a href={`tel:${e.mobileNumber}`} className="hover:text-[#5B2D7C] underline font-medium">{e.mobileNumber}</a>
+                                                            <a href={`tel:${e.mobileNumber}`} className="hover:text-[#5B2D7C] underline font-medium truncate">{e.mobileNumber}</a>
                                                         </div>
                                                         {e.email && (
                                                             <div className="flex items-center gap-2 text-sm text-gray-400">
-                                                                <Mail size={14} />
-                                                                <span>{e.email}</span>
+                                                                <Mail size={14} className="shrink-0" />
+                                                                <span className="truncate" title={e.email}>{e.email}</span>
                                                             </div>
                                                         )}
                                                     </div>
                                                 </td>
-                                                <td className="px-6 py-6 font-medium">
+                                                <td className="px-3 py-3 font-medium">
                                                     <span className={`inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-bold mb-2 ${
                                                         e.course.includes('TE-MAT') 
                                                         ? 'bg-yellow-100 text-yellow-800 border border-yellow-200 shadow-sm' 
@@ -221,13 +287,23 @@ export default function AdminEnrollments() {
                                                         </div>
                                                     )}
                                                 </td>
-                                                <td className="px-6 py-6">
+                                                <td className="px-3 py-3">
                                                     <div className="flex items-center gap-2 text-sm text-gray-600">
                                                         <MapPin size={14} className="text-red-500" />
                                                         {e.city}
                                                     </div>
                                                 </td>
-                                                <td className="px-6 py-6 text-right">
+                                                <td className="px-3 py-3">
+                                                    <input
+                                                        type="text"
+                                                        value={e.status || ''}
+                                                        placeholder="Add status/notes..."
+                                                        onChange={(event) => updateLocalStatus(e._id, event.target.value)}
+                                                        onBlur={(event) => handleStatusSubmit(e._id, event.target.value)}
+                                                        className="w-full px-3 py-2 text-xs bg-slate-50 border border-slate-200 rounded-xl focus:bg-white focus:ring-2 focus:ring-[#5B2D7C] focus:border-transparent outline-none transition-all duration-200 font-medium"
+                                                    />
+                                                </td>
+                                                <td className="px-3 py-3 text-right">
                                                     <button
                                                         onClick={() => handleDelete(e._id)}
                                                         className="p-2 text-red-500 hover:bg-red-50 rounded-lg transition-all"

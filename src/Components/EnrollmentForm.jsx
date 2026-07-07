@@ -17,18 +17,6 @@ export default function EnrollmentForm({ isOpen, onClose, initialCourse }) {
     const [loading, setLoading] = useState(false);
     const [submitted, setSubmitted] = useState(false);
 
-    // Reset state when modal opens
-    useEffect(() => {
-        if (isOpen) {
-            setSubmitted(false);
-            setLoading(false);
-            setFormData(prev => ({
-                ...prev,
-                course: initialCourse || ''
-            }));
-        }
-    }, [isOpen, initialCourse]);
-
     const courses = [
         'Class 6',
         'Class 7',
@@ -43,6 +31,104 @@ export default function EnrollmentForm({ isOpen, onClose, initialCourse }) {
         'Class 12 Pass (for Medical)'
     ];
 
+    const getFilteredCourses = () => {
+        if (!initialCourse) return courses;
+        const lower = initialCourse.toLowerCase();
+        if (lower.includes("jee") || lower.includes("engineering")) {
+            return [
+                'Class 11 Studying (for Engineering)',
+                'Class 12 Studying (for Engineering)',
+                'Class 12 Pass (for Engineering)'
+            ];
+        } else if (lower.includes("neet") || lower.includes("medical")) {
+            return [
+                'Class 11 Studying (for Medical)',
+                'Class 12 Studying (for Medical)',
+                'Class 12 Pass (for Medical)'
+            ];
+        } else if (lower.includes("foundation") || lower.includes("class 6") || lower.includes("school")) {
+            return [
+                'Class 6',
+                'Class 7',
+                'Class 8',
+                'Class 9',
+                'Class 10'
+            ];
+        }
+        return courses;
+    };
+
+    const filteredCourses = getFilteredCourses();
+
+    const getThemeConfig = () => {
+        if (!initialCourse) {
+            return {
+                gradient: "from-[#5B2D7C] to-[#b72e2f]",
+                focusRing: "focus:ring-[#5B2D7C]/20",
+                focusBorder: "focus:border-[#5B2D7C]",
+                buttonBg: "from-[#5B2D7C] to-[#b72e2f]",
+                doneBtnBg: "bg-[#5B2D7C] hover:bg-[#472164]",
+                iconColor: "text-[#5B2D7C]",
+                badgeColor: "bg-[#5B2D7C]/10 text-[#5B2D7C]"
+            };
+        }
+        const lower = initialCourse.toLowerCase();
+        if (lower.includes("jee") || lower.includes("engineering")) {
+            return {
+                gradient: "from-[#522871] to-[#6d3a91]",
+                focusRing: "focus:ring-[#522871]/20",
+                focusBorder: "focus:border-[#522871]",
+                buttonBg: "from-[#522871] to-[#6d3a91]",
+                doneBtnBg: "bg-[#522871] hover:bg-[#472164]",
+                iconColor: "text-[#522871]",
+                badgeColor: "bg-[#522871]/10 text-[#522871]"
+            };
+        } else if (lower.includes("neet") || lower.includes("medical")) {
+            return {
+                gradient: "from-[#b72e2f] to-[#d34546]",
+                focusRing: "focus:ring-[#b72e2f]/20",
+                focusBorder: "focus:border-[#b72e2f]",
+                buttonBg: "from-[#b72e2f] to-[#d34546]",
+                doneBtnBg: "bg-[#b72e2f] hover:bg-[#a02829]",
+                iconColor: "text-[#b72e2f]",
+                badgeColor: "bg-[#b72e2f]/10 text-[#b72e2f]"
+            };
+        } else if (lower.includes("foundation") || lower.includes("class 6") || lower.includes("school")) {
+            return {
+                gradient: "from-[#2563eb] to-[#3b82f6]",
+                focusRing: "focus:ring-[#2563eb]/20",
+                focusBorder: "focus:border-[#2563eb]",
+                buttonBg: "from-[#2563eb] to-[#3b82f6]",
+                doneBtnBg: "bg-[#2563eb] hover:bg-[#1d4ed8]",
+                iconColor: "text-[#2563eb]",
+                badgeColor: "bg-[#2563eb]/10 text-[#2563eb]"
+            };
+        }
+        return {
+            gradient: "from-[#5B2D7C] to-[#b72e2f]",
+            focusRing: "focus:ring-[#5B2D7C]/20",
+            focusBorder: "focus:border-[#5B2D7C]",
+            buttonBg: "from-[#5B2D7C] to-[#b72e2f]",
+            doneBtnBg: "bg-[#5B2D7C] hover:bg-[#472164]",
+            iconColor: "text-[#5B2D7C]",
+            badgeColor: "bg-[#5B2D7C]/10 text-[#5B2D7C]"
+        };
+    };
+
+    const theme = getThemeConfig();
+
+    // Reset state when modal opens
+    useEffect(() => {
+        if (isOpen) {
+            setSubmitted(false);
+            setLoading(false);
+            setFormData(prev => ({
+                ...prev,
+                course: ''
+            }));
+        }
+    }, [isOpen, initialCourse]);
+
     const handleChange = (e) => {
         const { name, value } = e.target;
         setFormData(prev => ({ ...prev, [name]: value }));
@@ -53,7 +139,7 @@ export default function EnrollmentForm({ isOpen, onClose, initialCourse }) {
 
         // Validation Regex
         const nameRegex = /^[a-zA-Z\s]{3,50}$/;
-        const mobileRegex = /^[6-9]\d{9}$/;
+        const mobileRegex = /^\d{10}$/;
         const emailRegex = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
         const cityRegex = /^[a-zA-Z\s]{2,50}$/;
 
@@ -121,49 +207,54 @@ export default function EnrollmentForm({ isOpen, onClose, initialCourse }) {
                         initial={{ scale: 0.9, opacity: 0, y: 20 }}
                         animate={{ scale: 1, opacity: 1, y: 0 }}
                         exit={{ scale: 0.9, opacity: 0, y: 20 }}
-                        className="relative w-full max-w-2xl bg-white rounded-2xl md:rounded-3xl shadow-2xl overflow-hidden border border-purple-50 max-h-[95vh] md:max-h-[90vh] overflow-y-auto"
+                        className="relative w-full max-w-2xl bg-white rounded-3xl shadow-2xl overflow-hidden border border-purple-50/30 max-h-[95vh] md:max-h-[90vh] overflow-y-auto"
                     >
                         {/* Close Button */}
                         <button
                             onClick={onClose}
-                            className="absolute right-4 top-4 md:right-6 md:top-6 text-white hover:rotate-90 transition-transform duration-300 z-10 p-1 bg-black/20 rounded-full md:bg-transparent"
+                            className="absolute right-4 top-4 md:right-6 md:top-6 text-white hover:scale-110 active:scale-95 transition-all duration-300 z-10 p-2 bg-white/10 hover:bg-white/20 rounded-full"
                         >
-                            <X size={24} className="md:w-7 md:h-7" />
+                            <X size={20} className="md:w-6 md:h-6" />
                         </button>
 
                         {submitted ? (
-                            <div className="p-6 md:p-12 text-center">
-                                <div className="w-16 h-16 md:w-20 md:h-20 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-6">
-                                    <CheckCircle2 className="w-8 h-8 md:w-10 md:h-10 text-green-600" />
+                            <div className="p-8 md:p-14 text-center">
+                                <div className="w-20 h-20 bg-green-50 rounded-full flex items-center justify-center mx-auto mb-6 border border-green-100">
+                                    <CheckCircle2 className="w-10 h-10 text-green-500" />
                                 </div>
-                                <h2 className="text-2xl md:text-3xl font-bold text-[#0B0B45] mb-4">Application Received!</h2>
-                                <p className="text-gray-600 text-base md:text-lg mb-8">
+                                <h2 className="text-2xl md:text-3xl font-extrabold text-[#0B0B45] mb-4">Application Received!</h2>
+                                <p className="text-gray-500 text-base md:text-lg mb-8 leading-relaxed max-w-md mx-auto">
                                     Thank you for choosing Team Excellent. Our academic counselors will contact you shortly to guide you through the next steps.
                                 </p>
                                 <button
                                     onClick={onClose}
-                                    className="w-full md:w-auto px-8 py-3 bg-[#5B2D7C] text-white rounded-xl font-bold hover:bg-[#472164] transition-all shadow-lg"
+                                    className={`w-full md:w-auto px-10 py-3.5 ${theme.doneBtnBg} text-white rounded-xl font-bold transition-all shadow-lg hover:shadow-xl active:scale-[0.98] duration-300`}
                                 >
                                     Done
                                 </button>
                             </div>
                         ) : (
                             <>
-                                <div className="bg-gradient-to-r from-[#5B2D7C] to-[#b72e2f] px-6 py-8 md:px-8 md:py-10 text-white">
-                                    <h2 className="text-2xl md:text-4xl font-extrabold mb-1 md:mb-2 leading-tight">Enroll Now</h2>
-                                    <p className="opacity-90 text-sm md:text-lg">Secure your future with Team Excellent's expert guidance.</p>
+                                <div className={`bg-gradient-to-r ${theme.gradient} px-6 py-8 md:px-10 md:py-12 text-white relative overflow-hidden`}>
+                                    <div className="absolute top-0 right-0 -mr-16 -mt-16 w-48 h-48 rounded-full bg-white/10 blur-xl pointer-events-none" />
+                                    <div className="absolute bottom-0 left-0 -ml-10 -mb-10 w-32 h-32 rounded-full bg-black/10 blur-lg pointer-events-none" />
+                                    
+                                    <div className="relative z-10">
+                                        <h2 className="text-2xl md:text-4xl font-extrabold mb-2 leading-tight tracking-tight">Enroll Now</h2>
+                                        <p className="opacity-90 text-sm md:text-base max-w-md">Secure your future with Team Excellent's expert guidance.</p>
+                                    </div>
                                 </div>
 
-                                <form onSubmit={handleSubmit} className="p-5 md:p-10 space-y-4 md:space-y-6">
-                                    <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-6">
+                                <form onSubmit={handleSubmit} className="p-6 md:p-10 space-y-6">
+                                    <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                                         {/* Full Name */}
                                         <div className="relative">
-                                            <label className="block text-xs md:text-sm font-semibold text-gray-700 mb-1.5 md:mb-2">
+                                            <label className="block text-xs md:text-sm font-bold text-gray-600 mb-2">
                                                 Full Name <span className="text-red-500">*</span>
                                             </label>
                                             <div className="relative">
-                                                <span className="absolute left-4 top-1/2 -translate-y-1/2 text-gray-400">
-                                                    <User size={16} className="md:w-[18px] md:h-[18px]" />
+                                                <span className={`absolute left-4 top-1/2 -translate-y-1/2 ${theme.iconColor}`}>
+                                                    <User size={18} />
                                                 </span>
                                                 <input
                                                     type="text"
@@ -171,7 +262,7 @@ export default function EnrollmentForm({ isOpen, onClose, initialCourse }) {
                                                     value={formData.fullName}
                                                     onChange={handleChange}
                                                     placeholder="Enter your full name"
-                                                    className="w-full pl-10 md:pl-11 pr-4 py-2.5 md:py-3 text-sm md:text-base bg-gray-50 border border-gray-200 rounded-lg md:rounded-xl focus:ring-2 focus:ring-[#5B2D7C] focus:border-transparent transition-all outline-none"
+                                                    className={`w-full pl-11 pr-4 py-3 text-sm md:text-base bg-slate-50/50 hover:bg-slate-50 border border-slate-200 rounded-xl focus:bg-white focus:ring-4 ${theme.focusRing} ${theme.focusBorder} transition-all duration-300 outline-none`}
                                                     required
                                                 />
                                             </div>
@@ -179,12 +270,12 @@ export default function EnrollmentForm({ isOpen, onClose, initialCourse }) {
 
                                         {/* Mobile Number */}
                                         <div className="relative">
-                                            <label className="block text-xs md:text-sm font-semibold text-gray-700 mb-1.5 md:mb-2">
+                                            <label className="block text-xs md:text-sm font-bold text-gray-600 mb-2">
                                                 Mobile Number <span className="text-red-500">*</span>
                                             </label>
                                             <div className="relative">
-                                                <span className="absolute left-4 top-1/2 -translate-y-1/2 text-gray-400">
-                                                    <Phone size={16} className="md:w-[18px] md:h-[18px]" />
+                                                <span className={`absolute left-4 top-1/2 -translate-y-1/2 ${theme.iconColor}`}>
+                                                    <Phone size={18} />
                                                 </span>
                                                 <input
                                                     type="tel"
@@ -192,7 +283,7 @@ export default function EnrollmentForm({ isOpen, onClose, initialCourse }) {
                                                     value={formData.mobileNumber}
                                                     onChange={handleChange}
                                                     placeholder="Enter 10-digit number"
-                                                    className="w-full pl-10 md:pl-11 pr-4 py-2.5 md:py-3 text-sm md:text-base bg-gray-50 border border-gray-200 rounded-lg md:rounded-xl focus:ring-2 focus:ring-[#5B2D7C] focus:border-transparent transition-all outline-none"
+                                                    className={`w-full pl-11 pr-4 py-3 text-sm md:text-base bg-slate-50/50 hover:bg-slate-50 border border-slate-200 rounded-xl focus:bg-white focus:ring-4 ${theme.focusRing} ${theme.focusBorder} transition-all duration-300 outline-none`}
                                                     required
                                                 />
                                             </div>
@@ -200,12 +291,12 @@ export default function EnrollmentForm({ isOpen, onClose, initialCourse }) {
 
                                         {/* Email */}
                                         <div className="relative">
-                                            <label className="block text-xs md:text-sm font-semibold text-gray-700 mb-1.5 md:mb-2">
+                                            <label className="block text-xs md:text-sm font-bold text-gray-600 mb-2">
                                                 Email Address (Optional)
                                             </label>
                                             <div className="relative">
-                                                <span className="absolute left-4 top-1/2 -translate-y-1/2 text-gray-400">
-                                                    <Mail size={16} className="md:w-[18px] md:h-[18px]" />
+                                                <span className={`absolute left-4 top-1/2 -translate-y-1/2 ${theme.iconColor}`}>
+                                                    <Mail size={18} />
                                                 </span>
                                                 <input
                                                     type="email"
@@ -213,19 +304,19 @@ export default function EnrollmentForm({ isOpen, onClose, initialCourse }) {
                                                     value={formData.email}
                                                     onChange={handleChange}
                                                     placeholder="your.name@example.com"
-                                                    className="w-full pl-10 md:pl-11 pr-4 py-2.5 md:py-3 text-sm md:text-base bg-gray-50 border border-gray-200 rounded-lg md:rounded-xl focus:ring-2 focus:ring-[#5B2D7C] focus:border-transparent transition-all outline-none"
+                                                    className={`w-full pl-11 pr-4 py-3 text-sm md:text-base bg-slate-50/50 hover:bg-slate-50 border border-slate-200 rounded-xl focus:bg-white focus:ring-4 ${theme.focusRing} ${theme.focusBorder} transition-all duration-300 outline-none`}
                                                 />
                                             </div>
                                         </div>
 
                                         {/* City */}
                                         <div className="relative">
-                                            <label className="block text-xs md:text-sm font-semibold text-gray-700 mb-1.5 md:mb-2">
+                                            <label className="block text-xs md:text-sm font-bold text-gray-600 mb-2">
                                                 City <span className="text-red-500">*</span>
                                             </label>
                                             <div className="relative">
-                                                <span className="absolute left-4 top-1/2 -translate-y-1/2 text-gray-400">
-                                                    <MapPin size={16} className="md:w-[18px] md:h-[18px]" />
+                                                <span className={`absolute left-4 top-1/2 -translate-y-1/2 ${theme.iconColor}`}>
+                                                    <MapPin size={18} />
                                                 </span>
                                                 <input
                                                     type="text"
@@ -233,7 +324,7 @@ export default function EnrollmentForm({ isOpen, onClose, initialCourse }) {
                                                     value={formData.city}
                                                     onChange={handleChange}
                                                     placeholder="e.g. Patna"
-                                                    className="w-full pl-10 md:pl-11 pr-4 py-2.5 md:py-3 text-sm md:text-base bg-gray-50 border border-gray-200 rounded-lg md:rounded-xl focus:ring-2 focus:ring-[#5B2D7C] focus:border-transparent transition-all outline-none"
+                                                    className={`w-full pl-11 pr-4 py-3 text-sm md:text-base bg-slate-50/50 hover:bg-slate-50 border border-slate-200 rounded-xl focus:bg-white focus:ring-4 ${theme.focusRing} ${theme.focusBorder} transition-all duration-300 outline-none`}
                                                     required
                                                 />
                                             </div>
@@ -241,26 +332,26 @@ export default function EnrollmentForm({ isOpen, onClose, initialCourse }) {
 
                                         {/* Course Selection */}
                                         <div className="relative col-span-full">
-                                            <label className="block text-xs md:text-sm font-semibold text-gray-700 mb-1.5 md:mb-2">
+                                            <label className="block text-xs md:text-sm font-bold text-gray-600 mb-2">
                                                 Choose Your Target Course <span className="text-red-500">*</span>
                                             </label>
                                             <div className="relative">
-                                                <span className="absolute left-4 top-1/2 -translate-y-1/2 text-gray-400">
-                                                    <BookOpen size={16} className="md:w-[18px] md:h-[18px]" />
+                                                <span className={`absolute left-4 top-1/2 -translate-y-1/2 ${theme.iconColor}`}>
+                                                    <BookOpen size={18} />
                                                 </span>
                                                 <select
                                                     name="course"
                                                     value={formData.course}
                                                     onChange={handleChange}
-                                                    className="w-full pl-10 md:pl-11 pr-10 py-2.5 md:py-3 text-sm md:text-base bg-gray-50 border border-gray-200 rounded-lg md:rounded-xl focus:ring-2 focus:ring-[#5B2D7C] focus:border-transparent transition-all outline-none appearance-none"
+                                                    className={`w-full pl-11 pr-10 py-3 text-sm md:text-base bg-slate-50/50 hover:bg-slate-50 border border-slate-200 rounded-xl focus:bg-white focus:ring-4 ${theme.focusRing} ${theme.focusBorder} transition-all duration-300 outline-none appearance-none cursor-pointer`}
                                                     required
                                                 >
                                                     <option value="" disabled>Select a course</option>
-                                                    {courses.map((course, idx) => (
+                                                    {filteredCourses.map((course, idx) => (
                                                         <option key={idx} value={course}>{course}</option>
                                                     ))}
                                                 </select>
-                                                <div className="absolute right-4 top-1/2 -translate-y-1/2 pointer-events-none text-gray-400">
+                                                <div className={`absolute right-4 top-1/2 -translate-y-1/2 pointer-events-none ${theme.iconColor}`}>
                                                     <svg className="w-4 h-4 md:w-5 md:h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 9l-7 7-7-7" />
                                                     </svg>
@@ -270,12 +361,12 @@ export default function EnrollmentForm({ isOpen, onClose, initialCourse }) {
 
                                         {/* Query */}
                                         <div className="relative col-span-full">
-                                            <label className="block text-xs md:text-sm font-semibold text-gray-700 mb-1.5 md:mb-2">
+                                            <label className="block text-xs md:text-sm font-bold text-gray-600 mb-2">
                                                 Describe Your Query (Optional)
                                             </label>
                                             <div className="relative">
-                                                <span className="absolute left-4 top-4 text-gray-400">
-                                                    <MessageSquare size={16} className="md:w-[18px] md:h-[18px]" />
+                                                <span className={`absolute left-4 top-4 ${theme.iconColor}`}>
+                                                    <MessageSquare size={18} />
                                                 </span>
                                                 <textarea
                                                     name="query"
@@ -283,17 +374,17 @@ export default function EnrollmentForm({ isOpen, onClose, initialCourse }) {
                                                     onChange={handleChange}
                                                     placeholder="Enter any specific questions or details..."
                                                     rows={3}
-                                                    className="w-full pl-10 md:pl-11 pr-4 py-2.5 md:py-3 text-sm md:text-base bg-gray-50 border border-gray-200 rounded-lg md:rounded-xl focus:ring-2 focus:ring-[#5B2D7C] focus:border-transparent transition-all outline-none resize-none"
+                                                    className={`w-full pl-11 pr-4 py-3 text-sm md:text-base bg-slate-50/50 hover:bg-slate-50 border border-slate-200 rounded-xl focus:bg-white focus:ring-4 ${theme.focusRing} ${theme.focusBorder} transition-all duration-300 outline-none resize-none`}
                                                 ></textarea>
                                             </div>
                                         </div>
                                     </div>
 
-                                    <div className="pt-2 md:pt-4">
+                                    <div className="pt-4">
                                         <button
                                             type="submit"
                                             disabled={loading}
-                                            className="w-full bg-gradient-to-r from-[#5B2D7C] to-[#b72e2f] text-white py-3.5 md:py-4 rounded-xl font-bold text-base md:text-lg hover:shadow-xl transform hover:-translate-y-0.5 transition-all flex items-center justify-center gap-2 group"
+                                            className={`w-full bg-gradient-to-r ${theme.buttonBg} text-white py-4 rounded-xl font-bold text-base md:text-lg shadow-lg hover:shadow-xl active:scale-[0.99] transform transition-all duration-300 flex items-center justify-center gap-2 group`}
                                         >
                                             {loading ? (
                                                 <div className="animate-spin rounded-full h-5 w-5 md:h-6 md:w-6 border-b-2 border-white"></div>

@@ -58,7 +58,14 @@ export default function Navbar() {
               { to: "/programs/class-6-to-10", label: "Class 6 to 10" },
             ]}
           />
-          <NavItem to="/student-portal" label="Student Zone" />
+          <Dropdown
+            label="Student Zone"
+            items={[
+              { to: "/student-portal", label: "Student Portal" },
+              { to: "/rank-predictor", label: "Rank Predictor" },
+              { to: "/college-predictor", label: "College Predictor" },
+            ]}
+          />
           <NavItem to="/blogs" label="Blog" />
           <NavItem to="/careers" label="Careers" />
           <NavItem to="/admission" label="Admission" />
@@ -121,12 +128,15 @@ export default function Navbar() {
               ]}
               onClose={() => setIsOpen(false)}
             />
-            <NavItem
-              to="/student-portal"
-              label="Student Zone"
-              mobile
-              onClick={() => setIsOpen(false)}
-            />
+             <DropdownMobile
+               label="Student Zone"
+               items={[
+                 { to: "/student-portal", label: "Student Portal" },
+                 { to: "/rank-predictor", label: "Rank Predictor" },
+                 { to: "/college-predictor", label: "College Predictor" },
+               ]}
+               onClose={() => setIsOpen(false)}
+             />
             <NavItem to="/blogs" label="Blog" mobile onClick={() => setIsOpen(false)} />
             <NavItem to="/careers" label="Careers" mobile onClick={() => setIsOpen(false)} />
             <NavItem to="/admission" label="Admission" mobile onClick={() => setIsOpen(false)} />

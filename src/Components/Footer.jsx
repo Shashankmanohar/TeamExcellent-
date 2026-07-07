@@ -1,10 +1,114 @@
-import React from "react";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import TeamExcellent from "../assets/TeamExcellent2.webp";
+import toast from "react-hot-toast";
+import { submitEnrollment } from "../lib/enrollmentApi";
 
 export default function Footer() {
+  const [enquiryData, setEnquiryData] = useState({
+    fullName: "",
+    mobileNumber: "",
+    course: "",
+    city: "Patna"
+  });
+  const [submitting, setSubmitting] = useState(false);
+
+  const handleEnquiryChange = (e) => {
+    const { name, value } = e.target;
+    setEnquiryData(prev => ({ ...prev, [name]: value }));
+  };
+
+  const handleEnquirySubmit = async (e) => {
+    e.preventDefault();
+    const mobileRegex = /^\d{10}$/;
+    if (!mobileRegex.test(enquiryData.mobileNumber)) {
+      toast.error("Please enter a valid 10-digit mobile number");
+      return;
+    }
+
+    try {
+      setSubmitting(true);
+      await submitEnrollment(enquiryData);
+      toast.success("Enquiry submitted successfully!");
+      setEnquiryData({
+        fullName: "",
+        mobileNumber: "",
+        course: "",
+        city: "Patna"
+      });
+    } catch (error) {
+      console.error("Enquiry submission error:", error);
+      toast.error(error.message || "Failed to submit enquiry. Please try again.");
+    } finally {
+      setSubmitting(false);
+    }
+  };
+
   return (
     <footer className="w-full bg-[#5B2D7C] text-white pt-10 pb-6">
+      {/* Quick Enquiry Form Section */}
+      <div className="max-w-7xl mx-auto px-6 pb-12 mb-10 border-b border-white/10">
+        <div className="bg-white/5 rounded-3xl p-6 md:p-8 backdrop-blur-sm border border-white/10 flex flex-col lg:flex-row justify-between items-center gap-8">
+          <div className="space-y-3 max-w-xl text-center lg:text-left">
+            <h3 className="text-2xl md:text-3xl font-extrabold text-white">Have Any Questions?</h3>
+            <p className="text-white/80 text-sm md:text-base">
+              Fill out this quick enquiry form, and our career counselors will call you back to help you select the right batch and course.
+            </p>
+          </div>
+          
+          <form onSubmit={handleEnquirySubmit} className="w-full lg:w-auto flex-grow max-w-4xl grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-4 items-center">
+            <input
+              type="text"
+              name="fullName"
+              value={enquiryData.fullName}
+              onChange={handleEnquiryChange}
+              placeholder="Your Name"
+              className="w-full px-4 py-3 bg-white/10 border border-white/20 rounded-xl text-white placeholder-white/50 focus:bg-white/20 focus:outline-none focus:ring-2 focus:ring-white/30 transition-all text-sm outline-none"
+              required
+            />
+            <input
+              type="tel"
+              name="mobileNumber"
+              value={enquiryData.mobileNumber}
+              onChange={handleEnquiryChange}
+              placeholder="Mobile Number"
+              className="w-full px-4 py-3 bg-white/10 border border-white/20 rounded-xl text-white placeholder-white/50 focus:bg-white/20 focus:outline-none focus:ring-2 focus:ring-white/30 transition-all text-sm outline-none"
+              required
+            />
+            <div className="relative w-full">
+              <select
+                name="course"
+                value={enquiryData.course}
+                onChange={handleEnquiryChange}
+                className="w-full px-4 py-3 bg-white/10 border border-white/20 rounded-xl text-white placeholder-white/50 focus:bg-white/20 focus:outline-none focus:ring-2 focus:ring-white/30 transition-all text-sm cursor-pointer appearance-none outline-none"
+                required
+              >
+                <option value="" className="text-gray-800" disabled>Select Course</option>
+                <option value="JEE Main/Advanced" className="text-gray-800">JEE Preparation</option>
+                <option value="NEET UG Medical" className="text-gray-800">NEET Preparation</option>
+                <option value="School Foundation Class 6-10" className="text-gray-800">School Foundation</option>
+              </select>
+              <div className="absolute right-4 top-1/2 -translate-y-1/2 pointer-events-none text-white/50">
+                <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 9l-7 7-7-7" />
+                </svg>
+              </div>
+            </div>
+            <button
+              type="submit"
+              disabled={submitting}
+              className="w-full px-6 py-3 bg-white text-[#5B2D7C] hover:bg-white/90 active:bg-gray-100 font-bold rounded-xl transition-all shadow-md active:scale-[0.98] duration-200 text-sm whitespace-nowrap flex items-center justify-center min-h-[46px]"
+            >
+              {submitting ? (
+                <div className="animate-spin rounded-full h-5 w-5 border-b-2 border-[#5B2D7C]"></div>
+              ) : (
+                "Submit"
+              )}
+            </button>
+          </form>
+        </div>
+      </div>
+
       <div className="max-w-7xl mx-auto px-6 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-10">
         {/* Logo + Tagline */}
         <div className="text-center md:text-left">

@@ -48,3 +48,21 @@ export const deleteEnrollment = async (id) => {
         throw error.response?.data || error.message;
     }
 };
+
+/**
+ * Update enrollment status (Admin only)
+ * @param {string} id - The ID of the enrollment to update
+ * @param {string} status - The new status
+ * @returns {Promise} - The updated enrollment
+ */
+export const updateEnrollmentStatus = async (id, status) => {
+    try {
+        const token = localStorage.getItem('adminToken');
+        const response = await axios.patch(`${API_BASE_URL}/enrollments/${id}/status`, { status }, {
+            headers: { Authorization: `Bearer ${token}` }
+        });
+        return response.data;
+    } catch (error) {
+        throw error.response?.data || error.message;
+    }
+};

@@ -28,6 +28,10 @@ export default function Programs() {
             tag: "Offline",
             accentColor: "bg-[#522871]",
             hoverColor: "hover:bg-[#472164]",
+            textColor: "group-hover:text-[#522871]",
+            borderColor: "border-[#522871]",
+            tagClass: "bg-[#522871]/10 text-[#522871] border-[#522871]/20",
+            exploreClass: "border-[#522871]/30 text-[#522871] hover:bg-[#522871] hover:text-white hover:border-[#522871]",
         },
         {
             id: 2,
@@ -39,6 +43,10 @@ export default function Programs() {
             tag: "Offline",
             accentColor: "bg-[#b72e2f]",
             hoverColor: "hover:bg-[#a02829]",
+            textColor: "group-hover:text-[#b72e2f]",
+            borderColor: "border-[#b72e2f]",
+            tagClass: "bg-[#b72e2f]/10 text-[#b72e2f] border-[#b72e2f]/20",
+            exploreClass: "border-[#b72e2f]/30 text-[#b72e2f] hover:bg-[#b72e2f] hover:text-white hover:border-[#b72e2f]",
         },
         {
             id: 3,
@@ -48,8 +56,12 @@ export default function Programs() {
             image: Foundation,
             link: "/programs/class-6-to-10",
             tag: "Offline",
-            accentColor: "bg-blue-600",
-            hoverColor: "hover:bg-blue-700",
+            accentColor: "bg-[#2563eb]",
+            hoverColor: "hover:bg-[#1d4ed8]",
+            textColor: "group-hover:text-[#2563eb]",
+            borderColor: "border-[#2563eb]",
+            tagClass: "bg-[#2563eb]/10 text-[#2563eb] border-[#2563eb]/20",
+            exploreClass: "border-[#2563eb]/30 text-[#2563eb] hover:bg-[#2563eb] hover:text-white hover:border-[#2563eb]",
         },
     ];
 
@@ -64,7 +76,7 @@ export default function Programs() {
                     <div className="w-24 h-1 bg-[#9333ea] mx-auto mt-4 rounded"></div>
                     <p className="text-gray-600 mt-4 text-lg">
                         Choose the right path for your academic success
-                    </p>
+                     </p>
                 </div>
 
                 {/* Grid */}
@@ -72,7 +84,7 @@ export default function Programs() {
                     {programs.map((program) => (
                         <div
                             key={program.id}
-                            className="group bg-white rounded-3xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 flex flex-col h-full relative"
+                            className={`group bg-white rounded-3xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 flex flex-col h-full relative border-t-4 ${program.borderColor}`}
                         >
                             {/* Image Container */}
                             <div className="relative h-56 overflow-hidden">
@@ -85,14 +97,14 @@ export default function Programs() {
                                 />
 
                                 {/* Offline Tag */}
-                                <div className="absolute top-4 right-4 bg-white/90 backdrop-blur-sm text-gray-800 px-4 py-1.5 rounded-full text-sm font-bold shadow-sm border border-gray-100">
+                                <div className={`absolute top-4 right-4 backdrop-blur-sm px-4 py-1.5 rounded-full text-sm font-bold shadow-sm border ${program.tagClass}`}>
                                     {program.tag}
                                 </div>
                             </div>
 
                             {/* Content */}
                             <div className="p-8 flex flex-col flex-grow">
-                                <h3 className="text-2xl font-bold text-[#1f2937] mb-4">
+                                <h3 className={`text-2xl font-bold text-[#1f2937] mb-4 transition-colors duration-300 ${program.textColor}`}>
                                     {program.title}
                                 </h3>
                                 <p className="text-gray-600 text-base leading-relaxed mb-8 flex-grow">
@@ -109,7 +121,7 @@ export default function Programs() {
                                     </button>
                                     <Link
                                         to={program.link}
-                                        className="bg-white border-2 border-gray-200 text-gray-700 text-center py-3 rounded-xl font-semibold hover:bg-gray-50 hover:border-gray-300 transition-all duration-300"
+                                        className={`bg-white border-2 text-center py-3 rounded-xl font-semibold transition-all duration-300 ${program.exploreClass}`}
                                     >
                                         Explore
                                     </Link>
