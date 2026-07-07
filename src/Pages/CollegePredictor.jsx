@@ -4,6 +4,7 @@ import Footer from "../Components/Footer";
 import { Landmark, GraduationCap, ChevronRight, Send, Calculator } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 import toast from "react-hot-toast";
+import { submitCounselingRequest } from "../lib/counselingApi";
 
 // Static mock databases for predictors
 const JEE_COLLEGES = [
@@ -54,6 +55,9 @@ export default function CollegePredictor() {
 
   // Counseling banner modal trigger
   const [showConsultModal, setShowConsultModal] = useState(false);
+  const [counselingName, setCounselingName] = useState("");
+  const [counselingPhone, setCounselingPhone] = useState("");
+  const [counselingExam, setCounselingExam] = useState("JEE Main / Advanced");
 
   // JEE College Prediction
   const predictJEEColleges = (e) => {
@@ -492,10 +496,21 @@ export default function CollegePredictor() {
               <p className="text-sm text-gray-500 mb-6">Leave your details and our counselor will call you back within 24 hours.</p>
 
               <form
-                onSubmit={(e) => {
+                onSubmit={async (e) => {
                   e.preventDefault();
-                  toast.success("Counseling request submitted successfully!");
-                  setShowConsultModal(false);
+                  try {
+                    await submitCounselingRequest({
+                      fullName: counselingName,
+                      contactNumber: counselingPhone,
+                      targetExam: counselingExam
+                    });
+                    toast.success("Counseling request submitted successfully!");
+                    setShowConsultModal(false);
+                    setCounselingName("");
+                    setCounselingPhone("");
+                  } catch (error) {
+                    toast.error(error.message || "Failed to submit request");
+                  }
                 }}
                 className="space-y-4"
               >
@@ -503,6 +518,8 @@ export default function CollegePredictor() {
                   <label className="block text-xs font-bold text-gray-600 mb-1.5">Full Name</label>
                   <input
                     type="text"
+                    value={counselingName}
+                    onChange={(e) => setCounselingName(e.target.value)}
                     placeholder="Enter your name"
                     className="w-full px-4 py-2.5 bg-slate-50 border border-slate-200 rounded-xl focus:bg-white outline-none transition-all text-sm"
                     required
@@ -512,6 +529,8 @@ export default function CollegePredictor() {
                   <label className="block text-xs font-bold text-gray-600 mb-1.5">Contact Number</label>
                   <input
                     type="tel"
+                    value={counselingPhone}
+                    onChange={(e) => setCounselingPhone(e.target.value)}
                     placeholder="Enter mobile number"
                     className="w-full px-4 py-2.5 bg-slate-50 border border-slate-200 rounded-xl focus:bg-white outline-none transition-all text-sm"
                     required
@@ -519,7 +538,11 @@ export default function CollegePredictor() {
                 </div>
                 <div>
                   <label className="block text-xs font-bold text-gray-600 mb-1.5">Target Exam</label>
-                  <select className="w-full px-4 py-2.5 bg-slate-50 border border-slate-200 rounded-xl focus:bg-white outline-none transition-all text-sm">
+                  <select 
+                    value={counselingExam}
+                    onChange={(e) => setCounselingExam(e.target.value)}
+                    className="w-full px-4 py-2.5 bg-slate-50 border border-slate-200 rounded-xl focus:bg-white outline-none transition-all text-sm"
+                  >
                     <option>JEE Main / Advanced</option>
                     <option>NEET UG</option>
                   </select>

@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { NavLink, useNavigate } from 'react-router-dom';
-import { LayoutDashboard, Users, FileText, MessageSquare, Briefcase, LogOut, Menu, X, Shield, Award } from 'lucide-react';
+import { LayoutDashboard, Users, FileText, MessageSquare, Briefcase, LogOut, Menu, X, Shield, Award, PhoneCall } from 'lucide-react';
 import toast from 'react-hot-toast';
 import TeamExcellent from '../assets/TeamExcellent.webp';
 
@@ -43,6 +43,10 @@ export default function AdminNav() {
                     <NavLink to="/admin/enrollments" className={linkClass} onClick={() => setIsOpen(false)}>
                         <Users size={18} />
                         <span>Enrollments</span>
+                    </NavLink>
+                    <NavLink to="/admin/counseling" className={linkClass} onClick={() => setIsOpen(false)}>
+                        <PhoneCall size={18} />
+                        <span>Counseling</span>
                     </NavLink>
                     <NavLink to="/admin-login" className={linkClass} onClick={() => setIsOpen(false)}>
                         <Award size={18} />

@@ -16,6 +16,7 @@ import AdminDashboard from './Pages/AdminDashboard';
 import AdminEnrollments from './Pages/AdminEnrollments';
 import AdminReviews from './Pages/AdminReviews';
 import AdminCareers from './Pages/AdminCareers';
+import AdminCounseling from './Pages/AdminCounseling';
 import Careers from './Pages/Careers';
 import CareerDetail from './Pages/CareerDetail';
 import WhatsAppButton from './Components/WhatsAppButton';
@@ -98,6 +99,7 @@ export default function App() {
         <Route path="/admin" element={<AdminDashboard />} />
         <Route path="/admin/blogs" element={<AdminBlogs />} />
         <Route path="/admin/enrollments" element={<AdminEnrollments />} />
+        <Route path="/admin/counseling" element={<AdminCounseling />} />
         <Route path="/admin/reviews" element={<AdminReviews />} />
         <Route path="/admin/careers" element={<AdminCareers />} />
         <Route path="/admin/blogs/new" element={<BlogEditor />} />

@@ -1,10 +1,11 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate, Link } from 'react-router-dom';
-import { Users, FileText, MessageSquare, Briefcase, Calendar, MapPin, ArrowRight, Clock, Plus, ExternalLink } from 'lucide-react';
+import { Users, FileText, MessageSquare, Briefcase, Calendar, MapPin, ArrowRight, Clock, Plus, ExternalLink, PhoneCall } from 'lucide-react';
 import { fetchEnrollments } from '../lib/enrollmentApi';
 import { fetchAllBlogs } from '../lib/blogApi';
 import { fetchAllReviewsAdmin } from '../lib/reviewApi';
 import { fetchAllCareers } from '../lib/careerApi';
+import { fetchCounselingRequests } from '../lib/counselingApi';
 import AdminNav from '../Components/AdminNav';
 import toast from 'react-hot-toast';
 
@@ -17,6 +18,8 @@ export default function AdminDashboard() {
         reviewsTotal: 0,
         reviewsPending: 0,
         careersTotal: 0,
+        counselingTotal: 0,
+        counselingPending: 0,
     });
     const [recentLeads, setRecentLeads] = useState([]);
     const [loading, setLoading] = useState(true);
@@ -40,7 +43,8 @@ export default function AdminDashboard() {
                 fetchEnrollments().catch(() => ({ enrollments: [] })),
                 fetchAllBlogs(1, 100).catch(() => ({ blogs: [], totalBlogs: 0 })),
                 fetchAllReviewsAdmin().catch(() => ({ success: false, reviews: [] })),
-                fetchAllCareers().catch(() => ([]))
+                fetchAllCareers().catch(() => ([])),
+                fetchCounselingRequests().catch(() => ({ success: false, data: [] }))
             ]);
 
             const leads = leadsData.enrollments || [];
@@ -48,6 +52,8 @@ export default function AdminDashboard() {
             const reviews = reviewsData.reviews || [];
             const pendingReviews = reviews.filter(r => !r.isApproved).length;
             const careersCount = careersData.length;
+            const counselingRequests = counselingData.data || [];
+            const pendingCounseling = counselingRequests.filter(r => r.status === 'Pending').length;
 
             const today = new Date().toDateString();
             const todayLeads = leads.filter(e => new Date(e.createdAt).toDateString() === today).length;
@@ -59,6 +65,8 @@ export default function AdminDashboard() {
                 reviewsTotal: reviews.length,
                 reviewsPending: pendingReviews,
                 careersTotal: careersCount,
+                counselingTotal: counselingRequests.length,
+                counselingPending: pendingCounseling
             });
 
             // Set top 5 recent leads
@@ -149,6 +157,21 @@ export default function AdminDashboard() {
                                         <Briefcase size={24} />
                                     </div>
                                 </div>
+
+                                <div className="bg-white p-6 rounded-2xl shadow-sm border border-gray-100 flex items-center justify-between">
+                                    <div>
+                                        <p className="text-gray-400 text-xs font-bold uppercase tracking-wider">Counseling Requests</p>
+                                        <h3 className="text-3xl font-bold text-[#0B0B45] mt-1">{stats.counselingTotal}</h3>
+                                        {stats.counselingPending > 0 ? (
+                                            <p className="text-xs text-yellow-500 font-semibold mt-1">{stats.counselingPending} pending action</p>
+                                        ) : (
+                                            <p className="text-xs text-gray-400 font-semibold mt-1">All processed</p>
+                                        )}
+                                    </div>
+                                    <div className="p-4 bg-blue-50 text-blue-600 rounded-2xl">
+                                        <PhoneCall size={24} />
+                                    </div>
+                                </div>
                             </div>
 
                             {/* Main Content Split Grid */}
@@ -216,6 +239,22 @@ export default function AdminDashboard() {
                                                 <div>
                                                     <h4 className="font-bold text-gray-800">Careers & Openings</h4>
                                                     <p className="text-xs text-gray-500">Manage job postings</p>
+                                                </div>
+                                            </div>
+                                            <ArrowRight size={18} className="text-gray-400 group-hover:text-[#5B2D7C] group-hover:translate-x-1 transition-all" />
+                                        </Link>
+
+                                        <Link
+                                            to="/admin/counseling"
+                                            className="group bg-white p-5 rounded-2xl border border-gray-100 hover:border-[#5B2D7C] hover:shadow-md transition-all flex items-center justify-between"
+                                        >
+                                            <div className="flex items-center gap-4">
+                                                <div className="p-3 bg-blue-50 text-blue-600 rounded-xl group-hover:bg-blue-600 group-hover:text-white transition-colors">
+                                                    <PhoneCall size={20} />
+                                                </div>
+                                                <div>
+                                                    <h4 className="font-bold text-gray-800">Counseling Requests</h4>
+                                                    <p className="text-xs text-gray-500">Call back and consult students</p>
                                                 </div>
                                             </div>
                                             <ArrowRight size={18} className="text-gray-400 group-hover:text-[#5B2D7C] group-hover:translate-x-1 transition-all" />
