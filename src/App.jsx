@@ -12,6 +12,7 @@ import Neet from './Pages/Neet'
 import Blogs from './Pages/Blogs'
 import BlogDetail from './Pages/BlogDetail'
 import AdminBlogs from './Pages/AdminBlogs'
+import AdminDashboard from './Pages/AdminDashboard';
 import AdminEnrollments from './Pages/AdminEnrollments';
 import AdminReviews from './Pages/AdminReviews';
 import AdminCareers from './Pages/AdminCareers';
@@ -94,6 +95,7 @@ export default function App() {
         <Route path="/careers/:id" element={<CareerDetail />} />
 
         {/* Admin Routes */}
+        <Route path="/admin" element={<AdminDashboard />} />
         <Route path="/admin/blogs" element={<AdminBlogs />} />
         <Route path="/admin/enrollments" element={<AdminEnrollments />} />
         <Route path="/admin/reviews" element={<AdminReviews />} />

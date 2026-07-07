@@ -3,8 +3,7 @@ import { Link, useNavigate } from 'react-router-dom';
 import { Plus, Edit, Trash2, Eye, EyeOff } from 'lucide-react';
 import { fetchAllBlogs, deleteBlog, togglePublishStatus } from '../lib/blogApi';
 import toast from 'react-hot-toast';
-import Navbar from '../Components/Navbar';
-import Footer from '../Components/Footer';
+import AdminNav from '../Components/AdminNav';
 
 export default function AdminBlogs() {
     const navigate = useNavigate();
@@ -74,39 +73,10 @@ export default function AdminBlogs() {
     };
 
     return (
-        <>
-            <Navbar />
-            <div className="min-h-screen bg-gray-50 py-8 px-4 pt-32">
+        <div className="min-h-screen bg-gray-50 flex flex-col lg:flex-row">
+            <AdminNav />
+            <main className="flex-1 lg:pl-64 p-4 md:p-8 pt-20 lg:pt-8">
                 <div className="max-w-7xl mx-auto">
-                    {/* Navigation Menu */}
-                    <div className="bg-white rounded-lg shadow-md p-4 mb-6 overflow-x-auto">
-                        <div className="flex gap-4 min-w-max">
-                            <button
-                                onClick={() => navigate('/admin-login')}
-                                className="px-4 py-2 bg-white border-2 border-[#5B2D7C] text-[#5B2D7C] rounded font-semibold hover:bg-[#5B2D7C] hover:text-white transition-colors"
-                            >
-                                📊 Marks Management
-                            </button>
-                            <button
-                                onClick={() => navigate('/admin/blogs')}
-                                className="px-4 py-2 bg-[#5B2D7C] text-white rounded font-semibold"
-                            >
-                                📝 Blog Management
-                            </button>
-                            <button
-                                onClick={() => navigate('/admin/enrollments')}
-                                className="px-4 py-2 bg-white border-2 border-[#5B2D7C] text-[#5B2D7C] rounded font-semibold hover:bg-[#5B2D7C] hover:text-white transition-colors"
-                            >
-                                🎓 Student Enrollments
-                            </button>
-                            <button
-                                onClick={() => navigate('/admin/careers')}
-                                className="px-4 py-2 bg-white border-2 border-[#5B2D7C] text-[#5B2D7C] rounded font-semibold hover:bg-[#5B2D7C] hover:text-white transition-colors"
-                            >
-                                💼 Career Management
-                            </button>
-                        </div>
-                    </div>
 
                     {/* Header */}
                     <div className="bg-white rounded-lg shadow-md p-6 mb-6">
@@ -260,8 +230,7 @@ export default function AdminBlogs() {
                         </>
                     )}
                 </div>
-            </div>
-            <Footer />
-        </>
+            </main>
+        </div>
     );
 }

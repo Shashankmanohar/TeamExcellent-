@@ -2,8 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Trash2, CheckCircle, XCircle, Star, MessageSquare, User, Calendar, Loader2, Search, Plus } from 'lucide-react';
 import { fetchAllReviewsAdmin, deleteReview, toggleReviewApproval, submitReview } from '../lib/reviewApi';
-import Navbar from '../Components/Navbar';
-import Footer from '../Components/Footer';
+import AdminNav from '../Components/AdminNav';
 import toast from 'react-hot-toast';
 
 export default function AdminReviews() {
@@ -82,9 +81,9 @@ export default function AdminReviews() {
     );
 
     return (
-        <>
-            <Navbar />
-            <div className="min-h-screen bg-gray-50 pt-32 pb-16 px-4">
+        <div className="min-h-screen bg-gray-50 flex flex-col lg:flex-row">
+            <AdminNav />
+            <main className="flex-1 lg:pl-64 p-4 md:p-8 pt-20 lg:pt-8">
                 <div className="max-w-7xl mx-auto">
                     {/* Header Controls */}
                     <div className="bg-white rounded-2xl shadow-sm p-6 mb-8 flex flex-col md:flex-row justify-between items-center gap-4 border border-gray-100">
@@ -165,7 +164,6 @@ export default function AdminReviews() {
                         </div>
                     )}
                 </div>
-            </div>
 
             {/* Add Modal */}
             {isAddModalOpen && (
@@ -223,7 +221,7 @@ export default function AdminReviews() {
                     </div>
                 </div>
             )}
-            <Footer />
-        </>
+            </main>
+        </div>
     );
 }

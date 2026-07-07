@@ -5,6 +5,7 @@ import { authAPI, marksAPI } from "../lib/api";
 import TeamExcellent from "../assets/TeamExcellent.webp";
 import { useNavigate } from "react-router-dom";
 import toast from "react-hot-toast";
+import AdminNav from "./AdminNav";
 
 // ----------------- UI Components -----------------
 const Button = ({ children, className = "", ...props }) => (
@@ -74,6 +75,7 @@ const AdminMarks = () => {
         localStorage.setItem("adminToken", data.token);
         setIsLoggedIn(true);
         toast.success("Login successful!");
+        navigate('/admin');
       } else {
         toast.error("Login failed");
       }
@@ -178,40 +180,19 @@ const AdminMarks = () => {
   }
 
   return (
-    <div className="min-h-screen bg-[#f3f4f6] mt-30 p-6">
-      <div className="flex justify-between items-center mb-6">
-        <h1 className="text-2xl font-bold">Admin Dashboard - Marks</h1>
-        <div className="flex gap-2">
-          <Button onClick={() => navigate(-1)}>⬅ Back</Button>
-          <Button onClick={handleLogout}>
-            <LogOut className="mr-2 h-4 w-4 inline" /> Logout
-          </Button>
-        </div>
-      </div>
-
-      {/* Navigation Menu */}
-      <Card className="mb-6">
-        <div className="flex gap-4">
-          <button
-            onClick={() => navigate('/admin-login')}
-            className="px-4 py-2 bg-[#902ce8] text-white rounded font-semibold"
-          >
-            📊 Marks Management
-          </button>
-          <button
-            onClick={() => navigate('/admin/blogs')}
-            className="px-4 py-2 bg-white border-2 border-[#902ce8] text-[#902ce8] rounded font-semibold hover:bg-[#902ce8] hover:text-white transition-colors"
-          >
-            📝 Blog Management
-          </button>
-          <button
-            onClick={() => navigate('/admin/enrollments')}
-            className="px-4 py-2 bg-white border-2 border-[#902ce8] text-[#902ce8] rounded font-semibold hover:bg-[#902ce8] hover:text-white transition-colors"
-          >
-            🎓 Student Enrollments
-          </button>
-        </div>
-      </Card>
+    <div className="min-h-screen bg-gray-50 flex flex-col lg:flex-row">
+      <AdminNav />
+      <main className="flex-1 lg:pl-64 p-4 md:p-8 pt-20 lg:pt-8">
+        <div className="max-w-7xl mx-auto">
+          <div className="flex justify-between items-center mb-6">
+            <h1 className="text-2xl font-bold text-[#0B0B45]">Admin Dashboard - Marks</h1>
+            <div className="flex gap-2">
+              <Button onClick={() => navigate(-1)} className="bg-gray-500 hover:bg-gray-600">⬅ Back</Button>
+              <Button onClick={handleLogout} className="bg-red-500 hover:bg-red-600">
+                <LogOut className="mr-2 h-4 w-4 inline" /> Logout
+              </Button>
+            </div>
+          </div>
 
       <Card className="mb-6 flex justify-between items-center">
         <h2 className="text-lg font-semibold">Total Students: {marks.length}</h2>
@@ -266,10 +247,10 @@ const AdminMarks = () => {
           onEdit={setEditingMark}
           onDelete={handleDeleteMark}
         />
+        </div>
       </div>
-
-
-    </div>
+    </main>
+  </div>
   );
 };
 
