@@ -1,6 +1,7 @@
 import React from 'react';
 import Navbar from '../Components/Navbar';
 import Footer from '../Components/Footer';
+import ExploreLinks from '../Components/ExploreLinks';
 import { Trophy, Search, ChevronRight, Award } from 'lucide-react';
 import { Helmet } from 'react-helmet-async';
 
@@ -91,6 +92,7 @@ export default function Result() {
                     </div>
                 </div>
             </main>
+            <ExploreLinks />
             <Footer />
         </>
     );

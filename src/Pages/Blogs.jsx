@@ -5,6 +5,7 @@ import { Calendar, User, ChevronRight, Clock } from 'lucide-react';
 import { fetchPublishedBlogs } from '../lib/blogApi';
 import Navbar from '../Components/Navbar';
 import Footer from '../Components/Footer';
+import ExploreLinks from '../Components/ExploreLinks';
 
 export default function Blogs() {
     const [blogs, setBlogs] = useState([]);
@@ -250,6 +251,7 @@ export default function Blogs() {
                     )}
                 </div>
             </div>
+            <ExploreLinks />
             <Footer />
         </>
     );

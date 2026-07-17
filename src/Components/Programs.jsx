@@ -24,7 +24,7 @@ export default function Programs() {
             description:
                 "Master Physics, Chemistry, and Mathematics with concept-based learning, regular tests, and expert guidance for IIT JEE success.",
             image: Jee,
-            link: "/programs/jee",
+            link: "/jee-coaching-in-patna",
             tag: "Offline",
             accentColor: "bg-[#522871]",
             hoverColor: "hover:bg-[#472164]",
@@ -39,7 +39,7 @@ export default function Programs() {
             description:
                 "From NCERT mastery to advanced problem solving — a complete program designed to help you crack NEET with confidence.",
             image: Neet,
-            link: "/programs/neet",
+            link: "/neet-coaching-in-patna",
             tag: "Offline",
             accentColor: "bg-[#b72e2f]",
             hoverColor: "hover:bg-[#a02829]",

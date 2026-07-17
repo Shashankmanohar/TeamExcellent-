@@ -71,7 +71,7 @@ function Hero() {
               </div>
               <span className="text-[9px] sm:text-xs font-bold text-amber-800">5.0 Star Rated</span>
             </div>
-            <span className="text-[10px] sm:text-xs font-semibold text-slate-500">
+            <span className="text-[10px] sm:text-xs font-semibold text-slate-600">
               Trusted by Top Rankers & Parents in Bihar
             </span>
           </div>

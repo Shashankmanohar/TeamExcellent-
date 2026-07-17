@@ -5,6 +5,8 @@ import about3 from "../assets/About_3.webp";
 import about4 from "../assets/About_4.webp";
 import DirectorPhoto from "../assets/DirectorPhoto.jpg";
 
+import ExploreLinks from "./ExploreLinks";
+
 export default function AboutContent() {
   return (
     <section className="w-full h-auto bg-white mt-30 py-12 px-6">
@@ -141,6 +143,7 @@ export default function AboutContent() {
           />
         </div>
       </div>
+      <ExploreLinks />
     </section>
   );
 }

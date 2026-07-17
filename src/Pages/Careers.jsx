@@ -5,6 +5,7 @@ import { Briefcase, MapPin, Clock, IndianRupee, ChevronRight } from 'lucide-reac
 import { fetchActiveCareers } from '../lib/careerApi';
 import Navbar from '../Components/Navbar';
 import Footer from '../Components/Footer';
+import ExploreLinks from '../Components/ExploreLinks';
 
 export default function Careers() {
     const [careers, setCareers] = useState([]);
@@ -113,6 +114,7 @@ export default function Careers() {
                     )}
                 </div>
             </div>
+            <ExploreLinks />
             <Footer />
         </>
     );

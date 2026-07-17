@@ -52,7 +52,7 @@ export default function Footer() {
         <div className="bg-white/5 rounded-3xl p-6 md:p-8 backdrop-blur-sm border border-white/10 flex flex-col lg:flex-row justify-between items-center gap-8">
           <div className="space-y-3 max-w-xl text-center lg:text-left">
             <h3 className="text-2xl md:text-3xl font-extrabold text-white">Have Any Questions?</h3>
-            <p className="text-white/80 text-sm md:text-base">
+            <p className="text-white/95 text-sm md:text-base">
               Fill out this quick enquiry form, and our career counselors will call you back to help you select the right batch and course.
             </p>
           </div>
@@ -105,7 +105,10 @@ export default function Footer() {
               className="w-full px-6 py-3 bg-white text-[#5B2D7C] hover:bg-white/90 active:bg-gray-100 font-bold rounded-xl transition-all shadow-md active:scale-[0.98] duration-200 text-sm whitespace-nowrap flex items-center justify-center min-h-[46px]"
             >
               {submitting ? (
-                <div className="animate-spin rounded-full h-5 w-5 border-b-2 border-[#5B2D7C]"></div>
+                <span className="flex items-center gap-2">
+                  <span className="animate-spin rounded-full h-4 w-4 border-b-2 border-[#5B2D7C]"></span>
+                  Submitting...
+                </span>
               ) : (
                 "Submit"
               )}
@@ -136,21 +139,23 @@ export default function Footer() {
           <h3 className="text-lg font-semibold mb-3">Quick Links</h3>
           <ul className="space-y-2 text-sm">
             <li><Link to="/" className="hover:text-gray-300 transition-colors">Home</Link></li>
-            <li><Link to="/about" className="hover:text-gray-300 transition-colors">About</Link></li>
-            <li><Link to="/programs/class-8" className="hover:text-gray-300 transition-colors">Programs</Link></li>
-            <li><Link to="/courses" className="hover:text-gray-300 transition-colors">Courses</Link></li>
+            <li><Link to="/about" className="hover:text-gray-300 transition-colors">About Us</Link></li>
+            <li><Link to="/admission" className="hover:text-gray-300 transition-colors">Admission Process</Link></li>
+            <li><Link to="/blogs" className="hover:text-gray-300 transition-colors">Blogs</Link></li>
+            <li><Link to="/contact" className="hover:text-gray-300 transition-colors">Contact Us</Link></li>
           </ul>
         </div>
 
-        {/* Student Zone */}
+        {/* Programs & Tools */}
         <div>
-          <h3 className="text-lg font-semibold mb-3">Student Zone</h3>
+          <h3 className="text-lg font-semibold mb-3">Programs & Tools</h3>
           <ul className="space-y-2 text-sm">
+            <li><Link to="/jee-coaching-in-patna" className="hover:text-gray-300 transition-colors">JEE Coaching</Link></li>
+            <li><Link to="/neet-coaching-in-patna" className="hover:text-gray-300 transition-colors">NEET Coaching</Link></li>
+            <li><Link to="/programs/class-6-to-10" className="hover:text-gray-300 transition-colors">Class 6-10 Foundation</Link></li>
+            <li><Link to="/rank-predictor" className="hover:text-gray-300 transition-colors">Rank Predictor</Link></li>
+            <li><Link to="/college-predictor" className="hover:text-gray-300 transition-colors">College Predictor</Link></li>
             <li><Link to="/student-portal" className="hover:text-gray-300 transition-colors">Student Portal</Link></li>
-
-            <li><Link to="/resources" className="hover:text-gray-300 transition-colors">Resources</Link></li>
-            <li><Link to="/admission" className="hover:text-gray-300 transition-colors">Admission</Link></li>
-            <li><Link to="/contact" className="hover:text-gray-300 transition-colors">Contact</Link></li>
           </ul>
         </div>
 

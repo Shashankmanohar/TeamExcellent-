@@ -53,6 +53,7 @@ export default function Home() {
         <meta property="og:description" content="Turning Bihar's Talent into IITians & Doctors. Join Team Excellent for the best JEE & NEET preparation in Patna." />
         <meta property="og:type" content="website" />
         <meta property="og:url" content="https://teamexcellentcareerinstitute.in" />
+        <link rel="canonical" href="https://teamexcellentcareerinstitute.in" />
         <meta property="og:image" content="/logo192.png" />
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:title" content="IIT-JEE & NEET Coaching in Patna | Team Excellent Career Institute" />

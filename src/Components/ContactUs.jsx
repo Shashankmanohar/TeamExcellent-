@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import Contactimage from "../assets/Contactimage.jpg";
 import { MapPin, Phone, Mail, Clock } from "lucide-react";
+import ExploreLinks from "./ExploreLinks";
 
 function ContactUs() {
   const [formData, setFormData] = useState({ name: "", mobile: "", message: "" });
@@ -164,6 +165,7 @@ function ContactUs() {
           </form>
         </div>
       </div>
+      <ExploreLinks />
     </section>
   );
 }

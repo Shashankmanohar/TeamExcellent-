@@ -25,7 +25,8 @@ export default function Neet() {
         <meta property="og:title" content="NEET Coaching | Team Excellent Institute" />
         <meta property="og:description" content="Achieve your dream medical seat with Team Excellent’s NEET coaching, led by expert faculty and proven results." />
         <meta property="og:type" content="website" />
-        <meta property="og:url" content="https://teamexcellentcareerinstitute.in/neet" />
+        <meta property="og:url" content="https://teamexcellentcareerinstitute.in/neet-coaching-in-patna" />
+        <link rel="canonical" href="https://teamexcellentcareerinstitute.in/neet-coaching-in-patna" />
         <meta property="og:image" content="https://teamexcellentcareerinstitute.in/logo192.png" />
 
         {/* Twitter Card */}

@@ -43,7 +43,7 @@ export default function Navbar() {
             width="224"
             height="50"
             loading="eager"
-            fetchPriority="high"
+            fetchpriority="high"
             decoding="async"
           />
         </Link>
@@ -55,8 +55,8 @@ export default function Navbar() {
           <Dropdown
             label="Programs"
             items={[
-              { to: "/programs/jee", label: "JEE" },
-              { to: "/programs/neet", label: "NEET" },
+              { to: "/jee-coaching-in-patna", label: "JEE" },
+              { to: "/neet-coaching-in-patna", label: "NEET" },
               { to: "/programs/class-6-to-10", label: "Class 6 to 10" },
             ]}
           />
@@ -69,7 +69,6 @@ export default function Navbar() {
             ]}
           />
           <NavItem to="/blogs" label="Blog" />
-          <NavItem to="/careers" label="Careers" />
           <NavItem to="/admission" label="Admission" />
           <NavItem to="/result" label="Result" />
           
@@ -124,8 +123,8 @@ export default function Navbar() {
             <DropdownMobile
               label="Programs"
               items={[
-                { to: "/programs/jee", label: "JEE" },
-                { to: "/programs/neet", label: "NEET" },
+                { to: "/jee-coaching-in-patna", label: "JEE" },
+                { to: "/neet-coaching-in-patna", label: "NEET" },
                 { to: "/programs/class-6-to-10", label: "Class 6 to 10" },
               ]}
               onClose={() => setIsOpen(false)}
@@ -140,7 +139,6 @@ export default function Navbar() {
                onClose={() => setIsOpen(false)}
              />
             <NavItem to="/blogs" label="Blog" mobile onClick={() => setIsOpen(false)} />
-            <NavItem to="/careers" label="Careers" mobile onClick={() => setIsOpen(false)} />
             <NavItem to="/admission" label="Admission" mobile onClick={() => setIsOpen(false)} />
             <NavItem to="/result" label="Result" mobile onClick={() => setIsOpen(false)} />
             

@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import Navbar from "../Components/Navbar";
 import Footer from "../Components/Footer";
+import ExploreLinks from "../Components/ExploreLinks";
 import { Landmark, GraduationCap, ChevronRight, Send, Calculator } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 import toast from "react-hot-toast";
@@ -559,6 +560,7 @@ export default function CollegePredictor() {
         )}
       </AnimatePresence>
 
+      <ExploreLinks />
       <Footer />
     </div>
   );

@@ -1,5 +1,8 @@
-import { Link } from "react-router-dom";
-import { HeartPulse, BookOpen, Award, Layers } from "lucide-react";
+import React, { useState } from "react";
+import { HeartPulse, BookOpen, Award, Layers, ArrowRight } from "lucide-react";
+import ExploreLinks from "./ExploreLinks";
+import EnrollmentForm from "./EnrollmentForm";
+import FAQSection from "./FAQSection";
 
 function NeetContent() {
   const examInfo = {
@@ -44,6 +47,33 @@ function NeetContent() {
     },
   ];
 
+  const faqs = [
+    {
+      question: "What NEET prep programs do you offer?",
+      answer: "We offer comprehensive offline programs for NEET UG, including year-long batches for Class 11 and 12, repeater batches for dropouts, and crash courses paired with structured test series."
+    },
+    {
+      question: "How is Biology taught for NEET at Team Excellent?",
+      answer: "We emphasize complete NCERT mastery for Biology. Our teachers utilize audio-visual smart classroom tools to explain complex physiological processes, followed by rigorous diagram-based analysis."
+    },
+    {
+      question: "Do you conduct practice tests on OMR sheets?",
+      answer: "Yes. Since NEET is a pen-and-paper test, we conduct regular offline mock tests on actual NEET-pattern OMR sheets to build time-management skills and minimize bubbling errors."
+    },
+    {
+      question: "How do you help students who struggle with Physics?",
+      answer: "Physics is often a hurdle for medical students. We begin with basic mathematical concepts needed for physics, followed by step-by-step problem-solving tutorials and dedicated daily doubt sessions."
+    }
+  ];
+
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [modalCourse, setModalCourse] = useState("");
+
+  const handleOpenModal = (course = "") => {
+    setModalCourse(course);
+    setIsModalOpen(true);
+  };
+
   return (
     <div className="w-full">
       {/* Subpage Hero Section */}
@@ -70,6 +100,23 @@ function NeetContent() {
           <p className="max-w-2xl mx-auto text-xs sm:text-sm md:text-base text-slate-600 leading-relaxed font-medium">
             Learn about the NEET exam, its structure, and how Team Excellent helps you build a strong concepts library in Biology, Physics, and Chemistry to secure admission in top medical colleges.
           </p>
+
+          {/* Hero CTAs */}
+          <div className="flex flex-col sm:flex-row gap-3 justify-center max-w-md mx-auto mt-8">
+            <button
+              onClick={() => handleOpenModal("NEET")}
+              className="inline-flex items-center justify-center gap-2 rounded-xl bg-gradient-to-r from-[#5B2D7C] to-[#8424bd] px-6 py-3 text-xs sm:text-sm font-bold text-white shadow-lg hover:shadow-xl hover:-translate-y-0.5 transition-all duration-200"
+            >
+              Apply for NEET Coaching
+              <ArrowRight className="w-4 h-4" />
+            </button>
+            <button
+              onClick={() => handleOpenModal("NEET")}
+              className="inline-flex items-center justify-center gap-2 rounded-xl border-2 border-slate-200 bg-white px-6 py-3 text-xs sm:text-sm font-bold text-slate-700 hover:border-[#5B2D7C]/60 hover:bg-[#5B2D7C]/5 hover:-translate-y-0.5 transition-all duration-200"
+            >
+              Book Free Demo
+            </button>
+          </div>
         </div>
       </section>
 
@@ -128,32 +175,15 @@ function NeetContent() {
           of becoming a doctor.
         </p>
       </div>
-
-      {/* Explore Other Programs / Links */}
-      <div className="max-w-5xl mx-auto mt-20 border-t border-gray-200 pt-12 pb-8 text-center">
-        <h2 className="text-2xl font-extrabold text-gray-800 mb-6">Explore Other Programs & Predictors</h2>
-        <div className="flex flex-wrap justify-center gap-3">
-          <Link to="/jee" className="px-5 py-2 bg-white border border-slate-200 text-slate-700 rounded-xl hover:border-[#5B2D7C] hover:text-[#5B2D7C] transition duration-200 font-semibold text-xs sm:text-sm shadow-sm">
-            JEE Coaching
-          </Link>
-          <Link to="/class6to10" className="px-5 py-2 bg-white border border-slate-200 text-slate-700 rounded-xl hover:border-[#5B2D7C] hover:text-[#5B2D7C] transition duration-200 font-semibold text-xs sm:text-sm shadow-sm">
-            Class 6-10 Foundation
-          </Link>
-          <Link to="/admission" className="px-5 py-2 bg-white border border-slate-200 text-slate-700 rounded-xl hover:border-[#5B2D7C] hover:text-[#5B2D7C] transition duration-200 font-semibold text-xs sm:text-sm shadow-sm">
-            Admission Procedure
-          </Link>
-          <Link to="/rank-predictor" className="px-5 py-2 bg-white border border-slate-200 text-slate-700 rounded-xl hover:border-[#5B2D7C] hover:text-[#5B2D7C] transition duration-200 font-semibold text-xs sm:text-sm shadow-sm">
-            JEE/NEET Rank Predictor
-          </Link>
-          <Link to="/college-predictor" className="px-5 py-2 bg-white border border-slate-200 text-slate-700 rounded-xl hover:border-[#5B2D7C] hover:text-[#5B2D7C] transition duration-200 font-semibold text-xs sm:text-sm shadow-sm">
-            JEE College Predictor
-          </Link>
-          <Link to="/contact" className="px-5 py-2 bg-white border border-slate-200 text-slate-700 rounded-xl hover:border-[#5B2D7C] hover:text-[#5B2D7C] transition duration-200 font-semibold text-xs sm:text-sm shadow-sm">
-            Contact Us
-          </Link>
-        </div>
-      </div>
+      <FAQSection faqs={faqs} />
+      <ExploreLinks />
     </section>
+
+    <EnrollmentForm
+      isOpen={isModalOpen}
+      onClose={() => setIsModalOpen(false)}
+      initialCourse={modalCourse}
+    />
   </div>
   );
 }

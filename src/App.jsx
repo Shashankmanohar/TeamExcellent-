@@ -102,15 +102,13 @@ export default function App() {
         <Route path="/admission" element={<Admission />} />
 
         {/* Program Routes */}
-        <Route path="/programs/jee" element={<Jee />} />
+        <Route path="/jee-coaching-in-patna" element={<Jee />} />
         <Route path="/programs/class-6-to-10" element={<Class6to10 />} />
-        <Route path="/programs/neet" element={<Neet />} />
+        <Route path="/neet-coaching-in-patna" element={<Neet />} />
 
-        {/* Blog & Career Routes */}
+        {/* Blog Routes */}
         <Route path="/blogs" element={<Blogs />} />
         <Route path="/blogs/:permalink" element={<BlogDetail />} />
-        <Route path="/careers" element={<Careers />} />
-        <Route path="/careers/:id" element={<CareerDetail />} />
 
         {/* Admin Routes */}
         <Route path="/admin" element={<AdminDashboard />} />

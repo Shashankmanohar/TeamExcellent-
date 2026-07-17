@@ -1,5 +1,8 @@
-import { Link } from "react-router-dom";
-import { BookOpen, Target, Award, Layers } from "lucide-react";
+import React, { useState } from "react";
+import { BookOpen, Target, Award, Layers, ArrowRight } from "lucide-react";
+import ExploreLinks from "./ExploreLinks";
+import EnrollmentForm from "./EnrollmentForm";
+import FAQSection from "./FAQSection";
 
 function JeeContent() {
   const sections = [
@@ -61,6 +64,33 @@ function JeeContent() {
     },
   ];
 
+  const faqs = [
+    {
+      question: "What JEE coaching programs are available at Team Excellent?",
+      answer: "Team Excellent Career Institute offers comprehensive year-long coaching programs for JEE Main and Advanced, pre-foundation classes for younger aspirants, and specialized mock test series."
+    },
+    {
+      question: "Who teaches the JEE batches at Team Excellent?",
+      answer: "Our classes are led by a highly experienced faculty team, which includes M.Tech/B.Tech graduates from IITs and NITs with deep expertise in coaching for competitive engineering entrance exams."
+    },
+    {
+      question: "Does Team Excellent conduct mock tests on the actual JEE pattern?",
+      answer: "Yes, we conduct regular computer-based mock tests (CBT) that match the latest NTA testing pattern, complete with instant performance analytics and rank predictions."
+    },
+    {
+      question: "Is board exam preparation covered alongside JEE coaching?",
+      answer: "Absolutely. We ensure students build a robust foundation in NCERT concepts first, which completely covers board syllabus requirements while systematically transitioning into JEE level application-based problem solving."
+    }
+  ];
+
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [modalCourse, setModalCourse] = useState("");
+
+  const handleOpenModal = (course = "") => {
+    setModalCourse(course);
+    setIsModalOpen(true);
+  };
+
   return (
     <div className="w-full">
       {/* Subpage Hero Section */}
@@ -87,6 +117,23 @@ function JeeContent() {
           <p className="max-w-2xl mx-auto text-xs sm:text-sm md:text-base text-slate-600 leading-relaxed font-medium">
             Learn about the JEE Mains and JEE Advanced exams, their structure, and how Team Excellent helps you build a strong foundation to secure a seat in top IITs and NITs.
           </p>
+
+          {/* Hero CTAs */}
+          <div className="flex flex-col sm:flex-row gap-3 justify-center max-w-md mx-auto mt-8">
+            <button
+              onClick={() => handleOpenModal("JEE")}
+              className="inline-flex items-center justify-center gap-2 rounded-xl bg-gradient-to-r from-[#5B2D7C] to-[#8424bd] px-6 py-3 text-xs sm:text-sm font-bold text-white shadow-lg hover:shadow-xl hover:-translate-y-0.5 transition-all duration-200"
+            >
+              Apply for JEE Coaching
+              <ArrowRight className="w-4 h-4" />
+            </button>
+            <button
+              onClick={() => handleOpenModal("JEE")}
+              className="inline-flex items-center justify-center gap-2 rounded-xl border-2 border-slate-200 bg-white px-6 py-3 text-xs sm:text-sm font-bold text-slate-700 hover:border-[#5B2D7C]/60 hover:bg-[#5B2D7C]/5 hover:-translate-y-0.5 transition-all duration-200"
+            >
+              Book Free Demo
+            </button>
+          </div>
         </div>
       </section>
 
@@ -155,32 +202,15 @@ function JeeContent() {
           IIT/NIT dreams.
         </p>
       </div>
-
-      {/* Explore Other Programs / Links */}
-      <div className="max-w-5xl mx-auto mt-20 border-t border-gray-200 pt-12 pb-8 text-center">
-        <h2 className="text-2xl font-extrabold text-gray-800 mb-6">Explore Other Programs & Predictors</h2>
-        <div className="flex flex-wrap justify-center gap-3">
-          <Link to="/neet" className="px-5 py-2 bg-white border border-slate-200 text-slate-700 rounded-xl hover:border-[#5B2D7C] hover:text-[#5B2D7C] transition duration-200 font-semibold text-xs sm:text-sm shadow-sm">
-            NEET Coaching
-          </Link>
-          <Link to="/class6to10" className="px-5 py-2 bg-white border border-slate-200 text-slate-700 rounded-xl hover:border-[#5B2D7C] hover:text-[#5B2D7C] transition duration-200 font-semibold text-xs sm:text-sm shadow-sm">
-            Class 6-10 Foundation
-          </Link>
-          <Link to="/admission" className="px-5 py-2 bg-white border border-slate-200 text-slate-700 rounded-xl hover:border-[#5B2D7C] hover:text-[#5B2D7C] transition duration-200 font-semibold text-xs sm:text-sm shadow-sm">
-            Admission Procedure
-          </Link>
-          <Link to="/rank-predictor" className="px-5 py-2 bg-white border border-slate-200 text-slate-700 rounded-xl hover:border-[#5B2D7C] hover:text-[#5B2D7C] transition duration-200 font-semibold text-xs sm:text-sm shadow-sm">
-            JEE/NEET Rank Predictor
-          </Link>
-          <Link to="/college-predictor" className="px-5 py-2 bg-white border border-slate-200 text-slate-700 rounded-xl hover:border-[#5B2D7C] hover:text-[#5B2D7C] transition duration-200 font-semibold text-xs sm:text-sm shadow-sm">
-            JEE College Predictor
-          </Link>
-          <Link to="/contact" className="px-5 py-2 bg-white border border-slate-200 text-slate-700 rounded-xl hover:border-[#5B2D7C] hover:text-[#5B2D7C] transition duration-200 font-semibold text-xs sm:text-sm shadow-sm">
-            Contact Us
-          </Link>
-        </div>
-      </div>
+      <FAQSection faqs={faqs} />
+      <ExploreLinks />
     </section>
+
+    <EnrollmentForm
+      isOpen={isModalOpen}
+      onClose={() => setIsModalOpen(false)}
+      initialCourse={modalCourse}
+    />
   </div>
   );
 }

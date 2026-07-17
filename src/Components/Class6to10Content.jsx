@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+import React, { useState } from "react";
 import {
   Layers,
   BookOpen,
@@ -8,6 +8,8 @@ import {
   PenTool,
   Lightbulb,
 } from "lucide-react";
+import ExploreLinks from "./ExploreLinks";
+import FAQSection from "./FAQSection";
 
 function Class6to10Content() {
   const groups = [
@@ -115,6 +117,21 @@ function Class6to10Content() {
     },
   ];
 
+  const faqs = [
+    {
+      question: "How does the Junior Foundation Course benefit my child?",
+      answer: "Our foundation course for Classes 6-10 strengthens basic concepts in Science and Mathematics, helps children excel in school exams, and introduces Olympiad-level logic to lay a strong foundation for future JEE/NEET preparation."
+    },
+    {
+      question: "Is the NCERT syllabus covered?",
+      answer: "Yes, NCERT forms the core base of our teaching. We systematically build up to advanced reference book levels once NCERT concepts are fully mastered."
+    },
+    {
+      question: "How do you evaluate Class 6-10 students' progress?",
+      answer: "We conduct bi-weekly chapter tests and monthly cumulative mock tests, followed by detailed performance analysis shared during parent-teacher meetings."
+    }
+  ];
+
   return (
     <div className="w-full">
       {/* Subpage Hero Section */}
@@ -219,31 +236,8 @@ function Class6to10Content() {
           competitive exams in higher classes.
         </p>
       </div>
-
-      {/* Explore Other Programs / Links */}
-      <div className="max-w-5xl mx-auto mt-20 border-t border-gray-200 pt-12 pb-8 text-center">
-        <h2 className="text-2xl font-extrabold text-gray-800 mb-6">Explore Other Programs & Predictors</h2>
-        <div className="flex flex-wrap justify-center gap-3">
-          <Link to="/jee" className="px-5 py-2 bg-white border border-slate-200 text-slate-700 rounded-xl hover:border-[#5B2D7C] hover:text-[#5B2D7C] transition duration-200 font-semibold text-xs sm:text-sm shadow-sm">
-            JEE Coaching
-          </Link>
-          <Link to="/neet" className="px-5 py-2 bg-white border border-slate-200 text-slate-700 rounded-xl hover:border-[#5B2D7C] hover:text-[#5B2D7C] transition duration-200 font-semibold text-xs sm:text-sm shadow-sm">
-            NEET Coaching
-          </Link>
-          <Link to="/admission" className="px-5 py-2 bg-white border border-slate-200 text-slate-700 rounded-xl hover:border-[#5B2D7C] hover:text-[#5B2D7C] transition duration-200 font-semibold text-xs sm:text-sm shadow-sm">
-            Admission Procedure
-          </Link>
-          <Link to="/rank-predictor" className="px-5 py-2 bg-white border border-slate-200 text-slate-700 rounded-xl hover:border-[#5B2D7C] hover:text-[#5B2D7C] transition duration-200 font-semibold text-xs sm:text-sm shadow-sm">
-            JEE/NEET Rank Predictor
-          </Link>
-          <Link to="/college-predictor" className="px-5 py-2 bg-white border border-slate-200 text-slate-700 rounded-xl hover:border-[#5B2D7C] hover:text-[#5B2D7C] transition duration-200 font-semibold text-xs sm:text-sm shadow-sm">
-            JEE College Predictor
-          </Link>
-          <Link to="/contact" className="px-5 py-2 bg-white border border-slate-200 text-slate-700 rounded-xl hover:border-[#5B2D7C] hover:text-[#5B2D7C] transition duration-200 font-semibold text-xs sm:text-sm shadow-sm">
-            Contact Us
-          </Link>
-        </div>
-      </div>
+      <FAQSection faqs={faqs} />
+      <ExploreLinks />
     </section>
   </div>
   );

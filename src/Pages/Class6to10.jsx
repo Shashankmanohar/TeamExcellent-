@@ -33,8 +33,9 @@ export default function Class6to10() {
         <meta property="og:type" content="website" />
         <meta
           property="og:url"
-          content="https://teamexcellentcareerinstitute.in/class6to10"
+          content="https://teamexcellentcareerinstitute.in/programs/class-6-to-10"
         />
+        <link rel="canonical" href="https://teamexcellentcareerinstitute.in/programs/class-6-to-10" />
         <meta
           property="og:image"
           content="https://teamexcellentcareerinstitute.in/logo192.png"

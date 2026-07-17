@@ -26,6 +26,7 @@ export default function About() {
         <meta property="og:description" content="Know more about Team Excellent and its mission to guide students towards success in JEE, NEET, and foundations." />
         <meta property="og:type" content="website" />
         <meta property="og:url" content="https://teamexcellentcareerinstitute.in/about" />
+        <link rel="canonical" href="https://teamexcellentcareerinstitute.in/about" />
         <meta property="og:image" content="https://teamexcellentcareerinstitute.in/logo192.png" />
 
         {/* Twitter Card */}
