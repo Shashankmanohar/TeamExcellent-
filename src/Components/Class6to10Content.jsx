@@ -245,6 +245,7 @@ function Class6to10Content() {
         </div>
       </div>
     </section>
+  </div>
   );
 }
 
