@@ -2,6 +2,7 @@ import React from 'react'
 import { Helmet } from 'react-helmet-async'
 import Navbar from '../Components/Navbar'
 import Footer from '../Components/Footer'
+import { MapPin, Mail, Phone } from 'lucide-react'
 
 export default function PrivacyPolicy() {
   const effectiveDate = "April 30, 2026"
@@ -162,8 +163,8 @@ export default function PrivacyPolicy() {
                   <h3 className="text-xl font-bold text-white mb-6">Team Excellent Career Institute</h3>
                   <div className="space-y-5 text-purple-50">
                     <div className="flex items-start gap-4">
-                      <div className="bg-white/20 p-3 rounded-xl">
-                        <i className="fa-solid fa-location-dot text-white text-lg"></i>
+                      <div className="bg-white/20 p-3 rounded-xl flex items-center justify-center">
+                        <MapPin className="text-white w-5 h-5" />
                       </div>
                       <div>
                         <p className="text-xs uppercase tracking-wider text-purple-200 mb-1">Address</p>
@@ -172,8 +173,8 @@ export default function PrivacyPolicy() {
                     </div>
                     
                     <div className="flex items-start gap-4">
-                      <div className="bg-white/20 p-3 rounded-xl">
-                        <i className="fa-solid fa-envelope text-white text-lg"></i>
+                      <div className="bg-white/20 p-3 rounded-xl flex items-center justify-center">
+                        <Mail className="text-white w-5 h-5" />
                       </div>
                       <div>
                         <p className="text-xs uppercase tracking-wider text-purple-200 mb-1">Email Address</p>
@@ -182,8 +183,8 @@ export default function PrivacyPolicy() {
                     </div>
                     
                     <div className="flex items-start gap-4">
-                      <div className="bg-white/20 p-3 rounded-xl">
-                        <i className="fa-solid fa-phone text-white text-lg"></i>
+                      <div className="bg-white/20 p-3 rounded-xl flex items-center justify-center">
+                        <Phone className="text-white w-5 h-5" />
                       </div>
                       <div>
                         <p className="text-xs uppercase tracking-wider text-purple-200 mb-1">Phone Number</p>

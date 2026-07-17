@@ -66,6 +66,7 @@ export default function FAQ() {
             <button
               className="w-full flex justify-between items-center px-4 sm:px-6 py-3 sm:py-4 text-left font-medium text-sm sm:text-base text-[#0B0B45] focus:outline-none"
               onClick={() => toggleFAQ(index)}
+              aria-expanded={openIndex === index}
             >
               {faq.question}
               {openIndex === index ? (

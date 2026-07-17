@@ -76,9 +76,10 @@ export default function Class6to10() {
         </script>
       </Helmet>
 
-      {/* ✅ Page Content */}
       <Navbar />
-      <Class6to10Content />
+      <main id="main-content">
+        <Class6to10Content />
+      </main>
       <Footer />
     </>
   );

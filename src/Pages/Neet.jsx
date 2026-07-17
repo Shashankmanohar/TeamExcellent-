@@ -55,9 +55,10 @@ export default function Neet() {
         </script>
       </Helmet>
 
-      {/* ✅ Page Content */}
       <Navbar />
-      <NeetContent />
+      <main id="main-content">
+        <NeetContent />
+      </main>
       <Footer />
     </>
   )

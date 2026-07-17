@@ -55,9 +55,10 @@ export default function Jee() {
         </script>
       </Helmet>
 
-      {/* ✅ Page Content */}
       <Navbar />
-      <JeeContent />
+      <main id="main-content">
+        <JeeContent />
+      </main>
       <Footer />
     </>
   )

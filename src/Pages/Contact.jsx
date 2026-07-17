@@ -35,9 +35,10 @@ export default function Contact() {
         <meta name="twitter:image" content="https://teamexcellentcareerinstitute.in/logo192.png" />
       </Helmet>
 
-      {/* ✅ Page Content */}
       <Navbar />
-      <ContactUs />
+      <main id="main-content">
+        <ContactUs />
+      </main>
       <Footer />
     </>
   )

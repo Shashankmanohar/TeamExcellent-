@@ -1,4 +1,4 @@
-import React from "react";
+import { Link } from "react-router-dom";
 import {
   Layers,
   BookOpen,
@@ -116,21 +116,36 @@ function Class6to10Content() {
   ];
 
   return (
-    <section
-      className="w-full min-h-screen bg-gray-50 mt-30 py-12 px-6"
-      aria-label="Programs for Classes 6 to 10"
-    >
-      {/* Page Heading */}
-      <div className="text-center mb-12">
-        <h1 className="text-4xl sm:text-5xl font-bold text-[#522871]">
-          Classes 6 – 10 Programs
-        </h1>
-        <div className="w-40 h-1 bg-purple-600 mx-auto mt-2 rounded"></div>
-        <p className="text-gray-600 mt-3 text-base sm:text-lg max-w-3xl mx-auto">
-          Strong foundation courses for Classes 6–10 designed to excel in school
-          exams, Olympiads, and lay the groundwork for JEE/NEET preparation.
-        </p>
-      </div>
+    <div className="w-full">
+      {/* Subpage Hero Section */}
+      <section className="relative w-full bg-[#fafafc] pt-[140px] pb-[80px] flex items-center justify-center overflow-hidden text-center animate-fade-in border-b border-slate-100">
+        {/* Ambient Grid & Glows */}
+        <div className="absolute inset-0 bg-[radial-gradient(#e2e0ff_1px,transparent_1px)] [background-size:24px_24px] opacity-30" />
+        <div className="absolute -top-30 left-1/4 -z-10 h-[250px] w-[250px] rounded-full bg-purple-200/40 blur-[80px]" />
+        <div className="absolute top-20 right-1/4 -z-10 h-[300px] w-[300px] rounded-full bg-rose-100/30 blur-[90px]" />
+
+        <div className="relative max-w-4xl mx-auto px-6 w-full">
+          {/* Badge */}
+          <div className="inline-flex items-center gap-2 rounded-full border border-purple-100 bg-purple-50/80 px-4 py-1.5 text-[10px] sm:text-xs font-semibold text-[#5B2D7C] shadow-sm backdrop-blur-sm mb-6">
+            <Brain className="w-4 h-4 text-[#5B2D7C]" />
+            <span className="tracking-wide">Academic Foundation Programs</span>
+          </div>
+
+          <h1 className="text-4xl sm:text-5xl md:text-6xl font-extrabold tracking-tight text-[#1e1b4b] leading-tight mb-6">
+            Classes 6 – 10 <br />
+            <span className="bg-gradient-to-r from-[#5B2D7C] via-[#8424bd] to-[#b72e2f] bg-clip-text text-transparent drop-shadow-[0_2px_10px_rgba(91,45,124,0.08)]">
+              Junior Foundation Program
+            </span>
+          </h1>
+
+          <p className="max-w-2xl mx-auto text-xs sm:text-sm md:text-base text-slate-600 leading-relaxed font-medium">
+            Strong foundation courses for Classes 6–10 designed to excel in school exams, Olympiads, and lay the groundwork for JEE/NEET preparation.
+          </p>
+        </div>
+      </section>
+
+      {/* Main Content Area */}
+      <section className="w-full bg-gray-50 py-16 px-6" aria-label="Programs for Classes 6 to 10">
 
       {/* Class-wise Cards */}
       <div className="max-w-6xl mx-auto grid sm:grid-cols-1 md:grid-cols-2 gap-8 sm:gap-y-6">
@@ -203,6 +218,31 @@ function Class6to10Content() {
           preparation, and the foundation to tackle JEE, NEET, and other
           competitive exams in higher classes.
         </p>
+      </div>
+
+      {/* Explore Other Programs / Links */}
+      <div className="max-w-5xl mx-auto mt-20 border-t border-gray-200 pt-12 pb-8 text-center">
+        <h2 className="text-2xl font-extrabold text-gray-800 mb-6">Explore Other Programs & Predictors</h2>
+        <div className="flex flex-wrap justify-center gap-3">
+          <Link to="/jee" className="px-5 py-2 bg-white border border-slate-200 text-slate-700 rounded-xl hover:border-[#5B2D7C] hover:text-[#5B2D7C] transition duration-200 font-semibold text-xs sm:text-sm shadow-sm">
+            JEE Coaching
+          </Link>
+          <Link to="/neet" className="px-5 py-2 bg-white border border-slate-200 text-slate-700 rounded-xl hover:border-[#5B2D7C] hover:text-[#5B2D7C] transition duration-200 font-semibold text-xs sm:text-sm shadow-sm">
+            NEET Coaching
+          </Link>
+          <Link to="/admission" className="px-5 py-2 bg-white border border-slate-200 text-slate-700 rounded-xl hover:border-[#5B2D7C] hover:text-[#5B2D7C] transition duration-200 font-semibold text-xs sm:text-sm shadow-sm">
+            Admission Procedure
+          </Link>
+          <Link to="/rank-predictor" className="px-5 py-2 bg-white border border-slate-200 text-slate-700 rounded-xl hover:border-[#5B2D7C] hover:text-[#5B2D7C] transition duration-200 font-semibold text-xs sm:text-sm shadow-sm">
+            JEE/NEET Rank Predictor
+          </Link>
+          <Link to="/college-predictor" className="px-5 py-2 bg-white border border-slate-200 text-slate-700 rounded-xl hover:border-[#5B2D7C] hover:text-[#5B2D7C] transition duration-200 font-semibold text-xs sm:text-sm shadow-sm">
+            JEE College Predictor
+          </Link>
+          <Link to="/contact" className="px-5 py-2 bg-white border border-slate-200 text-slate-700 rounded-xl hover:border-[#5B2D7C] hover:text-[#5B2D7C] transition duration-200 font-semibold text-xs sm:text-sm shadow-sm">
+            Contact Us
+          </Link>
+        </div>
       </div>
     </section>
   );

@@ -2,6 +2,7 @@ import React from 'react'
 import { Helmet } from 'react-helmet-async'
 import Navbar from '../Components/Navbar'
 import Footer from '../Components/Footer'
+import { MapPin, Mail, Phone, Check } from 'lucide-react'
 
 export default function TermsOfService() {
   const effectiveDate = "April 30, 2026"
@@ -62,15 +63,15 @@ export default function TermsOfService() {
                 <div className="bg-purple-50 p-6 rounded-2xl border border-purple-100">
                   <ul className="space-y-3 list-none">
                     <li className="flex gap-3">
-                      <i className="fa-solid fa-check text-[#5B2D7C] mt-1"></i>
+                      <Check className="text-[#5B2D7C] w-4.5 h-4.5 shrink-0 mt-0.5" />
                       <span>Enrollment is confirmed only after full or partial fee payment as per the agreed schedule.</span>
                     </li>
                     <li className="flex gap-3">
-                      <i className="fa-solid fa-check text-[#5B2D7C] mt-1"></i>
+                      <Check className="text-[#5B2D7C] w-4.5 h-4.5 shrink-0 mt-0.5" />
                       <span>Fees once paid are generally <strong>non-refundable</strong> unless specifically stated otherwise in writing.</span>
                     </li>
                     <li className="flex gap-3">
-                      <i className="fa-solid fa-check text-[#5B2D7C] mt-1"></i>
+                      <Check className="text-[#5B2D7C] w-4.5 h-4.5 shrink-0 mt-0.5" />
                       <span>Any discounts, scholarships, or concessions are subject to institute policies and verification.</span>
                     </li>
                   </ul>
@@ -170,8 +171,8 @@ export default function TermsOfService() {
                   <h3 className="text-xl font-bold text-white mb-6">Team Excellent Career Institute</h3>
                   <div className="space-y-5 text-purple-50">
                     <div className="flex items-start gap-4">
-                      <div className="bg-white/20 p-3 rounded-xl">
-                        <i className="fa-solid fa-location-dot text-white text-lg"></i>
+                      <div className="bg-white/20 p-3 rounded-xl flex items-center justify-center">
+                        <MapPin className="text-white w-5 h-5" />
                       </div>
                       <div>
                         <p className="text-xs uppercase tracking-wider text-purple-200 mb-1">Address</p>
@@ -180,8 +181,8 @@ export default function TermsOfService() {
                     </div>
                     
                     <div className="flex items-start gap-4">
-                      <div className="bg-white/20 p-3 rounded-xl">
-                        <i className="fa-solid fa-envelope text-white text-lg"></i>
+                      <div className="bg-white/20 p-3 rounded-xl flex items-center justify-center">
+                        <Mail className="text-white w-5 h-5" />
                       </div>
                       <div>
                         <p className="text-xs uppercase tracking-wider text-purple-200 mb-1">Email Address</p>
@@ -190,8 +191,8 @@ export default function TermsOfService() {
                     </div>
                     
                     <div className="flex items-start gap-4">
-                      <div className="bg-white/20 p-3 rounded-xl">
-                        <i className="fa-solid fa-phone text-white text-lg"></i>
+                      <div className="bg-white/20 p-3 rounded-xl flex items-center justify-center">
+                        <Phone className="text-white w-5 h-5" />
                       </div>
                       <div>
                         <p className="text-xs uppercase tracking-wider text-purple-200 mb-1">Phone Number</p>

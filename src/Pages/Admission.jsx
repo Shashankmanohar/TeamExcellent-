@@ -35,9 +35,10 @@ export default function Admission() {
         <meta name="twitter:image" content="https://teamexcellentcareerinstitute.in/logo192.png" />
       </Helmet>
 
-      {/* ✅ Page Content */}
       <Navbar />
-      <AdmissionProcess />
+      <main id="main-content">
+        <AdmissionProcess />
+      </main>
       <Footer />
     </>
   )

@@ -7,9 +7,12 @@
   <!-- Responsive viewport -->
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
+  <!-- Preconnect to chatbot backend to save connection time -->
+  <link rel="preconnect" href="https://vegavan-backend.vercel.app" crossorigin />
+
   <!-- Favicons -->
-  <link rel="icon" type="image/webp" href="./public/Favicon.webp" />
-  <link rel="apple-touch-icon" href="./public/Favicon.webp" />
+  <link rel="icon" type="image/webp" href="/Favicon.webp" />
+  <link rel="apple-touch-icon" href="/Favicon.webp" />
 
 
 
@@ -17,14 +20,21 @@
   <meta name="theme-color" content="#522871" />
   <meta name="google-site-verification" content="Fyk-0aAvQv7Vk_18OmIA5B7Mn6MnJofTfs7ehmTB9P0" />
 
-  <!-- Google tag (gtag.js) -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-3CY2B4G2M8"></script>
+  <!-- Google tag (gtag.js) - Delayed to optimize FCP/LCP -->
   <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
+    window.addEventListener('load', function() {
+      setTimeout(function() {
+        var script = document.createElement('script');
+        script.async = true;
+        script.src = "https://www.googletagmanager.com/gtag/js?id=G-3CY2B4G2M8";
+        document.head.appendChild(script);
 
-    gtag('config', 'G-3CY2B4G2M8');
+        window.dataLayer = window.dataLayer || [];
+        window.gtag = function(){window.dataLayer.push(arguments);}
+        window.gtag('js', new Date());
+        window.gtag('config', 'G-3CY2B4G2M8');
+      }, 1000);
+    });
   </script>
 </head>
 
@@ -79,6 +89,7 @@
     }
   </style>
   <script
+    async
     src="https://vegavan-backend.vercel.app/chatbot.js"
     data-user-id="6a247339935147ef4874aff7">
   </script>
@@ -88,6 +99,12 @@
         const host = document.getElementById('ai-chatbot-root-container');
         if (host && host.shadowRoot) {
           clearInterval(checkExist);
+
+          // Set accessible name for chatbot launcher button
+          const launcher = host.shadowRoot.querySelector('.chatbot-launcher');
+          if (launcher) {
+            launcher.setAttribute('aria-label', 'Open AI Chatbot');
+          }
 
           // Find the chat window and setup observer to toggle class on host
           const chatWindow = host.shadowRoot.querySelector('.chat-window');

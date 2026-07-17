@@ -1,38 +1,56 @@
-import React from 'react'
+import React, { lazy, Suspense, useEffect } from 'react'
 import { BrowserRouter as Router, Routes, Route, useNavigate, useLocation } from 'react-router-dom'
 import { Helmet } from 'react-helmet-async'
+import { Loader2 } from 'lucide-react'
 
-import Home from './Pages/Home'
-import About from './Pages/About'
-import Admission from './Pages/Admission'
-import Contact from './Pages/Contact'
-import Jee from './Pages/Jee'
-import Class6to10 from './Pages/Class6to10'
-import Neet from './Pages/Neet'
-import Blogs from './Pages/Blogs'
-import BlogDetail from './Pages/BlogDetail'
-import AdminBlogs from './Pages/AdminBlogs'
-import AdminDashboard from './Pages/AdminDashboard';
-import AdminEnrollments from './Pages/AdminEnrollments';
-import AdminReviews from './Pages/AdminReviews';
-import AdminCareers from './Pages/AdminCareers';
-import AdminCounseling from './Pages/AdminCounseling';
-import Careers from './Pages/Careers';
-import CareerDetail from './Pages/CareerDetail';
-import WhatsAppButton from './Components/WhatsAppButton';
-import BlogEditor from './Components/BlogEditor'
-import RankPredictor from './Pages/RankPredictor';
-import CollegePredictor from './Pages/CollegePredictor';
+// Helper HOC to wrap lazy-loaded components with Suspense
+const withSuspense = (Component) => {
+  const WrappedComponent = (props) => (
+    <Suspense fallback={<LoadingFallback />}>
+      <Component {...props} />
+    </Suspense>
+  );
+  WrappedComponent.displayName = `withSuspense(${Component.displayName || Component.name || 'Component'})`;
+  return WrappedComponent;
+};
 
-// ✅ ScrollToTop Component
-import { useEffect } from 'react'
+// Page components loaded lazily to improve initial load performance
+const Home = withSuspense(lazy(() => import('./Pages/Home')))
+const About = withSuspense(lazy(() => import('./Pages/About')))
+const Admission = withSuspense(lazy(() => import('./Pages/Admission')))
+const Contact = withSuspense(lazy(() => import('./Pages/Contact')))
+const Jee = withSuspense(lazy(() => import('./Pages/Jee')))
+const Class6to10 = withSuspense(lazy(() => import('./Pages/Class6to10')))
+const Neet = withSuspense(lazy(() => import('./Pages/Neet')))
+const Blogs = withSuspense(lazy(() => import('./Pages/Blogs')))
+const BlogDetail = withSuspense(lazy(() => import('./Pages/BlogDetail')))
+const AdminBlogs = withSuspense(lazy(() => import('./Pages/AdminBlogs')))
+const AdminDashboard = withSuspense(lazy(() => import('./Pages/AdminDashboard')))
+const AdminEnrollments = withSuspense(lazy(() => import('./Pages/AdminEnrollments')))
+const AdminReviews = withSuspense(lazy(() => import('./Pages/AdminReviews')))
+const AdminCareers = withSuspense(lazy(() => import('./Pages/AdminCareers')))
+const AdminCounseling = withSuspense(lazy(() => import('./Pages/AdminCounseling')))
+const Careers = withSuspense(lazy(() => import('./Pages/Careers')))
+const CareerDetail = withSuspense(lazy(() => import('./Pages/CareerDetail')))
+const BlogEditor = withSuspense(lazy(() => import('./Components/BlogEditor')))
+const RankPredictor = withSuspense(lazy(() => import('./Pages/RankPredictor')))
+const CollegePredictor = withSuspense(lazy(() => import('./Pages/CollegePredictor')))
+const Student = withSuspense(lazy(() => import('./Pages/Student')))
+const AdminLogin = withSuspense(lazy(() => import('./Pages/AdminLogin')))
+const Result = withSuspense(lazy(() => import('./Pages/Result')))
+const PrivacyPolicy = withSuspense(lazy(() => import('./Pages/PrivacyPolicy')))
+const TermsOfService = withSuspense(lazy(() => import('./Pages/TermsOfService')))
 
-import Student from './Pages/Student'
-import AdminLogin from './Pages/AdminLogin'
-import Result from './Pages/Result'
-import PopupCard from './Components/PopupCard'
-import PrivacyPolicy from './Pages/PrivacyPolicy'
-import TermsOfService from './Pages/TermsOfService'
+import WhatsAppButton from './Components/WhatsAppButton'
+
+function LoadingFallback() {
+  return (
+    <div className="min-h-[60vh] flex flex-col items-center justify-center gap-3">
+      <Loader2 className="w-10 h-10 animate-spin text-[#522871]" />
+      <span className="text-gray-500 font-medium animate-pulse">Loading...</span>
+    </div>
+  )
+}
 
 function ScrollToTop() {
   const { pathname } = useLocation()
@@ -68,13 +86,12 @@ export default function App() {
     <Router>
       <AuthHandler />
       <ScrollToTop /> {/* ✅ ensures scroll resets on route change */}
-      <PopupCard />
       <Helmet>
         <title>Team Excellent - Best Coaching in Patna for JEE, NEET & Foundations</title>
         <meta property="og:title" content="Team Excellent - Best Institute in Patna for JEE, NEET & Foundations" />
         <meta property="og:type" content="website" />
         <meta property="og:url" content="https://teamexcellentcareerinstitute.in/" />
-        <meta property="og:image" content="https://teamexcellentcareerinstitute.in/public/Favicon.webp" />
+        <meta property="og:image" content="https://teamexcellentcareerinstitute.in/Favicon.webp" />
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:title" content="Team Excellent - Best Institute in Patna for JEE, NEET & Foundations" />
         <meta name="twitter:image" content="https://teamexcellentcareerinstitute.in/logo192.png" />

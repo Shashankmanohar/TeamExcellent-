@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import TeamExcellent from "../assets/TeamExcellent2.webp";
 import toast from "react-hot-toast";
 import { submitEnrollment } from "../lib/enrollmentApi";
+import { MapPin, Mail, Phone, Facebook, Instagram, Linkedin, Youtube } from "lucide-react";
 
 export default function Footer() {
   const [enquiryData, setEnquiryData] = useState({
@@ -60,6 +61,7 @@ export default function Footer() {
             <input
               type="text"
               name="fullName"
+              aria-label="Your Name"
               value={enquiryData.fullName}
               onChange={handleEnquiryChange}
               placeholder="Your Name"
@@ -69,6 +71,7 @@ export default function Footer() {
             <input
               type="tel"
               name="mobileNumber"
+              aria-label="Mobile Number"
               value={enquiryData.mobileNumber}
               onChange={handleEnquiryChange}
               placeholder="Mobile Number"
@@ -78,6 +81,7 @@ export default function Footer() {
             <div className="relative w-full">
               <select
                 name="course"
+                aria-label="Select Course"
                 value={enquiryData.course}
                 onChange={handleEnquiryChange}
                 className="w-full px-4 py-3 bg-white/10 border border-white/20 rounded-xl text-white placeholder-white/50 focus:bg-white/20 focus:outline-none focus:ring-2 focus:ring-white/30 transition-all text-sm cursor-pointer appearance-none outline-none"
@@ -97,6 +101,7 @@ export default function Footer() {
             <button
               type="submit"
               disabled={submitting}
+              aria-label="Submit Form"
               className="w-full px-6 py-3 bg-white text-[#5B2D7C] hover:bg-white/90 active:bg-gray-100 font-bold rounded-xl transition-all shadow-md active:scale-[0.98] duration-200 text-sm whitespace-nowrap flex items-center justify-center min-h-[46px]"
             >
               {submitting ? (
@@ -116,6 +121,8 @@ export default function Footer() {
             src={TeamExcellent}
             alt="Team Excellent Career Institute Logo - Patna's Premier Coaching"
             className="w-40 md:w-48 mx-auto rounded md:mx-0"
+            width="192"
+            height="42"
             loading="lazy"
             decoding="async"
           />
@@ -152,51 +159,51 @@ export default function Footer() {
           <h3 className="text-lg font-semibold mb-3">Contact Us</h3>
           <address className="not-italic text-sm">
             <p className="flex items-start gap-2 mb-2">
-              <i className="fa-solid fa-location-dot mt-1"></i> Near NMCH College, Bajar Samiti, New Kunj Colony, Saketpuri, Patna, Bihar, 800016, India
+              <MapPin className="w-5 h-5 shrink-0 text-purple-300 mt-0.5" /> Near NMCH College, Bajar Samiti, New Kunj Colony, Saketpuri, Patna, Bihar, 800016, India
             </p>
             <p className="flex items-center gap-2">
-              <i className="fa-solid fa-envelope"></i> teamexcellentpatna@gmail.com
+              <Mail className="w-4 h-4 text-purple-300" /> teamexcellentpatna@gmail.com
             </p>
             <p className="flex items-center gap-2 mt-2">
-              <i className="fa-solid fa-phone"></i> +91 9942000371, +91 9942000372
+              <Phone className="w-4 h-4 text-purple-300" /> +91 9942000371, +91 9942000372
             </p>
           </address>
-          <div className="flex space-x-4 mt-4 text-lg justify-center md:justify-start">
+          <div className="flex space-x-4 mt-4 justify-center md:justify-start">
             <a
               href="https://www.facebook.com/share/1JTxznYnFg/"
               target="_blank"
               rel="noopener noreferrer"
               aria-label="Facebook"
-              className="hover:text-gray-300 transition-colors"
+              className="hover:text-gray-300 transition-colors p-1.5 bg-white/10 hover:bg-white/20 rounded-lg"
             >
-              <i className="fa-brands fa-facebook-f"></i>
+              <Facebook className="w-4 h-4" />
             </a>
             <a
               href="https://www.instagram.com/team.excellent.patna"
               target="_blank"
               rel="noopener noreferrer"
               aria-label="Instagram"
-              className="hover:text-gray-300 transition-colors"
+              className="hover:text-gray-300 transition-colors p-1.5 bg-white/10 hover:bg-white/20 rounded-lg"
             >
-              <i className="fa-brands fa-instagram"></i>
+              <Instagram className="w-4 h-4" />
             </a>
             <a
               href="https://www.linkedin.com/company/teamexcellentpatna"
               target="_blank"
               rel="noopener noreferrer"
               aria-label="LinkedIn"
-              className="hover:text-gray-300 transition-colors"
+              className="hover:text-gray-300 transition-colors p-1.5 bg-white/10 hover:bg-white/20 rounded-lg"
             >
-              <i className="fa-brands fa-linkedin-in"></i>
+              <Linkedin className="w-4 h-4" />
             </a>
             <a
               href="https://www.youtube.com/@teamexcellentpatna"
               target="_blank"
               rel="noopener noreferrer"
               aria-label="YouTube"
-              className="hover:text-gray-300 transition-colors"
+              className="hover:text-gray-300 transition-colors p-1.5 bg-white/10 hover:bg-white/20 rounded-lg"
             >
-              <i className="fa-brands fa-youtube"></i>
+              <Youtube className="w-4 h-4" />
             </a>
           </div>
         </div>

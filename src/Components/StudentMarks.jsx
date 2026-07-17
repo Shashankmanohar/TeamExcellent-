@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { ArrowRight } from "lucide-react";
 import { marksAPI } from "../lib/api";
 import jsPDF from "jspdf";
 import html2canvas from "html2canvas";
@@ -161,7 +162,7 @@ const StudentMarks = () => {
               </>
             ) : (
               <>
-                View Results <i className="fa-solid fa-arrow-right ml-1"></i>
+                View Results <ArrowRight className="w-4 h-4 inline ml-1" />
               </>
             )}
           </button>

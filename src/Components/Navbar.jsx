@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
-import { Menu, X, ChevronDown, ChevronUp } from "lucide-react";
+import { Menu, X, ChevronDown, ChevronUp, Mail, Phone } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 import TeamExcellent from "../assets/TeamExcellent.webp";
 
@@ -21,13 +21,13 @@ export default function Navbar() {
         text-center sm:text-left py-1 px-2 sm:space-x-6 space-y-0.5 sm:space-y-0 
         text-[10px] sm:text-xs lg:text-sm"
       >
-        <p className="flex items-center gap-1">
-          <i className="fa-solid fa-envelope mt-1 text-[10px]"></i>
+        <p className="flex items-center gap-1.5 justify-center sm:justify-start">
+          <Mail className="w-3.5 h-3.5 text-purple-200" />
           teamexcellentpatna@gmail.com
         </p>
 
-        <p className="flex items-center gap-1">
-          <i className="fa-solid fa-phone mt-1 text-[10px]"></i>
+        <p className="flex items-center gap-1.5 justify-center sm:justify-start">
+          <Phone className="w-3.5 h-3.5 text-purple-200" />
           +91 9942000371
         </p>
       </div>
@@ -39,9 +39,11 @@ export default function Navbar() {
           <img
             src={TeamExcellent}
             alt="Team Excellent Career Institute Logo"
-            className="w-66 sm:w-70 md:w-70 lg:w-80 object-contain"
+            className="w-44 sm:w-48 md:w-52 lg:w-56 h-[39px] sm:h-[43px] md:h-[46px] lg:h-[50px] object-contain"
+            width="224"
+            height="50"
             loading="eager"
-            fetchpriority="high"
+            fetchPriority="high"
             decoding="async"
           />
         </Link>
@@ -217,6 +219,7 @@ function DropdownMobile({ label, items, onClose }) {
     <div className="w-full text-center">
       <button
         onClick={() => setOpen(!open)}
+        aria-expanded={open}
         className="w-full flex justify-center items-center gap-1 
                    text-sm font-semibold sm:text-base hover:text-[#0077b6]"
       >

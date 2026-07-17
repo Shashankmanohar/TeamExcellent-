@@ -213,6 +213,7 @@ export default function EnrollmentForm({ isOpen, onClose, initialCourse }) {
                         <button
                             onClick={onClose}
                             className="absolute right-4 top-4 md:right-6 md:top-6 text-white hover:scale-110 active:scale-95 transition-all duration-300 z-10 p-2 bg-white/10 hover:bg-white/20 rounded-full"
+                            aria-label="Close dialog"
                         >
                             <X size={20} className="md:w-6 md:h-6" />
                         </button>
@@ -249,7 +250,7 @@ export default function EnrollmentForm({ isOpen, onClose, initialCourse }) {
                                     <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                                         {/* Full Name */}
                                         <div className="relative">
-                                            <label className="block text-xs md:text-sm font-bold text-gray-600 mb-2">
+                                            <label htmlFor="enroll-fullName" className="block text-xs md:text-sm font-bold text-gray-600 mb-2">
                                                 Full Name <span className="text-red-500">*</span>
                                             </label>
                                             <div className="relative">
@@ -258,6 +259,7 @@ export default function EnrollmentForm({ isOpen, onClose, initialCourse }) {
                                                 </span>
                                                 <input
                                                     type="text"
+                                                    id="enroll-fullName"
                                                     name="fullName"
                                                     value={formData.fullName}
                                                     onChange={handleChange}
@@ -270,7 +272,7 @@ export default function EnrollmentForm({ isOpen, onClose, initialCourse }) {
 
                                         {/* Mobile Number */}
                                         <div className="relative">
-                                            <label className="block text-xs md:text-sm font-bold text-gray-600 mb-2">
+                                            <label htmlFor="enroll-mobileNumber" className="block text-xs md:text-sm font-bold text-gray-600 mb-2">
                                                 Mobile Number <span className="text-red-500">*</span>
                                             </label>
                                             <div className="relative">
@@ -279,6 +281,7 @@ export default function EnrollmentForm({ isOpen, onClose, initialCourse }) {
                                                 </span>
                                                 <input
                                                     type="tel"
+                                                    id="enroll-mobileNumber"
                                                     name="mobileNumber"
                                                     value={formData.mobileNumber}
                                                     onChange={handleChange}
@@ -291,7 +294,7 @@ export default function EnrollmentForm({ isOpen, onClose, initialCourse }) {
 
                                         {/* Email */}
                                         <div className="relative">
-                                            <label className="block text-xs md:text-sm font-bold text-gray-600 mb-2">
+                                            <label htmlFor="enroll-email" className="block text-xs md:text-sm font-bold text-gray-600 mb-2">
                                                 Email Address (Optional)
                                             </label>
                                             <div className="relative">
@@ -300,6 +303,7 @@ export default function EnrollmentForm({ isOpen, onClose, initialCourse }) {
                                                 </span>
                                                 <input
                                                     type="email"
+                                                    id="enroll-email"
                                                     name="email"
                                                     value={formData.email}
                                                     onChange={handleChange}
@@ -311,7 +315,7 @@ export default function EnrollmentForm({ isOpen, onClose, initialCourse }) {
 
                                         {/* City */}
                                         <div className="relative">
-                                            <label className="block text-xs md:text-sm font-bold text-gray-600 mb-2">
+                                            <label htmlFor="enroll-city" className="block text-xs md:text-sm font-bold text-gray-600 mb-2">
                                                 City <span className="text-red-500">*</span>
                                             </label>
                                             <div className="relative">
@@ -320,6 +324,7 @@ export default function EnrollmentForm({ isOpen, onClose, initialCourse }) {
                                                 </span>
                                                 <input
                                                     type="text"
+                                                    id="enroll-city"
                                                     name="city"
                                                     value={formData.city}
                                                     onChange={handleChange}
@@ -332,7 +337,7 @@ export default function EnrollmentForm({ isOpen, onClose, initialCourse }) {
 
                                         {/* Course Selection */}
                                         <div className="relative col-span-full">
-                                            <label className="block text-xs md:text-sm font-bold text-gray-600 mb-2">
+                                            <label htmlFor="enroll-course" className="block text-xs md:text-sm font-bold text-gray-600 mb-2">
                                                 Choose Your Target Course <span className="text-red-500">*</span>
                                             </label>
                                             <div className="relative">
@@ -340,6 +345,7 @@ export default function EnrollmentForm({ isOpen, onClose, initialCourse }) {
                                                     <BookOpen size={18} />
                                                 </span>
                                                 <select
+                                                    id="enroll-course"
                                                     name="course"
                                                     value={formData.course}
                                                     onChange={handleChange}
@@ -361,7 +367,7 @@ export default function EnrollmentForm({ isOpen, onClose, initialCourse }) {
 
                                         {/* Query */}
                                         <div className="relative col-span-full">
-                                            <label className="block text-xs md:text-sm font-bold text-gray-600 mb-2">
+                                            <label htmlFor="enroll-query" className="block text-xs md:text-sm font-bold text-gray-600 mb-2">
                                                 Describe Your Query (Optional)
                                             </label>
                                             <div className="relative">
@@ -369,6 +375,7 @@ export default function EnrollmentForm({ isOpen, onClose, initialCourse }) {
                                                     <MessageSquare size={18} />
                                                 </span>
                                                 <textarea
+                                                    id="enroll-query"
                                                     name="query"
                                                     value={formData.query}
                                                     onChange={handleChange}
@@ -384,6 +391,7 @@ export default function EnrollmentForm({ isOpen, onClose, initialCourse }) {
                                         <button
                                             type="submit"
                                             disabled={loading}
+                                            aria-label="Submit Enrollment Form"
                                             className={`w-full bg-gradient-to-r ${theme.buttonBg} text-white py-4 rounded-xl font-bold text-base md:text-lg shadow-lg hover:shadow-xl active:scale-[0.99] transform transition-all duration-300 flex items-center justify-center gap-2 group`}
                                         >
                                             {loading ? (

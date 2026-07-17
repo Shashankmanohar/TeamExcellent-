@@ -1,16 +1,18 @@
-import { useState, useEffect } from 'react'
+import { useState, useEffect, lazy, Suspense } from 'react'
 import { Helmet } from 'react-helmet-async'
 import { fetchApprovedReviews } from '../lib/reviewApi'
 import Navbar from '../Components/Navbar'
-import Carousel from '../Components/Carousel'
+import Hero from '../Components/Hero'
 import Strip from '../Components/Strip'
-import Whychooseus from '../Components/Whychooseus'
-import Programs from '../Components/Programs'
-import Features from '../Components/Features'
-import TrustedSection from '../Components/TrustedSection'
-import Questions from '../Components/Questions'
-import Testimonials from '../Components/Testimonials'
-import Footer from '../Components/Footer'
+
+// Lazy load below-the-fold components
+const WhyChooseSection = lazy(() => import('../Components/WhyChooseSection'))
+const Programs = lazy(() => import('../Components/Programs'))
+const Features = lazy(() => import('../Components/Features'))
+const TrustedSection = lazy(() => import('../Components/TrustedSection'))
+const Questions = lazy(() => import('../Components/Questions'))
+const Testimonials = lazy(() => import('../Components/Testimonials'))
+const Footer = lazy(() => import('../Components/Footer'))
 
 export default function Home() {
   const [reviews, setReviews] = useState([])
@@ -209,15 +211,21 @@ export default function Home() {
 
       {/* Page Content */}
       <Navbar />
-      <Carousel />
-      <Strip />
-      <TrustedSection />
-      <Programs />
-      <Whychooseus />
-      <Features />
-      <Testimonials />
-      <Questions className="mb-10" />
-      <Footer />
+      <main id="main-content">
+        <Hero />
+        <Strip />
+        <Suspense fallback={<div className="h-20 bg-slate-50 animate-pulse rounded-2xl m-4" />}>
+          <TrustedSection />
+          <Programs />
+          <WhyChooseSection />
+          <Features />
+          <Testimonials />
+          <Questions className="mb-10" />
+        </Suspense>
+      </main>
+      <Suspense fallback={<div className="h-40 bg-slate-900" />}>
+        <Footer />
+      </Suspense>
     </>
   )
 }

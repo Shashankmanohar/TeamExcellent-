@@ -3,6 +3,9 @@ import axios from 'axios';
 // Get base URL depending on environment
 const getBaseUrl = () => {
     // If we're in production on Vercel
+    if (import.meta.env.VITE_API_BASE_URL) {
+        return import.meta.env.VITE_API_BASE_URL;
+    }
     if (import.meta.env.VITE_API_URL) {
         return import.meta.env.VITE_API_URL;
     }
