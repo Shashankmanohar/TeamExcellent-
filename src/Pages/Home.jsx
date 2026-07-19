@@ -16,7 +16,7 @@ const Footer = lazy(() => import('../Components/Footer'))
 
 export default function Home() {
   const [reviews, setReviews] = useState([])
-  const [aggregate, setAggregate] = useState({ ratingValue: "4.9", ratingCount: "120" })
+  const [aggregate, setAggregate] = useState({ ratingValue: "4.9", ratingCount: "510" })
 
   useEffect(() => {
     const getReviews = async () => {
@@ -132,6 +132,21 @@ export default function Home() {
                 "bestRating": "5"
               }
             }))
+          })}
+        </script>
+
+        {/* WebSite Schema */}
+        <script type="application/ld+json">
+          {JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "WebSite",
+            "name": "Team Excellent Career Institute",
+            "url": "https://teamexcellentcareerinstitute.in",
+            "potentialAction": {
+              "@type": "SearchAction",
+              "target": "https://teamexcellentcareerinstitute.in/search?q={search_term_string}",
+              "query-input": "required name=search_term_string"
+            }
           })}
         </script>
 

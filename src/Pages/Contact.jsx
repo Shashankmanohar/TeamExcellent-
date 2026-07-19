@@ -33,6 +33,29 @@ export default function Contact() {
         <meta name="twitter:title" content="Contact Us | Team Excellent Coaching Institute" />
         <meta name="twitter:description" content="Get in touch with Team Excellent Coaching Patna for admission queries, coaching details, and more." />
         <meta name="twitter:image" content="https://teamexcellentcareerinstitute.in/logo192.png" />
+
+        {/* ContactPage Schema */}
+        <script type="application/ld+json">
+          {JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "ContactPage",
+            "name": "Contact Us | Team Excellent Coaching Institute Patna",
+            "description": "Get in touch with Team Excellent Coaching Institute, Patna. Contact us for admissions, JEE & NEET coaching, or foundation courses (Class 6–10).",
+            "url": "https://teamexcellentcareerinstitute.in/contact",
+            "mainEntity": {
+              "@type": "EducationalOrganization",
+              "name": "Team Excellent Career Institute",
+              "url": "https://teamexcellentcareerinstitute.in",
+              "telephone": "+91-9942000371",
+              "address": {
+                "@type": "PostalAddress",
+                "addressLocality": "Patna",
+                "addressRegion": "Bihar",
+                "addressCountry": "IN"
+              }
+            }
+          })}
+        </script>
       </Helmet>
 
       <Navbar />

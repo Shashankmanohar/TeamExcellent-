@@ -38,6 +38,8 @@ const CollegePredictor = withSuspense(lazy(() => import('./Pages/CollegePredicto
 const Student = withSuspense(lazy(() => import('./Pages/Student')))
 const AdminLogin = withSuspense(lazy(() => import('./Pages/AdminLogin')))
 const Result = withSuspense(lazy(() => import('./Pages/Result')))
+const JeeResult = withSuspense(lazy(() => import('./Pages/JeeResult')))
+const NeetResult = withSuspense(lazy(() => import('./Pages/NeetResult')))
 const PrivacyPolicy = withSuspense(lazy(() => import('./Pages/PrivacyPolicy')))
 const TermsOfService = withSuspense(lazy(() => import('./Pages/TermsOfService')))
 
@@ -125,6 +127,8 @@ export default function App() {
         <Route path="/college-predictor" element={<CollegePredictor />} />
         <Route path="/student-portal" element={<Student />} />
         <Route path="/result" element={<Result />} />
+        <Route path="/result/jee" element={<JeeResult />} />
+        <Route path="/result/neet" element={<NeetResult />} />
         <Route path="/contact" element={<Contact />} />
         <Route path="/admin-login" element={<AdminLogin />} />
         <Route path="/privacy-policy" element={<PrivacyPolicy />} />

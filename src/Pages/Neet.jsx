@@ -9,21 +9,21 @@ export default function Neet() {
     <>
       <Helmet>
         {/* Title & Description */}
-        <title>NEET Coaching | Team Excellent Institute</title>
+        <title>Best NEET Coaching in Patna | Medical UG Preparation - Team Excellent</title>
         <meta 
           name="description" 
-          content="Crack NEET with Team Excellent’s expert faculty, personalized mentoring, and result-oriented courses. Join the best medical coaching for NEET preparation in Patna." 
+          content="Looking for the best NEET coaching in Patna? Team Excellent Career Institute offers top NEET UG medical entrance coaching with experienced doctors/faculty, custom mock tests, and personal mentorship." 
         />
 
         {/* Keywords */}
         <meta 
           name="keywords" 
-          content="NEET coaching Patna, Team Excellent, medical entrance coaching Bihar, best NEET institute, NEET preparation, NEET UG coaching, biology coaching Patna, Team Excellent NEET, top medical coaching Bihar" 
+          content="neet coaching in patna, best coaching for neet in patna, best neet coaching in patna, best institute for neet in patna, patna neet coaching fees, neet preparation institute in patna, neet institute in patna, patna neet coaching, Team Excellent, Team Excellent Patna, medical entrance coaching Patna" 
         />
 
         {/* Open Graph */}
-        <meta property="og:title" content="NEET Coaching | Team Excellent Institute" />
-        <meta property="og:description" content="Achieve your dream medical seat with Team Excellent’s NEET coaching, led by expert faculty and proven results." />
+        <meta property="og:title" content="Best NEET Coaching in Patna | Medical UG Preparation - Team Excellent" />
+        <meta property="og:description" content="Crack NEET UG with Patna's premier medical coaching institute. Expert faculty, customized materials, and regular test series." />
         <meta property="og:type" content="website" />
         <meta property="og:url" content="https://teamexcellentcareerinstitute.in/neet-coaching-in-patna" />
         <link rel="canonical" href="https://teamexcellentcareerinstitute.in/neet-coaching-in-patna" />
@@ -31,8 +31,8 @@ export default function Neet() {
 
         {/* Twitter Card */}
         <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content="NEET Coaching | Team Excellent Institute" />
-        <meta name="twitter:description" content="Best NEET coaching in Patna for medical aspirants. Join Team Excellent for success in NEET UG." />
+        <meta name="twitter:title" content="Best NEET Coaching in Patna | Team Excellent" />
+        <meta name="twitter:description" content="Enroll at Team Excellent for NEET UG coaching in Patna. Led by top biology and physics/chemistry experts." />
         <meta name="twitter:image" content="https://teamexcellentcareerinstitute.in/logo192.png" />
 
         {/* Course Schema */}
@@ -50,7 +50,7 @@ export default function Neet() {
             "aggregateRating": {
               "@type": "AggregateRating",
               "ratingValue": "4.9",
-              "reviewCount": "115"
+              "reviewCount": "510"
             }
           })}
         </script>

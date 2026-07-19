@@ -35,7 +35,7 @@ export default function FAQSection({ faqs, title = "Frequently Asked Questions" 
       <h2 className="text-3xl font-bold text-center text-[#522871] mb-8 flex items-center justify-center gap-2">
         <HelpCircle className="w-8 h-8 text-[#9333ea]" /> {title}
       </h2>
-      
+
       <div className="space-y-4">
         {faqs.map((faq, index) => (
           <div

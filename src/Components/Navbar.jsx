@@ -70,7 +70,13 @@ export default function Navbar() {
           />
           <NavItem to="/blogs" label="Blog" />
           <NavItem to="/admission" label="Admission" />
-          <NavItem to="/result" label="Result" />
+          <Dropdown
+            label="Result"
+            items={[
+              { to: "/result/jee", label: "JEE Result" },
+              { to: "/result/neet", label: "NEET Result" },
+            ]}
+          />
           
           {/* Animated Contact Us Button */}
           <motion.li
@@ -140,7 +146,14 @@ export default function Navbar() {
              />
             <NavItem to="/blogs" label="Blog" mobile onClick={() => setIsOpen(false)} />
             <NavItem to="/admission" label="Admission" mobile onClick={() => setIsOpen(false)} />
-            <NavItem to="/result" label="Result" mobile onClick={() => setIsOpen(false)} />
+            <DropdownMobile
+              label="Result"
+              items={[
+                { to: "/result/jee", label: "JEE Result" },
+                { to: "/result/neet", label: "NEET Result" },
+              ]}
+              onClose={() => setIsOpen(false)}
+            />
             
             {/* Mobile Contact Button */}
             <motion.div

@@ -9,21 +9,21 @@ export default function Jee() {
     <>
       <Helmet>
         {/* Title & Description */}
-        <title>JEE Coaching | Team Excellent Institute</title>
+        <title>Best JEE Coaching in Patna | IIT JEE Main & Advanced - Team Excellent</title>
         <meta 
           name="description" 
-          content="Join Team Excellent for the best JEE coaching with expert IIT faculty, personalized mentoring, and proven results. Specialized programs for JEE Main & Advanced." 
+          content="Looking for the best JEE coaching in Patna? Team Excellent Career Institute offers top IIT-JEE (Mains & Advanced) coaching with expert IITian faculty, regular test series, and personalized mentoring." 
         />
 
         {/* Keywords */}
         <meta 
           name="keywords" 
-          content="JEE coaching Patna, Team Excellent, IIT JEE preparation, best JEE institute, JEE Main coaching, JEE Advanced coaching, Team Excellent JEE, top IIT coaching, engineering entrance coaching Bihar" 
+          content="jee coaching in patna, iit coaching in patna, best iit coaching in patna, best coaching for jee in patna, best institute for iit in patna, top 10 coaching institute in patna for iit, top 10 iit jee coaching in patna, top institute in patna for iit jee, iit jee coaching in patna, Team Excellent, Team Excellent Patna" 
         />
 
         {/* Open Graph */}
-        <meta property="og:title" content="JEE Coaching | Team Excellent Institute" />
-        <meta property="og:description" content="Crack JEE with Team Excellent’s expert faculty and structured courses for JEE Main & Advanced." />
+        <meta property="og:title" content="Best JEE Coaching in Patna | IIT JEE Main & Advanced - Team Excellent" />
+        <meta property="og:description" content="Enroll in the best JEE coaching in Patna at Team Excellent. Get top-class preparation for JEE Main & Advanced from expert IITian faculty." />
         <meta property="og:type" content="website" />
         <meta property="og:url" content="https://teamexcellentcareerinstitute.in/jee-coaching-in-patna" />
         <link rel="canonical" href="https://teamexcellentcareerinstitute.in/jee-coaching-in-patna" />
@@ -31,8 +31,8 @@ export default function Jee() {
 
         {/* Twitter Card */}
         <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content="JEE Coaching | Team Excellent Institute" />
-        <meta name="twitter:description" content="Enroll at Team Excellent for JEE Main & Advanced coaching with IIT faculty." />
+        <meta name="twitter:title" content="Best JEE Coaching in Patna | IIT JEE Prep" />
+        <meta name="twitter:description" content="Crack JEE Main & Advanced with Patna's leading JEE coaching institute. Expert faculty and personal mentorship." />
         <meta name="twitter:image" content="https://teamexcellentcareerinstitute.in/logo192.png" />
         
         {/* Course Schema */}
@@ -50,7 +50,7 @@ export default function Jee() {
             "aggregateRating": {
               "@type": "AggregateRating",
               "ratingValue": "4.9",
-              "reviewCount": "120"
+              "reviewCount": "510"
             }
           })}
         </script>
