@@ -8,6 +8,7 @@ import Strip from '../Components/Strip'
 // Lazy load below-the-fold components
 const WhyChooseSection = lazy(() => import('../Components/WhyChooseSection'))
 const Programs = lazy(() => import('../Components/Programs'))
+const TMatSection = lazy(() => import('../Components/TMatSection'))
 const Features = lazy(() => import('../Components/Features'))
 const TrustedSection = lazy(() => import('../Components/TrustedSection'))
 const Questions = lazy(() => import('../Components/Questions'))
@@ -233,6 +234,7 @@ export default function Home() {
         <Suspense fallback={<div className="h-20 bg-slate-50 animate-pulse rounded-2xl m-4" />}>
           <TrustedSection />
           <Programs />
+          <TMatSection />
           <WhyChooseSection />
           <Features />
           <Testimonials />

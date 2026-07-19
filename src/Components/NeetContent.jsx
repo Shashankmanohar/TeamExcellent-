@@ -3,6 +3,7 @@ import { HeartPulse, BookOpen, Award, Layers, ArrowRight, GraduationCap, Laptop,
 import ExploreLinks from "./ExploreLinks";
 import EnrollmentForm from "./EnrollmentForm";
 import FAQSection from "./FAQSection";
+import TMatSection from "./TMatSection";
 
 function NeetContent() {
   const examInfo = {
@@ -87,7 +88,7 @@ function NeetContent() {
     },
     {
       question: "Are there scholarship programs available?",
-      answer: "Yes. We regularly conduct scholarship tests. Eligible students can receive fee concessions based on their performance and institute policies."
+      answer: "Yes. We offer up to 100% scholarship to students after they clear the T-MAT Scholarship Test. Scholarships are awarded based on test scores and performance."
     },
     {
       question: "Do you provide counseling for students and parents?",
@@ -136,7 +137,7 @@ function NeetContent() {
           {/* Badge */}
           <div className="inline-flex items-center gap-2 rounded-full border border-purple-100 bg-purple-50/80 px-4 py-1.5 text-[10px] sm:text-xs font-semibold text-[#5B2D7C] shadow-sm backdrop-blur-sm mb-6">
             <HeartPulse className="w-4 h-4 text-[#5B2D7C]" />
-            <span className="tracking-wide">Medical Entrance Preparation</span>
+            <span className="tracking-wide">Medical Entrance Preparation | Up to 100% Scholarship after T-MAT Test</span>
           </div>
 
           <h1 className="text-4xl sm:text-5xl md:text-6xl font-extrabold tracking-tight text-[#1e1b4b] leading-tight mb-6">
@@ -288,6 +289,8 @@ function NeetContent() {
           </div>
         </div>
       </div>
+
+      <TMatSection theme="red" />
 
       {/* Our NEET Preparation Strategy */}
       <div className="max-w-6xl mx-auto mt-24 px-4">

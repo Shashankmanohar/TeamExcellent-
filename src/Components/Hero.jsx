@@ -43,7 +43,7 @@ function Hero() {
           {/* Badge: Admissions Open */}
           <div className="inline-flex items-center gap-2 rounded-full border border-purple-100 bg-purple-50/80 px-4 py-1.5 text-[10px] sm:text-xs font-semibold text-[#5B2D7C] shadow-sm backdrop-blur-sm">
             <GraduationCap className="w-4 h-4 text-[#5B2D7C] mt-0.5" />
-            <span className="tracking-wide">Admissions Open for JEE & NEET 2027</span>
+            <span className="tracking-wide">Admissions Open | Up to 100% Scholarship after T-MAT Scholarship Test</span>
           </div>
 
           {/* Main Heading */}

@@ -3,6 +3,7 @@ import { BookOpen, Target, Award, Layers, ArrowRight, GraduationCap, Laptop, Hel
 import ExploreLinks from "./ExploreLinks";
 import EnrollmentForm from "./EnrollmentForm";
 import FAQSection from "./FAQSection";
+import TMatSection from "./TMatSection";
 
 function JeeContent() {
   const sections = [
@@ -108,7 +109,7 @@ function JeeContent() {
     },
     {
       question: "Are scholarship programs available?",
-      answer: "Yes. We conduct scholarship tests from time to time. Students who perform well may be eligible for fee concessions as per the institute's scholarship policy."
+      answer: "Yes. We offer up to 100% scholarship to students based on their performance in the T-MAT Scholarship Test. High-scoring candidates can receive complete fee concessions."
     },
     {
       question: "What is the batch size?",
@@ -153,7 +154,7 @@ function JeeContent() {
           {/* Badge */}
           <div className="inline-flex items-center gap-2 rounded-full border border-purple-100 bg-purple-50/80 px-4 py-1.5 text-[10px] sm:text-xs font-semibold text-[#5B2D7C] shadow-sm backdrop-blur-sm mb-6">
             <BookOpen className="w-4 h-4 text-[#5B2D7C]" />
-            <span className="tracking-wide">Engineering Entrance Preparation</span>
+            <span className="tracking-wide">Engineering Entrance Preparation | Up to 100% Scholarship after T-MAT Test</span>
           </div>
 
           <h1 className="text-4xl sm:text-5xl md:text-6xl font-extrabold tracking-tight text-[#1e1b4b] leading-tight mb-6">
@@ -307,6 +308,8 @@ function JeeContent() {
           </div>
         </div>
       </div>
+
+      <TMatSection theme="purple" />
 
       {/* Our JEE Preparation Strategy */}
       <div className="max-w-6xl mx-auto mt-24 px-4">
