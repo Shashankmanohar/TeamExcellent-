@@ -39,7 +39,7 @@ export default function AdminDashboard() {
             setLoading(true);
             
             // Fetch everything in parallel
-            const [leadsData, blogsData, reviewsData, careersData] = await Promise.all([
+            const [leadsData, blogsData, reviewsData, careersData, counselingData] = await Promise.all([
                 fetchEnrollments().catch(() => ({ enrollments: [] })),
                 fetchAllBlogs(1, 100).catch(() => ({ blogs: [], totalBlogs: 0 })),
                 fetchAllReviewsAdmin().catch(() => ({ success: false, reviews: [] })),
