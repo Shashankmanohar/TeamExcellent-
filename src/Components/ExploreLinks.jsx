@@ -6,7 +6,12 @@ import {
   ClipboardCheck, 
   Award, 
   Send,
-  ChevronRight
+  ChevronRight,
+  Trophy,
+  FileText,
+  Info,
+  UserCheck,
+  Building2
 } from "lucide-react";
 
 export default function ExploreLinks() {
@@ -19,7 +24,11 @@ export default function ExploreLinks() {
     { to: "/programs/class-6-to-10", label: "Class 6-10 Foundation", icon: <BookOpen className="w-4 h-4" /> },
     { to: "/admission", label: "Admission Procedure", icon: <ClipboardCheck className="w-4 h-4" /> },
     { to: "/rank-predictor", label: "JEE/NEET Rank Predictor", icon: <Award className="w-4 h-4" /> },
-    { to: "/college-predictor", label: "JEE College Predictor", icon: <Award className="w-4 h-4" /> },
+    { to: "/college-predictor", label: "JEE College Predictor", icon: <Building2 className="w-4 h-4" /> },
+    { to: "/result", label: "Results & Toppers", icon: <Trophy className="w-4 h-4" /> },
+    { to: "/blogs", label: "Blogs & Articles", icon: <FileText className="w-4 h-4" /> },
+    { to: "/about", label: "About Institute", icon: <Info className="w-4 h-4" /> },
+    { to: "/student-portal", label: "Student Portal", icon: <UserCheck className="w-4 h-4" /> },
     { to: "/contact", label: "Contact Us", icon: <Send className="w-4 h-4" /> },
   ];
 
@@ -35,14 +44,14 @@ export default function ExploreLinks() {
       <div className="max-w-6xl mx-auto px-6 text-center">
         {/* Title */}
         <h2 className="text-xl sm:text-2xl font-extrabold text-[#1e1b4b] mb-2 tracking-tight">
-          Explore Other Programs & Tools
+          Explore Quick Links & Programs
         </h2>
         <p className="text-xs sm:text-sm text-slate-500 mb-8 max-w-md mx-auto">
-          Navigate quickly to our specialized preparation programs and state-of-the-art predictors.
+          Navigate quickly across our specialized preparation programs, predictors, results, and resources.
         </p>
 
         {/* Links Grid */}
-        <div className="flex flex-wrap justify-center items-center gap-3 sm:gap-4 max-w-4xl mx-auto">
+        <div className="flex flex-wrap justify-center items-center gap-3 sm:gap-4 max-w-5xl mx-auto">
           {filteredLinks.map((link) => (
             <Link
               key={link.to}
@@ -61,3 +70,4 @@ export default function ExploreLinks() {
     </section>
   );
 }
+

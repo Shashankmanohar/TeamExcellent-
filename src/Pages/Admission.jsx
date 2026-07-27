@@ -33,7 +33,38 @@ export default function Admission() {
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:title" content="Admission Process | Team Excellent Coaching" />
         <meta name="twitter:description" content="Know how to enroll at Team Excellent for JEE, NEET, and foundation courses." />
-        <meta name="twitter:image" content="https://teamexcellentcareerinstitute.in/logo192.png" />
+        {/* WebPage & FAQPage Schema */}
+        <script type="application/ld+json">
+          {JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "WebPage",
+            "name": "Admission Process | Team Excellent Coaching Institute",
+            "description": "Explore the admission process at Team Excellent Coaching Institute for JEE, NEET, and school-level foundations (Class 6–10).",
+            "url": "https://teamexcellentcareerinstitute.in/admission"
+          })}
+        </script>
+
+        {/* BreadcrumbList Schema */}
+        <script type="application/ld+json">
+          {JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "BreadcrumbList",
+            "itemListElement": [
+              {
+                "@type": "ListItem",
+                "position": 1,
+                "name": "Home",
+                "item": "https://teamexcellentcareerinstitute.in/"
+              },
+              {
+                "@type": "ListItem",
+                "position": 2,
+                "name": "Admission Process",
+                "item": "https://teamexcellentcareerinstitute.in/admission"
+              }
+            ]
+          })}
+        </script>
       </Helmet>
 
       <Navbar />

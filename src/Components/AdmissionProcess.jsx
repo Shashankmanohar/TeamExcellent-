@@ -1,6 +1,6 @@
 import React, { useState } from "react";
-import { ClipboardCheck, ArrowRight } from "lucide-react";
-import ExploreLinks from "./ExploreLinks";
+import { Link } from "react-router-dom";
+import { ClipboardCheck, ArrowRight, BookOpen } from "lucide-react";
 import EnrollmentForm from "./EnrollmentForm";
 import FAQSection from "./FAQSection";
 
@@ -178,9 +178,98 @@ function AdmissionProcess() {
           </div>
         ))}
       </div>
-      <FAQSection faqs={faqs} />
 
-      <ExploreLinks />
+      {/* Scholarship Slab Matrix (T-MAT Test) */}
+      <div className="max-w-4xl mx-auto mt-20 bg-white border border-purple-100 rounded-3xl p-8 shadow-lg">
+        <div className="text-center mb-8">
+          <span className="bg-purple-100 text-[#5B2D7C] text-xs font-bold uppercase px-4 py-1.5 rounded-full">
+            T-MAT Scholarship Slabs
+          </span>
+          <h3 className="text-2xl sm:text-3xl font-extrabold text-[#522871] mt-3">
+            Earn Up to 100% Scholarship on Course Fees
+          </h3>
+          <p className="text-gray-600 text-sm mt-2">
+            Scholarship awards based on performance in our entrance and mentorship test
+          </p>
+        </div>
+
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-4">
+          <div className="bg-purple-50/70 border border-purple-100 p-5 rounded-2xl text-center">
+            <div className="text-3xl font-black text-[#522871] mb-1">100%</div>
+            <div className="text-xs font-bold text-gray-700 uppercase tracking-wider mb-2">Full Waiver</div>
+            <p className="text-xs text-gray-600">Top 10 Rankers in T-MAT Entrance Exam</p>
+          </div>
+
+          <div className="bg-purple-50/70 border border-purple-100 p-5 rounded-2xl text-center">
+            <div className="text-3xl font-black text-[#b72e2f] mb-1">75%</div>
+            <div className="text-xs font-bold text-gray-700 uppercase tracking-wider mb-2">Scholarship</div>
+            <p className="text-xs text-gray-600">Score Above 90% Marks in T-MAT</p>
+          </div>
+
+          <div className="bg-purple-50/70 border border-purple-100 p-5 rounded-2xl text-center">
+            <div className="text-3xl font-black text-blue-600 mb-1">50%</div>
+            <div className="text-xs font-bold text-gray-700 uppercase tracking-wider mb-2">Scholarship</div>
+            <p className="text-xs text-gray-600">Score 75% to 89% Marks in T-MAT</p>
+          </div>
+
+          <div className="bg-purple-50/70 border border-purple-100 p-5 rounded-2xl text-center">
+            <div className="text-3xl font-black text-emerald-600 mb-1">25%</div>
+            <div className="text-xs font-bold text-gray-700 uppercase tracking-wider mb-2">Scholarship</div>
+            <p className="text-xs text-gray-600">Score 60% to 74% Marks in T-MAT</p>
+          </div>
+        </div>
+      </div>
+
+      {/* Required Documents Section */}
+      <div className="max-w-4xl mx-auto mt-12 bg-slate-50 border border-slate-200/80 rounded-3xl p-8">
+        <h3 className="text-xl sm:text-2xl font-bold text-[#1e1b4b] mb-4 flex items-center gap-2">
+          <ClipboardCheck className="w-6 h-6 text-[#5B2D7C]" /> Checklist of Required Documents
+        </h3>
+        <ul className="grid sm:grid-cols-2 gap-3 text-sm text-gray-700 font-medium">
+          <li className="flex items-center gap-2">✅ 4 Recent Passport-size Photographs</li>
+          <li className="flex items-center gap-2">✅ Mark sheet copy of previous qualifying exam</li>
+          <li className="flex items-center gap-2">✅ Aadhaar Card or Valid Student ID Proof</li>
+          <li className="flex items-center gap-2">✅ T-MAT Admit Card & Score Card</li>
+          <li className="flex items-center gap-2">✅ Duly filled Admission Form</li>
+          <li className="flex items-center gap-2">✅ Parent/Guardian Contact & ID Details</li>
+        </ul>
+      </div>
+
+      {/* Contextual Link Box */}
+      <div className="max-w-4xl mx-auto mt-16 text-center bg-purple-50 p-8 rounded-2xl shadow-sm border border-purple-100">
+        <h3 className="text-xl sm:text-2xl font-bold text-[#522871] mb-3 flex items-center justify-center gap-2">
+          <BookOpen className="w-6 h-6 text-purple-600" /> Explore Courses & Student Services
+        </h3>
+        <p className="text-gray-700 text-sm sm:text-base leading-relaxed">
+          Need help picking the right batch? Explore details of our{" "}
+          <Link to="/jee-coaching-in-patna" className="font-bold text-[#5B2D7C] hover:underline">
+            IIT-JEE Coaching
+          </Link>,{" "}
+          <Link to="/neet-coaching-in-patna" className="font-bold text-[#5B2D7C] hover:underline">
+            NEET UG Medical Prep
+          </Link>, and{" "}
+          <Link to="/programs/class-6-to-10" className="font-bold text-[#5B2D7C] hover:underline">
+            Classes 6-10 Foundation
+          </Link>. You can also check our past{" "}
+          <Link to="/result" className="font-bold text-[#b72e2f] hover:underline">
+            Exam Results & Toppers
+          </Link>, evaluate your rank with our{" "}
+          <Link to="/rank-predictor" className="font-bold text-[#5B2D7C] hover:underline">
+            JEE & NEET Rank Predictor
+          </Link>, visit the{" "}
+          <Link to="/student-portal" className="font-bold text-[#5B2D7C] hover:underline">
+            Student Portal
+          </Link>, learn more{" "}
+          <Link to="/about" className="font-bold text-[#5B2D7C] hover:underline">
+            About Team Excellent
+          </Link>, or reach out on our{" "}
+          <Link to="/contact" className="font-bold text-[#b72e2f] hover:underline">
+            Contact Us Page
+          </Link>.
+        </p>
+      </div>
+
+      <FAQSection faqs={faqs} />
     </section>
 
     <EnrollmentForm

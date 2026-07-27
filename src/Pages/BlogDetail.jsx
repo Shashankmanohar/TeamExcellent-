@@ -5,6 +5,7 @@ import { Calendar, User, ArrowLeft, Tag, Clock, Share2, Coffee, Twitter, Faceboo
 import { fetchBlogByPermalink } from '../lib/blogApi';
 import Navbar from '../Components/Navbar';
 import Footer from '../Components/Footer';
+import ExploreLinks from '../Components/ExploreLinks';
 
 export default function BlogDetail() {
     const { permalink } = useParams();

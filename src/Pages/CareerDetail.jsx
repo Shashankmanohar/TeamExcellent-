@@ -5,6 +5,7 @@ import { ArrowLeft, Briefcase, MapPin, Clock, IndianRupee, Send, Calendar } from
 import { fetchCareerById } from '../lib/careerApi';
 import Navbar from '../Components/Navbar';
 import Footer from '../Components/Footer';
+import ExploreLinks from '../Components/ExploreLinks';
 
 export default function CareerDetail() {
     const { id } = useParams();

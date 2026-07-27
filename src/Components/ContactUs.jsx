@@ -1,7 +1,7 @@
 import React, { useState } from "react";
+import { Link } from "react-router-dom";
 import Contactimage from "../assets/Contactimage.jpg";
-import { MapPin, Phone, Mail, Clock } from "lucide-react";
-import ExploreLinks from "./ExploreLinks";
+import { MapPin, Phone, Mail, Clock, BookOpen } from "lucide-react";
 
 function ContactUs() {
   const [formData, setFormData] = useState({ name: "", mobile: "", message: "" });
@@ -44,7 +44,19 @@ function ContactUs() {
               <span className="text-[#b72e2f]">Contact Us.</span>
             </h1>
             <p className="mt-4 text-base sm:text-lg text-gray-600">
-              We would love to hear from you!
+              We would love to hear from you! Looking for batch admissions? Check our{" "}
+              <Link to="/admission" className="font-semibold text-[#8424bd] hover:underline">
+                Admission Procedure
+              </Link>{" "}
+              or explore our{" "}
+              <Link to="/jee-coaching-in-patna" className="font-semibold text-[#8424bd] hover:underline">
+                JEE
+              </Link>{" "}
+              &{" "}
+              <Link to="/neet-coaching-in-patna" className="font-semibold text-[#8424bd] hover:underline">
+                NEET Coaching
+              </Link>{" "}
+              programs.
             </p>
           </div>
         </div>
@@ -97,6 +109,23 @@ function ContactUs() {
             <Clock className="w-5 h-5 text-[#8424bd] mt-0.5" />
             <p className="text-gray-600 text-lg leading-snug">
               Mon – Sat: 8:00 AM – 8:00 PM <br /> Sunday: Closed
+            </p>
+          </div>
+
+          <div className="mt-6 p-4 bg-purple-50 rounded-xl border border-purple-100">
+            <p className="text-sm text-gray-700 leading-relaxed font-medium">
+              Want to check student marks or test progress? Visit the{" "}
+              <Link to="/student-portal" className="text-[#8424bd] font-bold hover:underline">
+                Student Portal
+              </Link>{" "}
+              or try our{" "}
+              <Link to="/rank-predictor" className="text-[#8424bd] font-bold hover:underline">
+                Rank Predictor
+              </Link>{" "}
+              and{" "}
+              <Link to="/college-predictor" className="text-[#8424bd] font-bold hover:underline">
+                College Predictor
+              </Link>.
             </p>
           </div>
         </div>
@@ -165,7 +194,41 @@ function ContactUs() {
           </form>
         </div>
       </div>
-      <ExploreLinks />
+
+      {/* Why Contact Us / Helpdesk Section */}
+      <div className="w-full max-w-6xl mx-auto mt-16 mb-16 px-6">
+        <div className="bg-[#fafafc] border border-purple-100 rounded-3xl p-8 sm:p-10 shadow-sm text-center">
+          <h3 className="text-2xl sm:text-3xl font-extrabold text-[#081646] mb-4">
+            Visiting Our Campus or Need Instant Academic Counseling?
+          </h3>
+          <p className="text-gray-600 text-base max-w-3xl mx-auto leading-relaxed mb-8">
+            Our admission counselors and senior academic advisors are available on campus from Monday to Saturday (8:00 AM to 8:00 PM). Parents and students can visit our center near NMCH College, Patna for a personalized 1-on-1 counseling session.
+          </p>
+
+          <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 text-left">
+            <div className="bg-white p-6 rounded-2xl border border-gray-100 shadow-sm">
+              <h4 className="font-bold text-[#8424bd] text-lg mb-2">🎓 Course Guidance</h4>
+              <p className="text-xs text-gray-600 leading-relaxed">
+                Get advice on selecting 1-year, 2-year, or repeater dropper batches for <Link to="/jee-coaching-in-patna" className="font-bold underline">JEE</Link> & <Link to="/neet-coaching-in-patna" className="font-bold underline">NEET</Link>.
+              </p>
+            </div>
+
+            <div className="bg-white p-6 rounded-2xl border border-gray-100 shadow-sm">
+              <h4 className="font-bold text-[#b72e2f] text-lg mb-2">📜 T-MAT Scholarship</h4>
+              <p className="text-xs text-gray-600 leading-relaxed">
+                Inquire about T-MAT test dates, syllabus, and scholarship waivers up to 100% on <Link to="/admission" className="font-bold underline">Admission Page</Link>.
+              </p>
+            </div>
+
+            <div className="bg-white p-6 rounded-2xl border border-gray-100 shadow-sm">
+              <h4 className="font-bold text-blue-600 text-lg mb-2">🏫 Hostel & Facilities</h4>
+              <p className="text-xs text-gray-600 leading-relaxed">
+                Learn about nearby student hostels, library access, and computer lab facilities. Read <Link to="/about" className="font-bold underline">About Our Campus</Link>.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
     </section>
   );
 }

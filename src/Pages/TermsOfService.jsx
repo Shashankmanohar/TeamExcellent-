@@ -2,6 +2,7 @@ import React from 'react'
 import { Helmet } from 'react-helmet-async'
 import Navbar from '../Components/Navbar'
 import Footer from '../Components/Footer'
+import ExploreLinks from '../Components/ExploreLinks'
 import { MapPin, Mail, Phone, Check } from 'lucide-react'
 
 export default function TermsOfService() {

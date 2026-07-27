@@ -35,7 +35,7 @@ export default function Neet() {
         <meta name="twitter:description" content="Enroll at Team Excellent for NEET UG coaching in Patna. Led by top biology and physics/chemistry experts." />
         <meta name="twitter:image" content="https://teamexcellentcareerinstitute.in/logo192.png" />
 
-        {/* Course Schema */}
+        {/* Course, CourseInstance, and Offer Schema */}
         <script type="application/ld+json">
           {JSON.stringify({
             "@context": "https://schema.org",
@@ -47,11 +47,59 @@ export default function Neet() {
               "name": "Team Excellent Career Institute",
               "url": "https://teamexcellentcareerinstitute.in/"
             },
+            "hasCourseInstance": [
+              {
+                "@type": "CourseInstance",
+                "name": "Class 11 2-Year NEET Program",
+                "courseMode": "Offline Classroom",
+                "duration": "P2Y"
+              },
+              {
+                "@type": "CourseInstance",
+                "name": "Class 12 1-Year NEET Program",
+                "courseMode": "Offline Classroom",
+                "duration": "P1Y"
+              },
+              {
+                "@type": "CourseInstance",
+                "name": "NEET Dropper / Repeater Batch",
+                "courseMode": "Offline Classroom",
+                "duration": "P1Y"
+              }
+            ],
+            "offers": {
+              "@type": "Offer",
+              "category": "Scholarship Available up to 100% via T-MAT Exam",
+              "priceCurrency": "INR",
+              "availability": "https://schema.org/InStock"
+            },
             "aggregateRating": {
               "@type": "AggregateRating",
               "ratingValue": "4.9",
               "reviewCount": "510"
             }
+          })}
+        </script>
+
+        {/* BreadcrumbList Schema */}
+        <script type="application/ld+json">
+          {JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "BreadcrumbList",
+            "itemListElement": [
+              {
+                "@type": "ListItem",
+                "position": 1,
+                "name": "Home",
+                "item": "https://teamexcellentcareerinstitute.in/"
+              },
+              {
+                "@type": "ListItem",
+                "position": 2,
+                "name": "NEET Coaching in Patna",
+                "item": "https://teamexcellentcareerinstitute.in/neet-coaching-in-patna"
+              }
+            ]
           })}
         </script>
       </Helmet>

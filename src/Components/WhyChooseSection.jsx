@@ -20,7 +20,11 @@ const advantages = [
   {
     icon: <Laptop className="w-6 h-6" />,
     title: "Student Performance Tracking App",
-    description: "Access our digital Student Portal to check mock test results, download report cards, and track academic progress using your Roll Number.",
+    description: (
+      <>
+        Access our digital <Link to="/student-portal" className="text-blue-600 font-semibold hover:underline">Student Portal</Link> to check mock test results, download report cards, and track academic progress using your Roll Number.
+      </>
+    ),
     textColor: "text-blue-600",
     bgColor: "bg-blue-50",
     hoverBorder: "hover:border-blue-200",
@@ -29,7 +33,11 @@ const advantages = [
   {
     icon: <GraduationCap className="w-6 h-6" />,
     title: "Expert Faculty",
-    description: "Learn from experienced educators who simplify complex concepts and provide exam-oriented strategies for IIT-JEE and NEET preparation.",
+    description: (
+      <>
+        Learn from experienced educators who simplify complex concepts and provide exam-oriented strategies for <Link to="/jee-coaching-in-patna" className="text-[#522871] font-semibold hover:underline">IIT-JEE Coaching</Link> and <Link to="/neet-coaching-in-patna" className="text-[#522871] font-semibold hover:underline">NEET Coaching</Link> in Patna.
+      </>
+    ),
     textColor: "text-[#522871]",
     bgColor: "bg-purple-50",
     hoverBorder: "hover:border-purple-200"
@@ -45,7 +53,11 @@ const advantages = [
   {
     icon: <ClipboardCheck className="w-6 h-6" />,
     title: "Regular Tests & Performance Analysis",
-    description: "Weekly tests, mock exams, and detailed performance reports help students identify strengths, improve weak areas, and stay exam-ready.",
+    description: (
+      <>
+        Weekly tests, mock exams, and detailed performance reports help students stay exam-ready. Check our <Link to="/rank-predictor" className="text-indigo-600 font-semibold hover:underline">JEE/NEET Rank Predictor</Link>.
+      </>
+    ),
     textColor: "text-indigo-600",
     bgColor: "bg-indigo-50",
     hoverBorder: "hover:border-indigo-200"
@@ -77,7 +89,11 @@ const advantages = [
   {
     icon: <Layers className="w-6 h-6" />,
     title: "Foundation Programs",
-    description: "Special foundation courses for students in Classes 8–10 help build strong fundamentals for IIT-JEE, NEET, NTSE, and Olympiad examinations.",
+    description: (
+      <>
+        Special foundation courses for students in <Link to="/programs/class-6-to-10" className="text-amber-700 font-semibold hover:underline">Classes 6–10 Foundation</Link> help build strong fundamentals for future JEE, NEET, and Olympiads.
+      </>
+    ),
     textColor: "text-amber-600",
     bgColor: "bg-amber-50",
     hoverBorder: "hover:border-amber-200"
@@ -85,7 +101,11 @@ const advantages = [
   {
     icon: <Trophy className="w-6 h-6" />,
     title: "Proven Academic Excellence",
-    description: "Our structured teaching methodology, disciplined study plans, and continuous mentoring have helped students achieve outstanding academic results.",
+    description: (
+      <>
+        Our structured teaching methodology and mentoring have helped students achieve outstanding <Link to="/result" className="text-[#522871] font-semibold hover:underline">Exam Results & Ranks</Link>.
+      </>
+    ),
     textColor: "text-[#522871]",
     bgColor: "bg-purple-50",
     hoverBorder: "hover:border-purple-200"
@@ -93,7 +113,11 @@ const advantages = [
   {
     icon: <Compass className="w-6 h-6" />,
     title: "Career Guidance & Mentorship",
-    description: "Beyond classroom teaching, students receive career counseling, motivation sessions, and exam strategies to build confidence and reduce stress.",
+    description: (
+      <>
+        Students receive career counseling and exam strategies. Learn about our <Link to="/admission" className="text-teal-700 font-semibold hover:underline">Admission Process</Link>.
+      </>
+    ),
     textColor: "text-teal-600",
     bgColor: "bg-teal-50",
     hoverBorder: "hover:border-teal-200"
@@ -109,7 +133,11 @@ const advantages = [
   {
     icon: <MapPin className="w-6 h-6" />,
     title: "Convenient Location in Patna",
-    description: "Located in Patna, Team Excellent Career Institute provides quality coaching for students from across Bihar preparing for IIT-JEE and NEET.",
+    description: (
+      <>
+        Located in Patna, Team Excellent Career Institute provides top coaching for <Link to="/jee-coaching-in-patna" className="text-indigo-600 font-semibold hover:underline">JEE Main/Advanced</Link> & <Link to="/neet-coaching-in-patna" className="text-indigo-600 font-semibold hover:underline">NEET Medical</Link>.
+      </>
+    ),
     textColor: "text-indigo-600",
     bgColor: "bg-indigo-50",
     hoverBorder: "hover:border-indigo-200"
@@ -130,7 +158,10 @@ export default function WhyChooseSection() {
             Why Choose <span className="text-[#b72e2f]">Team Excellent</span>
           </h2>
           <p className="text-gray-600 text-base sm:text-lg max-w-2xl mx-auto leading-relaxed">
-            Helping Bihar's Future Engineers & Doctors Achieve Their Dreams through concept-based learning and personalized support.
+            Helping Bihar's Future Engineers & Doctors Achieve Their Dreams through concept-based learning. Learn more{" "}
+            <Link to="/about" className="font-bold text-[#522871] hover:underline">
+              About Our Legacy & Faculty
+            </Link>.
           </p>
         </div>
 

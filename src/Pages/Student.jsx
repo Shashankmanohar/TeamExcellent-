@@ -1,7 +1,8 @@
 import React from 'react'
 import Navbar from '../Components/Navbar'
 import StudentMarks from '../Components/StudentMarks'
-
+import ExploreLinks from '../Components/ExploreLinks'
+import Footer from '../Components/Footer'
 import { Helmet } from 'react-helmet-async'
 
 export default function Student() {
@@ -63,6 +64,8 @@ export default function Student() {
       </section>
 
       <StudentMarks />
+      <Footer />
     </>
   )
 }
+

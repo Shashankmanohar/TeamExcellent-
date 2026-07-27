@@ -1,7 +1,7 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import Navbar from '../Components/Navbar';
 import Footer from '../Components/Footer';
-import ExploreLinks from '../Components/ExploreLinks';
 import { Trophy, Search, ChevronRight, Award } from 'lucide-react';
 import { Helmet } from 'react-helmet-async';
 
@@ -11,6 +11,37 @@ export default function Result() {
             <Helmet>
                 <title>Examination Results | Team Excellent Career Institute</title>
                 <meta name="description" content="Check your competitive exam results, mock tests, and performance reports at Team Excellent Career Institute Patna." />
+                
+                {/* WebPage & BreadcrumbList Schema */}
+                <script type="application/ld+json">
+                  {JSON.stringify({
+                    "@context": "https://schema.org",
+                    "@type": "WebPage",
+                    "name": "Examination Results | Team Excellent Career Institute",
+                    "description": "Check your competitive exam results, mock tests, and performance reports at Team Excellent Career Institute Patna.",
+                    "url": "https://teamexcellentcareerinstitute.in/result"
+                  })}
+                </script>
+                <script type="application/ld+json">
+                  {JSON.stringify({
+                    "@context": "https://schema.org",
+                    "@type": "BreadcrumbList",
+                    "itemListElement": [
+                      {
+                        "@type": "ListItem",
+                        "position": 1,
+                        "name": "Home",
+                        "item": "https://teamexcellentcareerinstitute.in/"
+                      },
+                      {
+                        "@type": "ListItem",
+                        "position": 2,
+                        "name": "Results",
+                        "item": "https://teamexcellentcareerinstitute.in/result"
+                      }
+                    ]
+                  })}
+                </script>
             </Helmet>
             <Navbar />
             <main className="min-h-screen bg-gray-50 pt-32 pb-20">
@@ -25,8 +56,17 @@ export default function Result() {
                         </h1>
                         <div className="w-24 h-1 bg-[#9333ea] mx-auto rounded-full"></div>
                         <p className="mt-6 text-gray-600 text-lg max-w-2xl mx-auto">
-                            Track your academic progress and competitive exam performance. 
-                            Results for both offline and online tests are uploaded here periodically.
+                            Track your academic progress and competitive exam performance. View detailed lists for{" "}
+                            <Link to="/result/jee" className="font-bold text-[#5B2D7C] hover:underline">
+                                JEE Results & Toppers
+                            </Link>{" "}
+                            and{" "}
+                            <Link to="/result/neet" className="font-bold text-[#b72e2f] hover:underline">
+                                NEET Results & Toppers
+                            </Link>, or log in to your{" "}
+                            <Link to="/student-portal" className="font-bold text-[#5B2D7C] hover:underline">
+                                Student Portal
+                            </Link>.
                         </p>
                     </div>
 
@@ -85,14 +125,46 @@ export default function Result() {
                         </div>
                         
                         <div className="mt-12 text-center p-8 bg-purple-50 rounded-3xl border border-purple-100">
-                            <p className="text-[#5B2D7C] font-semibold italic">
-                                "Success is not final, failure is not fatal: it is the courage to continue that counts."
+                            <p className="text-[#5B2D7C] font-semibold">
+                                Want to evaluate your rank? Try our{" "}
+                                <Link to="/rank-predictor" className="font-bold underline hover:text-[#b72e2f]">
+                                    JEE & NEET Rank Predictor
+                                </Link>{" "}
+                                or check out our{" "}
+                                <Link to="/college-predictor" className="font-bold underline hover:text-[#b72e2f]">
+                                    JEE College Predictor
+                                </Link>.
                             </p>
+                        </div>
+                    </div>
+
+                    {/* Performance Highlights Grid */}
+                    <div className="max-w-4xl mx-auto mt-16 bg-white border border-gray-100 rounded-3xl p-8 shadow-lg">
+                        <h3 className="text-2xl font-bold text-[#0B0B45] text-center mb-8">
+                            Why Our Students Consistently Excel
+                        </h3>
+                        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 text-center">
+                            <div className="p-6 rounded-2xl bg-purple-50/60 border border-purple-100">
+                                <div className="text-4xl font-extrabold text-[#5B2D7C] mb-2">95%+</div>
+                                <h4 className="font-bold text-gray-800 text-base mb-1">Qualification Rate</h4>
+                                <p className="text-xs text-gray-600">High percentage of classroom students qualifying for JEE Advanced & NEET counselling.</p>
+                            </div>
+
+                            <div className="p-6 rounded-2xl bg-red-50/60 border border-red-100">
+                                <div className="text-4xl font-extrabold text-[#b72e2f] mb-2">250+</div>
+                                <h4 className="font-bold text-gray-800 text-base mb-1">Top Selections</h4>
+                                <p className="text-xs text-gray-600">Students placed in top IITs, NITs, AIIMS, and Government Medical Colleges across India.</p>
+                            </div>
+
+                            <div className="p-6 rounded-2xl bg-emerald-50/60 border border-emerald-100">
+                                <div className="text-4xl font-extrabold text-emerald-600 mb-2">100%</div>
+                                <h4 className="font-bold text-gray-800 text-base mb-1">Personalized Guidance</h4>
+                                <p className="text-xs text-gray-600">Individual test analysis, doubt clearing, and rank building mentorship for every student.</p>
+                            </div>
                         </div>
                     </div>
                 </div>
             </main>
-            <ExploreLinks />
             <Footer />
         </>
     );

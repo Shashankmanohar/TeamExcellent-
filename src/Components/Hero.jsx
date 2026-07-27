@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { Link } from "react-router-dom";
 import { Star, ArrowRight, GraduationCap, Calendar, Award, Users } from "lucide-react";
 import EnrollmentForm from "./EnrollmentForm";
 
@@ -58,7 +59,10 @@ function Hero() {
           {/* Subheading */}
           <p className="max-w-2xl text-[11px] sm:text-xs md:text-sm lg:text-base text-slate-600 leading-relaxed px-4 font-medium">
             Build a Strong Foundation for IIT-JEE & NEET with Experienced
-            Faculty, Structured Learning, Regular Mock Tests, and Personal Mentorship.
+            Faculty, Structured Learning, Regular Mock Tests, and Personal Mentorship. Read more{" "}
+            <Link to="/about" className="font-bold text-[#5B2D7C] hover:underline">
+              About Us
+            </Link>.
           </p>
 
           {/* Social Proof Stars Badge */}
@@ -78,17 +82,17 @@ function Hero() {
 
           {/* CTA Buttons */}
           <div className="flex flex-col sm:flex-row gap-3 w-full sm:w-auto px-6 sm:px-0 justify-center">
-            <button
+            <Link
               id="apply-admission-hero-btn"
-              onClick={() => handleOpenModal("")}
+              to="/admission"
               className="w-full sm:w-auto inline-flex items-center justify-center gap-2 rounded-xl bg-gradient-to-r from-[#5B2D7C] to-[#8424bd] px-6 py-3 text-xs sm:text-sm md:text-base font-bold text-white shadow-[0_4px_14px_rgba(91,45,124,0.3)] hover:shadow-[0_6px_20px_rgba(91,45,124,0.45)] hover:-translate-y-0.5 transition-all duration-200 active:scale-[0.98]"
             >
               Apply for Admission
               <ArrowRight className="w-4 h-4 sm:w-5 sm:h-5" />
-            </button>
+            </Link>
             <button
               id="book-demo-hero-btn"
-              onClick={() => handleOpenModal("")}
+              onClick={() => handleOpenModal("Free Demo")}
               className="w-full sm:w-auto inline-flex items-center justify-center gap-2 rounded-xl border-2 border-slate-200 bg-white px-6 py-3 text-xs sm:text-sm md:text-base font-bold text-slate-700 hover:border-[#5B2D7C]/60 hover:bg-[#5B2D7C]/5 hover:-translate-y-0.5 transition-all duration-200 active:scale-[0.98]"
             >
               Book Free Demo

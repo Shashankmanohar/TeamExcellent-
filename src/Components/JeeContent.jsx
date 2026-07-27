@@ -1,6 +1,6 @@
 import React, { useState } from "react";
+import { Link } from "react-router-dom";
 import { BookOpen, Target, Award, Layers, ArrowRight, GraduationCap, Laptop, HelpCircle, Trophy, TrendingUp, ClipboardCheck, Clock, Users } from "lucide-react";
-import ExploreLinks from "./ExploreLinks";
 import EnrollmentForm from "./EnrollmentForm";
 import FAQSection from "./FAQSection";
 import TMatSection from "./TMatSection";
@@ -65,8 +65,19 @@ function JeeContent() {
     },
     {
       title: "Performance Tracking",
-      detail:
-        "Access to our Student Portal to check mock test results, download report cards, and track academic progress.",
+      detail: (
+        <>
+          Access to our <Link to="/student-portal" className="font-bold text-[#5B2D7C] hover:underline">Student Portal</Link> to check mock test results, download report cards, and track progress.
+        </>
+      ),
+    },
+    {
+      title: "Admission Process & Scholarships",
+      detail: (
+        <>
+          Simple step-by-step enrollment. Take our T-MAT entrance test to earn up to 100% fee scholarship. Learn more in our <Link to="/admission" className="font-bold text-[#b72e2f] hover:underline">Admission Guidelines</Link>.
+        </>
+      ),
     },
   ];
 
@@ -252,58 +263,91 @@ function JeeContent() {
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
           {/* Card 1: Class 11 */}
           <div className="bg-white rounded-3xl border border-slate-100 shadow-md hover:shadow-xl hover:border-purple-200 transition-all duration-300 overflow-hidden flex flex-col justify-between">
-            <div className="p-8">
-              <span className="bg-purple-100 text-[#5B2D7C] text-xs font-extrabold uppercase px-3.5 py-1 rounded-full">2-Year Program</span>
-              <h3 className="text-2xl font-bold text-gray-800 mt-4 mb-3">Class 11 Program</h3>
-              <p className="text-gray-600 text-sm leading-relaxed mb-6">
-                Builds a solid conceptual base in Physics, Chemistry, and Math from the ground up. Perfect for starting early and securing top ranks.
-              </p>
-              <ul className="space-y-2.5 text-slate-700 text-sm font-medium">
-                <li className="flex items-center gap-2"><span className="text-emerald-500 font-bold">✔</span> Comprehensive board integration</li>
-                <li className="flex items-center gap-2"><span className="text-emerald-500 font-bold">✔</span> Gradual transition to JEE advanced level</li>
-                <li className="flex items-center gap-2"><span className="text-emerald-500 font-bold">✔</span> Regular chapter tests & practice sessions</li>
-              </ul>
+            <div>
+              <div className="h-48 overflow-hidden relative">
+                <img 
+                  src="https://images.unsplash.com/photo-1523240795612-9a054b0db644?auto=format&fit=crop&q=80&w=600" 
+                  alt="Class 11 Program" 
+                  className="w-full h-full object-cover transform hover:scale-105 transition-transform duration-500"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent"></div>
+              </div>
+              <div className="p-8">
+                <span className="bg-purple-100 text-[#5B2D7C] text-xs font-extrabold uppercase px-3.5 py-1 rounded-full">2-Year Program</span>
+                <h3 className="text-2xl font-bold text-gray-800 mt-4 mb-3">Class 11 Program</h3>
+                <p className="text-gray-600 text-sm leading-relaxed mb-6">
+                  Builds a solid conceptual base in Physics, Chemistry, and Math from the ground up. Perfect for starting early and securing top ranks.
+                </p>
+                <ul className="space-y-2.5 text-slate-700 text-sm font-medium">
+                  <li className="flex items-center gap-2"><span className="text-emerald-500 font-bold">✔</span> Comprehensive board integration</li>
+                  <li className="flex items-center gap-2"><span className="text-emerald-500 font-bold">✔</span> Gradual transition to JEE advanced level</li>
+                  <li className="flex items-center gap-2"><span className="text-emerald-500 font-bold">✔</span> Regular chapter tests & practice sessions</li>
+                </ul>
+              </div>
             </div>
-            <div className="px-8 pb-8 pt-4 border-t border-slate-50">
-              <button onClick={() => handleOpenModal("JEE Class 11")} className="w-full bg-[#5B2D7C] hover:bg-[#8424bd] text-white font-bold py-3 rounded-xl transition duration-300">Enroll Now</button>
+            <div className="px-6 sm:px-8 pb-8 pt-4 border-t border-slate-50 flex flex-col sm:flex-row gap-3">
+              <button onClick={() => handleOpenModal("JEE Class 11")} className="w-full sm:w-1/2 bg-[#5B2D7C] hover:bg-[#8424bd] text-white font-bold py-3 rounded-xl text-xs sm:text-sm transition duration-300 shadow-sm flex items-center justify-center">Enroll Now</button>
+              <Link to="/admission" className="w-full sm:w-1/2 bg-purple-50 hover:bg-purple-100 text-[#5B2D7C] border border-purple-200 font-bold py-3 rounded-xl text-xs sm:text-sm text-center transition duration-300 flex items-center justify-center">Admission Process</Link>
             </div>
           </div>
 
           {/* Card 2: Class 12 */}
           <div className="bg-white rounded-3xl border border-slate-100 shadow-md hover:shadow-xl hover:border-purple-200 transition-all duration-300 overflow-hidden flex flex-col justify-between">
-            <div className="p-8">
-              <span className="bg-red-100 text-[#b72e2f] text-xs font-extrabold uppercase px-3.5 py-1 rounded-full">1-Year Program</span>
-              <h3 className="text-2xl font-bold text-gray-800 mt-4 mb-3">Class 12 Program</h3>
-              <p className="text-gray-600 text-sm leading-relaxed mb-6">
-                Covers Class 12 board preparations alongside complete JEE Mains/Advanced applications and revision of Class 11 concepts.
-              </p>
-              <ul className="space-y-2.5 text-slate-700 text-sm font-medium">
-                <li className="flex items-center gap-2"><span className="text-emerald-500 font-bold">✔</span> Focus on board exams & rank building</li>
-                <li className="flex items-center gap-2"><span className="text-emerald-500 font-bold">✔</span> Intensive Class 11 revision capsules</li>
-                <li className="flex items-center gap-2"><span className="text-emerald-500 font-bold">✔</span> Part-test and full CBT mock series</li>
-              </ul>
+            <div>
+              <div className="h-48 overflow-hidden relative">
+                <img 
+                  src="https://images.unsplash.com/photo-1434030216411-0b793f4b4173?auto=format&fit=crop&q=80&w=600" 
+                  alt="Class 12 Program" 
+                  className="w-full h-full object-cover transform hover:scale-105 transition-transform duration-500"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent"></div>
+              </div>
+              <div className="p-8">
+                <span className="bg-red-100 text-[#b72e2f] text-xs font-extrabold uppercase px-3.5 py-1 rounded-full">1-Year Program</span>
+                <h3 className="text-2xl font-bold text-gray-800 mt-4 mb-3">Class 12 Program</h3>
+                <p className="text-gray-600 text-sm leading-relaxed mb-6">
+                  Covers Class 12 board preparations alongside complete JEE Mains/Advanced applications and revision of Class 11 concepts.
+                </p>
+                <ul className="space-y-2.5 text-slate-700 text-sm font-medium">
+                  <li className="flex items-center gap-2"><span className="text-emerald-500 font-bold">✔</span> Focus on board exams & rank building</li>
+                  <li className="flex items-center gap-2"><span className="text-emerald-500 font-bold">✔</span> Intensive Class 11 revision capsules</li>
+                  <li className="flex items-center gap-2"><span className="text-emerald-500 font-bold">✔</span> Part-test and full CBT mock series</li>
+                </ul>
+              </div>
             </div>
-            <div className="px-8 pb-8 pt-4 border-t border-slate-50">
-              <button onClick={() => handleOpenModal("JEE Class 12")} className="w-full bg-[#5B2D7C] hover:bg-[#8424bd] text-white font-bold py-3 rounded-xl transition duration-300">Enroll Now</button>
+            <div className="px-6 sm:px-8 pb-8 pt-4 border-t border-slate-50 flex flex-col sm:flex-row gap-3">
+              <button onClick={() => handleOpenModal("JEE Class 12")} className="w-full sm:w-1/2 bg-[#5B2D7C] hover:bg-[#8424bd] text-white font-bold py-3 rounded-xl text-xs sm:text-sm transition duration-300 shadow-sm flex items-center justify-center">Enroll Now</button>
+              <Link to="/admission" className="w-full sm:w-1/2 bg-purple-50 hover:bg-purple-100 text-[#5B2D7C] border border-purple-200 font-bold py-3 rounded-xl text-xs sm:text-sm text-center transition duration-300 flex items-center justify-center">Admission Process</Link>
             </div>
           </div>
 
           {/* Card 3: Droppers */}
           <div className="bg-white rounded-3xl border border-slate-100 shadow-md hover:shadow-xl hover:border-purple-200 transition-all duration-300 overflow-hidden flex flex-col justify-between">
-            <div className="p-8">
-              <span className="bg-blue-100 text-blue-600 text-xs font-extrabold uppercase px-3.5 py-1 rounded-full">Repeater Program</span>
-              <h3 className="text-2xl font-bold text-gray-800 mt-4 mb-3">Dropper Batch</h3>
-              <p className="text-gray-600 text-sm leading-relaxed mb-6">
-                Designed for Class 12 passout students who want to dedicate a year exclusively to crack JEE. Covers 11th & 12th syllabus in detail.
-              </p>
-              <ul className="space-y-2.5 text-slate-700 text-sm font-medium">
-                <li className="flex items-center gap-2"><span className="text-emerald-500 font-bold">✔</span> Highly intensive problem solving</li>
-                <li className="flex items-center gap-2"><span className="text-emerald-500 font-bold">✔</span> Advanced level test series analytics</li>
-                <li className="flex items-center gap-2"><span className="text-emerald-500 font-bold">✔</span> Direct mentoring by senior IITians</li>
-              </ul>
+            <div>
+              <div className="h-48 overflow-hidden relative">
+                <img 
+                  src="https://images.unsplash.com/photo-1456513080510-7bf3a84b82f8?auto=format&fit=crop&q=80&w=600" 
+                  alt="Dropper Batch" 
+                  className="w-full h-full object-cover transform hover:scale-105 transition-transform duration-500"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent"></div>
+              </div>
+              <div className="p-8">
+                <span className="bg-blue-100 text-blue-600 text-xs font-extrabold uppercase px-3.5 py-1 rounded-full">Repeater Program</span>
+                <h3 className="text-2xl font-bold text-gray-800 mt-4 mb-3">Dropper Batch</h3>
+                <p className="text-gray-600 text-sm leading-relaxed mb-6">
+                  Designed for Class 12 passout students who want to dedicate a year exclusively to crack JEE. Covers 11th & 12th syllabus in detail.
+                </p>
+                <ul className="space-y-2.5 text-slate-700 text-sm font-medium">
+                  <li className="flex items-center gap-2"><span className="text-emerald-500 font-bold">✔</span> Highly intensive problem solving</li>
+                  <li className="flex items-center gap-2"><span className="text-emerald-500 font-bold">✔</span> Advanced level test series analytics</li>
+                  <li className="flex items-center gap-2"><span className="text-emerald-500 font-bold">✔</span> Direct mentoring by senior IITians</li>
+                </ul>
+              </div>
             </div>
-            <div className="px-8 pb-8 pt-4 border-t border-slate-50">
-              <button onClick={() => handleOpenModal("JEE Dropper")} className="w-full bg-[#5B2D7C] hover:bg-[#8424bd] text-white font-bold py-3 rounded-xl transition duration-300">Enroll Now</button>
+            <div className="px-6 sm:px-8 pb-8 pt-4 border-t border-slate-50 flex flex-col sm:flex-row gap-3">
+              <button onClick={() => handleOpenModal("JEE Dropper")} className="w-full sm:w-1/2 bg-[#5B2D7C] hover:bg-[#8424bd] text-white font-bold py-3 rounded-xl text-xs sm:text-sm transition duration-300 shadow-sm flex items-center justify-center">Enroll Now</button>
+              <Link to="/admission" className="w-full sm:w-1/2 bg-purple-50 hover:bg-purple-100 text-[#5B2D7C] border border-purple-200 font-bold py-3 rounded-xl text-xs sm:text-sm text-center transition duration-300 flex items-center justify-center">Admission Process</Link>
             </div>
           </div>
         </div>
@@ -508,17 +552,43 @@ function JeeContent() {
       </div>
 
       {/* Our Edge Summary Box */}
-      <div className="max-w-4xl mx-auto mt-20 text-center bg-purple-50 p-10 rounded-2xl shadow-inner">
+      <div className="max-w-4xl mx-auto mt-20 text-center bg-purple-50 p-10 rounded-2xl shadow-inner border border-purple-100">
         <h2 className="text-3xl font-bold text-[#522871] mb-6 flex items-center justify-center gap-2">
-          <Award className="w-8 h-8 text-purple-600" /> Our Promise
+          <Award className="w-8 h-8 text-purple-600" /> Our Commitment to JEE Excellence
         </h2>
         <p className="text-gray-700 text-base sm:text-lg leading-relaxed">
-          At Team Excellent, we provide the best coaching for JEE in Patna by combining top-tier faculty, regular computer-based mock tests, comprehensive study material, and one-on-one mentorship. As a leading institute for IIT jee preparation in Patna, we offer structured learning pathways designed to help you excel in both JEE Mains & Advanced and secure a top rank.
+          At Team Excellent, we provide the best coaching for JEE in Patna by combining top-tier faculty, regular computer-based mock tests on our{" "}
+          <Link to="/student-portal" className="text-[#5B2D7C] font-bold hover:underline">
+            Student Portal
+          </Link>, comprehensive study material, and one-on-one mentorship. As a leading institute for IIT JEE preparation in Patna, we offer structured learning pathways designed to help you excel in both JEE Mains & Advanced. Check our past{" "}
+          <Link to="/result/jee" className="text-[#b72e2f] font-bold hover:underline">
+            JEE Results & Rankers
+          </Link>, evaluate your rank with our{" "}
+          <Link to="/rank-predictor" className="text-[#5B2D7C] font-bold hover:underline">
+            JEE Rank Predictor
+          </Link>{" "}
+          &{" "}
+          <Link to="/college-predictor" className="text-[#5B2D7C] font-bold hover:underline">
+            JEE College Predictor
+          </Link>, or read our detailed{" "}
+          <Link to="/admission" className="text-[#b72e2f] font-bold hover:underline">
+            Admission Guidelines
+          </Link>. You can also learn about our{" "}
+          <Link to="/neet-coaching-in-patna" className="text-[#5B2D7C] font-bold hover:underline">
+            NEET Medical Program
+          </Link>{" "}
+          and{" "}
+          <Link to="/programs/class-6-to-10" className="text-[#5B2D7C] font-bold hover:underline">
+            Class 6-10 Foundation Courses
+          </Link>. Have questions? Feel free to{" "}
+          <Link to="/contact" className="text-[#b72e2f] font-bold hover:underline">
+            Contact Us
+          </Link>{" "}
+          anytime.
         </p>
       </div>
 
       <FAQSection faqs={faqs} />
-      <ExploreLinks />
     </section>
 
     <EnrollmentForm

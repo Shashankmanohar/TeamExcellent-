@@ -133,6 +133,16 @@ export default function Programs() {
                         </div>
                     ))}
                 </div>
+
+                {/* Contact Banner */}
+                <div className="mt-12 text-center p-6 bg-purple-50 rounded-2xl border border-purple-100 max-w-3xl mx-auto shadow-sm">
+                    <p className="text-[#5B2D7C] text-sm sm:text-base font-semibold">
+                        Have questions about course fees, hostel facilities, or batch timings?{" "}
+                        <Link to="/contact" className="font-bold text-[#b72e2f] hover:underline underline-offset-2">
+                            Contact Us Today →
+                        </Link>
+                    </p>
+                </div>
             </div>
 
             <EnrollmentForm

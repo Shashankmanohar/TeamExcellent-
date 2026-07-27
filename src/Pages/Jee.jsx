@@ -35,7 +35,7 @@ export default function Jee() {
         <meta name="twitter:description" content="Crack JEE Main & Advanced with Patna's leading JEE coaching institute. Expert faculty and personal mentorship." />
         <meta name="twitter:image" content="https://teamexcellentcareerinstitute.in/logo192.png" />
         
-        {/* Course Schema */}
+        {/* Course, CourseInstance, and Offer Schema */}
         <script type="application/ld+json">
           {JSON.stringify({
             "@context": "https://schema.org",
@@ -47,11 +47,59 @@ export default function Jee() {
               "name": "Team Excellent Career Institute",
               "url": "https://teamexcellentcareerinstitute.in/"
             },
+            "hasCourseInstance": [
+              {
+                "@type": "CourseInstance",
+                "name": "Class 11 2-Year JEE Program",
+                "courseMode": "Offline Classroom",
+                "duration": "P2Y"
+              },
+              {
+                "@type": "CourseInstance",
+                "name": "Class 12 1-Year JEE Program",
+                "courseMode": "Offline Classroom",
+                "duration": "P1Y"
+              },
+              {
+                "@type": "CourseInstance",
+                "name": "JEE Dropper / Repeater Batch",
+                "courseMode": "Offline Classroom",
+                "duration": "P1Y"
+              }
+            ],
+            "offers": {
+              "@type": "Offer",
+              "category": "Scholarship Available up to 100% via T-MAT Exam",
+              "priceCurrency": "INR",
+              "availability": "https://schema.org/InStock"
+            },
             "aggregateRating": {
               "@type": "AggregateRating",
               "ratingValue": "4.9",
               "reviewCount": "510"
             }
+          })}
+        </script>
+
+        {/* BreadcrumbList Schema */}
+        <script type="application/ld+json">
+          {JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "BreadcrumbList",
+            "itemListElement": [
+              {
+                "@type": "ListItem",
+                "position": 1,
+                "name": "Home",
+                "item": "https://teamexcellentcareerinstitute.in/"
+              },
+              {
+                "@type": "ListItem",
+                "position": 2,
+                "name": "JEE Coaching in Patna",
+                "item": "https://teamexcellentcareerinstitute.in/jee-coaching-in-patna"
+              }
+            ]
           })}
         </script>
       </Helmet>

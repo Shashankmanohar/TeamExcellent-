@@ -1,5 +1,6 @@
 import React from "react";
 import { motion } from "framer-motion";
+import { Link } from "react-router-dom";
 import {
   Monitor,
   Snowflake,
@@ -31,7 +32,11 @@ const features = [
   {
     id: 3,
     title: "Online Platform",
-    description: "Access recorded lectures, study material, and live classes anytime, anywhere.",
+    description: (
+      <>
+        Access recorded lectures, study material, and CBT mock tests on our <Link to="/student-portal" className="text-green-700 font-semibold hover:underline">Student Portal</Link>.
+      </>
+    ),
     icon: <Smartphone className="w-7 h-7" />,
     color: "text-green-600",
     bgColor: "bg-green-50",
@@ -49,7 +54,11 @@ const features = [
   {
     id: 6,
     title: "Counselling & Mentoring",
-    description: "Personalized mentorship and career counselling sessions to guide every student.",
+    description: (
+      <>
+        Personalized mentorship. Learn more about our <Link to="/admission" className="text-indigo-700 font-semibold hover:underline">Admission Process</Link> to enroll.
+      </>
+    ),
     icon: <Users className="w-7 h-7" />,
     color: "text-indigo-600",
     bgColor: "bg-indigo-50",
@@ -58,7 +67,11 @@ const features = [
   {
     id: 7,
     title: "Help Desk",
-    description: "Dedicated help desk for student support, queries, and administrative assistance.",
+    description: (
+      <>
+        Dedicated support for student queries. Feel free to <Link to="/contact" className="text-pink-700 font-semibold hover:underline">Contact Us</Link> anytime.
+      </>
+    ),
     icon: <HelpCircle className="w-7 h-7" />,
     color: "text-pink-600",
     bgColor: "bg-pink-50",

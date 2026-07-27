@@ -56,7 +56,7 @@ export default function Class6to10() {
           content="https://teamexcellentcareerinstitute.in/logo192.png"
         />
 
-        {/* Course Schema */}
+        {/* Course, CourseInstance, and Offer Schema */}
         <script type="application/ld+json">
           {JSON.stringify({
             "@context": "https://schema.org",
@@ -68,11 +68,46 @@ export default function Class6to10() {
               "name": "Team Excellent Career Institute",
               "url": "https://teamexcellentcareerinstitute.in/"
             },
+            "hasCourseInstance": [
+              { "@type": "CourseInstance", "name": "Class 6 Foundation Batch", "courseMode": "Offline Classroom" },
+              { "@type": "CourseInstance", "name": "Class 7 Foundation Batch", "courseMode": "Offline Classroom" },
+              { "@type": "CourseInstance", "name": "Class 8 Foundation Batch", "courseMode": "Offline Classroom" },
+              { "@type": "CourseInstance", "name": "Class 9 Pre-Foundation Batch", "courseMode": "Offline Classroom" },
+              { "@type": "CourseInstance", "name": "Class 10 Foundation & Olympiad Batch", "courseMode": "Offline Classroom" }
+            ],
+            "offers": {
+              "@type": "Offer",
+              "category": "Scholarship Available up to 100% via T-MAT Exam",
+              "priceCurrency": "INR",
+              "availability": "https://schema.org/InStock"
+            },
             "aggregateRating": {
               "@type": "AggregateRating",
               "ratingValue": "4.9",
               "reviewCount": "150"
             }
+          })}
+        </script>
+
+        {/* BreadcrumbList Schema */}
+        <script type="application/ld+json">
+          {JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "BreadcrumbList",
+            "itemListElement": [
+              {
+                "@type": "ListItem",
+                "position": 1,
+                "name": "Home",
+                "item": "https://teamexcellentcareerinstitute.in/"
+              },
+              {
+                "@type": "ListItem",
+                "position": 2,
+                "name": "Foundation Courses Class 6-10",
+                "item": "https://teamexcellentcareerinstitute.in/programs/class-6-to-10"
+              }
+            ]
           })}
         </script>
       </Helmet>

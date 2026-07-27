@@ -13,6 +13,7 @@ const Features = lazy(() => import('../Components/Features'))
 const TrustedSection = lazy(() => import('../Components/TrustedSection'))
 const Questions = lazy(() => import('../Components/Questions'))
 const Testimonials = lazy(() => import('../Components/Testimonials'))
+const ExploreLinks = lazy(() => import('../Components/ExploreLinks'))
 const Footer = lazy(() => import('../Components/Footer'))
 
 export default function Home() {

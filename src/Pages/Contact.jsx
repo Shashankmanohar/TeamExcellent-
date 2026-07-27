@@ -34,7 +34,7 @@ export default function Contact() {
         <meta name="twitter:description" content="Get in touch with Team Excellent Coaching Patna for admission queries, coaching details, and more." />
         <meta name="twitter:image" content="https://teamexcellentcareerinstitute.in/logo192.png" />
 
-        {/* ContactPage Schema */}
+        {/* ContactPage & LocalBusiness Schema */}
         <script type="application/ld+json">
           {JSON.stringify({
             "@context": "https://schema.org",
@@ -43,17 +43,56 @@ export default function Contact() {
             "description": "Get in touch with Team Excellent Coaching Institute, Patna. Contact us for admissions, JEE & NEET coaching, or foundation courses (Class 6–10).",
             "url": "https://teamexcellentcareerinstitute.in/contact",
             "mainEntity": {
-              "@type": "EducationalOrganization",
+              "@type": "LocalBusiness",
               "name": "Team Excellent Career Institute",
+              "image": "https://teamexcellentcareerinstitute.in/logo192.png",
               "url": "https://teamexcellentcareerinstitute.in",
               "telephone": "+91-9942000371",
+              "priceRange": "₹₹",
+              "openingHours": "Mo-Sa 08:00-20:00",
               "address": {
                 "@type": "PostalAddress",
+                "streetAddress": "Near NMCH College, Bajar Samiti, New Kunj Colony, Saketpuri",
                 "addressLocality": "Patna",
                 "addressRegion": "Bihar",
+                "postalCode": "800016",
                 "addressCountry": "IN"
+              },
+              "geo": {
+                "@type": "GeoCoordinates",
+                "latitude": "25.6032",
+                "longitude": "85.1746"
+              },
+              "contactPoint": {
+                "@type": "ContactPoint",
+                "telephone": "+91-9942000371",
+                "contactType": "admissions desk",
+                "areaServed": "IN",
+                "availableLanguage": ["English", "Hindi"]
               }
             }
+          })}
+        </script>
+
+        {/* BreadcrumbList Schema */}
+        <script type="application/ld+json">
+          {JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "BreadcrumbList",
+            "itemListElement": [
+              {
+                "@type": "ListItem",
+                "position": 1,
+                "name": "Home",
+                "item": "https://teamexcellentcareerinstitute.in/"
+              },
+              {
+                "@type": "ListItem",
+                "position": 2,
+                "name": "Contact Us",
+                "item": "https://teamexcellentcareerinstitute.in/contact"
+              }
+            ]
           })}
         </script>
       </Helmet>

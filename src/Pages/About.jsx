@@ -35,7 +35,7 @@ export default function About() {
         <meta name="twitter:description" content="Discover Team Excellent, led by IIT-BHU alumnus Albert Newwel, offering JEE, NEET, and foundation coaching with excellence." />
         <meta name="twitter:image" content="https://teamexcellentcareerinstitute.in/logo192.png" />
 
-        {/* AboutPage Schema */}
+        {/* AboutPage & Person (Founder/Director) Schema */}
         <script type="application/ld+json">
           {JSON.stringify({
             "@context": "https://schema.org",
@@ -46,8 +46,40 @@ export default function About() {
             "mainEntity": {
               "@type": "EducationalOrganization",
               "name": "Team Excellent Career Institute",
-              "url": "https://teamexcellentcareerinstitute.in"
+              "url": "https://teamexcellentcareerinstitute.in",
+              "founder": {
+                "@type": "Person",
+                "name": "Albert Newwel",
+                "jobTitle": "Founder & Director",
+                "alumniOf": {
+                  "@type": "EducationalOrganization",
+                  "name": "IIT-BHU Varanasi"
+                },
+                "description": "M.Tech from IIT-BHU, Varanasi with 12+ years experience in mentoring JEE & NEET aspirants in Patna."
+              }
             }
+          })}
+        </script>
+
+        {/* BreadcrumbList Schema */}
+        <script type="application/ld+json">
+          {JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "BreadcrumbList",
+            "itemListElement": [
+              {
+                "@type": "ListItem",
+                "position": 1,
+                "name": "Home",
+                "item": "https://teamexcellentcareerinstitute.in/"
+              },
+              {
+                "@type": "ListItem",
+                "position": 2,
+                "name": "About Us",
+                "item": "https://teamexcellentcareerinstitute.in/about"
+              }
+            ]
           })}
         </script>
       </Helmet>

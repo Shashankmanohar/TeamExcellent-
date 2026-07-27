@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { Link } from "react-router-dom";
 import {
   Layers,
   BookOpen,
@@ -8,7 +9,6 @@ import {
   PenTool,
   Lightbulb,
 } from "lucide-react";
-import ExploreLinks from "./ExploreLinks";
 import FAQSection from "./FAQSection";
 
 function Class6to10Content() {
@@ -115,6 +115,15 @@ function Class6to10Content() {
         "Foundation for JEE/NEET starts here with exposure to problem-solving beyond textbooks.",
       icon: <PenTool className="w-6 h-6" />,
     },
+    {
+      title: "Admission Process & Guidance",
+      detail: (
+        <>
+          Hassle-free admissions for junior foundation batches. Explore our <Link to="/admission" className="font-bold text-[#522871] hover:underline">Step-by-Step Admission Process</Link>.
+        </>
+      ),
+      icon: <BookOpen className="w-6 h-6" />,
+    },
   ];
 
   const faqs = [
@@ -190,6 +199,11 @@ function Class6to10Content() {
                 <li key={i}>{h}</li>
               ))}
             </ul>
+            <div className="mt-6 pt-4 border-t border-slate-100 flex items-center justify-between">
+              <Link to="/admission" className="inline-flex items-center gap-1.5 px-4 py-2 bg-purple-50 hover:bg-purple-100 text-[#5B2D7C] rounded-xl text-xs font-bold transition-all border border-purple-200">
+                Admission Process →
+              </Link>
+            </div>
           </div>
         ))}
       </div>
@@ -222,22 +236,36 @@ function Class6to10Content() {
 
       {/* Why Team Excellent */}
       <div
-        className="max-w-4xl mx-auto mt-20 text-center"
+        className="max-w-4xl mx-auto mt-20 text-center bg-purple-50 p-10 rounded-2xl shadow-inner border border-purple-100"
         aria-label="Why Choose Team Excellent"
       >
         <h2 className="text-3xl font-bold text-[#522871] mb-6 flex items-center justify-center gap-2">
-          <Award className="w-8 h-8 text-purple-600" /> Why Learn with Team
-          Excellent?
+          <Award className="w-8 h-8 text-purple-600" /> Why Learn with Team Excellent?
         </h2>
         <p className="text-gray-700 text-base sm:text-lg leading-relaxed">
           At Team Excellent, we focus on holistic growth. From Classes 6–10, our
           students receive strong academic support, Olympiad exposure, board
-          preparation, and the foundation to tackle JEE, NEET, and other
-          competitive exams in higher classes.
+          preparation, and the foundation to tackle{" "}
+          <Link to="/jee-coaching-in-patna" className="font-semibold text-[#5B2D7C] hover:underline">
+            IIT-JEE Preparation
+          </Link>{" "}
+          and{" "}
+          <Link to="/neet-coaching-in-patna" className="font-semibold text-[#5B2D7C] hover:underline">
+            NEET Medical Preparation
+          </Link>{" "}
+          in higher classes. To learn more about getting started, check our{" "}
+          <Link to="/admission" className="font-semibold text-[#b72e2f] hover:underline">
+            Admission Procedure
+          </Link>, visit our{" "}
+          <Link to="/student-portal" className="font-semibold text-[#5B2D7C] hover:underline">
+            Student Portal
+          </Link>, or read our latest updates on our{" "}
+          <Link to="/blogs" className="font-semibold text-[#5B2D7C] hover:underline">
+            Education Blog
+          </Link>.
         </p>
       </div>
       <FAQSection faqs={faqs} />
-      <ExploreLinks />
     </section>
   </div>
   );

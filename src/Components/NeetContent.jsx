@@ -1,6 +1,6 @@
 import React, { useState } from "react";
+import { Link } from "react-router-dom";
 import { HeartPulse, BookOpen, Award, Layers, ArrowRight, GraduationCap, Laptop, HelpCircle, Trophy, TrendingUp, ClipboardCheck, Clock, Users } from "lucide-react";
-import ExploreLinks from "./ExploreLinks";
 import EnrollmentForm from "./EnrollmentForm";
 import FAQSection from "./FAQSection";
 import TMatSection from "./TMatSection";
@@ -48,8 +48,19 @@ function NeetContent() {
     },
     {
       title: "Performance Tracking",
-      detail:
-        "Access to our Student Portal to check mock test results, download report cards, and track academic progress.",
+      detail: (
+        <>
+          Access to our <Link to="/student-portal" className="font-bold text-[#5B2D7C] hover:underline">Student Portal</Link> to check mock test results, download report cards, and track academic progress.
+        </>
+      ),
+    },
+    {
+      title: "Admission Process & Scholarships",
+      detail: (
+        <>
+          Hassle-free enrollment process. Take the T-MAT entrance test to earn up to 100% scholarship. Read our <Link to="/admission" className="font-bold text-[#b72e2f] hover:underline">Admission Guidelines</Link>.
+        </>
+      ),
     },
   ];
 
@@ -233,58 +244,91 @@ function NeetContent() {
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
           {/* Card 1: Class 11 */}
           <div className="bg-white rounded-3xl border border-slate-100 shadow-md hover:shadow-xl hover:border-purple-200 transition-all duration-300 overflow-hidden flex flex-col justify-between">
-            <div className="p-8">
-              <span className="bg-purple-100 text-[#5B2D7C] text-xs font-extrabold uppercase px-3.5 py-1 rounded-full">2-Year Program</span>
-              <h3 className="text-2xl font-bold text-gray-800 mt-4 mb-3">Class 11 Program</h3>
-              <p className="text-gray-600 text-sm leading-relaxed mb-6">
-                Lays down basic fundamentals of Physics, Chemistry, and intensive Biology (NCERT focus) from the beginning of Class 11.
-              </p>
-              <ul className="space-y-2.5 text-slate-700 text-sm font-medium">
-                <li className="flex items-center gap-2"><span className="text-emerald-500 font-bold">✔</span> Integrated Board + NEET syllabus</li>
-                <li className="flex items-center gap-2"><span className="text-emerald-500 font-bold">✔</span> Comprehensive NCERT line-by-line cover</li>
-                <li className="flex items-center gap-2"><span className="text-emerald-500 font-bold">✔</span> Focus on clearing basic numericals</li>
-              </ul>
+            <div>
+              <div className="h-48 overflow-hidden relative">
+                <img 
+                  src="https://images.unsplash.com/photo-1576091160550-2173dba999ef?auto=format&fit=crop&q=80&w=600" 
+                  alt="Class 11 NEET Program" 
+                  className="w-full h-full object-cover transform hover:scale-105 transition-transform duration-500"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent"></div>
+              </div>
+              <div className="p-8">
+                <span className="bg-purple-100 text-[#5B2D7C] text-xs font-extrabold uppercase px-3.5 py-1 rounded-full">2-Year Program</span>
+                <h3 className="text-2xl font-bold text-gray-800 mt-4 mb-3">Class 11 Program</h3>
+                <p className="text-gray-600 text-sm leading-relaxed mb-6">
+                  Lays down basic fundamentals of Physics, Chemistry, and intensive Biology (NCERT focus) from the beginning of Class 11.
+                </p>
+                <ul className="space-y-2.5 text-slate-700 text-sm font-medium">
+                  <li className="flex items-center gap-2"><span className="text-emerald-500 font-bold">✔</span> Integrated Board + NEET syllabus</li>
+                  <li className="flex items-center gap-2"><span className="text-emerald-500 font-bold">✔</span> Comprehensive NCERT line-by-line cover</li>
+                  <li className="flex items-center gap-2"><span className="text-emerald-500 font-bold">✔</span> Focus on clearing basic numericals</li>
+                </ul>
+              </div>
             </div>
-            <div className="px-8 pb-8 pt-4 border-t border-slate-50">
-              <button onClick={() => handleOpenModal("NEET Class 11")} className="w-full bg-[#5B2D7C] hover:bg-[#8424bd] text-white font-bold py-3 rounded-xl transition duration-300">Enroll Now</button>
+            <div className="px-6 sm:px-8 pb-8 pt-4 border-t border-slate-50 flex flex-col sm:flex-row gap-3">
+              <button onClick={() => handleOpenModal("NEET Class 11")} className="w-full sm:w-1/2 bg-[#5B2D7C] hover:bg-[#8424bd] text-white font-bold py-3 rounded-xl text-xs sm:text-sm transition duration-300 shadow-sm flex items-center justify-center">Enroll Now</button>
+              <Link to="/admission" className="w-full sm:w-1/2 bg-purple-50 hover:bg-purple-100 text-[#5B2D7C] border border-purple-200 font-bold py-3 rounded-xl text-xs sm:text-sm text-center transition duration-300 flex items-center justify-center">Admission Process</Link>
             </div>
           </div>
 
           {/* Card 2: Class 12 */}
           <div className="bg-white rounded-3xl border border-slate-100 shadow-md hover:shadow-xl hover:border-purple-200 transition-all duration-300 overflow-hidden flex flex-col justify-between">
-            <div className="p-8">
-              <span className="bg-red-100 text-[#b72e2f] text-xs font-extrabold uppercase px-3.5 py-1 rounded-full">1-Year Program</span>
-              <h3 className="text-2xl font-bold text-gray-800 mt-4 mb-3">Class 12 Program</h3>
-              <p className="text-gray-600 text-sm leading-relaxed mb-6">
-                Provides thorough coverage of Class 12 concepts, board preparations, mock drills, and structured revision of Class 11 chapters.
-              </p>
-              <ul className="space-y-2.5 text-slate-700 text-sm font-medium">
-                <li className="flex items-center gap-2"><span className="text-emerald-500 font-bold">✔</span> 100% board curriculum mapping</li>
-                <li className="flex items-center gap-2"><span className="text-emerald-500 font-bold">✔</span> Targeted mock tests on OMR sheets</li>
-                <li className="flex items-center gap-2"><span className="text-emerald-500 font-bold">✔</span> Fast-track revision of Class 11 chapters</li>
-              </ul>
+            <div>
+              <div className="h-48 overflow-hidden relative">
+                <img 
+                  src="https://images.unsplash.com/photo-1532187643603-ba119ca4109e?auto=format&fit=crop&q=80&w=600" 
+                  alt="Class 12 NEET Program" 
+                  className="w-full h-full object-cover transform hover:scale-105 transition-transform duration-500"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent"></div>
+              </div>
+              <div className="p-8">
+                <span className="bg-red-100 text-[#b72e2f] text-xs font-extrabold uppercase px-3.5 py-1 rounded-full">1-Year Program</span>
+                <h3 className="text-2xl font-bold text-gray-800 mt-4 mb-3">Class 12 Program</h3>
+                <p className="text-gray-600 text-sm leading-relaxed mb-6">
+                  Provides thorough coverage of Class 12 concepts, board preparations, mock drills, and structured revision of Class 11 chapters.
+                </p>
+                <ul className="space-y-2.5 text-slate-700 text-sm font-medium">
+                  <li className="flex items-center gap-2"><span className="text-emerald-500 font-bold">✔</span> 100% board curriculum mapping</li>
+                  <li className="flex items-center gap-2"><span className="text-emerald-500 font-bold">✔</span> Targeted mock tests on OMR sheets</li>
+                  <li className="flex items-center gap-2"><span className="text-emerald-500 font-bold">✔</span> Fast-track revision of Class 11 chapters</li>
+                </ul>
+              </div>
             </div>
-            <div className="px-8 pb-8 pt-4 border-t border-slate-50">
-              <button onClick={() => handleOpenModal("NEET Class 12")} className="w-full bg-[#5B2D7C] hover:bg-[#8424bd] text-white font-bold py-3 rounded-xl transition duration-300">Enroll Now</button>
+            <div className="px-6 sm:px-8 pb-8 pt-4 border-t border-slate-50 flex flex-col sm:flex-row gap-3">
+              <button onClick={() => handleOpenModal("NEET Class 12")} className="w-full sm:w-1/2 bg-[#5B2D7C] hover:bg-[#8424bd] text-white font-bold py-3 rounded-xl text-xs sm:text-sm transition duration-300 shadow-sm flex items-center justify-center">Enroll Now</button>
+              <Link to="/admission" className="w-full sm:w-1/2 bg-purple-50 hover:bg-purple-100 text-[#5B2D7C] border border-purple-200 font-bold py-3 rounded-xl text-xs sm:text-sm text-center transition duration-300 flex items-center justify-center">Admission Process</Link>
             </div>
           </div>
 
           {/* Card 3: Droppers */}
           <div className="bg-white rounded-3xl border border-slate-100 shadow-md hover:shadow-xl hover:border-purple-200 transition-all duration-300 overflow-hidden flex flex-col justify-between">
-            <div className="p-8">
-              <span className="bg-blue-100 text-blue-600 text-xs font-extrabold uppercase px-3.5 py-1 rounded-full">Repeater Program</span>
-              <h3 className="text-2xl font-bold text-gray-800 mt-4 mb-3">Dropper Batch</h3>
-              <p className="text-gray-600 text-sm leading-relaxed mb-6">
-                Exclusively for passout students. A rigorous, high-density lecture format covering entire NCERT syllabus, DPP drills, and test analytics.
-              </p>
-              <ul className="space-y-2.5 text-slate-700 text-sm font-medium">
-                <li className="flex items-center gap-2"><span className="text-emerald-500 font-bold">✔</span> Complete syllabus drill in 8-9 months</li>
-                <li className="flex items-center gap-2"><span className="text-emerald-500 font-bold">✔</span> Weekly OMR drills + national rank ranking</li>
-                <li className="flex items-center gap-2"><span className="text-emerald-500 font-bold">✔</span> 1-on-1 mentorship sessions</li>
-              </ul>
+            <div>
+              <div className="h-48 overflow-hidden relative">
+                <img 
+                  src="https://images.unsplash.com/photo-1505751172876-fa1923c5c528?auto=format&fit=crop&q=80&w=600" 
+                  alt="NEET Dropper Batch" 
+                  className="w-full h-full object-cover transform hover:scale-105 transition-transform duration-500"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent"></div>
+              </div>
+              <div className="p-8">
+                <span className="bg-blue-100 text-blue-600 text-xs font-extrabold uppercase px-3.5 py-1 rounded-full">Repeater Program</span>
+                <h3 className="text-2xl font-bold text-gray-800 mt-4 mb-3">Dropper Batch</h3>
+                <p className="text-gray-600 text-sm leading-relaxed mb-6">
+                  Exclusively for passout students. A rigorous, high-density lecture format covering entire NCERT syllabus, DPP drills, and test analytics.
+                </p>
+                <ul className="space-y-2.5 text-slate-700 text-sm font-medium">
+                  <li className="flex items-center gap-2"><span className="text-emerald-500 font-bold">✔</span> Complete syllabus drill in 8-9 months</li>
+                  <li className="flex items-center gap-2"><span className="text-emerald-500 font-bold">✔</span> Weekly OMR drills + national rank ranking</li>
+                  <li className="flex items-center gap-2"><span className="text-emerald-500 font-bold">✔</span> 1-on-1 mentorship sessions</li>
+                </ul>
+              </div>
             </div>
-            <div className="px-8 pb-8 pt-4 border-t border-slate-50">
-              <button onClick={() => handleOpenModal("NEET Dropper")} className="w-full bg-[#5B2D7C] hover:bg-[#8424bd] text-white font-bold py-3 rounded-xl transition duration-300">Enroll Now</button>
+            <div className="px-6 sm:px-8 pb-8 pt-4 border-t border-slate-50 flex flex-col sm:flex-row gap-3">
+              <button onClick={() => handleOpenModal("NEET Dropper")} className="w-full sm:w-1/2 bg-[#5B2D7C] hover:bg-[#8424bd] text-white font-bold py-3 rounded-xl text-xs sm:text-sm transition duration-300 shadow-sm flex items-center justify-center">Enroll Now</button>
+              <Link to="/admission" className="w-full sm:w-1/2 bg-purple-50 hover:bg-purple-100 text-[#5B2D7C] border border-purple-200 font-bold py-3 rounded-xl text-xs sm:text-sm text-center transition duration-300 flex items-center justify-center">Admission Process</Link>
             </div>
           </div>
         </div>
@@ -505,17 +549,39 @@ function NeetContent() {
       </div>
 
       {/* Our Promise Summary Box */}
-      <div className="max-w-4xl mx-auto mt-20 text-center bg-purple-50 p-10 rounded-2xl shadow-inner">
+      <div className="max-w-4xl mx-auto mt-20 text-center bg-purple-50 p-10 rounded-2xl shadow-inner border border-purple-100">
         <h2 className="text-3xl font-bold text-[#522871] mb-6 flex items-center justify-center gap-2">
-          <Award className="w-8 h-8 text-purple-600" /> Our Promise
+          <Award className="w-8 h-8 text-purple-600" /> Our Commitment to NEET Success
         </h2>
         <p className="text-gray-700 text-base sm:text-lg leading-relaxed">
-          At Team Excellent, we provide the best neet coaching in patna by offering an intensive NCERT-based curriculum, dedicated faculty for Physics, Chemistry & Biology, custom exam-pattern mock tests, and regular doubt resolution. As the premier neet preparation institute in patna, we are committed to turning your dream of a medical career into reality.
+          At Team Excellent, we provide the best NEET coaching in Patna by offering an intensive NCERT-based curriculum, dedicated faculty for Physics, Chemistry & Biology, custom exam-pattern mock tests on our{" "}
+          <Link to="/student-portal" className="text-[#5B2D7C] font-bold hover:underline">
+            Student Portal
+          </Link>, and regular doubt resolution. Check our past{" "}
+          <Link to="/result/neet" className="text-[#b72e2f] font-bold hover:underline">
+            NEET Toppers & Results
+          </Link>, estimate your rank with our{" "}
+          <Link to="/rank-predictor" className="text-[#5B2D7C] font-bold hover:underline">
+            NEET Rank Predictor
+          </Link>, or read about our{" "}
+          <Link to="/admission" className="text-[#b72e2f] font-bold hover:underline">
+            Admission Procedure
+          </Link>. You can also explore our{" "}
+          <Link to="/jee-coaching-in-patna" className="text-[#5B2D7C] font-bold hover:underline">
+            IIT-JEE Program
+          </Link>{" "}
+          and{" "}
+          <Link to="/programs/class-6-to-10" className="text-[#5B2D7C] font-bold hover:underline">
+            Class 6-10 Foundation Courses
+          </Link>. Have questions? Feel free to{" "}
+          <Link to="/contact" className="text-[#b72e2f] font-bold hover:underline">
+            Contact Us
+          </Link>{" "}
+          anytime.
         </p>
       </div>
 
       <FAQSection faqs={faqs} />
-      <ExploreLinks />
     </section>
 
     <EnrollmentForm
