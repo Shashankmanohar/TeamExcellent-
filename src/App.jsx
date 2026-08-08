@@ -59,7 +59,6 @@ function ScrollToTop() {
 
   useEffect(() => {
     window.scrollTo({ top: 0, left: 0, behavior: "instant" })
-    // 👉 change "instant" to "smooth" if you want smooth scrolling
   }, [pathname])
 
   return null
@@ -87,7 +86,7 @@ export default function App() {
   return (
     <Router>
       <AuthHandler />
-      <ScrollToTop /> {/* ✅ ensures scroll resets on route change */}
+      <ScrollToTop />
       <Helmet>
         <title>Team Excellent - Best Coaching in Patna for JEE, NEET & Foundations</title>
         <meta property="og:title" content="Team Excellent - Best Institute in Patna for JEE, NEET & Foundations" />

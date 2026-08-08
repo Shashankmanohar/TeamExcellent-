@@ -63,6 +63,7 @@ export default function Navbar() {
           <Dropdown
             label="Student Zone"
             items={[
+              { to: "/exam/login", label: "Online Test Portal 📝" },
               { to: "/student-portal", label: "Student Portal" },
               { to: "/rank-predictor", label: "Rank Predictor" },
               { to: "/college-predictor", label: "College Predictor" },
@@ -138,6 +139,7 @@ export default function Navbar() {
              <DropdownMobile
                label="Student Zone"
                items={[
+                 { to: "/exam/login", label: "Online Test Portal 📝" },
                  { to: "/student-portal", label: "Student Portal" },
                  { to: "/rank-predictor", label: "Rank Predictor" },
                  { to: "/college-predictor", label: "College Predictor" },
